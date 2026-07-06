@@ -1671,3 +1671,36 @@ a:hover {
     top: 12px;
     opacity: 1;
 }
+
+/* ============================================================
+   MOBILE CTA BUTTON (Mobil menüde TEKLİF AL)
+   ============================================================ */
+.btn-cta-mobile {
+    display: none;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: var(--color-bg-dark);
+    border: none;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    transition: all var(--duration-base) var(--ease-out-expo);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-cta-mobile:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 174, 239, 0.3);
+}
+
+@media (max-width: 1023px) {
+    .btn-cta-mobile {
+        display: block;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
