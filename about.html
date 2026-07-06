@@ -3,73 +3,333 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vitavolt Global hakkında: Vizyonumuz, misyonumuz, kuruluş hikayesi ve değerlerimiz." />
-    <meta name="keywords" content="Vitavolt, Hakkında, Enerji, Mühendislik, Vizyonumuz" />
+    <meta name="description" content="Vitavolt Global - Enerji mühendisliğinde mükemmellik. Vizyonumuz, misyonumuz, değerlerimiz ve mühendislik süreçlerimiz." />
+    <meta name="keywords" content="Vitavolt, Hakkında, Enerji, Mühendislik, Vizyon, Misyon, Değerler" />
     <link rel="canonical" href="https://vitavoltglobal.com/about.html" />
-    <title>Vitavolt Global - Hakkımızda | Vizyonumuz & Misyonumuz</title>
+    <title>Vitavolt Global - Hakkımızda | Vizyon & Misyon</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* --- Ek stil: mevcut style.css'i bozmadan premium dokunuş --- */
+        .about-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .about-hero .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(7, 17, 28, 0.60), rgba(15, 26, 43, 0.80)), url('images/office.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            z-index: 0;
+        }
+        .about-hero .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 1.5rem;
+        }
+        .about-hero .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 40%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .about-hero .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .about-hero .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #22d3ee, #a855f7);
+            margin: 1.5rem auto 0;
+            border-radius: 4px;
+        }
+
+        /* ---- içerik blokları ---- */
+        .section {
+            padding: 5rem 0;
+        }
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        /* kartlar */
+        .card-premium {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .card-premium:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 211, 238, 0.30);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
+        }
+        .card-premium .icon {
+            font-size: 2.8rem;
+            color: #22d3ee;
+            margin-bottom: 1.25rem;
+            display: inline-block;
+        }
+        .card-premium h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.75rem;
+            color: #f1f5f9;
+        }
+        .card-premium p {
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* yatay zaman çizelgesi */
+        .timeline-horizontal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 3rem;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: linear-gradient(90deg, #22d3ee, #a855f7, #22d3ee);
+            opacity: 0.3;
+        }
+        .timeline-item {
+            flex: 1 1 18%;
+            min-width: 140px;
+            text-align: center;
+            position: relative;
+            padding-top: 3.5rem;
+        }
+        .timeline-item .year {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #22d3ee;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-item .dot {
+            position: absolute;
+            top: 2.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #22d3ee;
+            border: 3px solid #0a0a0a;
+            box-shadow: 0 0 0 3px rgba(34,211,238,0.3);
+        }
+        .timeline-item .label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.2rem;
+        }
+        .timeline-item .desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        /* process steps */
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .process-step:last-child {
+            border-bottom: none;
+        }
+        .process-step .num {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #22d3ee;
+            opacity: 0.6;
+            min-width: 3.5rem;
+            line-height: 1;
+        }
+        .process-step .content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.25rem;
+        }
+        .process-step .content p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CTA */
+        .cta-about {
+            background: linear-gradient(135deg, rgba(34,211,238,0.08), rgba(168,85,247,0.08));
+            border: 1px solid rgba(34,211,238,0.15);
+            border-radius: 2rem;
+            padding: 4rem 3rem;
+            text-align: center;
+        }
+        .cta-about h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .cta-about p {
+            color: #94a3b8;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            .about-hero .hero-title { font-size: 2.8rem; }
+            .about-hero .hero-subtitle { font-size: 1.1rem; }
+            .section { padding: 3rem 0; }
+            .timeline-horizontal { flex-direction: column; align-items: center; gap: 1.5rem; }
+            .timeline-horizontal::before { display: none; }
+            .timeline-item { padding-top: 0; min-width: unset; width: 100%; }
+            .timeline-item .dot { display: none; }
+            .process-step { flex-direction: column; gap: 0.5rem; }
+            .cta-about { padding: 2rem 1.5rem; }
+            .cta-about h2 { font-size: 1.6rem; }
+        }
+    </style>
 </head>
 <body>
+
     <!-- ===== HEADER ===== -->
-    <header>
-        <div class="header-content container">
-            <a href="index.html" class="logo">VITAVOLT</a>
-            
-            <nav class="nav">
-                <a href="index.html" class="nav-link" data-i18n="nav-home">Anasayfa</a>
-                <a href="about.html" class="nav-link active" data-i18n="nav-about">Hakkımızda</a>
-                <a href="services.html" class="nav-link" data-i18n="nav-services">Hizmetler</a>
-                <a href="contact.html" class="nav-link" data-i18n="nav-contact">İletişim</a>
-            </nav>
-            
-            <div class="nav-actions">
-                <button class="lang-switch" aria-label="Dil Değiştir">TR</button>
-                <button class="menu-toggle" aria-label="Menüyü Aç">☰</button>
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-left">
+                        <a href="tel:+905454411977" class="top-bar-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+90 545 441 19 77</span>
+                        </a>
+                        <span class="divider">|</span>
+                        <a href="mailto:info@vitavoltglobal.com" class="top-bar-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@vitavoltglobal.com</span>
+                        </a>
+                    </div>
+                    <div class="top-bar-right">
+                        <span class="top-bar-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>İzmir, Türkiye</span>
+                        </span>
+                        <span class="divider">|</span>
+                        <div class="language-selector">
+                            <button class="lang-btn active" data-lang="tr">TR</button>
+                            <span class="lang-divider">|</span>
+                            <button class="lang-btn" data-lang="en">EN</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <a href="index.html" class="logo" title="Vitavolt Global Anasayfa">
+                        <i class="fas fa-bolt"></i>
+                        <span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span>
+                    </a>
+                    <div class="nav-menu">
+                        <a href="index.html" class="nav-link" data-i18n="nav-home">ANA SAYFA</a>
+                        <a href="about.html" class="nav-link active" data-i18n="nav-about">HAKKIMIZDA</a>
+                        <a href="services.html" class="nav-link" data-i18n="nav-services">HİZMETLERİMİZ</a>
+                        <a href="contact.html" class="nav-link" data-i18n="nav-contact">İLETİŞİM</a>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
+                    <button class="menu-toggle" aria-label="Menüyü Aç"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- ===== PAGE HERO ===== -->
-    <section class="hero" style="min-height: 50vh;">
-        <div class="hero-content">
-            <h1>Hakkımızda</h1>
-            <p class="hero-subtitle">Vizyonumuz, Misyonumuz & Değerlerimiz</p>
+    <!-- ===== HERO ===== -->
+    <section class="about-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content scroll-reveal">
+            <h1 class="hero-title">MÜHENDİSLİKTE<br>MÜKEMMELLİK</h1>
+            <p class="hero-subtitle">Vizyonumuz, Misyonumuz &amp; Değerlerimiz</p>
+            <div class="hero-divider"></div>
         </div>
     </section>
 
-    <!-- ===== COMPANY STORY ===== -->
+    <!-- ===== OUR STORY ===== -->
     <section class="section scroll-reveal">
         <div class="container">
-            <h2 class="section-title">Biz Kimiz?</h2>
-            <div class="grid grid-2">
+            <div class="section-header text-center">
+                <h2 class="section-title">HİKAYEMİZ</h2>
+                <p class="section-subtitle">2020 yılında İzmir'de kurulan Vitavolt Global, enerji mühendisliğinde yenilikçi ve sürdürülebilir çözümler üretmek için yola çıktı.</p>
+            </div>
+            <div class="grid grid-2" style="align-items: center; gap: 3rem;">
                 <div>
-                    <p style="font-size: var(--font-size-lg); line-height: 1.8; margin-bottom: var(--spacing-lg);">
-                        Vitavolt Global, enerji altyapısını teknoloji ve inovasyonla yeniden şekillendiren yeni nesil bir mühendislik firmasıdır. 2020 yılında kurulan şirketimiz, sürdürülebilir enerji çözümleri ve endüstriyel danışmanlıkta bir numara olmayı hedeflemektedir.
+                    <p style="font-size: 1.15rem; line-height: 1.9; color: #e2e8f0; margin-bottom: 1.5rem;">
+                        Bugün 15'ten fazla ülkede 500'ü aşkın projeye imza atmış, 150'den fazla mühendis ve uzmandan oluşan güçlü bir ekibe sahibiz. 
+                        Güneş enerjisinden batarya depolamaya, endüstriyel EPC'den karbon danışmanlığına kadar uzanan geniş hizmet yelpazemizle, 
+                        enerji dönüşümünün öncü aktörü konumundayız.
                     </p>
-                    <p style="margin-bottom: var(--spacing-lg);">
-                        15+ ülkede 500+ proje tamamladığımız; güneş enerjisi, batarya depolama, EPC yönetimi ve karbon çözümleri alanlarında lider konum sahibiyiz. Müşterilerimizin enerji gereksinimlerini karşılarken aynı zamanda dünya enerji sistemini temiz ve verimli hale getirmek için çalışıyoruz.
+                    <p style="color: #94a3b8; line-height: 1.8;">
+                        Amacımız, yalnızca bugünün ihtiyaçlarına değil, geleceğin enerji sistemlerine de yön veren çözümler üretmektir. 
+                        Her projede mühendislik mükemmelliğini, yenilikçi teknolojiyi ve çevresel sorumluluğu bir araya getiriyoruz.
                     </p>
                 </div>
                 <div>
-                    <img src="https://via.placeholder.com/400x300?text=Vitavolt+Team" alt="Vitavolt Takımı" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                    <img src="images/office.jpg" alt="Vitavolt Global Ofis" style="width:100%; border-radius:1.5rem; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.7);" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== MISSION & VISION ===== -->
-    <section class="section scroll-reveal" style="background: var(--bg-secondary);">
+    <section class="section scroll-reveal" style="background: rgba(255,255,255,0.02);">
         <div class="container">
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3 style="color: var(--accent-green); margin-bottom: var(--spacing-lg);">🎯 Misyonumuz</h3>
-                    <p style="font-size: var(--font-size-lg);">Yenilenebilir enerji teknolojileri, inovatif mühendislik ve dijital çözümler aracılığıyla dünya enerji sistemini temiz, verimli ve erişilebilir hale getirmek.</p>
+            <div class="grid grid-2" style="gap: 2.5rem;">
+                <div class="card-premium">
+                    <span class="icon"><i class="fas fa-bullseye"></i></span>
+                    <h3>MİSYONUMUZ</h3>
+                    <p>Yenilenebilir enerji teknolojileri, ileri mühendislik ve dijital çözümler aracılığıyla dünya enerji sistemini temiz, verimli ve herkes için erişilebilir kılmak.</p>
                 </div>
-                <div class="card">
-                    <h3 style="color: var(--accent-green); margin-bottom: var(--spacing-lg);">🌍 Vizyonumuz</h3>
-                    <p style="font-size: var(--font-size-lg);">Karbon tarafsızlığa ulaşan ve tamamen yenilenebilir enerji kaynakları tarafından güçlendirilen bir dünya inşa etmek. Her işletmenin ve topluluk için bu dönüşümü erişilebilir kılmak.</p>
+                <div class="card-premium">
+                    <span class="icon"><i class="fas fa-globe-americas"></i></span>
+                    <h3>VİZYONUMUZ</h3>
+                    <p>Karbon nötr bir geleceğin inşasında lider mühendislik ortağı olmak; yenilenebilir enerjiyi endüstriyel ölçekte dönüştüren global güç olmak.</p>
                 </div>
             </div>
         </div>
@@ -78,133 +338,285 @@
     <!-- ===== CORE VALUES ===== -->
     <section class="section scroll-reveal">
         <div class="container">
-            <h2 class="section-title">Temel Değerlerimiz</h2>
-            <div class="grid grid-3">
-                <div class="card">
-                    <div class="card-icon">🌱</div>
-                    <h3 class="card-title">Sürdürülebilirlik</h3>
-                    <p class="card-text">Çevre ve gelecek nesiller için sorumluluk bilinciyle hareket ediyoruz. Her projenin uzun vadeli etkisini göz önünde bulunduruyoruz.</p>
+            <div class="section-header text-center">
+                <h2 class="section-title">TEMEL DEĞERLERİMİZ</h2>
+                <p class="section-subtitle">Bizi Vitavolt yapan, her kararımıza ve projemize yön veren ilkeler.</p>
+            </div>
+            <div class="grid grid-3" style="gap: 1.5rem;">
+                <div class="card-premium">
+                    <span class="icon"><i class="fas fa-seedling"></i></span>
+                    <h3>Sürdürülebilirlik</h3>
+                    <p>Çevreye ve gelecek nesillere karşı sorumluluk bilinciyle hareket ediyoruz. Her projenin uzun vadeli etkisini gözetiyoruz.</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon">💡</div>
-                    <h3 class="card-title">İnovasyon</h3>
-                    <p class="card-text">En son teknolojiler ve yaratıcı çözümlerle endüstriye yeni standartlar getiriyoruz. Sürekli öğrenme ve geliştirme bizim DNA'mızda.</p>
+                <div class="card-premium">
+                    <span class="icon"><i class="fas fa-lightbulb"></i></span>
+                    <h3>İnovasyon</h3>
+                    <p>En son teknolojileri ve yaratıcı çözümleri kullanarak endüstriye yeni standartlar getiriyor, sürekli öğrenmeyi benimsiyoruz.</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon">🤝</div>
-                    <h3 class="card-title">Güven & Şeffaflık</h3>
-                    <p class="card-text">Müşterilerimizle açık iletişim ve dürüst ilişkiler kurmayı ön plana alıyoruz. Projelerimizde tam şeffaflık sunuyoruz.</p>
+                <div class="card-premium">
+                    <span class="icon"><i class="fas fa-handshake"></i></span>
+                    <h3>Güven &amp; Şeffaflık</h3>
+                    <p>Müşterilerimizle açık iletişim ve dürüst ilişkiler kuruyoruz. Projelerimizde tam şeffaflık sunuyoruz.</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3 class="card-title">Mükemmellik</h3>
-                    <p class="card-text">Teknisinde, yönetiminde ve müşteri hizmetinde kaliteyi asla ödün vermedik. Uluslararası standartları benimsedik.</p>
+                <div class="card-premium">
+                    <span class="icon"><i class="fas fa-medal"></i></span>
+                    <h3>Mükemmellik</h3>
+                    <p>Kaliteyi asla ödün vermiyor, uluslararası standartları benimseyerek her alanda en iyiyi hedefliyoruz.</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon">🌐</div>
-                    <h3 class="card-title">Küresel Bakış</h3>
-                    <p class="card-text">15+ ülkede çalışarak küresel enerji gereksinimlerini anlıyoruz. Yerel bağlamı da dikkate alarak çözümler sunuyoruz.</p>
+                <div class="card-premium">
+                    <span class="icon"><i class="fas fa-globe"></i></span>
+                    <h3>Küresel Bakış</h3>
+                    <p>15'ten fazla ülkede çalışarak global enerji ihtiyaçlarını anlıyor, yerel bağlamı da dikkate alan çözümler sunuyoruz.</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3 class="card-title">Yetenek</h3>
-                    <p class="card-text">En iyi mühendisler, teknikçiler ve danışmanları istihdam ediyoruz. Takımımızın gelişimine yatırım yapıyoruz.</p>
+                <div class="card-premium">
+                    <span class="icon"><i class="fas fa-users-gear"></i></span>
+                    <h3>Yetenek &amp; Takım</h3>
+                    <p>En iyi mühendisleri ve danışmanları bünyemizde topluyor, sürekli gelişime yatırım yapıyoruz. Takım ruhuyla başarıyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY VITAVOLT ===== -->
+    <section class="section scroll-reveal" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">NEDEN VITAVOLT?</h2>
+                <p class="section-subtitle">Müşterilerimizin güvenini kazanan farklarımız.</p>
+            </div>
+            <div class="grid grid-2" style="gap: 2rem;">
+                <div>
+                    <div class="process-step">
+                        <div class="num"><i class="fas fa-circle-check" style="font-size:2rem; color:#22d3ee;"></i></div>
+                        <div class="content">
+                            <h4>Mühendislik Mükemmelliği</h4>
+                            <p>500+ başarılı proje, 15+ ülke, sektörde kanıtlanmış uzmanlık.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="num"><i class="fas fa-circle-check" style="font-size:2rem; color:#22d3ee;"></i></div>
+                        <div class="content">
+                            <h4>Teknoloji &amp; İnovasyon</h4>
+                            <p>Yapay zeka, IoT ve dijital ikiz teknolojileriyle geleceğin enerji sistemlerini tasarlıyoruz.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="num"><i class="fas fa-circle-check" style="font-size:2rem; color:#22d3ee;"></i></div>
+                        <div class="content">
+                            <h4>Sürdürülebilir Etki</h4>
+                            <p>Karbon ayak izini azaltan, net-zero hedeflerine katkı sağlayan projeler geliştiriyoruz.</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="process-step">
+                        <div class="num"><i class="fas fa-circle-check" style="font-size:2rem; color:#22d3ee;"></i></div>
+                        <div class="content">
+                            <h4>Global Deneyim, Yerel Uzmanlık</h4>
+                            <p>Farklı coğrafyalarda kazandığımız deneyimi, yerel dinamiklere uyarlıyoruz.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="num"><i class="fas fa-circle-check" style="font-size:2rem; color:#22d3ee;"></i></div>
+                        <div class="content">
+                            <h4>Güvenilir Ortaklık</h4>
+                            <p>Zamanında teslimat, bütçe disiplini ve üstün kalite yönetimi ile uzun vadeli iş birlikleri kuruyoruz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ENGINEERING PROCESS ===== -->
+    <section class="section scroll-reveal">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">MÜHENDİSLİK SÜRECİMİZ</h2>
+                <p class="section-subtitle">Her projede uyguladığımız 5 adımlık disiplinli yaklaşım.</p>
+            </div>
+            <div class="grid grid-3" style="gap: 1.5rem;">
+                <div class="card-premium" style="text-align:center;">
+                    <span class="icon"><i class="fas fa-magnifying-glass-chart"></i></span>
+                    <h3>Keşif &amp; Analiz</h3>
+                    <p>Proje gereksinimlerini, saha koşullarını ve fizibiliteyi derinlemesine analiz ediyoruz.</p>
+                </div>
+                <div class="card-premium" style="text-align:center;">
+                    <span class="icon"><i class="fas fa-pen-ruler"></i></span>
+                    <h3>Tasarım &amp; Mühendislik</h3>
+                    <p>En son teknolojileri kullanarak optimum sistem tasarımını ve mühendislik çözümlerini geliştiriyoruz.</p>
+                </div>
+                <div class="card-premium" style="text-align:center;">
+                    <span class="icon"><i class="fas fa-cubes"></i></span>
+                    <h3>Tedarik &amp; Lojistik</h3>
+                    <p>Uluslararası standartlarda ekipman tedariki, lojistik ve depolama süreçlerini yönetiyoruz.</p>
+                </div>
+                <div class="card-premium" style="text-align:center;">
+                    <span class="icon"><i class="fas fa-helmet-safety"></i></span>
+                    <h3>İnşaat &amp; Montaj</h3>
+                    <p>Saha yönetimi, iş güvenliği ve kalite kontrolü ile projeyi zamanında teslim ediyoruz.</p>
+                </div>
+                <div class="card-premium" style="text-align:center;">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <h3>Devreye Alma &amp; İzleme</h3>
+                    <p>Sistemi devreye alıyor, performansını izliyor ve sürekli optimizasyon sağlıyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LEADERSHIP PHILOSOPHY ===== -->
+    <section class="section scroll-reveal" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <div class="grid grid-2" style="align-items:center; gap:3rem;">
+                <div>
+                    <h2 style="font-size:2rem; font-weight:700; margin-bottom:1.5rem; background:linear-gradient(135deg,#22d3ee,#a855f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">LİDERLİK FELSEFEMİZ</h2>
+                    <p style="font-size:1.1rem; line-height:1.9; color:#e2e8f0; margin-bottom:1.5rem;">
+                        Liderlik, ekibimize ilham vermek ve enerji dönüşümüne yön veren stratejik kararlar almaktır. 
+                        Vitavolt Global'de liderlik, yalnızca yönetmek değil; aynı zamanda dinlemek, öğrenmek ve 
+                        her seviyede güven inşa etmektir.
+                    </p>
+                    <p style="color:#94a3b8; line-height:1.8;">
+                        Şeffaflık, hesap verebilirlik ve çalışanlarımızın gelişimine yatırım yapmak, 
+                        başarımızın temel taşlarıdır. Her bireyin fikrine değer veriyor, inovasyonu 
+                        teşvik ediyoruz.
+                    </p>
+                </div>
+                <div>
+                    <img src="images/consulting.jpg" alt="Vitavolt Liderlik" style="width:100%; border-radius:1.5rem; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.7);" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== TIMELINE ===== -->
-    <section class="section scroll-reveal" style="background: var(--bg-secondary);">
+    <section class="section scroll-reveal">
         <div class="container">
-            <h2 class="section-title">Kuruluş Hikayemiz</h2>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue); margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--accent-green);">2020 - Kuruluş</h3>
-                    <p>Vitavolt Global, İzmir'de kurulmuş ve enerji mühendisliğinde yenilikçi çözümler sunmaya başlamıştır.</p>
+            <div class="section-header text-center">
+                <h2 class="section-title">ZAMAN ÇİZELGESİ</h2>
+                <p class="section-subtitle">Vitavolt Global'in kısa ama etkili yolculuğu.</p>
+            </div>
+            <div class="timeline-horizontal">
+                <div class="timeline-item">
+                    <span class="year">2020</span>
+                    <span class="dot"></span>
+                    <div class="label">Kuruluş</div>
+                    <div class="desc">İzmir'de temeller atıldı.</div>
                 </div>
-                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue); margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--accent-green);">2021 - İlk Proje</h3>
-                    <p>Ilk 50MW güneş santrali projesini başarıyla tamamladık. Bu başarı, sektörlerdeki itibarımızı sağlamlaştırdı.</p>
+                <div class="timeline-item">
+                    <span class="year">2021</span>
+                    <span class="dot"></span>
+                    <div class="label">İlk GES</div>
+                    <div class="desc">50MW güneş santrali tamamlandı.</div>
                 </div>
-                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue); margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--accent-green);">2022 - Uluslararası Expansion</h3>
-                    <p>Türkiye dışında projeler başladık. Balkanlardaki ilk EPC projesini imzaladık.</p>
+                <div class="timeline-item">
+                    <span class="year">2022</span>
+                    <span class="dot"></span>
+                    <div class="label">Uluslararası</div>
+                    <div class="desc">Balkanlar'da ilk EPC projesi.</div>
                 </div>
-                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue); margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--accent-green);">2023 - BESS & Danışmanlık</h3>
-                    <p>Batarya depolama sistemleri ve karbon danışmanlığı hizmetlerini portföyümüze ekledik.</p>
+                <div class="timeline-item">
+                    <span class="year">2023</span>
+                    <span class="dot"></span>
+                    <div class="label">BESS &amp; Karbon</div>
+                    <div class="desc">Yeni hizmet portföyü eklendi.</div>
                 </div>
-                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue);">
-                    <h3 style="color: var(--accent-green);">2024 - Bugün</h3>
-                    <p>500+ proje, 15+ ülke, 200+ müşteri ile endüstrinin lider aktörü konumundayız.</p>
+                <div class="timeline-item">
+                    <span class="year">2024</span>
+                    <span class="dot"></span>
+                    <div class="label">Bugün</div>
+                    <div class="desc">500+ proje, 15+ ülke.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== TEAM SECTION ===== -->
+    <!-- ===== CTA ===== -->
     <section class="section scroll-reveal">
         <div class="container">
-            <h2 class="section-title">Ekibimiz</h2>
-            <p style="text-align: center; font-size: var(--font-size-lg); margin-bottom: var(--spacing-2xl); max-width: 600px; margin-left: auto; margin-right: auto;">
-                150+ yetenek sahibi mühendis, teknisyen ve danışmanı ile enerji mühendisliğinde en iyi hizmetleri sunuyoruz.
-            </p>
-            <div class="grid grid-4">
-                <div class="card text-center">
-                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">👨‍💼</div>
-                    <h3 class="card-title">Yazılım & Bilişim</h3>
-                    <p class="card-text">AI ve analitik destekli enerji çözümleri</p>
-                </div>
-                <div class="card text-center">
-                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">⚙️</div>
-                    <h3 class="card-title">Mekanik Mühendisliği</h3>
-                    <p class="card-text">Sistem tasarımı ve optimizasyonu</p>
-                </div>
-                <div class="card text-center">
-                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🔌</div>
-                    <h3 class="card-title">Elektrik Mühendisliği</h3>
-                    <p class="card-text">Elektrik tasarım ve başlıştırma</p>
-                </div>
-                <div class="card text-center">
-                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">📊</div>
-                    <h3 class="card-title">Proje Yönetimi</h3>
-                    <p class="card-text">Vaktinde teslim ve bütçe yönetimi</p>
-                </div>
+            <div class="cta-about">
+                <h2>PROJENİZİ KONUŞALIM</h2>
+                <p>Vitavolt farkını deneyimleyin. Sürdürülebilir enerji çözümleri için bugün iletişime geçin.</p>
+                <a href="contact.html" class="btn btn-primary btn-large">TEKLİF ALIN</a>
             </div>
         </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-content scroll-reveal">
-                <div class="footer-section">
-                    <h3>Vitavolt Global</h3>
-                    <p>Yenilenebilir enerji sistemleri ve endüstriyel çözümlerde öncü mühendislik firması.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Hızlı Bağlantılar</h3>
-                    <div class="footer-links">
-                        <a href="index.html" class="footer-link">Anasayfa</a>
-                        <a href="about.html" class="footer-link">Hakkımızda</a>
-                        <a href="services.html" class="footer-link">Hizmetler</a>
-                        <a href="contact.html" class="footer-link">İletişim</a>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo" title="Vitavolt Global Anasayfa">
+                        <i class="fas fa-bolt"></i>
+                        <span>VITAVOLT GLOBAL</span>
+                    </a>
+                    <p class="footer-description">Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri ve danışmanlık hizmetleri sunmaktadır.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" title="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h3>İletişim</h3>
-                    <p>📞 +90 545 441 19 77</p>
-                    <p>📧 info@vitavoltglobal.com</p>
-                    <p>📍 İzmir, Türkiye</p>
+                <div class="footer-col">
+                    <h4 class="footer-title">HIZLI LİNKLER</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="services.html">Hizmetler</a></li>
+                        <li><a href="contact.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">HİZMETLERİMİZ</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#ges">GES (Güneş Enerjisi)</a></li>
+                        <li><a href="services.html#epc">Endüstriyel EPC</a></li>
+                        <li><a href="services.html#bess">Batarya Depolama (BESS)</a></li>
+                        <li><a href="services.html#carbon">Karbon Danışmanlığı</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">İLETİŞİM BİLGİLERİ</h4>
+                    <ul class="footer-contact">
+                        <li><a href="tel:+905454411977"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
+                        <li><a href="mailto:info@vitavoltglobal.com"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
+                        <li><span><i class="fas fa-map-marker-alt"></i> İzmir, Türkiye</span></li>
+                    </ul>
+                    <div class="newsletter-signup">
+                        <input type="email" placeholder="E-posta adresiniz" class="newsletter-input" aria-label="E-posta adresi" />
+                        <button class="newsletter-btn" aria-label="Abone ol"><i class="fas fa-arrow-right"></i></button>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom scroll-reveal">
+            <div class="footer-bottom">
                 <p>&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Gizlilik Politikası</a>
+                    <span class="divider">|</span>
+                    <a href="#">Kullanım Şartları</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Vitavolt Global",
+            "url": "https://vitavoltglobal.com",
+            "description": "Yenilenebilir enerji sistemleri ve endüstriyel çözümlerde öncü mühendislik firması",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İzmir",
+                "addressCountry": "TR"
+            },
+            "telephone": "+905454411977",
+            "email": "info@vitavoltglobal.com"
+        }
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>
