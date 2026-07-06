@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vitavoltglobal.github.io/sitemap.xml
