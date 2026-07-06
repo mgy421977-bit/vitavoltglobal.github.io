@@ -1,11 +1,22 @@
 {
-  "solar":{
+  "version": "1.0",
 
-    "panel_power":620,
+  "solar": {
+    "default_panel_power": 620,
+    "system_loss_factor": 0.85,
+    "co2_factor": 0.42,
+    "performance_ratio": 0.80,
+    "design_margin": 1.10
+  },
 
-    "loss_factor":0.85,
+  "battery": {
+    "depth_of_discharge": 0.90,
+    "round_trip_efficiency": 0.95
+  },
 
-    "co2_factor":0.42
-
+  "economics": {
+    "electricity_price": 0,
+    "inflation": 0,
+    "discount_rate": 0
   }
 }
