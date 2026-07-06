@@ -1645,3 +1645,29 @@ a:hover {
         transform: rotate(-45deg) translate(5px, -5px);
     }
 }
+
+/* ============================================================
+   SKIP LINK — Accessibility
+   ============================================================ */
+.skip-link {
+    position: absolute;
+    top: -9999px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary, #00AEEF);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: var(--radius-lg, 8px);
+    z-index: 9999;
+    font-weight: var(--font-weight-semibold, 600);
+    font-size: var(--text-sm, 0.875rem);
+    text-decoration: none;
+    transition: top 0.25s ease, opacity 0.25s ease;
+    opacity: 0;
+    box-shadow: var(--shadow-lg, 0 8px 32px rgba(0,0,0,0.3));
+}
+
+.skip-link:focus {
+    top: 12px;
+    opacity: 1;
+}
