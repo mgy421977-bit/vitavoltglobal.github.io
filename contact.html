@@ -14,13 +14,6 @@
     <!-- ===== EMAILJS SDK ===== -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
-    <script>
-        (function() {
-            emailjs.init({
-                publicKey: "Tyl4fVN4OLgH5OKgH"
-            });
-        })();
-    </script>
 
     <style>
         .contact-hero {
@@ -635,11 +628,13 @@
                     btn.disabled = true;
                     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gönderiliyor...';
 
-                    // ✅ Service ID DÜZELTİLDİ: service_viiccsc
+                    // ===== EMAILJS GÖNDERİMİ (publicKey parametresi ile) =====
                     emailjs.sendForm(
-                        "service_viiccsc",  // ← Doğru Service ID
+                        "service_viiccsc",
                         "template_mjrxy4j",
-                        this
+                        this, {
+                            publicKey: "TyI4fVN4OLgH5OKgH"  // ← DOĞRU PUBLIC KEY
+                        }
                     ).then(function() {
                         alert("✅ Teklif talebiniz başarıyla gönderildi. En kısa sürede size dönüş yapacağız.");
                         contactForm.reset();
