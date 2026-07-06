@@ -119,6 +119,22 @@ body {
 }
 .btn-primary:hover { transform: scale(1.05); }
 
+.btn-outline {
+    display: inline-block;
+    margin-top: 0.8rem;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid #22d3ee;
+    color: #22d3ee;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+.btn-outline:hover {
+    background: #22d3ee;
+    color: #000;
+}
+
 /* ===== HERO ===== */
 .hero {
     min-height: 100vh;
@@ -230,6 +246,22 @@ body {
     color: #aaa;
     font-size: 0.95rem;
 }
+.service-card-large ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    color: #ccc;
+}
+.service-card-large ul li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.service-card-large .highlight {
+    color: #22d3ee;
+    font-weight: 600;
+    margin-top: 1rem;
+}
 
 /* ===== STATS ===== */
 .stats-section {
@@ -335,20 +367,4 @@ body {
     .stats-grid { grid-template-columns: 1fr; }
     .services-grid, .services-grid-full { grid-template-columns: 1fr; }
     .about-grid, .about-grid-full { grid-template-columns: 1fr; }
-}
-
-.btn-outline {
-    display: inline-block;
-    margin-top: 0.8rem;
-    padding: 0.4rem 1.2rem;
-    border: 1px solid #22d3ee;
-    color: #22d3ee;
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: 0.3s;
-}
-.btn-outline:hover {
-    background: #22d3ee;
-    color: #000;
 }
