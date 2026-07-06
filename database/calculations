@@ -1,0 +1,11 @@
+{
+  "solar":{
+
+    "panel_power":620,
+
+    "loss_factor":0.85,
+
+    "co2_factor":0.42
+
+  }
+}
