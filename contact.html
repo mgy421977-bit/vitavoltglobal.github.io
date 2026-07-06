@@ -3,120 +3,457 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vitavolt Global ile iletişime geçin. Teklifler, danışmanlık ve proje bilgileri için bize yazın." />
-    <meta name="keywords" content="İletişim, Teklif, Danışmanlık, Enerji Projesi" />
+    <meta name="description" content="Vitavolt Global ile iletişime geçin. Enerji mühendisliği çözümleri, proje teklifleri ve danışmanlık hizmetleri için bize ulaşın." />
+    <meta name="keywords" content="Vitavolt, İletişim, Teklif, Danışmanlık, Enerji Projesi, EPC, GES, BESS" />
     <link rel="canonical" href="https://vitavoltglobal.com/contact.html" />
     <title>Vitavolt Global - İletişim | Teklif Alın</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* --- contact sayfasına özel premium iyileştirmeler --- */
+        .contact-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .contact-hero .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(7,17,28,0.55), rgba(15,26,43,0.85)), url('images/office.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            z-index: 0;
+        }
+        .contact-hero .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 1.5rem;
+        }
+        .contact-hero .hero-title {
+            font-size: 4.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 30%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .contact-hero .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .contact-hero .hero-divider {
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, #22d3ee, #a855f7);
+            margin: 1.2rem auto 0;
+            border-radius: 4px;
+        }
+
+        /* iletişim kartları */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        .contact-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.5rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 211, 238, 0.25);
+            box-shadow: 0 16px 32px -12px rgba(0,0,0,0.5);
+        }
+        .contact-card .icon {
+            font-size: 2.6rem;
+            color: #22d3ee;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+        .contact-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #94a3b8;
+            margin-bottom: 0.4rem;
+        }
+        .contact-card p, .contact-card a {
+            font-size: 1.1rem;
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover {
+            color: #22d3ee;
+        }
+        .contact-card .small {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+
+        /* form */
+        .form-premium {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .form-premium .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-premium label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #94a3b8;
+            margin-bottom: 0.4rem;
+        }
+        .form-premium input,
+        .form-premium textarea,
+        .form-premium select {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 0.75rem;
+            color: #f1f5f9;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+        .form-premium input:focus,
+        .form-premium textarea:focus,
+        .form-premium select:focus {
+            border-color: #22d3ee;
+            box-shadow: 0 0 0 3px rgba(34,211,238,0.15);
+        }
+        .form-premium textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+        .form-premium .btn-submit {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #22d3ee, #a855f7);
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #000;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-premium .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(34,211,238,0.25);
+        }
+        .form-premium .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        @media (max-width: 576px) {
+            .form-premium .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* harita */
+        .map-container {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            margin-top: 1.5rem;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            display: block;
+            border: 0;
+        }
+
+        /* faq */
+        .faq-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.25rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: rgba(34,211,238,0.20);
+        }
+        .faq-item h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item p {
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* whatsapp butonu */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            background: #25D366;
+            color: #fff;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 32px rgba(37,211,102,0.4);
+            color: #fff;
+        }
+        @media (max-width: 576px) {
+            .whatsapp-float {
+                width: 56px;
+                height: 56px;
+                font-size: 2rem;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* cta */
+        .cta-contact {
+            background: linear-gradient(135deg, rgba(34,211,238,0.06), rgba(168,85,247,0.06));
+            border: 1px solid rgba(34,211,238,0.08);
+            border-radius: 2rem;
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+        }
+        .cta-contact h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #f1f5f9, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .cta-contact p {
+            color: #94a3b8;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .cta-contact .btn-cta {
+            padding: 0.9rem 3rem;
+            font-size: 1rem;
+        }
+        @media (max-width: 576px) {
+            .cta-contact {
+                padding: 2rem 1.5rem;
+            }
+            .cta-contact h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* responsive düzeltmeler */
+        @media (max-width: 768px) {
+            .contact-hero .hero-title {
+                font-size: 2.8rem;
+            }
+            .contact-hero .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-premium {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="header-content container">
-            <a href="index.html" class="logo">VITAVOLT</a>
-            
-            <nav class="nav">
-                <a href="index.html" class="nav-link" data-i18n="nav-home">Anasayfa</a>
-                <a href="about.html" class="nav-link" data-i18n="nav-about">Hakkımızda</a>
-                <a href="services.html" class="nav-link" data-i18n="nav-services">Hizmetler</a>
-                <a href="contact.html" class="nav-link active" data-i18n="nav-contact">İletişim</a>
-            </nav>
-            
-            <div class="nav-actions">
-                <button class="lang-switch" aria-label="Dil Değiştir">TR</button>
-                <button class="menu-toggle" aria-label="Menüyü Aç">☰</button>
+
+    <!-- ===== HEADER (index.html ile aynı) ===== -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-left">
+                        <a href="tel:+905454411977" class="top-bar-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+90 545 441 19 77</span>
+                        </a>
+                        <span class="divider">|</span>
+                        <a href="mailto:info@vitavoltglobal.com" class="top-bar-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@vitavoltglobal.com</span>
+                        </a>
+                    </div>
+                    <div class="top-bar-right">
+                        <span class="top-bar-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>İzmir, Türkiye</span>
+                        </span>
+                        <span class="divider">|</span>
+                        <div class="language-selector">
+                            <button class="lang-btn active" data-lang="tr">TR</button>
+                            <span class="lang-divider">|</span>
+                            <button class="lang-btn" data-lang="en">EN</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <a href="index.html" class="logo" title="Vitavolt Global Anasayfa">
+                        <i class="fas fa-bolt"></i>
+                        <span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span>
+                    </a>
+                    <div class="nav-menu">
+                        <a href="index.html" class="nav-link" data-i18n="nav-home">ANA SAYFA</a>
+                        <a href="about.html" class="nav-link" data-i18n="nav-about">HAKKIMIZDA</a>
+                        <a href="services.html" class="nav-link" data-i18n="nav-services">HİZMETLERİMİZ</a>
+                        <a href="contact.html" class="nav-link active" data-i18n="nav-contact">İLETİŞİM</a>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
+                    <button class="menu-toggle" aria-label="Menüyü Aç"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- ===== PAGE HERO ===== -->
-    <section class="hero" style="min-height: 40vh;">
-        <div class="hero-content">
-            <h1>İletişim</h1>
-            <p class="hero-subtitle">Bize Yazın, Anında Cevap Alalım</p>
+    <!-- ===== HERO ===== -->
+    <section class="contact-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content scroll-reveal">
+            <h1 class="hero-title">İLETİŞİM</h1>
+            <p class="hero-subtitle">Uzman ekibimizle tanışın, projenizi birlikte şekillendirelim</p>
+            <div class="hero-divider"></div>
         </div>
     </section>
 
-    <!-- ===== CONTACT INFO ===== -->
+    <!-- ===== İLETİŞİM BİLGİLERİ ===== -->
     <section class="section scroll-reveal">
         <div class="container">
-            <h2 class="section-title">Vitavolt Global</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>Telefon</h3>
-                        <p><a href="tel:+905454411977">+90 545 441 19 77</a></p>
-                    </div>
+            <div class="section-header text-center">
+                <h2 class="section-title">BİZE ULAŞIN</h2>
+                <p class="section-subtitle">Size en hızlı şekilde dönüş yapabilmemiz için tüm kanallarımız açık.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <span class="icon"><i class="fas fa-phone"></i></span>
+                    <h3>Telefon</h3>
+                    <a href="tel:+905454411977">+90 545 441 19 77</a>
+                    <div class="small">Hafta içi 09:00 – 18:00</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>E-posta</h3>
-                        <p><a href="mailto:info@vitavoltglobal.com">info@vitavoltglobal.com</a></p>
-                    </div>
+                <div class="contact-card">
+                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                    <h3>E-posta</h3>
+                    <a href="mailto:info@vitavoltglobal.com">info@vitavoltglobal.com</a>
+                    <div class="small">24 saat içinde yanıt veririz</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>Adres</h3>
-                        <p>İzmir, Türkiye</p>
-                    </div>
+                <div class="contact-card">
+                    <span class="icon"><i class="fas fa-map-pin"></i></span>
+                    <h3>Adres</h3>
+                    <p>İzmir, Türkiye</p>
+                    <div class="small">Ofisimizi ziyaret edin</div>
+                </div>
+                <div class="contact-card">
+                    <span class="icon"><i class="fas fa-clock"></i></span>
+                    <h3>Çalışma Saatleri</h3>
+                    <p>09:00 – 18:00</p>
+                    <div class="small">Pazartesi – Cuma</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== CONTACT FORM ===== -->
-    <section class="section" style="background: var(--bg-secondary);">
-        <div class="container scroll-reveal">
-            <h2 class="section-title" style="text-align: center;">Mesaj Gönderin</h2>
-            <div style="max-width: 600px; margin: 0 auto;">
+    <!-- ===== FORM + HARİTA ===== -->
+    <section class="section scroll-reveal" style="background: rgba(255,255,255,0.015);">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">HIZLI TEKLİF FORMU</h2>
+                <p class="section-subtitle">Projenizle ilgili detayları bize yazın, en kısa sürede size özel teklif oluşturalım.</p>
+            </div>
+            <div class="form-premium">
                 <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Adınız *</label>
-                        <input type="text" id="name" name="name" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Adınız Soyadınız *</label>
+                            <input type="text" id="name" name="name" placeholder="Örn: Ahmet Yılmaz" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-posta *</label>
+                            <input type="email" id="email" name="email" placeholder="ornek@domain.com" required />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">E-posta *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Konu *</label>
-                        <input type="text" id="subject" name="subject" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+90 555 123 45 67" />
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Konu *</label>
+                            <input type="text" id="subject" name="subject" placeholder="Örn: GES Projesi" required />
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="message">Mesajınız *</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea id="message" name="message" placeholder="Projeniz hakkında bilgi verin..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: var(--spacing-md);">Gönder</button>
+                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane" style="margin-right: 0.6rem;"></i> TEKLİF GÖNDER</button>
                 </form>
+                <div id="formFeedback" class="feedback" style="margin-top:1.2rem; text-align:center; font-weight:500; display:none;"></div>
             </div>
-        </div>
-    </section>
 
-    <!-- ===== GOOGLE MAPS ===== -->
-    <section class="section scroll-reveal">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">Konumumuz</h2>
-            <div style="width: 100%; height: 400px; background: var(--bg-secondary); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg);">
+            <!-- Harita -->
+            <div class="map-container" style="margin-top: 3rem;">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.3804343046366!2d27.142621!3d38.424671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd9fbffffff%3A0x123456789!2s%C4%B0zmir%2C%20T%C3%BCrkiye!5e0!3m2!1str!2str!4v1234567890" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:none;" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
@@ -125,61 +462,164 @@
         </div>
     </section>
 
-    <!-- ===== FAQ SECTION ===== -->
-    <section class="section" style="background: var(--bg-secondary);">
-        <div class="container scroll-reveal">
-            <h2 class="section-title">Sık Sorulan Sorular</h2>
+    <!-- ===== SSS ===== -->
+    <section class="section scroll-reveal">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">SIK SORULAN SORULAR</h2>
+                <p class="section-subtitle">Vitavolt Global hakkında en çok merak edilen konular.</p>
+            </div>
             <div style="max-width: 800px; margin: 0 auto;">
-                <div style="padding: var(--spacing-lg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md);">Proje başlangıcında ne kadar süre alır?</h3>
-                    <p>Projenin karmaşıklığına bağlı olarak, fizibilite çalışmasından mühendislik tasarımına kadar 2-12 hafta arası süre alabilir.</p>
+                <div class="faq-item">
+                    <h3>Proje başlangıcı ne kadar sürer?</h3>
+                    <p>Fizibilite ve tasarım aşaması projenin büyüklüğüne göre 2 ila 12 hafta arasında değişir. Anahtar teslim EPC projelerinde ortalama süreyi teklif aşamasında netleştiririz.</p>
                 </div>
-                <div style="padding: var(--spacing-lg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md);">Hangi hizmetler sunuyorsunuz?</h3>
-                    <p>GES tasarım ve kurulumu, EPC yönetimi, BESS çözümleri, karbon danışmanlığı ve enerji mühendisliği hizmetleri sunuyoruz.</p>
+                <div class="faq-item">
+                    <h3>Hangi hizmetleri sunuyorsunuz?</h3>
+                    <p>Güneş enerjisi santralleri (GES), Endüstriyel EPC yönetimi, Batarya Enerji Depolama Sistemleri (BESS), Karbon danışmanlığı ve Mühendislik danışmanlığı olmak üzere 5 ana hizmet alanında uzman çözümler sunuyoruz.</p>
                 </div>
-                <div style="padding: var(--spacing-lg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg);">
-                    <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md);">Uluslararası projeler yapıyor musunuz?</h3>
-                    <p>Evet, 15+ ülkede başarıyla tamamlanmış projelerimiz vardır. Balkanlarda, Orta Doğu ve Asya'da çalışmaları yürütüyoruz.</p>
+                <div class="faq-item">
+                    <h3>Uluslararası projelerde deneyiminiz var mı?</h3>
+                    <p>Evet, Balkanlar, Orta Doğu ve Asya’da 15’ten fazla ülkede başarıyla tamamladığımız projeler bulunmaktadır. Global standartlarda hizmet veriyoruz.</p>
                 </div>
-                <div style="padding: var(--spacing-lg); border: 1px solid var(--border-color); border-radius: var(--radius-lg);">
-                    <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md);">İlk danışmanlık ücretsiz mi?</h3>
-                    <p>İlk ön görüşme tamamen ücretsizdir. Projenizin kapsamı ve ihtiyaçlarını anladıktan sonra detaylı teklif sunuyoruz.</p>
+                <div class="faq-item">
+                    <h3>İlk görüşme ücretli mi?</h3>
+                    <p>Hayır, ilk ön görüşme ve ihtiyaç analizi tamamen ücretsizdir. Detaylı teklifimizi projenin kapsamını netleştirdikten sonra sunuyoruz.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
+    <!-- ===== CTA ===== -->
+    <section class="section scroll-reveal">
         <div class="container">
-            <div class="footer-content scroll-reveal">
-                <div class="footer-section">
-                    <h3>Vitavolt Global</h3>
-                    <p>Yenilenebilir enerji sistemleri ve endüstriyel çözümlerde öncü mühendislik firması.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Hızlı Bağlantılar</h3>
-                    <div class="footer-links">
-                        <a href="index.html" class="footer-link">Anasayfa</a>
-                        <a href="about.html" class="footer-link">Hakkımızda</a>
-                        <a href="services.html" class="footer-link">Hizmetler</a>
-                        <a href="contact.html" class="footer-link">İletişim</a>
+            <div class="cta-contact">
+                <h2>PROJENİZİ KONUŞMAK İSTER MİSİNİZ?</h2>
+                <p>Uzman ekibimizle enerji ihtiyaçlarınıza özel çözümler geliştirelim. Hemen teklif alın.</p>
+                <a href="#contactForm" class="btn btn-primary btn-cta">TEKLİF ALIN</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHATSAPP BUTONU ===== -->
+    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20hizmetleri%20hakkında%20bilgi%20almak%20istiyorum." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       aria-label="WhatsApp üzerinden iletişime geç">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo" title="Vitavolt Global Anasayfa">
+                        <i class="fas fa-bolt"></i>
+                        <span>VITAVOLT GLOBAL</span>
+                    </a>
+                    <p class="footer-description">Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri ve danışmanlık hizmetleri sunmaktadır.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" title="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h3>İletişim</h3>
-                    <p>📞 +90 545 441 19 77</p>
-                    <p>📧 info@vitavoltglobal.com</p>
-                    <p>📍 İzmir, Türkiye</p>
+                <div class="footer-col">
+                    <h4 class="footer-title">HIZLI LİNKLER</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="services.html">Hizmetler</a></li>
+                        <li><a href="contact.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">HİZMETLERİMİZ</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#ges">GES (Güneş Enerjisi)</a></li>
+                        <li><a href="services.html#epc">Endüstriyel EPC</a></li>
+                        <li><a href="services.html#bess">Batarya Depolama (BESS)</a></li>
+                        <li><a href="services.html#carbon">Karbon Danışmanlığı</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">İLETİŞİM BİLGİLERİ</h4>
+                    <ul class="footer-contact">
+                        <li><a href="tel:+905454411977"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
+                        <li><a href="mailto:info@vitavoltglobal.com"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
+                        <li><span><i class="fas fa-map-marker-alt"></i> İzmir, Türkiye</span></li>
+                    </ul>
+                    <div class="newsletter-signup">
+                        <input type="email" placeholder="E-posta adresiniz" class="newsletter-input" aria-label="E-posta adresi" />
+                        <button class="newsletter-btn" aria-label="Abone ol"><i class="fas fa-arrow-right"></i></button>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom scroll-reveal">
+            <div class="footer-bottom">
                 <p>&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Gizlilik Politikası</a>
+                    <span class="divider">|</span>
+                    <a href="#">Kullanım Şartları</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- ===== STRUCTURED DATA ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "İletişim - Vitavolt Global",
+            "description": "Vitavolt Global ile iletişime geçin. Proje teklifleri, danışmanlık ve enerji mühendisliği çözümleri için bize ulaşın.",
+            "url": "https://vitavoltglobal.com/contact.html",
+            "mainEntity": {
+                "@type": "Organization",
+                "name": "Vitavolt Global",
+                "telephone": "+905454411977",
+                "email": "info@vitavoltglobal.com",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "İzmir",
+                    "addressCountry": "TR"
+                }
+            }
+        }
+    </script>
+
     <script src="js/script.js"></script>
+    <script>
+        // ---- form geri bildirimi ----
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const feedback = document.getElementById('formFeedback');
+            if (form && feedback) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name')?.value.trim();
+                    const email = document.getElementById('email')?.value.trim();
+                    const subject = document.getElementById('subject')?.value.trim();
+                    const message = document.getElementById('message')?.value.trim();
+                    if (!name || !email || !subject || !message) {
+                        feedback.textContent = 'Lütfen tüm alanları doldurun.';
+                        feedback.style.color = '#f87171';
+                        feedback.style.display = 'block';
+                        return;
+                    }
+                    feedback.textContent = '✅ Talebiniz başarıyla gönderildi. En kısa sürede size dönüş yapacağız.';
+                    feedback.style.color = '#22d3ee';
+                    feedback.style.display = 'block';
+                    form.reset();
+                    setTimeout(() => {
+                        feedback.style.display = 'none';
+                    }, 6000);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
