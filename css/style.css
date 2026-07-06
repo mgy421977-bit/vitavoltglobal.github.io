@@ -336,3 +336,19 @@ body {
     .services-grid, .services-grid-full { grid-template-columns: 1fr; }
     .about-grid, .about-grid-full { grid-template-columns: 1fr; }
 }
+
+.btn-outline {
+    display: inline-block;
+    margin-top: 0.8rem;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid #22d3ee;
+    color: #22d3ee;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+.btn-outline:hover {
+    background: #22d3ee;
+    color: #000;
+}
