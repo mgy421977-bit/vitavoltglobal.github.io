@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vitavolt - İletişim</title>
+    <meta name="description" content="Vitavolt ile iletişime geçin, teklif alın veya projeleriniz hakkında bilgi edinin." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">VITAVOLT</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımızda</a></li>
+                <li><a href="services.html">Hizmetler</a></li>
+                <li><a href="contact.html" class="active">İletişim</a></li>
+            </ul>
+            <button id="langToggle" class="lang-btn"><i class="fas fa-globe"></i> <span id="langLabel">TR</span></button>
+            <button id="mobileMenuToggle" class="mobile-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="about.html">Hakkımızda</a>
+            <a href="services.html">Hizmetler</a>
+            <a href="contact.html">İletişim</a>
+            <button id="mobileLangToggle" class="lang-btn"><i class="fas fa-globe"></i> <span id="mobileLangLabel">TR</span></button>
+        </div>
+    </nav>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact-section">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h1 class="page-title">İletişim</h1>
+                <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+                <p><i class="fas fa-phone"></i> +90 212 555 55 55</p>
+                <p><i class="fas fa-envelope"></i> info@vitavolt.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h2 id="contactTitle">Teklif Al</h2>
+                <form id="quoteForm">
+                    <input type="text" id="formName" placeholder="Adınız" required />
+                    <input type="email" id="formEmail" placeholder="E-posta" required />
+                    <textarea id="formMessage" rows="5" placeholder="Mesajınız" required></textarea>
+                    <button type="submit" id="formSubmitBtn" class="btn-primary">Gönder</button>
+                </form>
+                <div id="formFeedback" class="feedback"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p id="footerText">© 2026 Vitavolt. Geleceğe Güç Veren Mühendislik.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
