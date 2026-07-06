@@ -12,13 +12,20 @@ const translations = {
             'Yapay zeka destekli analizler ve modüler sistemlerle anahtar teslim enerji çözümleri tasarlıyor, mühendisliğini yapıyor ve devreye alıyoruz.',
             'Çünkü sadece sistem kurmuyor, ölçülebilir etki yaratan sürdürülebilir bir gelecek mühendisliği yapıyoruz.'
         ],
-        services: ['GES (Güneş Enerjisi)', 'EPC', 'BESS', 'Karbon Çözümleri', 'Danışmanlık'],
+        // ===== GÜNCELLENEN HİZMET METİNLERİ (TR) =====
+        services: [
+            'GES (Güneş Enerjisi)',
+            'EPC (Mühendislik, Tedarik, İnşaat)',
+            'BESS (Batarya Depolama)',
+            'Karbon Çözümleri',
+            'Danışmanlık'
+        ],
         servicesTexts: [
-            'Yüksek verimli fotovoltaik santral tasarımı ve kurulumu.',
-            'Anahtar teslim Mühendislik, Tedarik ve İnşaat yönetimi.',
-            'Şebeke stabilitesi için Batarya Enerji Depolama Sistemleri.',
-            'Karbon ayak izi analizi ve dengeleme stratejileri.',
-            'Teknik danışmanlık ve fizibilite çalışmaları.'
+            'Yüksek verimli fotovoltaik santral tasarımı, kurulumu ve optimizasyonu.',
+            'Anahtar teslim proje yönetimi, uluslararası tedarik ve inşaat yönetimi.',
+            'Batarya enerji depolama, şebeke stabilizasyonu ve hibrit sistem entegrasyonu.',
+            'Karbon ayak izi analizi, azaltma ve dengeleme stratejileri.',
+            'Teknik fizibilite, finansman, mevzuat ve dönüşüm danışmanlığı.'
         ],
         stats: ['Proje', 'Kurulu Güç (MW)', 'Ülke'],
         contactTitle: 'Teklif Al',
@@ -40,13 +47,20 @@ const translations = {
             'We design, engineer, and deploy turnkey energy solutions using AI-driven analytics and modular systems.',
             'Because we don\'t just build systems; we engineer a sustainable future with measurable impact.'
         ],
-        services: ['Solar Power (GES)', 'EPC', 'BESS', 'Carbon Solutions', 'Consultancy'],
+        // ===== GÜNCELLENEN HİZMET METİNLERİ (EN) =====
+        services: [
+            'Solar Power (GES)',
+            'EPC (Engineering, Procurement, Construction)',
+            'BESS (Battery Storage)',
+            'Carbon Solutions',
+            'Consultancy'
+        ],
         servicesTexts: [
-            'High-efficiency photovoltaic plant design and installation.',
-            'Turnkey Engineering, Procurement & Construction management.',
-            'Battery Energy Storage Systems for grid stability.',
-            'Carbon footprint analysis and offset strategies.',
-            'Technical advisory and project feasibility studies.'
+            'High-efficiency photovoltaic plant design, installation, and optimization.',
+            'Turnkey project management, international procurement, and construction management.',
+            'Battery energy storage, grid stabilization, and hybrid system integration.',
+            'Carbon footprint analysis, reduction, and offsetting strategies.',
+            'Technical feasibility, financing, regulation, and transformation consultancy.'
         ],
         stats: ['Projects', 'MW Installed', 'Countries'],
         contactTitle: 'Get a Quote',
