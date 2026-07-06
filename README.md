@@ -1,35 +1,45 @@
-# ⚡ Vitavolt - Engineering Tomorrow's Energy
+# ⚡ Vitavolt Global - Kurumsal Web Sitesi
 
-Vitavolt kurumsal web sitesi için geliştirilmiş modern, hızlı ve tamamen responsive tek sayfa uygulaması (SPA).
+Vitavolt enerji mühendisliği şirketinin kurumsal web sitesi. Tamamen responsive, çok dilli (TR/EN), animasyonlu ve SEO uyumlu.
 
 ## 🚀 Özellikler
 
+- 🌍 Türkçe / İngilizce dil desteği (localStorage ile hatırlanır)
 - 🎬 Açılış animasyonu (V → VI → VITA → VITAVOLT)
-- 🌍 TR/EN dil desteği
 - 💡 Hareketli enerji çizgileri
 - 📊 Sayaçlar (Proje, MW, Ülke)
-- 🗺️ Dünya haritası (react-simple-maps)
-- 📩 Teklif formu
-- 🎨 Framer Motion animasyonları
-- 📱 Responsive (Tailwind CSS)
-- 🔍 SEO altyapısı (Helmet)
-- 🌐 GitHub Pages deploy
+- 🗺️ Dünya haritası
+- 📩 İletişim ve teklif formu
+- 📱 Tam responsive (mobil, tablet, masaüstü)
+- 🔍 SEO (meta etiketler, robots.txt, sitemap.xml)
 
-## 📦 Kullanılan Teknolojiler
+## 📁 Dosya Yapısı
+vitavolt-global-v2.0/
+├── index.html
+├── about.html
+├── services.html
+├── contact.html
+├── css/style.css
+├── js/script.js
+├── assets/ (logo, görseller)
+├── robots.txt
+├── sitemap.xml
+└── README.md
 
-- React 18
-- Vite
-- Tailwind CSS
-- Framer Motion
-- React CountUp
-- React Simple Maps
-- React Helmet Async
-- React Icons
+```
 
-## 🛠️ Kurulum ve Çalıştırma
+## 🛠️ Kullanım
 
-Projeyi lokalinde çalıştırmak için:
+Projeyi doğrudan tarayıcıda açabilirsiniz. Tüm dosyalar statiktir, herhangi bir sunucu gerektirmez.
 
-```bash
-npm install
-npm run dev
+## 🌐 Canlı Yayın
+
+[vitavoltglobal.github.io](https://vitavoltglobal.github.io)
+
+## 📬 İletişim
+
+- Web: [vitavoltglobal.github.io](https://vitavoltglobal.github.io)
+- Email: info@vitavolt.com
+```
+
+---
