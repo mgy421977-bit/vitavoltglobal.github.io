@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "last_update": "2026-07-06",
+
+  "residential": {
+    "solar_panels": [
+      "ACS Enerji"
+    ],
+
+    "hybrid_inverters": [
+      "Lexron",
+      "FoxESS",
+      "Deye",
+      "Ortech"
+    ],
+
+    "cables": [
+      "Hasçelik"
+    ]
+  },
+
+  "commercial": {
+    "solar_panels": [
+      "ACS Enerji"
+    ],
+
+    "string_inverters": [
+      "Huawei",
+      "Solis",
+      "Growatt"
+    ],
+
+    "cables": [
+      "Hasçelik"
+    ]
+  }
+}
