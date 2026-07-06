@@ -29,6 +29,7 @@
 
     <!-- ===== HEADER ===== -->
     <header class="header" role="banner">
+        <!-- Top Bar -->
         <div class="top-bar">
             <div class="container">
                 <div class="top-bar-content">
@@ -59,6 +60,7 @@
             </div>
         </div>
         
+        <!-- Navigation Bar -->
         <nav class="navbar" role="navigation" aria-label="Ana navigasyon">
             <div class="container">
                 <div class="navbar-content">
@@ -66,25 +68,34 @@
                         <span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span>
                     </a>
                     
+                    <!-- Desktop Menu -->
                     <div class="nav-menu" id="navMenu" role="menubar">
                         <a href="index.html" class="nav-link active" role="menuitem" data-i18n="nav-home">ANA SAYFA</a>
                         <a href="about.html" class="nav-link" role="menuitem" data-i18n="nav-about">HAKKIMIZDA</a>
                         <a href="services.html" class="nav-link" role="menuitem" data-i18n="nav-services">HİZMETLERİMİZ</a>
                         <a href="contact.html" class="nav-link" role="menuitem" data-i18n="nav-contact">İLETİŞİM</a>
+                        <!-- Mobil menüde TEKLİF AL butonu -->
+                        <a href="contact.html" class="btn btn-primary btn-cta-mobile" data-i18n="btn-quote">TEKLİF AL</a>
                     </div>
                     
+                    <!-- Desktop CTA Button -->
                     <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
+                    
+                    <!-- Mobile Toggle -->
                     <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="navMenu">
                         <span></span><span></span><span></span>
                     </button>
                 </div>
             </div>
+            <!-- Mobile overlay -->
             <div class="menu-overlay" id="menuOverlay"></div>
         </nav>
     </header>
 
+    <!-- ===== MAIN ===== -->
     <main id="main">
-        <!-- ===== HERO ===== -->
+
+        <!-- ===== HERO SECTION ===== -->
         <section class="hero" id="home" aria-labelledby="hero-title">
             <div class="hero-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.5), rgba(15, 26, 43, 0.7)), url('images/hero.jpg') center/cover; background-attachment: fixed;"></div>
             <div class="hero-glow"></div>
@@ -108,7 +119,7 @@
             </div>
         </section>
 
-        <!-- ===== SERVICES ===== -->
+        <!-- ===== SERVICES SECTION ===== -->
         <section class="section services-section" id="services" aria-labelledby="services-title">
             <div class="container">
                 <div class="section-header text-center">
@@ -117,65 +128,80 @@
                 </div>
                 
                 <div class="services-grid scroll-reveal">
+                    <!-- GES -->
                     <div class="service-card">
                         <div class="service-image-wrapper">
                             <img src="images/solar panels.jpg" alt="Güneş Enerjisi Panelleri" loading="lazy" />
                             <div class="service-overlay"></div>
                         </div>
                         <div class="service-content">
-                            <div class="service-icon"><i class="fas fa-sun" aria-hidden="true"></i></div>
+                            <div class="service-icon">
+                                <i class="fas fa-sun" aria-hidden="true"></i>
+                            </div>
                             <h3 class="service-title">GES (GÜNEŞ ENERJİSİ)</h3>
                             <p class="service-description">Yüksek verimli güneş enerjisi santralları tasarım ve kurulumu. Çatı, arazi ve yüzer sistemler.</p>
                             <a href="services.html#ges" class="btn btn-text" aria-label="GES hizmeti detayları">Detay <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
+                    <!-- EPC -->
                     <div class="service-card">
                         <div class="service-image-wrapper">
                             <img src="images/epc.jpg" alt="Endüstriyel Projeler" loading="lazy" />
                             <div class="service-overlay"></div>
                         </div>
                         <div class="service-content">
-                            <div class="service-icon"><i class="fas fa-hard-hat" aria-hidden="true"></i></div>
+                            <div class="service-icon">
+                                <i class="fas fa-hard-hat" aria-hidden="true"></i>
+                            </div>
                             <h3 class="service-title">ENDÜSTRİYEL EPC</h3>
                             <p class="service-description">Mühendislik, tedarik ve inşaat yönetimi. Proje fizibilitesinden devreye almaya kadar.</p>
                             <a href="services.html#epc" class="btn btn-text" aria-label="EPC hizmeti detayları">Detay <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
+                    <!-- BESS -->
                     <div class="service-card">
                         <div class="service-image-wrapper">
                             <img src="images/bess.PNG" alt="Batarya Depolama Sistemleri" loading="lazy" />
                             <div class="service-overlay"></div>
                         </div>
                         <div class="service-content">
-                            <div class="service-icon"><i class="fas fa-battery-full" aria-hidden="true"></i></div>
-                            <h3 class="service-title">BATARYA DEPOLAMA (BESS)</h3>
+                            <div class="service-icon">
+                                <i class="fas fa-battery-full" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="service-title">BATARYA DEPOLAMA SİSTEMLERİ</h3>
                             <p class="service-description">Şebeke stabilizasyonu ve enerji optimizasyonu. Lityum-iyon batarya sistemleri.</p>
                             <a href="services.html#bess" class="btn btn-text" aria-label="BESS hizmeti detayları">Detay <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
+                    <!-- Carbon -->
                     <div class="service-card">
                         <div class="service-image-wrapper">
                             <img src="images/carbon.jpg" alt="Karbon Çözümleri" loading="lazy" />
                             <div class="service-overlay"></div>
                         </div>
                         <div class="service-content">
-                            <div class="service-icon"><i class="fas fa-leaf" aria-hidden="true"></i></div>
+                            <div class="service-icon">
+                                <i class="fas fa-leaf" aria-hidden="true"></i>
+                            </div>
                             <h3 class="service-title">KARBON DANIŞMANLIĞI</h3>
                             <p class="service-description">Karbon ayak izi analizi ve net-zero stratejileri. Sürdürülebilir dönüşüm danışmanlığı.</p>
                             <a href="services.html#carbon" class="btn btn-text" aria-label="Karbon danışmanlığı detayları">Detay <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
+                    <!-- Consulting -->
                     <div class="service-card">
                         <div class="service-image-wrapper">
                             <img src="images/consulting.jpg" alt="Mühendislik Danışmanlığı" loading="lazy" />
                             <div class="service-overlay"></div>
                         </div>
                         <div class="service-content">
-                            <div class="service-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
+                            <div class="service-icon">
+                                <i class="fas fa-handshake" aria-hidden="true"></i>
+                            </div>
                             <h3 class="service-title">MÜHENDİSLİK DANIŞMANLIĞI</h3>
                             <p class="service-description">Teknik fizibilite ve saha analizi. Teknoloji seçimi ve tedarikçi değerlendirmesi.</p>
                             <a href="services.html#consult" class="btn btn-text" aria-label="Danışmanlık detayları">Detay <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
@@ -185,29 +211,40 @@
             </div>
         </section>
 
-        <!-- ===== STATISTICS ===== -->
+        <!-- ===== STATISTICS SECTION ===== -->
         <section class="section stats-section" aria-labelledby="stats-title">
             <div class="stats-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.85), rgba(15, 26, 43, 0.85)), url('images/hero.jpg') center/cover; background-attachment: fixed;"></div>
             <div class="container stats-container">
                 <h2 id="stats-title" class="sr-only">Başarılarımız</h2>
                 <div class="stats-grid scroll-reveal">
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
+                        <div class="stat-icon">
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>
+                        </div>
                         <div class="stat-number" data-count="150">0</div>
                         <div class="stat-label">TAMAMLANAN PROJE</div>
                     </div>
+                    
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+                        <div class="stat-icon">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                        </div>
                         <div class="stat-number" data-count="320">0</div>
                         <div class="stat-label">MW KURULU GÜÇ</div>
                     </div>
+                    
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+                        <div class="stat-icon">
+                            <i class="fas fa-globe" aria-hidden="true"></i>
+                        </div>
                         <div class="stat-number" data-count="12">0</div>
                         <div class="stat-label">ÜLKEDE FAALİYET</div>
                     </div>
+                    
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                        <div class="stat-icon">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                        </div>
                         <div class="stat-number" data-count="50">0</div>
                         <div class="stat-label">UZMAN KADRO</div>
                     </div>
@@ -215,7 +252,7 @@
             </div>
         </section>
 
-        <!-- ===== CTA ===== -->
+        <!-- ===== CTA SECTION ===== -->
         <section class="section cta-section" aria-labelledby="cta-title">
             <div class="cta-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.8), rgba(15, 26, 43, 0.8)), url('images/cta.jpg') center/cover; background-attachment: fixed;"></div>
             <div class="container cta-container text-center">
