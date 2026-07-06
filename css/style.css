@@ -1,4 +1,3 @@
-/* ===== RESET & BASE ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { 
@@ -10,7 +9,6 @@ body {
 }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* ===== TYPOGRAPHY ===== */
 .section-title, .page-title {
     font-size: 2.5rem;
     font-weight: 700;
@@ -23,7 +21,6 @@ body {
 }
 .page-title { font-size: 3rem; margin-top: 2rem; }
 
-/* ===== NAVBAR ===== */
 .navbar {
     background: rgba(0,0,0,0.85);
     backdrop-filter: blur(10px);
@@ -103,7 +100,6 @@ body {
 }
 .mobile-menu a.active { color: #22d3ee; }
 
-/* ===== BUTTONS ===== */
 .btn-primary {
     display: inline-block;
     padding: 0.8rem 2.5rem;
@@ -118,7 +114,6 @@ body {
     font-size: 1rem;
 }
 .btn-primary:hover { transform: scale(1.05); }
-
 .btn-outline {
     display: inline-block;
     margin-top: 0.8rem;
@@ -135,7 +130,6 @@ body {
     color: #000;
 }
 
-/* ===== HERO ===== */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -185,10 +179,8 @@ body {
     margin: 1rem 0 2rem;
 }
 
-/* ===== SECTION ===== */
 .section { padding: 5rem 0; }
 
-/* ===== ABOUT GRID ===== */
 .about-grid, .about-grid-full {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -215,7 +207,6 @@ body {
     line-height: 1.8;
 }
 
-/* ===== SERVICES GRID ===== */
 .services-grid, .services-grid-full {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -263,7 +254,6 @@ body {
     margin-top: 1rem;
 }
 
-/* ===== STATS ===== */
 .stats-section {
     background: linear-gradient(135deg, rgba(34,211,238,0.1), rgba(168,85,247,0.1));
     border-top: 1px solid rgba(255,255,255,0.05);
@@ -291,7 +281,6 @@ body {
 }
 .map-container img { width: 100%; border-radius: 12px; }
 
-/* ===== CONTACT ===== */
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -346,7 +335,6 @@ body {
     text-align: center;
 }
 
-/* ===== FOOTER ===== */
 .footer {
     padding: 2rem 0;
     border-top: 1px solid rgba(255,255,255,0.05);
@@ -355,7 +343,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .nav-menu { display: none; }
     .mobile-toggle { display: block; }
