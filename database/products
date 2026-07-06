@@ -1,0 +1,13 @@
+{
+  "Huawei": {
+    "type":"String Inverter",
+    "power":[30,50,100,150],
+    "sector":"Commercial"
+  },
+
+  "Lexron": {
+    "type":"Hybrid Inverter",
+    "power":[3,5,6,8,10,12],
+    "sector":"Residential"
+  }
+}
