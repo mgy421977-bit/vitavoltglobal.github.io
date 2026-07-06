@@ -1,233 +1,370 @@
-// ===== DİL ÇEVİRİLERİ =====
-const translations = {
-    tr: {
-        nav: ['Ana Sayfa', 'Hakkımızda', 'Hizmetler', 'İletişim'],
-        heroTitle: 'Geleceğe Güç Veren Mühendislik.',
-        heroSub: 'Enerjiyi mühendislikle yeniden şekillendiriyoruz.',
-        heroBtn: 'Çözümleri Keşfet',
-        about: ['Biz Kimiz?', 'Ne Çözüyoruz?', 'Nasıl Çalışıyoruz?', 'Neden Vitavolt?'],
-        aboutTexts: [
-            'Vitavolt, enerji altyapısını teknoloji ve inovasyonla yeniden şekillendiren yeni nesil bir mühendislik firmasıdır.',
-            'Geleneksel şebekelerdeki verimsizliği, yüksek karbon ayak izini ve akıllı depolama eksikliğini çözüyoruz.',
-            'Yapay zeka destekli analizler ve modüler sistemlerle anahtar teslim enerji çözümleri tasarlıyor, mühendisliğini yapıyor ve devreye alıyoruz.',
-            'Çünkü sadece sistem kurmuyor, ölçülebilir etki yaratan sürdürülebilir bir gelecek mühendisliği yapıyoruz.'
-        ],
-        // ===== GÜNCELLENEN HİZMET METİNLERİ (TR) =====
-        services: [
-            'GES (Güneş Enerjisi)',
-            'EPC (Mühendislik, Tedarik, İnşaat)',
-            'BESS (Batarya Depolama)',
-            'Karbon Çözümleri',
-            'Danışmanlık'
-        ],
-        servicesTexts: [
-            'Yüksek verimli fotovoltaik santral tasarımı, kurulumu ve optimizasyonu.',
-            'Anahtar teslim proje yönetimi, uluslararası tedarik ve inşaat yönetimi.',
-            'Batarya enerji depolama, şebeke stabilizasyonu ve hibrit sistem entegrasyonu.',
-            'Karbon ayak izi analizi, azaltma ve dengeleme stratejileri.',
-            'Teknik fizibilite, finansman, mevzuat ve dönüşüm danışmanlığı.'
-        ],
-        stats: ['Proje', 'Kurulu Güç (MW)', 'Ülke'],
-        contactTitle: 'Teklif Al',
-        contactName: 'Adınız',
-        contactEmail: 'E-posta',
-        contactMsg: 'Mesajınız',
-        contactBtn: 'Gönder',
-        footer: '© 2026 Vitavolt. Geleceğe Güç Veren Mühendislik.'
-    },
-    en: {
-        nav: ['Home', 'About', 'Services', 'Contact'],
-        heroTitle: 'Engineering Tomorrow’s Energy.',
-        heroSub: 'Powering the Future with Engineering.',
-        heroBtn: 'Explore Solutions',
-        about: ['Who We Are', 'What We Solve', 'How We Work', 'Why Vitavolt'],
-        aboutTexts: [
-            'Vitavolt is a next-generation engineering company reshaping energy infrastructure with technology and innovation.',
-            'We solve the inefficiency in traditional grids, high carbon footprints, and lack of smart energy storage.',
-            'We design, engineer, and deploy turnkey energy solutions using AI-driven analytics and modular systems.',
-            'Because we don\'t just build systems; we engineer a sustainable future with measurable impact.'
-        ],
-        // ===== GÜNCELLENEN HİZMET METİNLERİ (EN) =====
-        services: [
-            'Solar Power (GES)',
-            'EPC (Engineering, Procurement, Construction)',
-            'BESS (Battery Storage)',
-            'Carbon Solutions',
-            'Consultancy'
-        ],
-        servicesTexts: [
-            'High-efficiency photovoltaic plant design, installation, and optimization.',
-            'Turnkey project management, international procurement, and construction management.',
-            'Battery energy storage, grid stabilization, and hybrid system integration.',
-            'Carbon footprint analysis, reduction, and offsetting strategies.',
-            'Technical feasibility, financing, regulation, and transformation consultancy.'
-        ],
-        stats: ['Projects', 'MW Installed', 'Countries'],
-        contactTitle: 'Get a Quote',
-        contactName: 'Your Name',
-        contactEmail: 'Email',
-        contactMsg: 'Your Message',
-        contactBtn: 'Send Request',
-        footer: '© 2026 Vitavolt. Engineering Tomorrow’s Energy.'
-    }
-};
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+    background: #0a0a0a; 
+    color: #ffffff; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-// ===== DİL YÖNETİMİ =====
-let currentLang = localStorage.getItem('vitavolt-lang') || 'tr';
+/* ===== TYPOGRAPHY ===== */
+.section-title, .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #22d3ee, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.page-title { font-size: 3rem; margin-top: 2rem; }
 
-function updateLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('vitavolt-lang', lang);
-    const t = translations[lang];
-    if (!t) return;
+/* ===== NAVBAR ===== */
+.navbar {
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #22d3ee, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+}
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+.nav-menu a {
+    color: #ccc;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+.nav-menu a:hover, .nav-menu a.active {
+    color: #22d3ee;
+}
+.lang-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.2); }
+.mobile-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background: rgba(0,0,0,0.95);
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+}
+.mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mobile-menu a.active { color: #22d3ee; }
 
-    // Nav (hem desktop hem mobile)
-    const navLinks = document.querySelectorAll('.nav-menu a, .mobile-menu a');
-    navLinks.forEach((el, i) => {
-        if (i < 4) el.textContent = t.nav[i];
-    });
+/* ===== BUTTONS ===== */
+.btn-primary {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    background: linear-gradient(135deg, #22d3ee, #a855f7);
+    color: #000;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.btn-primary:hover { transform: scale(1.05); }
 
-    // Hero (sadece index.html'de var)
-    const heroSlogan = document.getElementById('heroSlogan');
-    const heroSub = document.getElementById('heroSub');
-    const heroBtn = document.getElementById('heroBtn');
-    if (heroSlogan) heroSlogan.textContent = t.heroTitle;
-    if (heroSub) heroSub.textContent = t.heroSub;
-    if (heroBtn) heroBtn.textContent = t.heroBtn;
-
-    // About (index özet ve about.html)
-    const aboutTitles = document.querySelectorAll('.about-card h3, .about-card-large h2');
-    const aboutDescs = document.querySelectorAll('.about-card p, .about-card-large p');
-    aboutTitles.forEach((el, i) => {
-        if (i < 4) el.textContent = t.about[i];
-    });
-    aboutDescs.forEach((el, i) => {
-        if (i < 4) el.textContent = t.aboutTexts[i];
-    });
-
-    // Services (index özet ve services.html)
-    const serviceTitles = document.querySelectorAll('.service-card h3, .service-card-large h3');
-    const serviceDescs = document.querySelectorAll('.service-card p, .service-card-large p');
-    serviceTitles.forEach((el, i) => {
-        if (i < 5) el.textContent = t.services[i];
-    });
-    serviceDescs.forEach((el, i) => {
-        if (i < 5) el.textContent = t.servicesTexts[i];
-    });
-
-    // Stats
-    const statLabels = document.querySelectorAll('.stats-grid p');
-    statLabels.forEach((el, i) => {
-        if (i < 3) el.textContent = t.stats[i];
-    });
-
-    // Contact
-    const contactTitle = document.getElementById('contactTitle');
-    const formName = document.getElementById('formName');
-    const formEmail = document.getElementById('formEmail');
-    const formMsg = document.getElementById('formMessage');
-    const formBtn = document.getElementById('formSubmitBtn');
-    if (contactTitle) contactTitle.textContent = t.contactTitle;
-    if (formName) formName.placeholder = t.contactName;
-    if (formEmail) formEmail.placeholder = t.contactEmail;
-    if (formMsg) formMsg.placeholder = t.contactMsg;
-    if (formBtn) formBtn.textContent = t.contactBtn;
-
-    // Footer
-    const footer = document.getElementById('footerText');
-    if (footer) footer.textContent = t.footer;
-
-    // Dil butonları
-    const langLabels = document.querySelectorAll('#langLabel, #mobileLangLabel');
-    langLabels.forEach(el => el.textContent = lang.toUpperCase());
-
-    document.documentElement.lang = lang;
+.btn-outline {
+    display: inline-block;
+    margin-top: 0.8rem;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid #22d3ee;
+    color: #22d3ee;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+.btn-outline:hover {
+    background: #22d3ee;
+    color: #000;
 }
 
-function toggleLang() {
-    const newLang = currentLang === 'tr' ? 'en' : 'tr';
-    updateLanguage(newLang);
+/* ===== HERO ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding-top: 80px;
+    overflow: hidden;
+}
+.energy-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.2;
+}
+.energy-line {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #22d3ee, #a855f7, transparent);
+    background-size: 200% 100%;
+    animation: flow 3s linear infinite;
+    margin: 8% 0;
+}
+@keyframes flow {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-title {
+    font-size: 5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #22d3ee, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+.hero-slogan {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #e0e0e0;
+}
+.hero-sub {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin: 1rem 0 2rem;
 }
 
-// ===== SAYFA ÖZEL İŞLEMLER =====
-document.addEventListener('DOMContentLoaded', function() {
-    // Dil butonları
-    const langToggle = document.getElementById('langToggle');
-    const mobileLangToggle = document.getElementById('mobileLangToggle');
-    if (langToggle) langToggle.addEventListener('click', toggleLang);
-    if (mobileLangToggle) mobileLangToggle.addEventListener('click', toggleLang);
+/* ===== SECTION ===== */
+.section { padding: 5rem 0; }
 
-    // Mobil menü
-    const mobileToggle = document.getElementById('mobileMenuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileToggle && mobileMenu) {
-        mobileToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('show');
-        });
-        // Menü linklerine tıklanınca kapat
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.remove('show'));
-        });
-    }
+/* ===== ABOUT GRID ===== */
+.about-grid, .about-grid-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.about-card, .about-card-large {
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+.about-card:hover, .about-card-large:hover {
+    border-color: #22d3ee;
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(34,211,238,0.1);
+}
+.about-card h3, .about-card-large h2 {
+    color: #22d3ee;
+    margin-bottom: 1rem;
+}
+.about-card p, .about-card-large p {
+    color: #ccc;
+    line-height: 1.8;
+}
 
-    // Açılış animasyonu (sadece index.html)
-    const titleEl = document.getElementById('animatedTitle');
-    if (titleEl) {
-        const steps = ['V', 'VI', 'VITA', 'VITAVOLT'];
-        let step = 0;
-        const interval = setInterval(() => {
-            step++;
-            if (step >= steps.length) { clearInterval(interval); return; }
-            titleEl.textContent = steps[step];
-        }, 800);
-    }
+/* ===== SERVICES GRID ===== */
+.services-grid, .services-grid-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+.service-card, .service-card-large {
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    transition: 0.3s;
+}
+.service-card:hover, .service-card-large:hover {
+    border-color: #22d3ee;
+    transform: translateY(-5px);
+}
+.service-card i, .service-card-large i {
+    font-size: 3rem;
+    color: #22d3ee;
+    margin-bottom: 1rem;
+}
+.service-card h3, .service-card-large h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+.service-card p, .service-card-large p {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+.service-card-large ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    color: #ccc;
+}
+.service-card-large ul li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.service-card-large .highlight {
+    color: #22d3ee;
+    font-weight: 600;
+    margin-top: 1rem;
+}
 
-    // Sayaç animasyonu (sadece index.html)
-    const counters = document.querySelectorAll('.counter');
-    let counted = false;
-    function startCounters() {
-        if (counted) return;
-        const section = document.querySelector('.stats-section');
-        if (!section) return;
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-            counted = true;
-            counters.forEach(counter => {
-                const target = parseInt(counter.innerText) || 0;
-                let current = 0;
-                const step = Math.ceil(target / 50);
-                const interval = setInterval(() => {
-                    current += step;
-                    if (current >= target) { current = target; clearInterval(interval); }
-                    counter.innerText = current;
-                }, 30);
-            });
-        }
-    }
-    window.addEventListener('scroll', startCounters);
-    // Sayfa yüklenince kontrol et
-    setTimeout(startCounters, 500);
+/* ===== STATS ===== */
+.stats-section {
+    background: linear-gradient(135deg, rgba(34,211,238,0.1), rgba(168,85,247,0.1));
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+.stats-grid .counter {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #22d3ee;
+    display: block;
+}
+.stats-grid p { color: #aaa; font-size: 1.1rem; }
+.map-container {
+    margin-top: 3rem;
+    opacity: 0.7;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.map-container img { width: 100%; border-radius: 12px; }
 
-    // Form
-    const form = document.getElementById('quoteForm');
-    const feedback = document.getElementById('formFeedback');
-    if (form && feedback) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('formName')?.value.trim();
-            const email = document.getElementById('formEmail')?.value.trim();
-            const msg = document.getElementById('formMessage')?.value.trim();
-            if (!name || !email || !msg) {
-                feedback.textContent = currentLang === 'tr' ? 'Lütfen tüm alanları doldurun.' : 'Please fill in all fields.';
-                feedback.style.color = '#f87171';
-                return;
-            }
-            feedback.textContent = currentLang === 'tr' ? '✅ Talebiniz alındı! En kısa sürede dönüş yapacağız.' : '✅ Your request has been received! We will get back to you shortly.';
-            feedback.style.color = '#22d3ee';
-            form.reset();
-        });
-    }
+/* ===== CONTACT ===== */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+.contact-info p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+.contact-info i {
+    color: #22d3ee;
+    width: 2rem;
+}
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.social-links a {
+    color: #fff;
+    font-size: 2rem;
+    transition: 0.3s;
+}
+.social-links a:hover { color: #22d3ee; }
+.contact-form {
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.2rem;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #22d3ee;
+}
+.contact-form textarea { resize: vertical; }
+.feedback {
+    margin-top: 1rem;
+    color: #22d3ee;
+    font-weight: 500;
+    text-align: center;
+}
 
-    // Başlangıç dilini uygula
-    updateLanguage(currentLang);
-});
+/* ===== FOOTER ===== */
+.footer {
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .nav-menu { display: none; }
+    .mobile-toggle { display: block; }
+    .mobile-menu.show { display: flex; }
+    .hero-title { font-size: 3rem; }
+    .hero-slogan { font-size: 1.8rem; }
+    .section-title, .page-title { font-size: 2rem; }
+    .contact-wrapper { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .services-grid, .services-grid-full { grid-template-columns: 1fr; }
+    .about-grid, .about-grid-full { grid-template-columns: 1fr; }
+}
