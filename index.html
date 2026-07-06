@@ -6,19 +6,18 @@
     <title>Vitavolt - Engineering Tomorrow's Energy</title>
     <meta name="description" content="Vitavolt provides next-gen energy engineering solutions: Solar, EPC, BESS, Carbon & Consultancy." />
     
-    <!-- Tailwind CSS CDN (hızlı responsive) -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <style>
-        /* Özel stiller */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
 
-        /* Enerji çizgisi animasyonu */
+        /* Enerji çizgisi */
         .energy-line {
             height: 2px;
             background: linear-gradient(90deg, transparent, #00f0ff, #7b2ffc, transparent);
@@ -41,10 +40,7 @@
         }
 
         /* Sayaçlar */
-        .counter {
-            font-size: 3rem;
-            font-weight: 700;
-        }
+        .counter { font-size: 3rem; font-weight: 700; }
 
         /* Kart hover */
         .card-hover {
@@ -66,9 +62,7 @@
             color: #fff;
             transition: 0.3s;
         }
-        .lang-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
+        .lang-btn:hover { background: rgba(255,255,255,0.2); }
 
         /* Navbar */
         .navbar {
@@ -88,9 +82,7 @@
             outline: none;
             transition: 0.3s;
         }
-        .form-input:focus {
-            border-color: #22d3ee;
-        }
+        .form-input:focus { border-color: #22d3ee; }
 
         /* Mobil menü */
         .mobile-menu { display: none; }
@@ -136,9 +128,8 @@
         </button>
     </div>
 
-    <!-- ======== HERO (Açılış) ======== -->
+    <!-- ======== HERO ======== -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-20">
-        <!-- Enerji çizgileri -->
         <div class="absolute inset-0 z-0 opacity-20">
             <div class="energy-line absolute w-full" style="top:10%; left:0; transform:rotate(2deg);"></div>
             <div class="energy-line absolute w-full" style="top:25%; left:0; transform:rotate(-2deg);"></div>
@@ -149,41 +140,28 @@
         </div>
 
         <div class="relative z-10 text-center max-w-5xl mx-auto">
-            <!-- Animasyonlu başlık -->
-            <div id="animatedTitle" class="hero-text text-6xl md:text-8xl font-black mb-4">
-                VITAVOLT
-            </div>
-            <p id="heroSlogan" class="text-2xl md:text-4xl font-light mt-4 text-gray-200">
-                Geleceğe Güç Veren Mühendislik.
-            </p>
-            <p id="heroSub" class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">
-                Enerjiyi mühendislikle yeniden şekillendiriyoruz.
-            </p>
-            <a href="#services" class="inline-block mt-8 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-black font-bold text-lg hover:scale-105 transition">
-                Çözümleri Keşfet
-            </a>
+            <div id="animatedTitle" class="hero-text text-6xl md:text-8xl font-black mb-4">VITAVOLT</div>
+            <p id="heroSlogan" class="text-2xl md:text-4xl font-light mt-4 text-gray-200">Geleceğe Güç Veren Mühendislik.</p>
+            <p id="heroSub" class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Enerjiyi mühendislikle yeniden şekillendiriyoruz.</p>
+            <a href="#services" id="heroBtn" class="inline-block mt-8 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-black font-bold text-lg hover:scale-105 transition">Çözümleri Keşfet</a>
         </div>
     </section>
 
-    <!-- ======== ABOUT (Biz Kimiz, Ne Çözüyoruz, Nasıl Çalışıyoruz, Neden Vitavolt) ======== -->
+    <!-- ======== ABOUT ======== -->
     <section id="about" class="py-24 px-6 bg-gradient-to-b from-black to-gray-900">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-            <!-- Kart 1 -->
             <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/10 card-hover">
                 <h3 class="text-2xl font-bold text-cyan-300 mb-3">Biz Kimiz?</h3>
                 <p class="text-gray-300 leading-relaxed">Vitavolt, enerji altyapısını teknoloji ve inovasyonla yeniden şekillendiren yeni nesil bir mühendislik firmasıdır.</p>
             </div>
-            <!-- Kart 2 -->
             <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/10 card-hover">
                 <h3 class="text-2xl font-bold text-cyan-300 mb-3">Ne Çözüyoruz?</h3>
                 <p class="text-gray-300 leading-relaxed">Geleneksel şebekelerdeki verimsizliği, yüksek karbon ayak izini ve akıllı depolama eksikliğini çözüyoruz.</p>
             </div>
-            <!-- Kart 3 -->
             <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/10 card-hover">
                 <h3 class="text-2xl font-bold text-cyan-300 mb-3">Nasıl Çalışıyoruz?</h3>
                 <p class="text-gray-300 leading-relaxed">Yapay zeka destekli analizler ve modüler sistemlerle anahtar teslim enerji çözümleri tasarlıyor, mühendisliğini yapıyor ve devreye alıyoruz.</p>
             </div>
-            <!-- Kart 4 -->
             <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/10 card-hover">
                 <h3 class="text-2xl font-bold text-cyan-300 mb-3">Neden Vitavolt?</h3>
                 <p class="text-gray-300 leading-relaxed">Çünkü sadece sistem kurmuyor, ölçülebilir etki yaratan sürdürülebilir bir gelecek mühendisliği yapıyoruz.</p>
@@ -193,91 +171,68 @@
 
     <!-- ======== SERVICES ======== -->
     <section id="services" class="py-24 px-6 bg-black">
-        <h2 class="text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Hizmetlerimiz</h2>
+        <h2 id="servicesTitle" class="text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Hizmetlerimiz</h2>
         <div class="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- GES -->
             <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center">
                 <i class="fas fa-solar-panel text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="text-2xl font-bold">GES (Güneş Enerjisi)</h3>
-                <p class="text-gray-400 mt-2">Yüksek verimli fotovoltaik santral tasarımı ve kurulumu.</p>
+                <h3 class="service-title text-2xl font-bold">GES (Güneş Enerjisi)</h3>
+                <p class="service-desc text-gray-400 mt-2">Yüksek verimli fotovoltaik santral tasarımı ve kurulumu.</p>
             </div>
-            <!-- EPC -->
             <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center">
                 <i class="fas fa-hard-hat text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="text-2xl font-bold">EPC</h3>
-                <p class="text-gray-400 mt-2">Anahtar teslim Mühendislik, Tedarik ve İnşaat yönetimi.</p>
+                <h3 class="service-title text-2xl font-bold">EPC</h3>
+                <p class="service-desc text-gray-400 mt-2">Anahtar teslim Mühendislik, Tedarik ve İnşaat yönetimi.</p>
             </div>
-            <!-- BESS -->
             <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center">
                 <i class="fas fa-battery-full text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="text-2xl font-bold">BESS</h3>
-                <p class="text-gray-400 mt-2">Şebeke stabilitesi için Batarya Enerji Depolama Sistemleri.</p>
+                <h3 class="service-title text-2xl font-bold">BESS</h3>
+                <p class="service-desc text-gray-400 mt-2">Şebeke stabilitesi için Batarya Enerji Depolama Sistemleri.</p>
             </div>
-            <!-- Karbon -->
             <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center">
                 <i class="fas fa-leaf text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="text-2xl font-bold">Karbon Çözümleri</h3>
-                <p class="text-gray-400 mt-2">Karbon ayak izi analizi ve dengeleme stratejileri.</p>
+                <h3 class="service-title text-2xl font-bold">Karbon Çözümleri</h3>
+                <p class="service-desc text-gray-400 mt-2">Karbon ayak izi analizi ve dengeleme stratejileri.</p>
             </div>
-            <!-- Danışmanlık -->
             <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center sm:col-span-2 lg:col-span-1">
                 <i class="fas fa-handshake text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="text-2xl font-bold">Danışmanlık</h3>
-                <p class="text-gray-400 mt-2">Teknik danışmanlık ve fizibilite çalışmaları.</p>
+                <h3 class="service-title text-2xl font-bold">Danışmanlık</h3>
+                <p class="service-desc text-gray-400 mt-2">Teknik danışmanlık ve fizibilite çalışmaları.</p>
             </div>
         </div>
     </section>
 
-    <!-- ======== STATS + DÜNYA HARİTASI ======== -->
-    <section class="py-16 px-6 bg-gradient-to-r from-cyan-950/30 to-purple-950/30 border-y border-white/10">
+    <!-- ======== STATS ======== -->
+    <section id="statsSection" class="py-16 px-6 bg-gradient-to-r from-cyan-950/30 to-purple-950/30 border-y border-white/10">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-                <h3 class="counter text-5xl font-bold text-cyan-300"><span id="projectCount">150</span>+</h3>
-                <p>Proje</p>
-            </div>
-            <div>
-                <h3 class="counter text-5xl font-bold text-purple-300"><span id="capacityCount">320</span>+</h3>
-                <p>Kurulu Güç (MW)</p>
-            </div>
-            <div>
-                <h3 class="counter text-5xl font-bold text-pink-300"><span id="countryCount">12</span></h3>
-                <p>Ülke</p>
-            </div>
+            <div><h3 class="counter text-5xl font-bold text-cyan-300"><span id="projectCount">150</span>+</h3><p class="stat-label">Proje</p></div>
+            <div><h3 class="counter text-5xl font-bold text-purple-300"><span id="capacityCount">320</span>+</h3><p class="stat-label">Kurulu Güç (MW)</p></div>
+            <div><h3 class="counter text-5xl font-bold text-pink-300"><span id="countryCount">12</span></h3><p class="stat-label">Ülke</p></div>
         </div>
-
-        <!-- Dünya Haritası (Basit bir SVG görseli) -->
         <div class="max-w-4xl mx-auto mt-12 opacity-80">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/World_map_blank_without_borders.svg/1280px-World_map_blank_without_borders.svg.png" 
-                 alt="Dünya Haritası" 
-                 class="w-full rounded-lg" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/World_map_blank_without_borders.svg/1280px-World_map_blank_without_borders.svg.png" alt="Dünya Haritası" class="w-full rounded-lg" />
         </div>
     </section>
 
-    <!-- ======== CONTACT (Teklif Formu) ======== -->
+    <!-- ======== CONTACT ======== -->
     <section id="contact" class="py-24 px-6 bg-black">
         <div class="max-w-2xl mx-auto bg-white/5 p-10 rounded-3xl border border-white/10">
-            <h2 class="text-4xl font-bold mb-8 text-center">Teklif Al</h2>
+            <h2 id="contactTitle" class="text-4xl font-bold mb-8 text-center">Teklif Al</h2>
             <form id="quoteForm" class="space-y-5">
                 <input type="text" id="formName" placeholder="Adınız" class="form-input" required />
                 <input type="email" id="formEmail" placeholder="E-posta" class="form-input" required />
                 <textarea id="formMessage" rows="4" placeholder="Mesajınız" class="form-input" required></textarea>
-                <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-black font-bold text-lg hover:scale-[1.02] transition">
-                    Gönder
-                </button>
+                <button id="formSubmitBtn" type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-black font-bold text-lg hover:scale-[1.02] transition">Gönder</button>
             </form>
             <div id="formFeedback" class="text-center text-cyan-400 mt-4 hidden"></div>
         </div>
     </section>
 
     <!-- ======== FOOTER ======== -->
-    <footer class="text-center py-8 text-gray-500 border-t border-white/5 text-sm">
-        © 2026 Vitavolt. Geleceğe Güç Veren Mühendislik.
-    </footer>
+    <footer id="footerText" class="text-center py-8 text-gray-500 border-t border-white/5 text-sm">© 2026 Vitavolt. Geleceğe Güç Veren Mühendislik.</footer>
 
     <!-- ======== JAVASCRIPT ======== -->
     <script>
-        // ---- DİL DEĞİŞTİRME (TR/EN) ----
-        let currentLang = 'tr';
+        // ---- ÇEVİRİLER ----
         const translations = {
             tr: {
                 nav: ['Ana Sayfa', 'Hakkımızda', 'Hizmetler', 'İletişim'],
@@ -339,52 +294,62 @@
             }
         };
 
+        let currentLang = 'tr';
+
+        // ---- DİL GÜNCELLEME FONKSİYONU (DÜZELTİLDİ) ----
         function updateLanguage(lang) {
             const t = translations[lang];
-            // Nav
-            const navLinks = document.querySelectorAll('.desktop-menu a, .mobile-menu a');
-            navLinks.forEach((el, i) => {
-                if (i < 4) el.textContent = t.nav[i];
-            });
-            // Hero
+            if (!t) return;
+
+            // 1. Nav (Masaüstü ve Mobil AYRI AYRI)
+            const desktopLinks = document.querySelectorAll('.desktop-menu a');
+            const mobileLinks = document.querySelectorAll('#mobileMenu a');
+            desktopLinks.forEach((el, i) => { if (i < 4) el.textContent = t.nav[i]; });
+            mobileLinks.forEach((el, i) => { if (i < 4) el.textContent = t.nav[i]; });
+
+            // 2. Hero
             document.getElementById('heroSlogan').textContent = t.heroTitle;
             document.getElementById('heroSub').textContent = t.heroSub;
-            document.querySelector('#home .inline-block').textContent = t.heroBtn;
-            // About
-            const aboutCards = document.querySelectorAll('#about .bg-white\\/5 h3');
-            const aboutTexts = document.querySelectorAll('#about .bg-white\\/5 p');
-            aboutCards.forEach((h3, i) => h3.textContent = t.about[i]);
-            aboutTexts.forEach((p, i) => p.textContent = t.aboutTexts[i]);
-            // Services
-            document.querySelector('#services h2').textContent = t.servicesTitle;
-            const serviceTitles = document.querySelectorAll('#services .bg-white\\/5 h3');
-            const serviceDescs = document.querySelectorAll('#services .bg-white\\/5 p');
-            serviceTitles.forEach((h3, i) => h3.textContent = t.services[i]);
-            serviceDescs.forEach((p, i) => p.textContent = t.servicesTexts[i]);
-            // Stats
-            const statLabels = document.querySelectorAll('.grid.md\\:grid-cols-3 p');
-            statLabels.forEach((p, i) => p.textContent = t.stats[i]);
-            // Contact
-            document.querySelector('#contact h2').textContent = t.contactTitle;
+            document.getElementById('heroBtn').textContent = t.heroBtn;
+
+            // 3. About
+            const aboutTitles = document.querySelectorAll('#about .bg-white\\/5 h3');
+            const aboutDescs = document.querySelectorAll('#about .bg-white\\/5 p');
+            aboutTitles.forEach((el, i) => { if (i < 4) el.textContent = t.about[i]; });
+            aboutDescs.forEach((el, i) => { if (i < 4) el.textContent = t.aboutTexts[i]; });
+
+            // 4. Services
+            document.getElementById('servicesTitle').textContent = t.servicesTitle;
+            const serviceTitles = document.querySelectorAll('.service-title');
+            const serviceDescs = document.querySelectorAll('.service-desc');
+            serviceTitles.forEach((el, i) => { if (i < 5) el.textContent = t.services[i]; });
+            serviceDescs.forEach((el, i) => { if (i < 5) el.textContent = t.servicesTexts[i]; });
+
+            // 5. Stats
+            const statLabels = document.querySelectorAll('.stat-label');
+            statLabels.forEach((el, i) => { if (i < 3) el.textContent = t.stats[i]; });
+
+            // 6. Contact
+            document.getElementById('contactTitle').textContent = t.contactTitle;
             document.getElementById('formName').placeholder = t.contactName;
             document.getElementById('formEmail').placeholder = t.contactEmail;
             document.getElementById('formMessage').placeholder = t.contactMsg;
-            document.querySelector('#contact button').textContent = t.contactBtn;
-            // Footer
-            document.querySelector('footer').textContent = t.footer;
-            // Dil butonu etiketi
+            document.getElementById('formSubmitBtn').textContent = t.contactBtn;
+
+            // 7. Footer
+            document.getElementById('footerText').textContent = t.footer;
+
+            // 8. Dil butonları
             document.getElementById('langLabel').textContent = lang.toUpperCase();
             document.getElementById('mobileLangLabel').textContent = lang.toUpperCase();
-            // HTML lang
             document.documentElement.lang = lang;
         }
 
-        // Dil toggle
+        // ---- DİL DEĞİŞTİRME TOGGLE ----
         function toggleLang() {
             currentLang = currentLang === 'tr' ? 'en' : 'tr';
             updateLanguage(currentLang);
         }
-
         document.getElementById('langToggle').addEventListener('click', toggleLang);
         document.getElementById('mobileLangToggle').addEventListener('click', toggleLang);
 
@@ -393,12 +358,11 @@
         document.getElementById('mobileMenuToggle').addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        // Menüdeki linklere tıklayınca kapat
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
-        // ---- SAYAÇ ANİMASYONU (scroll ile) ----
+        // ---- SAYAÇ ANİMASYONU ----
         function animateCounter(id, target) {
             let current = 0;
             const step = Math.ceil(target / 50);
@@ -410,10 +374,10 @@
             }, 30);
         }
 
-        // Scroll ile sayaçları tetikle (bir kere çalışsın)
         let statsAnimated = false;
         window.addEventListener('scroll', () => {
-            const statsSection = document.querySelector('.bg-gradient-to-r.from-cyan-950\\/30');
+            const statsSection = document.getElementById('statsSection');
+            if (!statsSection) return;
             const rect = statsSection.getBoundingClientRect();
             if (rect.top < window.innerHeight && !statsAnimated) {
                 statsAnimated = true;
@@ -433,23 +397,24 @@
             titleEl.textContent = steps[stepIndex];
         }, 800);
 
-        // ---- FORM GÖNDERME ----
+        // ---- FORM ----
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('formName').value.trim();
             const email = document.getElementById('formEmail').value.trim();
             const msg = document.getElementById('formMessage').value.trim();
+            const feedback = document.getElementById('formFeedback');
             if (!name || !email || !msg) {
-                document.getElementById('formFeedback').textContent = 'Lütfen tüm alanları doldurun.';
-                document.getElementById('formFeedback').classList.remove('hidden');
+                feedback.textContent = currentLang === 'tr' ? 'Lütfen tüm alanları doldurun.' : 'Please fill in all fields.';
+                feedback.classList.remove('hidden');
                 return;
             }
-            document.getElementById('formFeedback').textContent = '✅ Talebiniz alındı! En kısa sürede dönüş yapacağız.';
-            document.getElementById('formFeedback').classList.remove('hidden');
+            feedback.textContent = currentLang === 'tr' ? '✅ Talebiniz alındı! En kısa sürede dönüş yapacağız.' : '✅ Your request has been received! We will get back to you shortly.';
+            feedback.classList.remove('hidden');
             this.reset();
         });
 
-        // ---- SAYFA YÜKLENİNCE DİL TR OLSUN ----
+        // ---- SAYFA YÜKLENİNCE TÜRKÇE BAŞLAT ----
         updateLanguage('tr');
     </script>
 
