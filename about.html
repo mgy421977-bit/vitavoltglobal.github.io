@@ -3,63 +3,205 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vitavolt - Hakkımızda</title>
-    <meta name="description" content="Vitavolt hakkında: Vizyonumuz, misyonumuz ve enerji mühendisliğindeki yaklaşımımız." />
+    <meta name="description" content="Vitavolt Global hakkında: Vizyonumuz, misyonumuz, kuruluş hikayesi ve değerlerimiz." />
+    <meta name="keywords" content="Vitavolt, Hakkında, Enerji, Mühendislik, Vizyonumuz" />
+    <link rel="canonical" href="https://vitavoltglobal.com/about.html" />
+    <title>Vitavolt Global - Hakkımızda | Vizyonumuz & Misyonumuz</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ===== NAVBAR (Aynı) ===== -->
-    <nav class="navbar">
-        <div class="container nav-container">
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-content container">
             <a href="index.html" class="logo">VITAVOLT</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="about.html" class="active">Hakkımızda</a></li>
-                <li><a href="services.html">Hizmetler</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-            </ul>
-            <button id="langToggle" class="lang-btn"><i class="fas fa-globe"></i> <span id="langLabel">TR</span></button>
-            <button id="mobileMenuToggle" class="mobile-toggle"><i class="fas fa-bars"></i></button>
+            
+            <nav class="nav">
+                <a href="index.html" class="nav-link" data-i18n="nav-home">Anasayfa</a>
+                <a href="about.html" class="nav-link active" data-i18n="nav-about">Hakkımızda</a>
+                <a href="services.html" class="nav-link" data-i18n="nav-services">Hizmetler</a>
+                <a href="contact.html" class="nav-link" data-i18n="nav-contact">İletişim</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <button class="lang-switch" aria-label="Dil Değiştir">TR</button>
+                <button class="menu-toggle" aria-label="Menüyü Aç">☰</button>
+            </div>
         </div>
-        <div id="mobileMenu" class="mobile-menu">
-            <a href="index.html">Ana Sayfa</a>
-            <a href="about.html">Hakkımızda</a>
-            <a href="services.html">Hizmetler</a>
-            <a href="contact.html">İletişim</a>
-            <button id="mobileLangToggle" class="lang-btn"><i class="fas fa-globe"></i> <span id="mobileLangLabel">TR</span></button>
-        </div>
-    </nav>
+    </header>
 
-    <!-- ===== ABOUT FULL ===== -->
-    <section class="section about-full">
+    <!-- ===== PAGE HERO ===== -->
+    <section class="hero" style="min-height: 50vh;">
+        <div class="hero-content">
+            <h1>Hakkımızda</h1>
+            <p class="hero-subtitle">Vizyonumuz, Misyonumuz & Değerlerimiz</p>
+        </div>
+    </section>
+
+    <!-- ===== COMPANY STORY ===== -->
+    <section class="section scroll-reveal">
         <div class="container">
-            <h1 class="page-title">Hakkımızda</h1>
-            <div class="about-grid-full">
-                <div class="about-card-large">
-                    <h2>Biz Kimiz?</h2>
-                    <p>Vitavolt, enerji altyapısını teknoloji ve inovasyonla yeniden şekillendiren yeni nesil bir mühendislik firmasıdır. 2020 yılında kurulan şirketimiz, sürdürülebilir enerji çözümleriyle sektöre yön vermektedir.</p>
+            <h2 class="section-title">Biz Kimiz?</h2>
+            <div class="grid grid-2">
+                <div>
+                    <p style="font-size: var(--font-size-lg); line-height: 1.8; margin-bottom: var(--spacing-lg);">
+                        Vitavolt Global, enerji altyapısını teknoloji ve inovasyonla yeniden şekillendiren yeni nesil bir mühendislik firmasıdır. 2020 yılında kurulan şirketimiz, sürdürülebilir enerji çözümleri ve endüstriyel danışmanlıkta bir numara olmayı hedeflemektedir.
+                    </p>
+                    <p style="margin-bottom: var(--spacing-lg);">
+                        15+ ülkede 500+ proje tamamladığımız; güneş enerjisi, batarya depolama, EPC yönetimi ve karbon çözümleri alanlarında lider konum sahibiyiz. Müşterilerimizin enerji gereksinimlerini karşılarken aynı zamanda dünya enerji sistemini temiz ve verimli hale getirmek için çalışıyoruz.
+                    </p>
                 </div>
-                <div class="about-card-large">
-                    <h2>Ne Çözüyoruz?</h2>
-                    <p>Geleneksel şebekelerdeki verimsizliği, yüksek karbon ayak izini ve akıllı depolama eksikliğini çözüyoruz. Yenilenebilir enerji kaynaklarını en verimli şekilde kullanarak karbon nötr bir gelecek hedefliyoruz.</p>
+                <div>
+                    <img src="https://via.placeholder.com/400x300?text=Vitavolt+Team" alt="Vitavolt Takımı" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
                 </div>
-                <div class="about-card-large">
-                    <h2>Nasıl Çalışıyoruz?</h2>
-                    <p>Yapay zeka destekli analizler ve modüler sistemlerle anahtar teslim enerji çözümleri tasarlıyor, mühendisliğini yapıyor ve devreye alıyoruz. Projelerimizi uluslararası standartlarda yürütüyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MISSION & VISION ===== -->
+    <section class="section scroll-reveal" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3 style="color: var(--accent-green); margin-bottom: var(--spacing-lg);">🎯 Misyonumuz</h3>
+                    <p style="font-size: var(--font-size-lg);">Yenilenebilir enerji teknolojileri, inovatif mühendislik ve dijital çözümler aracılığıyla dünya enerji sistemini temiz, verimli ve erişilebilir hale getirmek.</p>
                 </div>
-                <div class="about-card-large">
-                    <h2>Neden Vitavolt?</h2>
-                    <p>Çünkü sadece sistem kurmuyor, ölçülebilir etki yaratan sürdürülebilir bir gelecek mühendisliği yapıyoruz. Müşterilerimize uzun vadeli değer ve rekabet avantajı sağlıyoruz.</p>
+                <div class="card">
+                    <h3 style="color: var(--accent-green); margin-bottom: var(--spacing-lg);">🌍 Vizyonumuz</h3>
+                    <p style="font-size: var(--font-size-lg);">Karbon tarafsızlığa ulaşan ve tamamen yenilenebilir enerji kaynakları tarafından güçlendirilen bir dünya inşa etmek. Her işletmenin ve topluluk için bu dönüşümü erişilebilir kılmak.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CORE VALUES ===== -->
+    <section class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Temel Değerlerimiz</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon">🌱</div>
+                    <h3 class="card-title">Sürdürülebilirlik</h3>
+                    <p class="card-text">Çevre ve gelecek nesiller için sorumluluk bilinciyle hareket ediyoruz. Her projenin uzun vadeli etkisini göz önünde bulunduruyoruz.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💡</div>
+                    <h3 class="card-title">İnovasyon</h3>
+                    <p class="card-text">En son teknolojiler ve yaratıcı çözümlerle endüstriye yeni standartlar getiriyoruz. Sürekli öğrenme ve geliştirme bizim DNA'mızda.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3 class="card-title">Güven & Şeffaflık</h3>
+                    <p class="card-text">Müşterilerimizle açık iletişim ve dürüst ilişkiler kurmayı ön plana alıyoruz. Projelerimizde tam şeffaflık sunuyoruz.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Mükemmellik</h3>
+                    <p class="card-text">Teknisinde, yönetiminde ve müşteri hizmetinde kaliteyi asla ödün vermedik. Uluslararası standartları benimsedik.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3 class="card-title">Küresel Bakış</h3>
+                    <p class="card-text">15+ ülkede çalışarak küresel enerji gereksinimlerini anlıyoruz. Yerel bağlamı da dikkate alarak çözümler sunuyoruz.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">Yetenek</h3>
+                    <p class="card-text">En iyi mühendisler, teknikçiler ve danışmanları istihdam ediyoruz. Takımımızın gelişimine yatırım yapıyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TIMELINE ===== -->
+    <section class="section scroll-reveal" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">Kuruluş Hikayemiz</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue); margin-bottom: var(--spacing-lg);">
+                    <h3 style="color: var(--accent-green);">2020 - Kuruluş</h3>
+                    <p>Vitavolt Global, İzmir'de kurulmuş ve enerji mühendisliğinde yenilikçi çözümler sunmaya başlamıştır.</p>
+                </div>
+                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue); margin-bottom: var(--spacing-lg);">
+                    <h3 style="color: var(--accent-green);">2021 - İlk Proje</h3>
+                    <p>Ilk 50MW güneş santrali projesini başarıyla tamamladık. Bu başarı, sektörlerdeki itibarımızı sağlamlaştırdı.</p>
+                </div>
+                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue); margin-bottom: var(--spacing-lg);">
+                    <h3 style="color: var(--accent-green);">2022 - Uluslararası Expansion</h3>
+                    <p>Türkiye dışında projeler başladık. Balkanlardaki ilk EPC projesini imzaladık.</p>
+                </div>
+                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue); margin-bottom: var(--spacing-lg);">
+                    <h3 style="color: var(--accent-green);">2023 - BESS & Danışmanlık</h3>
+                    <p>Batarya depolama sistemleri ve karbon danışmanlığı hizmetlerini portföyümüze ekledik.</p>
+                </div>
+                <div style="padding: var(--spacing-lg); border-left: 4px solid var(--primary-blue);">
+                    <h3 style="color: var(--accent-green);">2024 - Bugün</h3>
+                    <p>500+ proje, 15+ ülke, 200+ müşteri ile endüstrinin lider aktörü konumundayız.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TEAM SECTION ===== -->
+    <section class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Ekibimiz</h2>
+            <p style="text-align: center; font-size: var(--font-size-lg); margin-bottom: var(--spacing-2xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+                150+ yetenek sahibi mühendis, teknisyen ve danışmanı ile enerji mühendisliğinde en iyi hizmetleri sunuyoruz.
+            </p>
+            <div class="grid grid-4">
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">👨‍💼</div>
+                    <h3 class="card-title">Yazılım & Bilişim</h3>
+                    <p class="card-text">AI ve analitik destekli enerji çözümleri</p>
+                </div>
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">⚙️</div>
+                    <h3 class="card-title">Mekanik Mühendisliği</h3>
+                    <p class="card-text">Sistem tasarımı ve optimizasyonu</p>
+                </div>
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🔌</div>
+                    <h3 class="card-title">Elektrik Mühendisliği</h3>
+                    <p class="card-text">Elektrik tasarım ve başlıştırma</p>
+                </div>
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">📊</div>
+                    <h3 class="card-title">Proje Yönetimi</h3>
+                    <p class="card-text">Vaktinde teslim ve bütçe yönetimi</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <p id="footerText">© 2026 Vitavolt. Geleceğe Güç Veren Mühendislik.</p>
+            <div class="footer-content scroll-reveal">
+                <div class="footer-section">
+                    <h3>Vitavolt Global</h3>
+                    <p>Yenilenebilir enerji sistemleri ve endüstriyel çözümlerde öncü mühendislik firması.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Bağlantılar</h3>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Anasayfa</a>
+                        <a href="about.html" class="footer-link">Hakkımızda</a>
+                        <a href="services.html" class="footer-link">Hizmetler</a>
+                        <a href="contact.html" class="footer-link">İletişim</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p>📞 +90 545 441 19 77</p>
+                    <p>📧 info@vitavoltglobal.com</p>
+                    <p>📍 İzmir, Türkiye</p>
+                </div>
+            </div>
+            <div class="footer-bottom scroll-reveal">
+                <p>&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
+            </div>
         </div>
     </footer>
 
