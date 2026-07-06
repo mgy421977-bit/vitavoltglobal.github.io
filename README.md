@@ -1,6 +1,6 @@
 # ⚡ Vitavolt Global - Kurumsal Web Sitesi
 
-**Yenilenebilir enerji ve endüstriyel çözümlerde öncü mühendislik firması.**
+**Yenilenebilir enerji ve endüstriyel çözümlerde öncü mühendislik firmasıdır.**
 
 ## 🚀 Hakkında
 
