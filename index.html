@@ -4,48 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Vitavolt Global - Yenilenebilir enerji sistemleri, endüstriyel EPC çözümleri, batarya depolama sistemleri ve sürdürülebilir mühendislik projeleri." />
-    <meta name="keywords" content="Enerji, GES, EPC, Batarya, Depolama, Güneş Enerjisi, Yenilenebilir Enerji" />
+    <meta name="keywords" content="Enerji, GES, EPC, Batarya, Depolama, Güneş Enerjisi, Yenilenebilir Enerji, Vitavolt" />
     <meta name="author" content="Vitavolt Global" />
     <meta property="og:title" content="Vitavolt Global - Engineering Tomorrow's Energy" />
     <meta property="og:description" content="Yenilenebilir enerji ve endüstriyel çözümlerde öncü mühendislik firması" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://images.unsplash.com/photo-1509391366360-2e938m0900d6?w=1200&h=630&fit=crop" />
+    <meta property="og:url" content="https://vitavoltglobal.com" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Vitavolt Global" />
     <meta name="twitter:description" content="Engineering Tomorrow's Energy" />
+    <meta name="theme-color" content="#07111C" />
     <link rel="canonical" href="https://vitavoltglobal.com/" />
     <title>Vitavolt Global - Engineering Tomorrow's Energy | Enerji Mühendisliği</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-DTOQO6CYHQ8v5aeCSrFIlIqlvxrbShtvWQo7weQvLDH5qwLENQvB6HTM0B3P7IIu686NwY+KKQvKyontstP+OQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- ===== HEADER ===== -->
-    <header>
+    <header class="header">
+        <!-- Top Bar -->
         <div class="top-bar">
             <div class="container">
                 <div class="top-bar-content">
                     <div class="top-bar-left">
-                        <span><i class="fas fa-phone"></i> +90 545 441 19 77</span>
-                        <span><i class="fas fa-envelope"></i> info@vitavoltglobal.com</span>
+                        <a href="tel:+905454411977" class="top-bar-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+90 545 441 19 77</span>
+                        </a>
+                        <span class="divider">|</span>
+                        <a href="mailto:info@vitavoltglobal.com" class="top-bar-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@vitavoltglobal.com</span>
+                        </a>
                     </div>
                     <div class="top-bar-right">
-                        <span><i class="fas fa-map-marker-alt"></i> İzmir, Türkiye</span>
-                        <button class="lang-switch" aria-label="Dil Değiştir">TR</button>
-                        <span class="lang-divider">|</span>
-                        <span>EN</span>
+                        <span class="top-bar-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>İzmir, Türkiye</span>
+                        </span>
+                        <span class="divider">|</span>
+                        <div class="language-selector">
+                            <button class="lang-btn active" data-lang="tr">TR</button>
+                            <span class="lang-divider">|</span>
+                            <button class="lang-btn" data-lang="en">EN</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
+        <!-- Navigation Bar -->
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-content">
-                    <a href="index.html" class="logo">
-                        <i class="fas fa-bolt"></i> VITAVOLT<span>GLOBAL</span>
+                    <a href="index.html" class="logo" title="Vitavolt Global Anasayfa">
+                        <i class="fas fa-bolt"></i>
+                        <span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span>
                     </a>
                     
                     <div class="nav-menu">
@@ -55,19 +73,23 @@
                         <a href="contact.html" class="nav-link" data-i18n="nav-contact">İLETİŞİM</a>
                     </div>
                     
-                    <a href="contact.html" class="btn btn-primary btn-cta">TKLİF AL</a>
-                    <button class="menu-toggle" aria-label="Menüyü Aç">☰</button>
+                    <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TKLİF AL</a>
+                    <button class="menu-toggle" aria-label="Menüyü Aç"><span></span><span></span><span></span></button>
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- ===== HERO SECTION ===== -->
-    <section class="hero" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.7), rgba(15, 26, 43, 0.7)), url('https://images.unsplash.com/photo-1509391366360-2e938m0900d6?w=1920&h=1080&fit=crop') center/cover; min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative;">
-        <div class="container">
+    <section class="hero">
+        <div class="hero-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.6), rgba(15, 26, 43, 0.6)), url('https://images.unsplash.com/photo-1509391366360-2e938m0900d6?w=1920&h=1080&fit=crop') center/cover; background-attachment: fixed;"></div>
+        
+        <div class="container hero-container">
             <div class="hero-content">
                 <h1 class="hero-title scroll-reveal">
-                    ENGINEERING<br>TOMORROW'S<br><span class="gradient-text">ENERGY</span>
+                    ENGINEERING<br>
+                    TOMORROW'S<br>
+                    <span class="gradient-text">ENERGY</span>
                 </h1>
                 <p class="hero-subtitle scroll-reveal">Geleceğe Güç Veren Mühendislik</p>
                 <p class="hero-description scroll-reveal">
@@ -82,30 +104,45 @@
     </section>
 
     <!-- ===== WHY VITAVOLT ===== -->
-    <section class="section why-vitavolt" style="background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=800&fit=crop') center/cover; position: relative;">
-        <div class="overlay"></div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <h2 class="section-title text-center scroll-reveal">NEDEN VITAVOLT?</h2>
+    <section class="section why-vitavolt">
+        <div class="section-bg" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.7), rgba(15, 26, 43, 0.7)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=800&fit=crop') center/cover;"></div>
+        
+        <div class="container section-content">
+            <div class="section-header text-center">
+                <h2 class="section-title scroll-reveal">NEDEN VITAVOLT?</h2>
+            </div>
+            
             <div class="features-grid scroll-reveal">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
-                    <h3>SÜRDÜRÜLEBİLİRLİK</h3>
-                    <p>Temiz eneriye sürdürülebilir bir gelecek inşa ediyoruz.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">SÜRDÜRÜLEBİLİRLİK</h3>
+                    <p class="feature-text">Temiz enerjiye sürdürülebilir bir gelecek inşa ediyoruz.</p>
                 </div>
+                
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>YENİLİKÇİ</h3>
-                    <p>Teknoloji ve inovasyonla enerji sistemi dönüştürüyoruz.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">YENİLİKÇİ</h3>
+                    <p class="feature-text">Teknoloji ve inovasyonla enerji sistemi dönüştürüyoruz.</p>
                 </div>
+                
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>GÜVENİLİR</h3>
-                    <p>Kalite, güvenlik ve zamanlı teslimat taahhüdümüzdür.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">GÜVENİLİR</h3>
+                    <p class="feature-text">Kalite, güvenlik ve zamanlı teslimat taahhüdümüzdür.</p>
                 </div>
+                
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-users"></i></div>
-                    <h3>İNSAN ODAKLI</h3>
-                    <p>İşimizi insan ve çevre odağında yapıyoruz.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">İNSAN ODAKLI</h3>
+                    <p class="feature-text">İşimizi insan ve çevre odağında yapıyoruz.</p>
                 </div>
             </div>
         </div>
@@ -114,60 +151,88 @@
     <!-- ===== SERVICES SECTION ===== -->
     <section class="section services-section" id="services">
         <div class="container">
-            <h2 class="section-title text-center scroll-reveal">HİZMETLERİMİZ</h2>
+            <div class="section-header text-center">
+                <h2 class="section-title scroll-reveal">HİZMETLERİMİZ</h2>
+                <p class="section-subtitle scroll-reveal">Enerji sektöründe kapsamlı çözümler sunan 5 ana hizmetimiz</p>
+            </div>
             
             <div class="services-grid scroll-reveal">
                 <!-- Solar Energy -->
                 <div class="service-card">
-                    <div class="service-image" style="background: url('https://images.unsplash.com/photo-1509391366360-2e938m0900d6?w=600&h=400&fit=crop') center/cover;"></div>
+                    <div class="service-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e938m0900d6?w=600&h=400&fit=crop" alt="Güneş Enerjisi Panelleri" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
                     <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-sun"></i></div>
-                        <h3>GES (GÜNEŞ ENERJİSİ)</h3>
-                        <p>Yüksek verimli güneş enerjisi santarleri tasarım ve kurulumu. Çatı, arazi ve yüzer sistemler.</p>
+                        <div class="service-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3 class="service-title">GES (GÜNEŞ ENERJİSİ)</h3>
+                        <p class="service-description">Yüksek verimli güneş enerjisi santralları tasarım ve kurulumu. Çatı, arazi ve yüzer sistemler.</p>
                         <a href="services.html#ges" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <!-- EPC -->
                 <div class="service-card">
-                    <div class="service-image" style="background: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop') center/cover;"></div>
+                    <div class="service-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop" alt="Endüstriyel Projeler" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
                     <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
-                        <h3>ENDÜSTRİYEL EPC</h3>
-                        <p>Mühendislik, tedarik ve inşaat yönetimi. Proje fizibilitesinden devreye almaya kadar.</p>
+                        <div class="service-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3 class="service-title">ENDÜSTRİYEL EPC</h3>
+                        <p class="service-description">Mühendislik, tedarik ve inşaat yönetimi. Proje fizibilitesinden devreye almaya kadar.</p>
                         <a href="services.html#epc" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <!-- BESS -->
                 <div class="service-card">
-                    <div class="service-image" style="background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop') center/cover;"></div>
+                    <div class="service-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1578519603183-7dac2e02e8bd?w=600&h=400&fit=crop" alt="Batarya Depolama Sistemleri" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
                     <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-battery-full"></i></div>
-                        <h3>BATARYA DEPOLAMA SİSTEMLERİ</h3>
-                        <p>Şebeke stabilizasyonu ve enerji optimizasyonu. Lityum-iyon batarya sistemleri.</p>
+                        <div class="service-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <h3 class="service-title">BATARYA DEPOLAMA SİSTEMLERİ</h3>
+                        <p class="service-description">Şebeke stabilizasyonu ve enerji optimizasyonu. Lityum-iyon batarya sistemleri.</p>
                         <a href="services.html#bess" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <!-- Carbon -->
                 <div class="service-card">
-                    <div class="service-image" style="background: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop') center/cover;"></div>
+                    <div class="service-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop" alt="Karbon Çözümleri" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
                     <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-leaf"></i></div>
-                        <h3>KARBON DANIŞMANLIĞI</h3>
-                        <p>Karbon ayak izi analizi ve net-zero stratejileri. Sürdürülebilir dönüşüm danışmanlığı.</p>
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="service-title">KARBON DANIŞMANLIĞI</h3>
+                        <p class="service-description">Karbon ayak izi analizi ve net-zero stratejileri. Sürdürülebilir dönüşüm danışmanlığı.</p>
                         <a href="services.html#carbon" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <!-- Consulting -->
                 <div class="service-card">
-                    <div class="service-image" style="background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop') center/cover;"></div>
+                    <div class="service-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Mühendislik Danışmanlığı" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
                     <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-handshake"></i></div>
-                        <h3>MÜHENDİSLİK DANIŞMANLIĞI</h3>
-                        <p>Teknik fizibilite ve saha analizi. Teknoloji seçimi ve tedarikçi değerlendirmesi.</p>
+                        <div class="service-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="service-title">MÜHENDİSLİK DANIŞMANLIĞI</h3>
+                        <p class="service-description">Teknik fizibilite ve saha analizi. Teknoloji seçimi ve tedarikçi değerlendirmesi.</p>
                         <a href="services.html#consult" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -176,23 +241,39 @@
     </section>
 
     <!-- ===== STATISTICS SECTION ===== -->
-    <section class="section stats-section" style="background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=600&fit=crop') center/cover; position: relative;">
-        <div class="stats-overlay"></div>
-        <div class="container" style="position: relative; z-index: 2;">
+    <section class="section stats-section">
+        <div class="stats-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.85), rgba(15, 26, 43, 0.85)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=600&fit=crop') center/cover; background-attachment: fixed;"></div>
+        
+        <div class="container stats-container">
             <div class="stats-grid scroll-reveal">
                 <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
                     <div class="stat-number" data-count="150">0</div>
                     <div class="stat-label">TAMAMLANAN PROJE</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
                     <div class="stat-number" data-count="320">0</div>
                     <div class="stat-label">MW KURULU GÜÇ</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
                     <div class="stat-number" data-count="12">0</div>
                     <div class="stat-label">ÜLKEDE FAALİYET</div>
                 </div>
+                
                 <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <div class="stat-number" data-count="50">0</div>
                     <div class="stat-label">UZMAN KADRO</div>
                 </div>
@@ -201,9 +282,11 @@
     </section>
 
     <!-- ===== CTA SECTION ===== -->
-    <section class="section cta-section" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.8), rgba(15, 26, 43, 0.8)), url('https://images.unsplash.com/photo-1509391366360-2e938m0900d6?w=1920&h=600&fit=crop') center/cover;">
-        <div class="container text-center">
-            <h2 class="cta-title scroll-reveal">PROJENİZ İÇİN BİZİMLE İLETİŞİME GEÇİN</h2>
+    <section class="section cta-section">
+        <div class="cta-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.8), rgba(15, 26, 43, 0.8)), url('https://images.unsplash.com/photo-1509391366360-2e938m0900d6?w=1920&h=600&fit=crop') center/cover; background-attachment: fixed;"></div>
+        
+        <div class="container cta-container text-center">
+            <h2 class="cta-title scroll-reveal">PROJENİZ İÇİN BİZİMLİ İLETİŞİME GEÇİN</h2>
             <p class="cta-description scroll-reveal">Sizin için uygun çözümü birlikte tasarlayalım.</p>
             <a href="contact.html" class="btn btn-primary btn-large scroll-reveal">TKLİF ALIN</a>
         </div>
@@ -213,21 +296,24 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- Column 1: Company Info -->
                 <div class="footer-col">
-                    <a href="index.html" class="footer-logo">
-                        <i class="fas fa-bolt"></i> VITAVOLT
+                    <a href="index.html" class="footer-logo" title="Vitavolt Global Anasayfa">
+                        <i class="fas fa-bolt"></i>
+                        <span>VITAVOLT GLOBAL</span>
                     </a>
-                    <p>Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri ve danışmanlık hizmetleri sunmaktadır.</p>
+                    <p class="footer-description">Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri ve danışmanlık hizmetleri sunmaktadır.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" class="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com" class="social-link" title="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com" class="social-link" title="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                        <a href="https://instagram.com" class="social-link" title="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 
+                <!-- Column 2: Quick Links -->
                 <div class="footer-col">
-                    <h4>HIZLI LİNKLER</h4>
+                    <h4 class="footer-title">HIZLI LİNKLER</h4>
                     <ul class="footer-links">
                         <li><a href="index.html">Ana Sayfa</a></li>
                         <li><a href="about.html">Hakkımızda</a></li>
@@ -236,8 +322,9 @@
                     </ul>
                 </div>
                 
+                <!-- Column 3: Services -->
                 <div class="footer-col">
-                    <h4>HİZMETLERİMİZ</h4>
+                    <h4 class="footer-title">HİZMETLERİMİZ</h4>
                     <ul class="footer-links">
                         <li><a href="services.html#ges">GES (Güneş Enerjisi)</a></li>
                         <li><a href="services.html#epc">Endüstriyel EPC</a></li>
@@ -246,50 +333,54 @@
                     </ul>
                 </div>
                 
+                <!-- Column 4: Contact & Newsletter -->
                 <div class="footer-col">
-                    <h4>İLETİŞİM BİLGİLERİ</h4>
-                    <p><i class="fas fa-phone"></i> +90 545 441 19 77</p>
-                    <p><i class="fas fa-envelope"></i> info@vitavoltglobal.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> İzmir, Türkiye</p>
+                    <h4 class="footer-title">İLETİŞİM BİLGİLERİ</h4>
+                    <ul class="footer-contact">
+                        <li><a href="tel:+905454411977"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
+                        <li><a href="mailto:info@vitavoltglobal.com"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
+                        <li><span><i class="fas fa-map-marker-alt"></i> İzmir, Türkiye</span></li>
+                    </ul>
                     <div class="newsletter-signup">
-                        <input type="email" placeholder="E-posta adresiniz" class="newsletter-input">
-                        <button class="newsletter-btn"><i class="fas fa-arrow-right"></i></button>
+                        <input type="email" placeholder="E-posta adresiniz" class="newsletter-input" aria-label="E-posta adresi">
+                        <button class="newsletter-btn" aria-label="Abone ol"><i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
-                <div class="footer-links-bottom">
+                <div class="footer-bottom-links">
                     <a href="#">Gizlilik Politikası</a>
+                    <span class="divider">|</span>
                     <a href="#">Kullanım Şartları</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Structured Data (JSON-LD)
-        const schema = {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Vitavolt Global",
-            "url": "https://vitavoltglobal.com",
-            "logo": "https://vitavoltglobal.com/logo.svg",
-            "description": "Yenilenebilir enerji sistemleri ve endüstriyel çözümlerde öncü mühendislik firması",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "İzmir",
-                "addressCountry": "TR"
-            },
-            "telephone": "+905454411977",
-            "email": "info@vitavoltglobal.com"
-        };
-        document.head.appendChild(Object.assign(document.createElement('script'), {
-            type: 'application/ld+json',
-            textContent: JSON.stringify(schema)
-        }));
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Vitavolt Global",
+        "url": "https://vitavoltglobal.com",
+        "description": "Yenilenebilir enerji sistemleri ve endüstriyel çözümlerde öncü mühendislik firması",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "İzmir",
+            "addressCountry": "TR"
+        },
+        "telephone": "+905454411977",
+        "email": "info@vitavoltglobal.com",
+        "sameAs": [
+            "https://linkedin.com/company/vitavolt-global",
+            "https://twitter.com/vitavoltglobal"
+        ]
+    }
     </script>
+
     <script src="js/script.js"></script>
 </body>
 </html>

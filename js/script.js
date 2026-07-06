@@ -1,348 +1,328 @@
-// ===== VITAVOLT GLOBAL - JAVASCRIPT =====
-
-// ===== STATE =====
-const state = {
-  language: localStorage.getItem('language') || 'tr',
-  menuOpen: false,
+// ===== SCROLL REVEAL ANIMATION ===== 
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
 };
 
-// ===== TRANSLATIONS =====
-const translations = {
-  tr: {
-    'nav-home': 'Anasayfa',
-    'nav-about': 'Hakkımızda',
-    'nav-services': 'Hizmetler',
-    'nav-contact': 'İletişim',
-    'hero-title': 'Engineering Tomorrow\'s Energy',
-    'hero-subtitle': 'Geleceğe Güç Veren Mühendislik',
-    'btn-learn': 'Daha Fazla Bilgi',
-    'btn-contact': 'İletişime Geçin',
-  },
-  en: {
-    'nav-home': 'Home',
-    'nav-about': 'About',
-    'nav-services': 'Services',
-    'nav-contact': 'Contact',
-    'hero-title': 'Engineering Tomorrow\'s Energy',
-    'hero-subtitle': 'Engineering Power for the Future',
-    'btn-learn': 'Learn More',
-    'btn-contact': 'Get in Touch',
-  }
-};
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 
-// ===== DOM ELEMENTS =====
-const header = document.querySelector('header');
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav');
-const navLinks = document.querySelectorAll('.nav-link');
-const langSwitch = document.querySelector('.lang-switch');
-
-// ===== INITIALIZATION =====
-document.addEventListener('DOMContentLoaded', () => {
-  initHeader();
-  initMobileMenu();
-  initNavigation();
-  initLanguage();
-  initScrollReveal();
-  initCounters();
-  initSmoothScroll();
-  setActiveNavigation();
+document.querySelectorAll('.scroll-reveal').forEach(element => {
+    observer.observe(element);
 });
 
-// ===== HEADER STICKY EFFECT =====
-function initHeader() {
-  let lastScrollTop = 0;
-  
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > 50) {
-      header.classList.add('scroll-active');
-    } else {
-      header.classList.remove('scroll-active');
-    }
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  });
-}
-
-// ===== MOBILE MENU =====
-function initMobileMenu() {
-  if (menuToggle) {
-    menuToggle.addEventListener('click', toggleMenu);
-  }
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-}
-
-function toggleMenu() {
-  state.menuOpen = !state.menuOpen;
-  
-  if (nav) {
-    if (state.menuOpen) {
-      nav.classList.add('active');
-      menuToggle.innerHTML = '✕';
-    } else {
-      nav.classList.remove('active');
-      menuToggle.innerHTML = '☰';
-    }
-  }
-}
-
-function closeMenu() {
-  state.menuOpen = false;
-  if (nav) {
-    nav.classList.remove('active');
-  }
-  if (menuToggle) {
-    menuToggle.innerHTML = '☰';
-  }
-}
-
-// ===== NAVIGATION =====
-function initNavigation() {
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      closeMenu();
-    });
-  });
-}
-
-function setActiveNavigation() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-}
-
-// ===== LANGUAGE SWITCH =====
-function initLanguage() {
-  if (langSwitch) {
-    langSwitch.textContent = state.language.toUpperCase();
-    langSwitch.addEventListener('click', switchLanguage);
-  }
-  
-  applyLanguage();
-}
-
-function switchLanguage() {
-  state.language = state.language === 'tr' ? 'en' : 'tr';
-  localStorage.setItem('language', state.language);
-  
-  if (langSwitch) {
-    langSwitch.textContent = state.language.toUpperCase();
-  }
-  
-  applyLanguage();
-}
-
-function applyLanguage() {
-  const elements = document.querySelectorAll('[data-i18n]');
-  
-  elements.forEach(element => {
-    const key = element.getAttribute('data-i18n');
-    if (translations[state.language] && translations[state.language][key]) {
-      element.textContent = translations[state.language][key];
-    }
-  });
-}
-
-// ===== SMOOTH SCROLL =====
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// ===== SMOOTH SCROLL ===== 
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      
-      if (target) {
-        closeMenu();
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-}
-
-// ===== SCROLL REVEAL ANIMATION =====
-function initScrollReveal() {
-  const elements = document.querySelectorAll('.scroll-reveal');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('active');
-        }, index * 100);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-  
-  elements.forEach(element => {
-    observer.observe(element);
-  });
-}
-
-// ===== ANIMATED COUNTERS =====
-function initCounters() {
-  const counters = document.querySelectorAll('[data-count]');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  counters.forEach(counter => {
-    observer.observe(counter);
-  });
-}
-
-function animateCounter(element) {
-  const target = parseInt(element.getAttribute('data-count'));
-  const duration = 2000;
-  const start = Date.now();
-  
-  const animate = () => {
-    const now = Date.now();
-    const progress = Math.min((now - start) / duration, 1);
-    const value = Math.floor(target * progress);
-    
-    element.textContent = value;
-    
-    if (progress < 1) {
-      requestAnimationFrame(animate);
-    }
-  };
-  
-  animate();
-}
-
-// ===== FORM SUBMISSION =====
-function initForms() {
-  const forms = document.querySelectorAll('form');
-  
-  forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Collect form data
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-      
-      // Log form data (in production, send to server)
-      console.log('Form submitted:', data);
-      
-      // Show success message
-      showNotification('Message sent successfully!', 'success');
-      
-      // Reset form
-      form.reset();
-    });
-  });
-}
-
-// ===== NOTIFICATION =====
-function showNotification(message, type = 'info') {
-  const notification = document.createElement('div');
-  notification.className = `notification notification-${type}`;
-  notification.textContent = message;
-  
-  Object.assign(notification.style, {
-    position: 'fixed',
-    top: '100px',
-    right: '20px',
-    padding: '1rem 1.5rem',
-    borderRadius: '0.5rem',
-    background: type === 'success' ? '#38D67A' : '#00AEEF',
-    color: '#fff',
-    zIndex: 9999,
-    animation: 'fadeIn 0.3s ease-out'
-  });
-  
-  document.body.appendChild(notification);
-  
-  setTimeout(() => {
-    notification.style.animation = 'fadeOut 0.3s ease-out forwards';
-    setTimeout(() => notification.remove(), 300);
-  }, 3000);
-}
-
-// ===== UTILITIES =====
-
-// Lazy loading for images
-function initLazyLoading() {
-  if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.classList.add('loaded');
-          imageObserver.unobserve(img);
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
         }
-      });
+    });
+});
+
+// ===== NAVBAR ACTIVE STATE ===== 
+const updateActiveNav = () => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        if (href === currentPage || (href === 'index.html' && currentPage === '')) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+};
+
+updateActiveNav();
+
+// ===== COUNTER ANIMATION ===== 
+const animateCounters = () => {
+    const counters = document.querySelectorAll('[data-count]');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                counter.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target + '+';
+            }
+        };
+        
+        // Trigger animation when element is in view
+        const counterObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                updateCounter();
+                counterObserver.unobserve(counter);
+            }
+        }, { threshold: 0.5 });
+        
+        counterObserver.observe(counter);
+    });
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', animateCounters);
+} else {
+    animateCounters();
+}
+
+// ===== MOBILE MENU TOGGLE ===== 
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+    
+    // Close menu when link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+    });
+}
+
+// ===== LANGUAGE SWITCHER ===== 
+const languageButtons = document.querySelectorAll('.lang-btn');
+const currentLang = localStorage.getItem('lang') || 'tr';
+
+if (languageButtons.length > 0) {
+    // Set active language button
+    languageButtons.forEach(btn => {
+        if (btn.getAttribute('data-lang') === currentLang) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Language switcher event
+    languageButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            localStorage.setItem('lang', lang);
+            
+            languageButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // You can implement language switching logic here
+            console.log('Language changed to:', lang);
+        });
+    });
+}
+
+// ===== NEWSLETTER SIGNUP ===== 
+const newsletterBtn = document.querySelector('.newsletter-btn');
+const newsletterInput = document.querySelector('.newsletter-input');
+
+if (newsletterBtn && newsletterInput) {
+    newsletterBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const email = newsletterInput.value.trim();
+        
+        if (validateEmail(email)) {
+            // Show success message
+            showNotification('E-posta başarıyla kaydedildi!', 'success');
+            newsletterInput.value = '';
+        } else if (email === '') {
+            showNotification('Lütfen e-posta adresinizi girin', 'error');
+        } else {
+            showNotification('Lütfen geçerli bir e-posta adresi girin', 'error');
+        }
+    });
+    
+    // Allow Enter key to submit
+    newsletterInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            newsletterBtn.click();
+        }
+    });
+}
+
+// ===== EMAIL VALIDATION ===== 
+const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+};
+
+// ===== NOTIFICATION SYSTEM ===== 
+const showNotification = (message, type = 'info') => {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background-color: ${type === 'success' ? '#38D67A' : '#FF4444'};
+        color: white;
+        border-radius: 8px;
+        font-weight: 600;
+        z-index: 10000;
+        animation: slideInUp 0.3s ease-out;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutDown 0.3s ease-in';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+};
+
+// Add animation styles
+if (!document.querySelector('#notification-styles')) {
+    const style = document.createElement('style');
+    style.id = 'notification-styles';
+    style.textContent = `
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideOutDown {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// ===== HEADER SCROLL EFFECT ===== 
+let lastScrollTop = 0;
+const header = document.querySelector('.header');
+
+if (header) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+        } else {
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+}
+
+// ===== LAZY LOADING FOR IMAGES ===== 
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.getAttribute('data-src');
+                img.classList.add('loaded');
+                imageObserver.unobserve(img);
+            }
+        });
     });
     
     document.querySelectorAll('img[data-src]').forEach(img => {
-      imageObserver.observe(img);
+        imageObserver.observe(img);
     });
-  }
 }
 
-// Debounce function
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
+// ===== UTILITY: Debounce ===== 
+const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
     };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
+};
+
+// ===== RESPONSIVE MENU RESIZE ===== 
+const handleResize = debounce(() => {
+    if (window.innerWidth > 1023) {
+        if (navMenu) navMenu.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
+    }
+}, 250);
+
+window.addEventListener('resize', handleResize);
+
+// ===== PERFORMANCE: Preload Critical Images ===== 
+const preloadImages = () => {
+    const links = document.querySelectorAll('img[src]');
+    links.forEach(link => {
+        const img = new Image();
+        img.src = link.src;
+    });
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadImages);
+} else {
+    preloadImages();
 }
 
-// Check if element is in viewport
-function isInViewport(element) {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
+// ===== ACCESSIBILITY: Skip Link ===== 
+const skipLink = document.createElement('a');
+skipLink.href = '#main';
+skipLink.className = 'skip-link';
+skipLink.textContent = 'Skip to main content';
+skipLink.style.cssText = `
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #00AEEF;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    text-decoration: none;
+`;
 
-// Initialize lazy loading on page load
-window.addEventListener('load', initLazyLoading);
+document.body.insertBefore(skipLink, document.body.firstChild);
 
-// Initialize forms after DOM is ready
-document.addEventListener('DOMContentLoaded', initForms);
-
-// Accessibility: Focus management
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeMenu();
-  }
+skipLink.addEventListener('focus', () => {
+    skipLink.style.top = '0';
 });
 
-console.log('Vitavolt Global - JavaScript loaded successfully');
+skipLink.addEventListener('blur', () => {
+    skipLink.style.top = '-40px';
+});
+
+// ===== INITIALIZATION LOG ===== 
+console.log('🚀 Vitavolt Global Homepage - Initialized Successfully');
+console.log('📱 Language:', currentLang);
+console.log('✨ All features loaded and active');
