@@ -3,207 +3,172 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vitavolt Global - Endüstriyel EPC, GES, BESS, Karbon Danışmanlığı ve Mühendislik Çözümleri." />
-    <meta name="keywords" content="GES, EPC, BESS, Karbon, Danışmanlık, Enerji, Güneş, Batarya, Mühendislik" />
+    <meta name="description" content="Vitavolt Global - Entegre mühendislik, sürdürülebilirlik ve altyapı çözümleri. Güneş enerjisi, EPC, BESS, karbon danışmanlığı ve daha fazlası." />
+    <meta name="keywords" content="GES, EPC, BESS, Karbon, Danışmanlık, Enerji Hizmetleri, Su Yönetimi, Akıllı Enerji, Sürdürülebilirlik" />
     <link rel="canonical" href="https://vitavoltglobal.com/services.html" />
-    <title>Vitavolt Global - Hizmetler | Enerji Mühendisliği Çözümleri</title>
+    <title>Vitavolt Global - Hizmetler | Entegre Enerji Mühendisliği</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
-        /* --- premium servis sayfası için ek stiller --- */
-        .service-hero {
-            position: relative;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        .service-hero .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(7,17,28,0.55), rgba(15,26,43,0.80)), url('images/hero.jpg') center/cover no-repeat;
-            background-attachment: fixed;
-            z-index: 0;
-        }
-        .service-hero .hero-content {
-            position: relative;
-            z-index: 1;
-            padding: 6rem 1.5rem;
-        }
-        .service-hero .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #ffffff 40%, #22d3ee 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .service-hero .hero-subtitle {
-            font-size: 1.3rem;
-            font-weight: 300;
-            color: rgba(255,255,255,0.75);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-        .service-hero .hero-divider {
-            width: 70px;
-            height: 3px;
-            background: linear-gradient(90deg, #22d3ee, #a855f7);
-            margin: 1.2rem auto 0;
-            border-radius: 4px;
-        }
-
-        .service-section {
-            padding: 5rem 0;
-        }
-        .service-section:nth-child(even) {
-            background: rgba(255,255,255,0.02);
-        }
-
-        .service-block {
+        /* ============================================================
+           SERVICE CATEGORY CARDS — Premium Glassmorphism
+           ============================================================ */
+        .category-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        .service-block .image-wrapper {
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 1.5rem;
+            padding: 2rem 1.8rem;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 24px 48px -16px rgba(0,0,0,0.6);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
-        .service-block .image-wrapper:hover {
-            transform: scale(1.01);
-            box-shadow: 0 32px 64px -16px rgba(34,211,238,0.15);
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 174, 239, 0.03), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
         }
-        .service-block .image-wrapper img {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            display: block;
+
+        .category-card:hover::before {
+            opacity: 1;
         }
-        .service-block .service-icon {
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 174, 239, 0.25);
+            box-shadow: 0 20px 48px -16px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 174, 239, 0.04);
+            background: rgba(26, 53, 85, 0.4);
+        }
+
+        .category-icon {
             font-size: 2.8rem;
-            color: #22d3ee;
-            margin-bottom: 0.75rem;
+            color: var(--color-primary, #00AEEF);
+            margin-bottom: 1rem;
+            line-height: 1;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-block;
         }
-        .service-block h2 {
-            font-size: 2.2rem;
+
+        .category-card:hover .category-icon {
+            transform: scale(1.08);
+        }
+
+        .category-title {
+            font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: -0.01em;
-            margin-bottom: 0.5rem;
             color: #f1f5f9;
+            margin-bottom: 0.4rem;
         }
-        .service-block .service-tagline {
-            font-size: 1.1rem;
-            color: #22d3ee;
-            font-weight: 500;
-            margin-bottom: 1.25rem;
-            letter-spacing: 0.02em;
+
+        .category-desc {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
         }
-        .service-block .service-desc {
-            color: #cbd5e1;
-            line-height: 1.9;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .service-block .benefits-list {
+
+        .category-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 1.5rem 0;
+            margin: 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.6rem 1.5rem;
+            gap: 0.4rem 1rem;
+            flex: 1;
+            align-content: start;
         }
-        .service-block .benefits-list li {
-            color: #94a3b8;
-            font-size: 0.92rem;
+
+        .category-list li {
+            font-size: 0.88rem;
+            color: #cbd5e1;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
             line-height: 1.5;
         }
-        .service-block .benefits-list li i {
-            color: #22d3ee;
-            font-size: 0.9rem;
-            width: 1.2rem;
-            flex-shrink: 0;
-        }
-        .service-block .process-steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin: 1.25rem 0 1.5rem;
-        }
-        .service-block .process-steps span {
-            background: rgba(34,211,238,0.08);
-            border: 1px solid rgba(34,211,238,0.12);
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: #94a3b8;
-            letter-spacing: 0.03em;
-        }
-        .service-block .industries {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin: 1rem 0 1.5rem;
-        }
-        .service-block .industries span {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.06);
-            padding: 0.25rem 1rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .service-block .btn-service {
-            display: inline-block;
-            padding: 0.7rem 2rem;
-            background: linear-gradient(135deg, #22d3ee, #a855f7);
-            color: #000;
+
+        .category-list li::before {
+            content: '▸';
+            color: var(--color-primary, #00AEEF);
             font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        .service-block .btn-service:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 32px rgba(34,211,238,0.25);
+            font-size: 0.75rem;
+            opacity: 0.8;
         }
 
-        .service-block.reverse {
-            direction: rtl;
-        }
-        .service-block.reverse > * {
-            direction: ltr;
+        /* === Responsive === */
+        @media (max-width: 1023px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .category-list {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* CTA premium */
+        @media (max-width: 767px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            .category-card {
+                padding: 1.5rem 1.2rem;
+            }
+            .category-icon {
+                font-size: 2.2rem;
+            }
+            .category-title {
+                font-size: 1.2rem;
+            }
+            .category-list li {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 479px) {
+            .category-card {
+                padding: 1.2rem 1rem;
+            }
+            .category-icon {
+                font-size: 2rem;
+            }
+            .category-title {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ===== CTA Premium ===== */
         .cta-premium {
-            background: linear-gradient(135deg, rgba(34,211,238,0.06), rgba(168,85,247,0.06));
-            border: 1px solid rgba(34,211,238,0.10);
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.06), rgba(168, 85, 247, 0.06));
+            border: 1px solid rgba(34, 211, 238, 0.08);
             border-radius: 2rem;
-            padding: 4rem 3rem;
+            padding: 3.5rem 2.5rem;
             text-align: center;
-            margin: 2rem 0;
+            margin-top: 2rem;
         }
         .cta-premium h2 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 0.75rem;
             background: linear-gradient(135deg, #f1f5f9, #22d3ee);
@@ -213,62 +178,24 @@
         }
         .cta-premium p {
             color: #94a3b8;
-            max-width: 560px;
+            max-width: 500px;
             margin: 0 auto 2rem;
             font-size: 1.1rem;
             line-height: 1.8;
         }
-        .cta-premium .btn-primary {
-            padding: 0.9rem 3rem;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 992px) {
-            .service-block {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .service-block .image-wrapper img {
-                height: 260px;
-            }
-            .service-block .benefits-list {
-                grid-template-columns: 1fr;
-            }
-            .service-hero .hero-title {
-                font-size: 2.8rem;
-            }
-            .cta-premium {
-                padding: 2.5rem 1.5rem;
-            }
-            .cta-premium h2 {
-                font-size: 1.8rem;
-            }
-        }
         @media (max-width: 576px) {
-            .service-hero .hero-title {
-                font-size: 2.2rem;
-            }
-            .service-block h2 {
-                font-size: 1.6rem;
-            }
-            .service-block .image-wrapper img {
-                height: 200px;
-            }
-            .service-section {
-                padding: 3rem 0;
-            }
             .cta-premium {
-                padding: 2rem 1rem;
+                padding: 2rem 1.5rem;
             }
             .cta-premium h2 {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER (Homepage ile aynı) ===== -->
+    <!-- ===== HEADER ===== -->
     <header class="header">
         <div class="top-bar">
             <div class="container">
@@ -304,7 +231,6 @@
             <div class="container">
                 <div class="navbar-content">
                     <a href="index.html" class="logo" title="Vitavolt Global Anasayfa">
-                        <i class="fas fa-bolt"></i>
                         <span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span>
                     </a>
                     <div class="nav-menu">
@@ -314,239 +240,220 @@
                         <a href="contact.html" class="nav-link" data-i18n="nav-contact">İLETİŞİM</a>
                     </div>
                     <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
-                    <button class="menu-toggle" aria-label="Menüyü Aç"><span></span><span></span><span></span></button>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç/kapat" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
                 </div>
             </div>
+            <div class="menu-overlay" id="menuOverlay"></div>
         </nav>
     </header>
 
     <!-- ===== HERO ===== -->
-    <section class="service-hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content scroll-reveal">
-            <h1 class="hero-title">HİZMETLERİMİZ</h1>
-            <p class="hero-subtitle">Kapsamlı Enerji Mühendisliği Çözümleri</p>
-            <div class="hero-divider"></div>
+    <section class="service-hero" style="position:relative; min-height:50vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden;">
+        <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(7,17,28,0.55), rgba(15,26,43,0.85)), url('images/hero.jpg') center/cover no-repeat; background-attachment:fixed; z-index:0;"></div>
+        <div class="hero-content" style="position:relative; z-index:1; padding:5rem 1.5rem;">
+            <h1 style="font-size:3.5rem; font-weight:800; letter-spacing:-0.02em; margin-bottom:0.5rem; background:linear-gradient(135deg,#ffffff 30%,#22d3ee 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">HİZMETLERİMİZ</h1>
+            <p style="font-size:1.3rem; font-weight:300; color:rgba(255,255,255,0.75); letter-spacing:0.12em; text-transform:uppercase;">Entegre Mühendislik ve Sürdürülebilirlik Çözümleri</p>
+            <div style="width:70px; height:3px; background:linear-gradient(90deg,#22d3ee,#a855f7); margin:1.2rem auto 0; border-radius:4px;"></div>
         </div>
     </section>
 
-    <!-- ===== 1. GES ===== -->
-    <section class="service-section scroll-reveal" id="ges">
+    <!-- ===== MAIN SERVICES (Mevcut 5 Kart) ===== -->
+    <section class="section services-section scroll-reveal" id="main-services">
         <div class="container">
-            <div class="service-block">
-                <div class="image-wrapper">
-                    <img src="images/solar panels.jpg" alt="Güneş Enerjisi Santrali" loading="lazy" />
+            <div class="section-header text-center">
+                <h2 class="section-title">ANA HİZMETLERİMİZ</h2>
+                <p class="section-subtitle">Enerji sektöründe kapsamlı çözümler sunan 5 ana hizmet alanımız</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- 1. GES -->
+                <div class="service-card">
+                    <div class="service-image-wrapper">
+                        <img src="images/solar panels.jpg" alt="Güneş Enerjisi Panelleri" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-sun"></i></div>
+                        <h3 class="service-title">GES (GÜNEŞ ENERJİSİ)</h3>
+                        <p class="service-description">Yüksek verimli güneş enerjisi santralları tasarım ve kurulumu. Çatı, arazi ve yüzer sistemler.</p>
+                        <a href="#categories" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
-                <div>
-                    <span class="service-icon"><i class="fas fa-sun"></i></span>
-                    <h2>GES &mdash; Güneş Enerjisi Santralleri</h2>
-                    <p class="service-tagline">Güneşten gelen sonsuz enerjiyi verimli ve sürdürülebilir çözümlerle elektriğe dönüştürüyoruz.</p>
-                    <p class="service-desc">
-                        Çatı, arazi ve yüzer sistemlerde özel tasarım ve mühendislik hizmetleri sunuyoruz. 
-                        Yüksek verimli fotovoltaik paneller ile maksimum enerji üretimini hedefliyoruz.
-                    </p>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check-circle"></i> Özel tasarım &amp; mühendislik</li>
-                        <li><i class="fas fa-check-circle"></i> Yüksek verimli panel optimizasyonu</li>
-                        <li><i class="fas fa-check-circle"></i> Anahtar teslim kurulum &amp; bakım</li>
-                        <li><i class="fas fa-check-circle"></i> Performans izleme &amp; raporlama</li>
-                        <li><i class="fas fa-check-circle"></i> Yatırım geri dönüş analizi</li>
-                        <li><i class="fas fa-check-circle"></i> Teşvik &amp; mevzuat danışmanlığı</li>
-                    </ul>
-                    <div class="process-steps">
-                        <span><i class="fas fa-magnifying-glass" style="margin-right:4px;"></i> Keşif</span>
-                        <span><i class="fas fa-pen-ruler" style="margin-right:4px;"></i> Tasarım</span>
-                        <span><i class="fas fa-cubes" style="margin-right:4px;"></i> Tedarik</span>
-                        <span><i class="fas fa-helmet-safety" style="margin-right:4px;"></i> Kurulum</span>
-                        <span><i class="fas fa-chart-line" style="margin-right:4px;"></i> Devreye Alma</span>
+
+                <!-- 2. EPC -->
+                <div class="service-card">
+                    <div class="service-image-wrapper">
+                        <img src="images/epc.jpg" alt="Endüstriyel Projeler" loading="lazy" />
+                        <div class="service-overlay"></div>
                     </div>
-                    <div class="industries">
-                        <span>Enerji</span>
-                        <span>Endüstri</span>
-                        <span>Tarım</span>
-                        <span>Kamu</span>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                        <h3 class="service-title">ENDÜSTRİYEL EPC</h3>
+                        <p class="service-description">Mühendislik, tedarik ve inşaat yönetimi. Proje fizibilitesinden devreye almaya kadar.</p>
+                        <a href="#categories" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <a href="contact.html" class="btn-service">Projenizi Konuşalım <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+                </div>
+
+                <!-- 3. BESS -->
+                <div class="service-card">
+                    <div class="service-image-wrapper">
+                        <img src="images/bess.PNG" alt="Batarya Depolama Sistemleri" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-battery-full"></i></div>
+                        <h3 class="service-title">BATARYA DEPOLAMA (BESS)</h3>
+                        <p class="service-description">Şebeke stabilizasyonu ve enerji optimizasyonu. Lityum-iyon batarya sistemleri.</p>
+                        <a href="#categories" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 4. Karbon -->
+                <div class="service-card">
+                    <div class="service-image-wrapper">
+                        <img src="images/carbon.jpg" alt="Karbon Çözümleri" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                        <h3 class="service-title">KARBON DANIŞMANLIĞI</h3>
+                        <p class="service-description">Karbon ayak izi analizi ve net-zero stratejileri. Sürdürülebilir dönüşüm danışmanlığı.</p>
+                        <a href="#categories" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 5. Danışmanlık -->
+                <div class="service-card">
+                    <div class="service-image-wrapper">
+                        <img src="images/consulting.jpg" alt="Mühendislik Danışmanlığı" loading="lazy" />
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                        <h3 class="service-title">MÜHENDİSLİK DANIŞMANLIĞI</h3>
+                        <p class="service-description">Teknik fizibilite ve saha analizi. Teknoloji seçimi ve tedarikçi değerlendirmesi.</p>
+                        <a href="#categories" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== 2. EPC ===== -->
-    <section class="service-section scroll-reveal" id="epc">
+    <!-- ===== SERVICE AREAS (Yeni Kategoriler) ===== -->
+    <section class="section scroll-reveal" id="categories" style="background:rgba(255,255,255,0.015);">
         <div class="container">
-            <div class="service-block reverse">
-                <div class="image-wrapper">
-                    <img src="images/epc.jpg" alt="Endüstriyel EPC Projesi" loading="lazy" />
-                </div>
-                <div>
-                    <span class="service-icon"><i class="fas fa-hard-hat"></i></span>
-                    <h2>Endüstriyel EPC Hizmetleri</h2>
-                    <p class="service-tagline">Enerji projelerinizi baştan sona profesyonelce yönetiyor, riskleri minimize ediyoruz.</p>
-                    <p class="service-desc">
-                        Mühendislik, tedarik ve inşaat süreçlerini tek bir çatı altında topluyoruz. 
-                        Proje fizibilitesinden devreye almaya kadar tüm aşamalarda yanınızdayız.
-                    </p>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check-circle"></i> Fizibilite &amp; saha analizi</li>
-                        <li><i class="fas fa-check-circle"></i> Uluslararası tedarik &amp; lojistik</li>
-                        <li><i class="fas fa-check-circle"></i> İnşaat yönetimi &amp; kalite kontrol</li>
-                        <li><i class="fas fa-check-circle"></i> Zaman &amp; maliyet optimizasyonu</li>
-                        <li><i class="fas fa-check-circle"></i> Yasal izin &amp; mevzuat uyumluluğu</li>
-                        <li><i class="fas fa-check-circle"></i> Anahtar teslim teslimat</li>
+            <div class="section-header text-center">
+                <h2 class="section-title">HİZMET ALANLARIMIZ</h2>
+                <p class="section-subtitle">Sürdürülebilir altyapı için entegre mühendislik çözümleri</p>
+            </div>
+
+            <div class="category-grid">
+                <!-- 1. Renewable Energy -->
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-solar-panel"></i></div>
+                    <h3 class="category-title">Yenilenebilir Enerji Çözümleri</h3>
+                    <p class="category-desc">Yenilenebilir enerji üretimini ve verimliliğini en üst düzeye çıkaran mühendislik çözümleri.</p>
+                    <ul class="category-list">
+                        <li>Güneş Enerjisi Santralleri (GES)</li>
+                        <li>Rüzgar Enerjisi Sistemleri</li>
+                        <li>Batarya Enerji Depolama (BESS)</li>
+                        <li>Hibrit Enerji Sistemleri</li>
+                        <li>Mikro Şebekeler (Microgrid)</li>
+                        <li>Off-Grid &amp; On-Grid Sistemler</li>
                     </ul>
-                    <div class="process-steps">
-                        <span><i class="fas fa-magnifying-glass" style="margin-right:4px;"></i> Keşif</span>
-                        <span><i class="fas fa-pen-ruler" style="margin-right:4px;"></i> Tasarım</span>
-                        <span><i class="fas fa-cubes" style="margin-right:4px;"></i> Tedarik</span>
-                        <span><i class="fas fa-helmet-safety" style="margin-right:4px;"></i> İnşaat</span>
-                        <span><i class="fas fa-chart-line" style="margin-right:4px;"></i> Devreye Alma</span>
-                    </div>
-                    <div class="industries">
-                        <span>Enerji</span>
-                        <span>Petrol &amp; Gaz</span>
-                        <span>Altyapı</span>
-                        <span>Endüstri</span>
-                    </div>
-                    <a href="contact.html" class="btn-service">Projenizi Konuşalım <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+                </div>
+
+                <!-- 2. Water Management -->
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-water"></i></div>
+                    <h3 class="category-title">Su Yönetimi ve Geri Kazanım</h3>
+                    <p class="category-desc">Sürdürülebilir altyapıyı destekleyen akıllı su çözümleri.</p>
+                    <ul class="category-list">
+                        <li>Yağmur Suyu Hasadı</li>
+                        <li>Gri Su Geri Kazanımı</li>
+                        <li>Endüstriyel Atık Su Arıtma</li>
+                        <li>Su Depolama Sistemleri</li>
+                        <li>Su Verimliliği Projeleri</li>
+                        <li>Sürdürülebilir Su Yönetimi</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Sustainability -->
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-seedling"></i></div>
+                    <h3 class="category-title">Sürdürülebilirlik &amp; Çevresel Çözümler</h3>
+                    <p class="category-desc">Kurumların uzun vadeli sürdürülebilirlik hedeflerine ulaşmasına yardımcı oluyoruz.</p>
+                    <ul class="category-list">
+                        <li>Karbon Danışmanlığı</li>
+                        <li>ESG Danışmanlığı</li>
+                        <li>Net Zero Yol Haritaları</li>
+                        <li>Karbon Ayak İzi Analizi</li>
+                        <li>Enerji Verimliliği</li>
+                        <li>Sürdürülebilirlik Raporlaması</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Engineering & EPC -->
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-industry"></i></div>
+                    <h3 class="category-title">Mühendislik &amp; EPC Hizmetleri</h3>
+                    <p class="category-desc">Konseptten devreye almaya kadar entegre mühendislik hizmetleri.</p>
+                    <ul class="category-list">
+                        <li>Endüstriyel EPC</li>
+                        <li>EPCM Yönetimi</li>
+                        <li>Proje Yönetimi</li>
+                        <li>Teknik Danışmanlık</li>
+                        <li>Fizibilite Çalışmaları</li>
+                        <li>Devreye Alma ve Test</li>
+                    </ul>
+                </div>
+
+                <!-- 5. Smart Energy Technologies -->
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-microchip"></i></div>
+                    <h3 class="category-title">Akıllı Enerji Teknolojileri</h3>
+                    <p class="category-desc">Enerji yönetimini iyileştiren dijital teknolojiler.</p>
+                    <ul class="category-list">
+                        <li>EV Şarj İstasyonları</li>
+                        <li>Enerji İzleme Sistemleri (EMS)</li>
+                        <li>SCADA Sistemleri</li>
+                        <li>IoT Tabanlı Enerji Yönetimi</li>
+                        <li>Dijital Enerji Çözümleri</li>
+                        <li>Akıllı Bina Teknolojileri</li>
+                    </ul>
+                </div>
+
+                <!-- 6. Residential Sustainable Living -->
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-home"></i></div>
+                    <h3 class="category-title">Konut Sürdürülebilir Yaşam Teknolojileri</h3>
+                    <p class="category-desc">Evleri daha akıllı, daha yeşil ve daha verimli hale getiren yenilikçi teknolojiler.</p>
+                    <ul class="category-list">
+                        <li>Konut Güneş Sistemleri</li>
+                        <li>Ev Batarya Depolama Sistemleri</li>
+                        <li>Akıllı Ev Otomasyonu</li>
+                        <li>EV Ev Şarj İstasyonları</li>
+                        <li>Yağmur Suyu Hasadı</li>
+                        <li>Gri Su Geri Dönüşümü</li>
+                        <li>Akıllı Sulama Sistemleri</li>
+                        <li>Ev Enerji Yönetim Sistemleri</li>
+                        <li>Akıllı HVAC Sistemleri</li>
+                        <li>Mobil Enerji İzleme Uygulamaları</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== 3. BESS ===== -->
-    <section class="service-section scroll-reveal" id="bess">
-        <div class="container">
-            <div class="service-block">
-                <div class="image-wrapper">
-                    <img src="images/bess.PNG" alt="Batarya Enerji Depolama Sistemi" loading="lazy" />
-                </div>
-                <div>
-                    <span class="service-icon"><i class="fas fa-bolt"></i></span>
-                    <h2>BESS &mdash; Batarya Enerji Depolama</h2>
-                    <p class="service-tagline">Enerjiyi depolayın, ihtiyaç anında kullanın. Şebeke esnekliğini ve verimliliği artırın.</p>
-                    <p class="service-desc">
-                        Lityum-iyon ve yeni nesil batarya teknolojileri ile şebeke stabilizasyonu, 
-                        frekans regülasyonu ve yenilenebilir enerji entegrasyonu sağlıyoruz.
-                    </p>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check-circle"></i> Yeni nesil batarya teknolojileri</li>
-                        <li><i class="fas fa-check-circle"></i> Şebeke stabilizasyonu &amp; regülasyon</li>
-                        <li><i class="fas fa-check-circle"></i> GES + BESS hibrit entegrasyon</li>
-                        <li><i class="fas fa-check-circle"></i> Enerji ticareti optimizasyonu</li>
-                        <li><i class="fas fa-check-circle"></i> Güvenli &amp; ölçeklenebilir depolama</li>
-                        <li><i class="fas fa-check-circle"></i> Talep yanıtı yönetimi</li>
-                    </ul>
-                    <div class="process-steps">
-                        <span><i class="fas fa-magnifying-glass" style="margin-right:4px;"></i> Analiz</span>
-                        <span><i class="fas fa-pen-ruler" style="margin-right:4px;"></i> Tasarım</span>
-                        <span><i class="fas fa-cubes" style="margin-right:4px;"></i> Tedarik</span>
-                        <span><i class="fas fa-helmet-safety" style="margin-right:4px;"></i> Montaj</span>
-                        <span><i class="fas fa-chart-line" style="margin-right:4px;"></i> İzleme</span>
-                    </div>
-                    <div class="industries">
-                        <span>Enerji</span>
-                        <span>Şebeke</span>
-                        <span>Endüstri</span>
-                        <span>Mobilite</span>
-                    </div>
-                    <a href="contact.html" class="btn-service">Projenizi Konuşalım <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== 4. KARBON ===== -->
-    <section class="service-section scroll-reveal" id="carbon">
-        <div class="container">
-            <div class="service-block reverse">
-                <div class="image-wrapper">
-                    <img src="images/carbon.jpg" alt="Karbon Çözümleri" loading="lazy" />
-                </div>
-                <div>
-                    <span class="service-icon"><i class="fas fa-leaf"></i></span>
-                    <h2>Karbon Danışmanlığı &amp; Çözümleri</h2>
-                    <p class="service-tagline">Karbon ayak izinizi analiz ediyor, azaltma ve dengeleme stratejileri ile sürdürülebilir geleceğinize yatırım yapıyoruz.</p>
-                    <p class="service-desc">
-                        Scope 1, 2 ve 3 karbon emisyonlarını hesaplıyor, azaltma projeleri geliştiriyor 
-                        ve karbon kredisi yatırımları ile net-zero hedeflerinize ulaşmanıza yardımcı oluyoruz.
-                    </p>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check-circle"></i> Karbon ayak izi hesaplama</li>
-                        <li><i class="fas fa-check-circle"></i> Azaltma projeleri &amp; verimlilik</li>
-                        <li><i class="fas fa-check-circle"></i> Karbon dengeleme &amp; krediler</li>
-                        <li><i class="fas fa-check-circle"></i> Sürdürülebilirlik raporlaması</li>
-                        <li><i class="fas fa-check-circle"></i> Yeşil sertifikasyon danışmanlığı</li>
-                        <li><i class="fas fa-check-circle"></i> Net-zero strateji geliştirme</li>
-                    </ul>
-                    <div class="process-steps">
-                        <span><i class="fas fa-magnifying-glass" style="margin-right:4px;"></i> Ölçüm</span>
-                        <span><i class="fas fa-pen-ruler" style="margin-right:4px;"></i> Strateji</span>
-                        <span><i class="fas fa-cubes" style="margin-right:4px;"></i> Uygulama</span>
-                        <span><i class="fas fa-chart-line" style="margin-right:4px;"></i> Raporlama</span>
-                        <span><i class="fas fa-circle-check" style="margin-right:4px;"></i> Sertifikasyon</span>
-                    </div>
-                    <div class="industries">
-                        <span>Enerji</span>
-                        <span>Üretim</span>
-                        <span>Finans</span>
-                        <span>Kamu</span>
-                    </div>
-                    <a href="contact.html" class="btn-service">Projenizi Konuşalım <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== 5. DANIŞMANLIK ===== -->
-    <section class="service-section scroll-reveal" id="consult">
-        <div class="container">
-            <div class="service-block">
-                <div class="image-wrapper">
-                    <img src="images/consulting.jpg" alt="Mühendislik Danışmanlığı" loading="lazy" />
-                </div>
-                <div>
-                    <span class="service-icon"><i class="fas fa-handshake"></i></span>
-                    <h2>Mühendislik Danışmanlığı</h2>
-                    <p class="service-tagline">Enerji yatırımlarınızda uzman rehberlik ile riskleri azaltın, fırsatları değerlendirin.</p>
-                    <p class="service-desc">
-                        Teknik fizibilite, teknoloji seçimi, proje finansmanı ve mevzuat danışmanlığı 
-                        ile yatırımlarınızı güvence altına alıyoruz.
-                    </p>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check-circle"></i> Teknik fizibilite &amp; saha analizi</li>
-                        <li><i class="fas fa-check-circle"></i> Teknoloji &amp; tedarikçi değerlendirmesi</li>
-                        <li><i class="fas fa-check-circle"></i> Proje finansmanı &amp; modelleme</li>
-                        <li><i class="fas fa-check-circle"></i> Mevzuat &amp; teşvik danışmanlığı</li>
-                        <li><i class="fas fa-check-circle"></i> Enerji verimliliği stratejileri</li>
-                        <li><i class="fas fa-check-circle"></i> Dönüşüm &amp; dönüşüm yönetimi</li>
-                    </ul>
-                    <div class="process-steps">
-                        <span><i class="fas fa-magnifying-glass" style="margin-right:4px;"></i> Analiz</span>
-                        <span><i class="fas fa-pen-ruler" style="margin-right:4px;"></i> Strateji</span>
-                        <span><i class="fas fa-cubes" style="margin-right:4px;"></i> Planlama</span>
-                        <span><i class="fas fa-chart-line" style="margin-right:4px;"></i> Uygulama</span>
-                        <span><i class="fas fa-circle-check" style="margin-right:4px;"></i> İzleme</span>
-                    </div>
-                    <div class="industries">
-                        <span>Enerji</span>
-                        <span>Endüstri</span>
-                        <span>Finans</span>
-                        <span>Kamu</span>
-                    </div>
-                    <a href="contact.html" class="btn-service">Projenizi Konuşalım <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CTA PREMIUM ===== -->
-    <section class="section scroll-reveal" style="padding: 3rem 0 5rem;">
+    <!-- ===== CTA ===== -->
+    <section class="section scroll-reveal">
         <div class="container">
             <div class="cta-premium">
-                <h2>Projenizi Birlikte Tasarlayalım</h2>
-                <p>Vitavolt Global olarak, enerji ihtiyaçlarınıza özel mühendislik çözümleri sunuyoruz. Hemen iletişime geçin, farkı yaşayın.</p>
-                <a href="contact.html" class="btn btn-primary btn-large">TEKLİF ALIN</a>
+                <h2>Geleceği Birlikte İnşa Etmeye Hazır Mısınız?</h2>
+                <p>Projenize özel sürdürülebilir mühendislik çözümleri geliştirelim.</p>
+                <a href="contact.html" class="btn btn-primary btn-cta" style="padding:0.9rem 3rem; font-size:1rem;">TEKLİF ALIN</a>
             </div>
         </div>
     </section>
@@ -556,10 +463,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="index.html" class="footer-logo" title="Vitavolt Global Anasayfa">
-                        <i class="fas fa-bolt"></i>
-                        <span>VITAVOLT GLOBAL</span>
-                    </a>
+                    <a href="index.html" class="footer-logo"><span>VITAVOLT GLOBAL</span></a>
                     <p class="footer-description">Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri ve danışmanlık hizmetleri sunmaktadır.</p>
                     <div class="social-links">
                         <a href="#" class="social-link" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -580,10 +484,10 @@
                 <div class="footer-col">
                     <h4 class="footer-title">HİZMETLERİMİZ</h4>
                     <ul class="footer-links">
-                        <li><a href="#ges">GES (Güneş Enerjisi)</a></li>
-                        <li><a href="#epc">Endüstriyel EPC</a></li>
-                        <li><a href="#bess">Batarya Depolama (BESS)</a></li>
-                        <li><a href="#carbon">Karbon Danışmanlığı</a></li>
+                        <li><a href="#main-services">GES (Güneş Enerjisi)</a></li>
+                        <li><a href="#main-services">Endüstriyel EPC</a></li>
+                        <li><a href="#main-services">Batarya Depolama (BESS)</a></li>
+                        <li><a href="#main-services">Karbon Danışmanlığı</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -610,18 +514,20 @@
         </div>
     </footer>
 
+    <!-- ===== SCHEMA.ORG ===== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Vitavolt Global Hizmetler",
-            "description": "GES, EPC, BESS, Karbon ve Danışmanlık hizmetleri",
+            "description": "Entegre mühendislik, sürdürülebilirlik ve altyapı çözümleri",
             "provider": {
                 "@type": "Organization",
                 "name": "Vitavolt Global"
             }
         }
     </script>
+
     <script src="js/script.js"></script>
 </body>
 </html>
