@@ -1596,3 +1596,52 @@ a:hover {
     background: var(--color-primary);
     color: var(--color-bg-dark);
 }
+
+/* ============================================================
+   MOBILE MENU FIX — (Eksik Active State)
+   ============================================================ */
+
+@media (max-width: 1023px) {
+    /* Menü açıkken göster */
+    .nav-menu.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(7, 17, 28, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 2rem 1.5rem;
+        gap: 1.2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .nav-menu.active .nav-link {
+        font-size: 1.1rem;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu.active .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Hamburger butonunun X'e dönüşmesi */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
