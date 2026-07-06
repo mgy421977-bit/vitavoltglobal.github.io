@@ -78,7 +78,7 @@
         .contact-card:hover {
             transform: translateY(-6px);
             border-color: rgba(34, 211, 238, 0.25);
-            box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 16px 32px -12px rgba(0,0,0,0.5);
         }
         .contact-card .icon {
             font-size: 2.6rem;
@@ -109,6 +109,12 @@
             color: #94a3b8;
             font-weight: 400;
             margin-top: 0.25rem;
+        }
+        .contact-card .address-detail {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-top: 0.3rem;
         }
         .form-premium {
             background: rgba(255, 255, 255, 0.03);
@@ -191,8 +197,8 @@
         .map-container {
             border-radius: 1.5rem;
             overflow: hidden;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.06);
             margin-top: 1.5rem;
         }
         .map-container iframe {
@@ -237,13 +243,13 @@
             align-items: center;
             justify-content: center;
             font-size: 2.4rem;
-            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 8px 24px rgba(37,211,102,0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
         }
         .whatsapp-float:hover {
             transform: scale(1.08);
-            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 12px 32px rgba(37,211,102,0.4);
             color: #fff;
         }
         @media (max-width: 576px) {
@@ -256,8 +262,8 @@
             }
         }
         .cta-contact {
-            background: linear-gradient(135deg, rgba(34, 211, 238, 0.06), rgba(168, 85, 247, 0.06));
-            border: 1px solid rgba(34, 211, 238, 0.08);
+            background: linear-gradient(135deg, rgba(34,211,238,0.06), rgba(168,85,247,0.06));
+            border: 1px solid rgba(34,211,238,0.08);
             border-radius: 2rem;
             padding: 3.5rem 2.5rem;
             text-align: center;
@@ -328,7 +334,7 @@
                     <div class="top-bar-right">
                         <span class="top-bar-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>İzmir, Türkiye</span>
+                            <span>Bayraklı, İzmir</span>
                         </span>
                         <span class="divider">|</span>
                         <div class="language-selector">
@@ -345,7 +351,6 @@
             <div class="container">
                 <div class="navbar-content">
                     <a href="index.html" class="logo" title="Vitavolt Global Anasayfa">
-                        <i class="fas fa-bolt"></i>
                         <span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span>
                     </a>
                     <div class="nav-menu">
@@ -355,9 +360,12 @@
                         <a href="contact.html" class="nav-link active" data-i18n="nav-contact">İLETİŞİM</a>
                     </div>
                     <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
-                    <button class="menu-toggle" aria-label="Menüyü Aç"><span></span><span></span><span></span></button>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç/kapat" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
                 </div>
             </div>
+            <div class="menu-overlay" id="menuOverlay"></div>
         </nav>
     </header>
 
@@ -394,8 +402,13 @@
                 <div class="contact-card">
                     <span class="icon"><i class="fas fa-map-pin"></i></span>
                     <h3>Adres</h3>
-                    <p>İzmir, Türkiye</p>
-                    <div class="small">Ofisimizi ziyaret edin</div>
+                    <p>ADALET MANAS BULV</p>
+                    <p>FOLKART TOWERS No:47B Kapı No:2601</p>
+                    <p>BAYRAKLI / İzmir / Türkiye</p>
+                    <div class="address-detail">
+                        <i class="fas fa-building" style="margin-right:4px;"></i> KARŞIYAKA VERGİ DAİRESİ MÜD.<br>
+                        <i class="fas fa-id-card" style="margin-right:4px;"></i> VKN: 9251284497
+                    </div>
                 </div>
                 <div class="contact-card">
                     <span class="icon"><i class="fas fa-clock"></i></span>
@@ -475,9 +488,10 @@
                 <div id="formFeedback" class="feedback" style="margin-top:1.2rem; text-align:center; font-weight:500; display:none;"></div>
             </div>
 
+            <!-- Harita -->
             <div class="map-container" style="margin-top: 3rem;">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.3804343046366!2d27.142621!3d38.424671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd9fbffffff%3A0x123456789!2s%C4%B0zmir%2C%20T%C3%BCrkiye!5e0!3m2!1str!2str!4v1234567890" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.3804343046366!2d27.142621!3d38.424671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd9fbffffff%3A0x123456789!2sBayrakl%C4%B1%2C%20%C4%B0zmir%2C%20T%C3%BCrkiye!5e0!3m2!1str!2str!4v1234567890" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
@@ -540,7 +554,6 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="index.html" class="footer-logo" title="Vitavolt Global Anasayfa">
-                        <i class="fas fa-bolt"></i>
                         <span>VITAVOLT GLOBAL</span>
                     </a>
                     <p class="footer-description">Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri ve danışmanlık hizmetleri sunmaktadır.</p>
@@ -574,11 +587,11 @@
                     <ul class="footer-contact">
                         <li><a href="tel:+905454411977"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
                         <li><a href="mailto:info@vitavoltglobal.com"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
-                        <li><span><i class="fas fa-map-marker-alt"></i> İzmir, Türkiye</span></li>
+                        <li><span><i class="fas fa-map-marker-alt"></i> Bayraklı, İzmir</span></li>
                     </ul>
-                    <div class="newsletter-signup">
-                        <input type="email" placeholder="E-posta adresiniz" class="newsletter-input" aria-label="E-posta adresi" />
-                        <button class="newsletter-btn" aria-label="Abone ol"><i class="fas fa-arrow-right"></i></button>
+                    <div class="footer-company-info" style="margin-top:1rem; font-size:0.8rem; color:var(--color-text-muted);">
+                        <p><i class="fas fa-building" style="margin-right:6px; color:var(--color-primary);"></i> KARŞIYAKA VERGİ DAİRESİ MÜD.</p>
+                        <p><i class="fas fa-id-card" style="margin-right:6px; color:var(--color-primary);"></i> VKN: 9251284497</p>
                     </div>
                 </div>
             </div>
@@ -607,9 +620,12 @@
                 "email": "info@vitavoltglobal.com",
                 "address": {
                     "@type": "PostalAddress",
-                    "addressLocality": "İzmir",
+                    "streetAddress": "ADALET MANAS BULV FOLKART TOWERS No:47B Kapı No:2601",
+                    "addressLocality": "Bayraklı",
+                    "addressRegion": "İzmir",
                     "addressCountry": "TR"
-                }
+                },
+                "taxID": "9251284497"
             }
         }
     </script>
@@ -628,12 +644,11 @@
                     btn.disabled = true;
                     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gönderiliyor...';
 
-                    // ===== EMAILJS GÖNDERİMİ (publicKey parametresi ile) =====
                     emailjs.sendForm(
                         "service_viiccsc",
                         "template_mjrxy4j",
                         this, {
-                            publicKey: "TyI4fVN4OLgH5OKgH"  // ← DOĞRU PUBLIC KEY
+                            publicKey: "TyI4fVN4OLgH5OKgH"
                         }
                     ).then(function() {
                         alert("✅ Teklif talebiniz başarıyla gönderildi. En kısa sürede size dönüş yapacağız.");
