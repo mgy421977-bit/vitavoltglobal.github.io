@@ -3,420 +3,97 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vitavolt - Engineering Tomorrow's Energy</title>
-    <meta name="description" content="Vitavolt provides next-gen energy engineering solutions: Solar, EPC, BESS, Carbon & Consultancy." />
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome Icons -->
+    <title>Vitavolt - Ana Sayfa</title>
+    <meta name="description" content="Vitavolt, enerji mühendisliğinde geleceği inşa eder. Güneş, EPC, BESS, Karbon ve Danışmanlık çözümleri." />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
-
-        /* Enerji çizgisi */
-        .energy-line {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00f0ff, #7b2ffc, transparent);
-            background-size: 200% 100%;
-            animation: flow 3s linear infinite;
-        }
-        @keyframes flow {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        /* Açılış animasyonu yazısı */
-        .hero-text {
-            font-size: 5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #22d3ee, #a855f7, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Sayaçlar */
-        .counter { font-size: 3rem; font-weight: 700; }
-
-        /* Kart hover */
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            border-color: #22d3ee;
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(34, 211, 238, 0.15);
-        }
-
-        /* Dil butonu */
-        .lang-btn {
-            background: rgba(255,255,255,0.1);
-            padding: 8px 16px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.2);
-            cursor: pointer;
-            color: #fff;
-            transition: 0.3s;
-        }
-        .lang-btn:hover { background: rgba(255,255,255,0.2); }
-
-        /* Navbar */
-        .navbar {
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* Form */
-        .form-input {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: white;
-            width: 100%;
-            outline: none;
-            transition: 0.3s;
-        }
-        .form-input:focus { border-color: #22d3ee; }
-
-        /* Mobil menü */
-        .mobile-menu { display: none; }
-        @media (max-width: 768px) {
-            .desktop-menu { display: none; }
-            .mobile-menu { display: flex; flex-direction: column; gap: 12px; }
-            .hero-text { font-size: 3rem; }
-            .counter { font-size: 2rem; }
-        }
-    </style>
 </head>
 <body>
-
-    <!-- ======== NAVBAR ======== -->
-    <nav class="navbar fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400">VITAVOLT</h1>
-        
-        <!-- Desktop Menü -->
-        <div class="desktop-menu flex items-center gap-8 text-sm uppercase tracking-wider">
-            <a href="#home" class="hover:text-cyan-400 transition">Ana Sayfa</a>
-            <a href="#about" class="hover:text-cyan-400 transition">Hakkımızda</a>
-            <a href="#services" class="hover:text-cyan-400 transition">Hizmetler</a>
-            <a href="#contact" class="hover:text-cyan-400 transition">İletişim</a>
-            <button id="langToggle" class="lang-btn flex items-center gap-2">
-                <i class="fas fa-globe"></i> <span id="langLabel">TR</span>
-            </button>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">VITAVOLT</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımızda</a></li>
+                <li><a href="services.html">Hizmetler</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+            <button id="langToggle" class="lang-btn"><i class="fas fa-globe"></i> <span id="langLabel">TR</span></button>
+            <button id="mobileMenuToggle" class="mobile-toggle"><i class="fas fa-bars"></i></button>
         </div>
-
-        <!-- Mobil Menü Butonu -->
-        <button id="mobileMenuToggle" class="block md:hidden text-white text-2xl">
-            <i class="fas fa-bars"></i>
-        </button>
+        <!-- Mobil Menü -->
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="about.html">Hakkımızda</a>
+            <a href="services.html">Hizmetler</a>
+            <a href="contact.html">İletişim</a>
+            <button id="mobileLangToggle" class="lang-btn"><i class="fas fa-globe"></i> <span id="mobileLangLabel">TR</span></button>
+        </div>
     </nav>
 
-    <!-- Mobil Menü (açılır) -->
-    <div id="mobileMenu" class="mobile-menu fixed top-16 left-0 w-full bg-black/95 backdrop-blur-lg p-6 z-40 border-b border-white/10 hidden">
-        <a href="#home" class="text-white hover:text-cyan-400 text-lg">Ana Sayfa</a>
-        <a href="#about" class="text-white hover:text-cyan-400 text-lg">Hakkımızda</a>
-        <a href="#services" class="text-white hover:text-cyan-400 text-lg">Hizmetler</a>
-        <a href="#contact" class="text-white hover:text-cyan-400 text-lg">İletişim</a>
-        <button id="mobileLangToggle" class="lang-btn flex items-center gap-2 w-fit">
-            <i class="fas fa-globe"></i> <span id="mobileLangLabel">TR</span>
-        </button>
-    </div>
-
-    <!-- ======== HERO ======== -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-20">
-        <div class="absolute inset-0 z-0 opacity-20">
-            <div class="energy-line absolute w-full" style="top:10%; left:0; transform:rotate(2deg);"></div>
-            <div class="energy-line absolute w-full" style="top:25%; left:0; transform:rotate(-2deg);"></div>
-            <div class="energy-line absolute w-full" style="top:40%; left:0; transform:rotate(1deg);"></div>
-            <div class="energy-line absolute w-full" style="top:55%; left:0; transform:rotate(-1deg);"></div>
-            <div class="energy-line absolute w-full" style="top:70%; left:0; transform:rotate(2deg);"></div>
-            <div class="energy-line absolute w-full" style="top:85%; left:0; transform:rotate(-2deg);"></div>
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+        <div class="energy-lines">
+            <div class="energy-line"></div><div class="energy-line"></div>
+            <div class="energy-line"></div><div class="energy-line"></div>
+            <div class="energy-line"></div><div class="energy-line"></div>
         </div>
-
-        <div class="relative z-10 text-center max-w-5xl mx-auto">
-            <div id="animatedTitle" class="hero-text text-6xl md:text-8xl font-black mb-4">VITAVOLT</div>
-            <p id="heroSlogan" class="text-2xl md:text-4xl font-light mt-4 text-gray-200">Geleceğe Güç Veren Mühendislik.</p>
-            <p id="heroSub" class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Enerjiyi mühendislikle yeniden şekillendiriyoruz.</p>
-            <a href="#services" id="heroBtn" class="inline-block mt-8 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-black font-bold text-lg hover:scale-105 transition">Çözümleri Keşfet</a>
+        <div class="container hero-content">
+            <h1 id="animatedTitle" class="hero-title">VITAVOLT</h1>
+            <p id="heroSlogan" class="hero-slogan">Geleceğe Güç Veren Mühendislik.</p>
+            <p id="heroSub" class="hero-sub">Enerjiyi mühendislikle yeniden şekillendiriyoruz.</p>
+            <a href="services.html" id="heroBtn" class="btn-primary">Çözümleri Keşfet</a>
         </div>
     </section>
 
-    <!-- ======== ABOUT ======== -->
-    <section id="about" class="py-24 px-6 bg-gradient-to-b from-black to-gray-900">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-            <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/10 card-hover">
-                <h3 class="text-2xl font-bold text-cyan-300 mb-3">Biz Kimiz?</h3>
-                <p class="text-gray-300 leading-relaxed">Vitavolt, enerji altyapısını teknoloji ve inovasyonla yeniden şekillendiren yeni nesil bir mühendislik firmasıdır.</p>
-            </div>
-            <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/10 card-hover">
-                <h3 class="text-2xl font-bold text-cyan-300 mb-3">Ne Çözüyoruz?</h3>
-                <p class="text-gray-300 leading-relaxed">Geleneksel şebekelerdeki verimsizliği, yüksek karbon ayak izini ve akıllı depolama eksikliğini çözüyoruz.</p>
-            </div>
-            <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/10 card-hover">
-                <h3 class="text-2xl font-bold text-cyan-300 mb-3">Nasıl Çalışıyoruz?</h3>
-                <p class="text-gray-300 leading-relaxed">Yapay zeka destekli analizler ve modüler sistemlerle anahtar teslim enerji çözümleri tasarlıyor, mühendisliğini yapıyor ve devreye alıyoruz.</p>
-            </div>
-            <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/10 card-hover">
-                <h3 class="text-2xl font-bold text-cyan-300 mb-3">Neden Vitavolt?</h3>
-                <p class="text-gray-300 leading-relaxed">Çünkü sadece sistem kurmuyor, ölçülebilir etki yaratan sürdürülebilir bir gelecek mühendisliği yapıyoruz.</p>
+    <!-- ===== ABOUT ÖZET ===== -->
+    <section class="section about-preview">
+        <div class="container">
+            <h2 class="section-title">Hikayemiz</h2>
+            <div class="about-grid">
+                <div class="about-card"><h3>Biz Kimiz?</h3><p>Vitavolt, enerji altyapısını teknoloji ve inovasyonla yeniden şekillendiren yeni nesil bir mühendislik firmasıdır.</p></div>
+                <div class="about-card"><h3>Ne Çözüyoruz?</h3><p>Geleneksel şebekelerdeki verimsizliği, yüksek karbon ayak izini ve akıllı depolama eksikliğini çözüyoruz.</p></div>
+                <div class="about-card"><h3>Nasıl Çalışıyoruz?</h3><p>Yapay zeka destekli analizler ve modüler sistemlerle anahtar teslim enerji çözümleri sunuyoruz.</p></div>
+                <div class="about-card"><h3>Neden Vitavolt?</h3><p>Çünkü sadece sistem kurmuyor, ölçülebilir etki yaratan sürdürülebilir bir gelecek mühendisliği yapıyoruz.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ======== SERVICES ======== -->
-    <section id="services" class="py-24 px-6 bg-black">
-        <h2 id="servicesTitle" class="text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Hizmetlerimiz</h2>
-        <div class="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center">
-                <i class="fas fa-solar-panel text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="service-title text-2xl font-bold">GES (Güneş Enerjisi)</h3>
-                <p class="service-desc text-gray-400 mt-2">Yüksek verimli fotovoltaik santral tasarımı ve kurulumu.</p>
-            </div>
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center">
-                <i class="fas fa-hard-hat text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="service-title text-2xl font-bold">EPC</h3>
-                <p class="service-desc text-gray-400 mt-2">Anahtar teslim Mühendislik, Tedarik ve İnşaat yönetimi.</p>
-            </div>
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center">
-                <i class="fas fa-battery-full text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="service-title text-2xl font-bold">BESS</h3>
-                <p class="service-desc text-gray-400 mt-2">Şebeke stabilitesi için Batarya Enerji Depolama Sistemleri.</p>
-            </div>
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center">
-                <i class="fas fa-leaf text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="service-title text-2xl font-bold">Karbon Çözümleri</h3>
-                <p class="service-desc text-gray-400 mt-2">Karbon ayak izi analizi ve dengeleme stratejileri.</p>
-            </div>
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 card-hover text-center sm:col-span-2 lg:col-span-1">
-                <i class="fas fa-handshake text-5xl text-cyan-400 mb-4"></i>
-                <h3 class="service-title text-2xl font-bold">Danışmanlık</h3>
-                <p class="service-desc text-gray-400 mt-2">Teknik danışmanlık ve fizibilite çalışmaları.</p>
+    <!-- ===== SERVICES ÖZET ===== -->
+    <section class="section services-preview">
+        <div class="container">
+            <h2 class="section-title">Hizmetlerimiz</h2>
+            <div class="services-grid">
+                <div class="service-card"><i class="fas fa-solar-panel"></i><h3>GES</h3><p>Güneş enerjisi santrali tasarım ve kurulumu.</p></div>
+                <div class="service-card"><i class="fas fa-hard-hat"></i><h3>EPC</h3><p>Anahtar teslim mühendislik, tedarik ve inşaat.</p></div>
+                <div class="service-card"><i class="fas fa-battery-full"></i><h3>BESS</h3><p>Batarya enerji depolama sistemleri.</p></div>
+                <div class="service-card"><i class="fas fa-leaf"></i><h3>Karbon</h3><p>Karbon ayak izi analizi ve dengeleme.</p></div>
+                <div class="service-card"><i class="fas fa-handshake"></i><h3>Danışmanlık</h3><p>Teknik danışmanlık ve fizibilite.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ======== STATS ======== -->
-    <section id="statsSection" class="py-16 px-6 bg-gradient-to-r from-cyan-950/30 to-purple-950/30 border-y border-white/10">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div><h3 class="counter text-5xl font-bold text-cyan-300"><span id="projectCount">150</span>+</h3><p class="stat-label">Proje</p></div>
-            <div><h3 class="counter text-5xl font-bold text-purple-300"><span id="capacityCount">320</span>+</h3><p class="stat-label">Kurulu Güç (MW)</p></div>
-            <div><h3 class="counter text-5xl font-bold text-pink-300"><span id="countryCount">12</span></h3><p class="stat-label">Ülke</p></div>
+    <!-- ===== STATS + HARİTA ===== -->
+    <section class="section stats-section">
+        <div class="container stats-grid">
+            <div><span class="counter" id="projectCount">150</span>+ <p>Proje</p></div>
+            <div><span class="counter" id="capacityCount">320</span>+ <p>Kurulu Güç (MW)</p></div>
+            <div><span class="counter" id="countryCount">12</span> <p>Ülke</p></div>
         </div>
-        <div class="max-w-4xl mx-auto mt-12 opacity-80">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/World_map_blank_without_borders.svg/1280px-World_map_blank_without_borders.svg.png" alt="Dünya Haritası" class="w-full rounded-lg" />
-        </div>
-    </section>
-
-    <!-- ======== CONTACT ======== -->
-    <section id="contact" class="py-24 px-6 bg-black">
-        <div class="max-w-2xl mx-auto bg-white/5 p-10 rounded-3xl border border-white/10">
-            <h2 id="contactTitle" class="text-4xl font-bold mb-8 text-center">Teklif Al</h2>
-            <form id="quoteForm" class="space-y-5">
-                <input type="text" id="formName" placeholder="Adınız" class="form-input" required />
-                <input type="email" id="formEmail" placeholder="E-posta" class="form-input" required />
-                <textarea id="formMessage" rows="4" placeholder="Mesajınız" class="form-input" required></textarea>
-                <button id="formSubmitBtn" type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-black font-bold text-lg hover:scale-[1.02] transition">Gönder</button>
-            </form>
-            <div id="formFeedback" class="text-center text-cyan-400 mt-4 hidden"></div>
+        <div class="map-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/World_map_blank_without_borders.svg/1280px-World_map_blank_without_borders.svg.png" alt="Dünya Haritası" />
         </div>
     </section>
 
-    <!-- ======== FOOTER ======== -->
-    <footer id="footerText" class="text-center py-8 text-gray-500 border-t border-white/5 text-sm">© 2026 Vitavolt. Geleceğe Güç Veren Mühendislik.</footer>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p id="footerText">© 2026 Vitavolt. Geleceğe Güç Veren Mühendislik.</p>
+        </div>
+    </footer>
 
-    <!-- ======== JAVASCRIPT ======== -->
-    <script>
-        // ---- ÇEVİRİLER ----
-        const translations = {
-            tr: {
-                nav: ['Ana Sayfa', 'Hakkımızda', 'Hizmetler', 'İletişim'],
-                heroTitle: 'Geleceğe Güç Veren Mühendislik.',
-                heroSub: 'Enerjiyi mühendislikle yeniden şekillendiriyoruz.',
-                heroBtn: 'Çözümleri Keşfet',
-                about: ['Biz Kimiz?', 'Ne Çözüyoruz?', 'Nasıl Çalışıyoruz?', 'Neden Vitavolt?'],
-                aboutTexts: [
-                    'Vitavolt, enerji altyapısını teknoloji ve inovasyonla yeniden şekillendiren yeni nesil bir mühendislik firmasıdır.',
-                    'Geleneksel şebekelerdeki verimsizliği, yüksek karbon ayak izini ve akıllı depolama eksikliğini çözüyoruz.',
-                    'Yapay zeka destekli analizler ve modüler sistemlerle anahtar teslim enerji çözümleri tasarlıyor, mühendisliğini yapıyor ve devreye alıyoruz.',
-                    'Çünkü sadece sistem kurmuyor, ölçülebilir etki yaratan sürdürülebilir bir gelecek mühendisliği yapıyoruz.'
-                ],
-                servicesTitle: 'Hizmetlerimiz',
-                services: ['GES (Güneş Enerjisi)', 'EPC', 'BESS', 'Karbon Çözümleri', 'Danışmanlık'],
-                servicesTexts: [
-                    'Yüksek verimli fotovoltaik santral tasarımı ve kurulumu.',
-                    'Anahtar teslim Mühendislik, Tedarik ve İnşaat yönetimi.',
-                    'Şebeke stabilitesi için Batarya Enerji Depolama Sistemleri.',
-                    'Karbon ayak izi analizi ve dengeleme stratejileri.',
-                    'Teknik danışmanlık ve fizibilite çalışmaları.'
-                ],
-                stats: ['Proje', 'Kurulu Güç (MW)', 'Ülke'],
-                contactTitle: 'Teklif Al',
-                contactName: 'Adınız',
-                contactEmail: 'E-posta',
-                contactMsg: 'Mesajınız',
-                contactBtn: 'Gönder',
-                footer: '© 2026 Vitavolt. Geleceğe Güç Veren Mühendislik.'
-            },
-            en: {
-                nav: ['Home', 'About', 'Services', 'Contact'],
-                heroTitle: 'Engineering Tomorrow’s Energy.',
-                heroSub: 'Powering the Future with Engineering.',
-                heroBtn: 'Explore Solutions',
-                about: ['Who We Are', 'What We Solve', 'How We Work', 'Why Vitavolt'],
-                aboutTexts: [
-                    'Vitavolt is a next-generation engineering company reshaping energy infrastructure with technology and innovation.',
-                    'We solve the inefficiency in traditional grids, high carbon footprints, and lack of smart energy storage.',
-                    'We design, engineer, and deploy turnkey energy solutions using AI-driven analytics and modular systems.',
-                    'Because we don\'t just build systems; we engineer a sustainable future with measurable impact.'
-                ],
-                servicesTitle: 'Our Services',
-                services: ['Solar Power (GES)', 'EPC', 'BESS', 'Carbon Solutions', 'Consultancy'],
-                servicesTexts: [
-                    'High-efficiency photovoltaic plant design and installation.',
-                    'Turnkey Engineering, Procurement & Construction management.',
-                    'Battery Energy Storage Systems for grid stability.',
-                    'Carbon footprint analysis and offset strategies.',
-                    'Technical advisory and project feasibility studies.'
-                ],
-                stats: ['Projects', 'MW Installed', 'Countries'],
-                contactTitle: 'Get a Quote',
-                contactName: 'Your Name',
-                contactEmail: 'Email',
-                contactMsg: 'Your Message',
-                contactBtn: 'Send Request',
-                footer: '© 2026 Vitavolt. Engineering Tomorrow’s Energy.'
-            }
-        };
-
-        let currentLang = 'tr';
-
-        // ---- DİL GÜNCELLEME FONKSİYONU (DÜZELTİLDİ) ----
-        function updateLanguage(lang) {
-            const t = translations[lang];
-            if (!t) return;
-
-            // 1. Nav (Masaüstü ve Mobil AYRI AYRI)
-            const desktopLinks = document.querySelectorAll('.desktop-menu a');
-            const mobileLinks = document.querySelectorAll('#mobileMenu a');
-            desktopLinks.forEach((el, i) => { if (i < 4) el.textContent = t.nav[i]; });
-            mobileLinks.forEach((el, i) => { if (i < 4) el.textContent = t.nav[i]; });
-
-            // 2. Hero
-            document.getElementById('heroSlogan').textContent = t.heroTitle;
-            document.getElementById('heroSub').textContent = t.heroSub;
-            document.getElementById('heroBtn').textContent = t.heroBtn;
-
-            // 3. About
-            const aboutTitles = document.querySelectorAll('#about .bg-white\\/5 h3');
-            const aboutDescs = document.querySelectorAll('#about .bg-white\\/5 p');
-            aboutTitles.forEach((el, i) => { if (i < 4) el.textContent = t.about[i]; });
-            aboutDescs.forEach((el, i) => { if (i < 4) el.textContent = t.aboutTexts[i]; });
-
-            // 4. Services
-            document.getElementById('servicesTitle').textContent = t.servicesTitle;
-            const serviceTitles = document.querySelectorAll('.service-title');
-            const serviceDescs = document.querySelectorAll('.service-desc');
-            serviceTitles.forEach((el, i) => { if (i < 5) el.textContent = t.services[i]; });
-            serviceDescs.forEach((el, i) => { if (i < 5) el.textContent = t.servicesTexts[i]; });
-
-            // 5. Stats
-            const statLabels = document.querySelectorAll('.stat-label');
-            statLabels.forEach((el, i) => { if (i < 3) el.textContent = t.stats[i]; });
-
-            // 6. Contact
-            document.getElementById('contactTitle').textContent = t.contactTitle;
-            document.getElementById('formName').placeholder = t.contactName;
-            document.getElementById('formEmail').placeholder = t.contactEmail;
-            document.getElementById('formMessage').placeholder = t.contactMsg;
-            document.getElementById('formSubmitBtn').textContent = t.contactBtn;
-
-            // 7. Footer
-            document.getElementById('footerText').textContent = t.footer;
-
-            // 8. Dil butonları
-            document.getElementById('langLabel').textContent = lang.toUpperCase();
-            document.getElementById('mobileLangLabel').textContent = lang.toUpperCase();
-            document.documentElement.lang = lang;
-        }
-
-        // ---- DİL DEĞİŞTİRME TOGGLE ----
-        function toggleLang() {
-            currentLang = currentLang === 'tr' ? 'en' : 'tr';
-            updateLanguage(currentLang);
-        }
-        document.getElementById('langToggle').addEventListener('click', toggleLang);
-        document.getElementById('mobileLangToggle').addEventListener('click', toggleLang);
-
-        // ---- MOBİL MENÜ ----
-        const mobileMenu = document.getElementById('mobileMenu');
-        document.getElementById('mobileMenuToggle').addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // ---- SAYAÇ ANİMASYONU ----
-        function animateCounter(id, target) {
-            let current = 0;
-            const step = Math.ceil(target / 50);
-            const el = document.getElementById(id);
-            const interval = setInterval(() => {
-                current += step;
-                if (current >= target) { current = target; clearInterval(interval); }
-                el.textContent = current;
-            }, 30);
-        }
-
-        let statsAnimated = false;
-        window.addEventListener('scroll', () => {
-            const statsSection = document.getElementById('statsSection');
-            if (!statsSection) return;
-            const rect = statsSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight && !statsAnimated) {
-                statsAnimated = true;
-                animateCounter('projectCount', 150);
-                animateCounter('capacityCount', 320);
-                animateCounter('countryCount', 12);
-            }
-        });
-
-        // ---- AÇILIŞ ANİMASYONU (V → VI → VITA → VITAVOLT) ----
-        const titleEl = document.getElementById('animatedTitle');
-        const steps = ['V', 'VI', 'VITA', 'VITAVOLT'];
-        let stepIndex = 0;
-        const titleInterval = setInterval(() => {
-            stepIndex++;
-            if (stepIndex >= steps.length) { clearInterval(titleInterval); return; }
-            titleEl.textContent = steps[stepIndex];
-        }, 800);
-
-        // ---- FORM ----
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('formName').value.trim();
-            const email = document.getElementById('formEmail').value.trim();
-            const msg = document.getElementById('formMessage').value.trim();
-            const feedback = document.getElementById('formFeedback');
-            if (!name || !email || !msg) {
-                feedback.textContent = currentLang === 'tr' ? 'Lütfen tüm alanları doldurun.' : 'Please fill in all fields.';
-                feedback.classList.remove('hidden');
-                return;
-            }
-            feedback.textContent = currentLang === 'tr' ? '✅ Talebiniz alındı! En kısa sürede dönüş yapacağız.' : '✅ Your request has been received! We will get back to you shortly.';
-            feedback.classList.remove('hidden');
-            this.reset();
-        });
-
-        // ---- SAYFA YÜKLENİNCE TÜRKÇE BAŞLAT ----
-        updateLanguage('tr');
-    </script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
