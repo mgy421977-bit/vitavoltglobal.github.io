@@ -4,11 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitavolt Blog - Yenilenebilir Enerji ve Sürdürülebilirlik</title>
-    <meta name="description" content="Vitavolt Global Blog - Karbon yasası, GES teşvikleri, BESS teknolojileri ve enerji sektöründen güncel haberler.">
+    <meta name="description" content="Vitavolt Global Blog - Karbon yasası, GES teşvikleri, BESS teknolojileri ve enerji sektöründen güncel haberler, makaleler.">
+    <meta name="keywords" content="blog, karbon kanunu, GES, BESS, yenilenebilir enerji, sürdürülebilirlik">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <h1>Blog</h1>
-    <p>İlk makaleler yakında...</p>
+    <!-- Header reuse main -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">VITAVOLT GLOBAL</a>
+            <a href="../index.html">Ana Sayfa</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 40px 20px;">
+            <h1 style="color: #00AEEF; text-align: center;">Vitavolt Blog</h1>
+            <p style="text-align: center; font-size: 1.2rem;">Yenilenebilir enerji, sürdürülebilirlik ve sektör gelişmeleri</p>
+
+            <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div class="blog-card" style="border: 1px solid #10253D; border-radius: 12px; overflow: hidden; background: #10253D;">
+                    <img src="../images/carbon.jpg" alt="Karbon Kanunu" style="width: 100%; height: 200px; object-fit: cover;" loading="lazy">
+                    <div style="padding: 20px;">
+                        <span style="color: #38D67A;">Temmuz 2025</span>
+                        <h2 style="margin: 10px 0;"><a href="karbon-iklim-kanunu-2025.html" style="color: white;">Türkiye'nin İlk İklim Kanunu: 7552 Sayılı Kanun</a></h2>
+                        <p>Net-sıfır hedefleri, karbon teşvikleri ve firmalara rehber.</p>
+                        <a href="karbon-iklim-kanunu-2025.html" style="color: #00AEEF;">Devamını Oku →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>
