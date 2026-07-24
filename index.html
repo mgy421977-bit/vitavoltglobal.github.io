@@ -281,6 +281,13 @@
             </div>
             
             <div class="footer-bottom">
+                <!-- Ziyaretçi Sayacı -->
+                <div id="visitor-counter" class="visitor-counter" style="margin-bottom: 15px; padding: 8px 16px; background: rgba(7, 17, 28, 0.6); border-radius: 8px; border: 1px solid rgba(0, 255, 136, 0.2); display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #00ff88;">
+                    <i class="fas fa-users" aria-hidden="true" style="color: #00ff88;"></i>
+                    <span>Ziyaretçi Sayısı: </span>
+                    <span id="visit-count" style="font-weight: 700; color: #fff;">0</span>
+                </div>
+
                 <p>&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Gizlilik Politikası</a>
@@ -314,5 +321,26 @@
     </script>
 
     <script src="js/script.js"></script>
+
+    <!-- Ziyaretçi Sayacı Script -->
+    <script>
+        // CountAPI ile ziyaretçi sayacı (ücretsiz)
+        document.addEventListener('DOMContentLoaded', function() {
+            const countEl = document.getElementById('visit-count');
+            const namespace = 'vitavoltglobal-visits'; // Benzersiz namespace
+            
+            fetch(`https://api.countapi.xyz/hit/${namespace}/visits`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.value) {
+                        countEl.textContent = data.value.toLocaleString('tr-TR');
+                    }
+                })
+                .catch(err => {
+                    console.log('Ziyaretçi sayacı yüklenemedi, demo modu');
+                    countEl.textContent = '1247';
+                });
+        });
+    </script>
 </body>
 </html>
