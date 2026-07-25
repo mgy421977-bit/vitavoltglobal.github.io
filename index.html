@@ -299,7 +299,7 @@
         </div>
     </footer>
 
-    <!-- LocalBusiness Schema - SEO için kritik -->
+    <!-- LocalBusiness Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -326,18 +326,21 @@
             "latitude": "38.424671",
             "longitude": "27.142621"
         },
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "İzmir"
-            },
-            {
-                "@type": "State",
-                "name": "Ege Bölgesi"
-            },
-            {
-                "@type": "Country",
-                "name": "Türkiye"
-            }
-        ],
+        "areaServed": ["İzmir", "Ege Bölgesi", "Türkiye"],
         "priceRange": "$$",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "sameAs": [
+            "https://linkedin.com/company/vitavolt-global",
+            "https://twitter.com/vitavoltglobal"
+        ]
+    }
+    </script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
