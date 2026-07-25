@@ -3,7 +3,6 @@ User-agent: *
 Allow: /
 Allow: /blog/
 Disallow: /admin/
-Disallow: /*.json
+Disallow: /*.json$
 
 Sitemap: https://vitavoltglobal.com/sitemap.xml
-Sitemap: https://mgy421977-bit.github.io/vitavoltglobal.github.io/sitemap.xml
