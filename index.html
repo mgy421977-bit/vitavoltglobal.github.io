@@ -13,9 +13,13 @@
     <link rel="alternate" hreflang="x-default" href="https://vitavoltglobal.com/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#07111C" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="dns-prefetch" href="https://countapi.mileshilliard.com" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header" role="banner">
@@ -67,7 +71,7 @@
 
     <main id="main">
         <section class="hero" id="home">
-            <div class="hero-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.5), rgba(15, 26, 43, 0.7)), url('images/hero.jpg') center/cover; background-attachment: fixed;"></div>
+            <div class="hero-background" style="background-image: linear-gradient(135deg, rgba(7, 17, 28, 0.5), rgba(15, 26, 43, 0.7)), url('images/hero.jpg');"></div>
             <div class="container hero-container">
                 <div class="hero-content">
                     <h1 class="hero-title scroll-reveal">ENGINEERING<br>TOMORROW'S<br><span class="gradient-text">ENERGY</span></h1>
@@ -147,7 +151,7 @@
         </section>
 
         <section class="section stats-section">
-            <div class="stats-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.85), rgba(15, 26, 43, 0.85)), url('images/hero.jpg') center/cover; background-attachment: fixed;"></div>
+            <div class="stats-background" style="background-image: linear-gradient(135deg, rgba(7, 17, 28, 0.85), rgba(15, 26, 43, 0.85)), url('images/hero.jpg');"></div>
             <div class="container stats-container">
                 <div class="stats-grid scroll-reveal">
                     <div class="stat-card"><div class="stat-icon"><i class="fas fa-briefcase"></i></div><div class="stat-number" data-count="30">0</div><div class="stat-label" data-i18n="stat-projects">TAMAMLANAN PROJE</div></div>
@@ -159,7 +163,7 @@
         </section>
 
         <section class="section cta-section">
-            <div class="cta-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.8), rgba(15, 26, 43, 0.8)), url('images/cta.jpg') center/cover; background-attachment: fixed;"></div>
+            <div class="cta-background" style="background-image: linear-gradient(135deg, rgba(7, 17, 28, 0.8), rgba(15, 26, 43, 0.8)), url('images/cta.jpg');"></div>
             <div class="container cta-container text-center">
                 <h2 class="cta-title scroll-reveal" data-i18n="cta-title">PROJENİZ İÇİN BİZİMLE İLETİŞİME GEÇİN</h2>
                 <p class="cta-description scroll-reveal" data-i18n="cta-desc">İzmir ve Türkiye genelinde size özel enerji ve su çözümleri tasarlayalım.</p>
@@ -216,8 +220,8 @@
         </div>
     </footer>
 
-    <script src="js/translations.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" defer></script>
     <script>
     (function() {
         var el = document.getElementById('visit-count');
