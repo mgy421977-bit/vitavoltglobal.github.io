@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="1D5sMwbZpjcK5cGHV18pFPNqGqis-X7pSCm_Iw9ku-o" />
     <title>İzmir EPC Firması | GES, BESS ve Endüstriyel EPC | Vitavolt Global</title>
-    <meta name="description" content="İzmir EPC firması Vitavolt Global. Endüstriyel EPC, Güneş Enerjisi (GES), Batarya Depolama (BESS) ve mühendislik hizmetleri." />
+    <meta name="description" content="İzmir EPC firması Vitavolt Global. Endüstriyel EPC, GES, BESS hizmetleri." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://vitavoltglobal.com/services.html" />
     <meta name="theme-color" content="#07111C" />
@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-
     <header class="header">
         <div class="top-bar">
             <div class="container">
@@ -36,7 +35,6 @@
                 </div>
             </div>
         </div>
-
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-content">
@@ -49,20 +47,22 @@
                         <a href="contact.html" class="btn btn-primary btn-cta-mobile" data-i18n="btn-quote">TEKLİF AL</a>
                     </div>
                     <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
-                    <button class="menu-toggle" id="menuToggle" aria-label="Menü" type="button"><span></span><span></span><span></span></button>
+                    <div class="lang-mobile">
+                        <button class="lang-btn active" data-lang="tr" type="button">TR</button>
+                        <button class="lang-btn" data-lang="en" type="button">EN</button>
+                    </div>
+                    <button class="menu-toggle" id="menuToggle" type="button"><span></span><span></span><span></span></button>
                 </div>
             </div>
-            <div class="menu-overlay" id="menuOverlay"></div>
         </nav>
     </header>
 
     <main id="main">
-        <section class="service-hero" style="position:relative; min-height:50vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden;">
-            <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(7,17,28,0.55), rgba(15,26,43,0.85)), url('images/hero.jpg') center/cover no-repeat; background-attachment:fixed; z-index:0;"></div>
-            <div class="hero-content" style="position:relative; z-index:1; padding:5rem 1.5rem;">
-                <h1 data-i18n="svc-hero-title" style="font-size:3.2rem; font-weight:800; letter-spacing:-0.02em; margin-bottom:0.5rem; background:linear-gradient(135deg,#ffffff 30%,#22d3ee 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">İzmir EPC Hizmetleri</h1>
-                <p data-i18n="svc-hero-sub" style="font-size:1.25rem; font-weight:300; color:rgba(255,255,255,0.8); letter-spacing:0.08em;">Endüstriyel EPC • GES • BESS • Mühendislik Danışmanlığı</p>
-                <div style="width:70px; height:3px; background:linear-gradient(90deg,#22d3ee,#a855f7); margin:1.2rem auto 0; border-radius:4px;"></div>
+        <section class="service-hero" style="position:relative;min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(7,17,28,0.55),rgba(15,26,43,0.85)),url('images/hero.jpg') center/cover no-repeat;background-attachment:fixed;z-index:0"></div>
+            <div style="position:relative;z-index:1;padding:5rem 1.5rem">
+                <h1 data-i18n="svc-hero-title" style="font-size:3.2rem;font-weight:800;margin-bottom:0.5rem;background:linear-gradient(135deg,#fff 30%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">İzmir EPC Hizmetleri</h1>
+                <p data-i18n="svc-hero-sub" style="font-size:1.25rem;font-weight:300;color:rgba(255,255,255,0.8)">Endüstriyel EPC • GES • BESS • Mühendislik Danışmanlığı</p>
             </div>
         </section>
 
@@ -72,13 +72,9 @@
                     <h2 class="section-title" data-i18n="svc-main-title">ANA HİZMETLERİMİZ</h2>
                     <p class="section-subtitle" data-i18n="svc-main-sub">İzmir ve Ege Bölgesi'nde uçtan uca enerji mühendisliği çözümleri</p>
                 </div>
-
                 <div class="services-grid">
                     <div class="service-card" id="ges">
-                        <div class="service-image-wrapper">
-                            <img src="images/solar panels.jpg" alt="GES" loading="lazy" />
-                            <div class="service-overlay"></div>
-                        </div>
+                        <div class="service-image-wrapper"><img src="images/solar panels.jpg" alt="GES" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-sun"></i></div>
                             <h3 class="service-title" data-i18n="svc-ges-title">GES (GÜNEŞ ENERJİSİ)</h3>
@@ -87,10 +83,7 @@
                         </div>
                     </div>
                     <div class="service-card" id="epc">
-                        <div class="service-image-wrapper">
-                            <img src="images/epc.jpg" alt="EPC" loading="lazy" />
-                            <div class="service-overlay"></div>
-                        </div>
+                        <div class="service-image-wrapper"><img src="images/epc.jpg" alt="EPC" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
                             <h3 class="service-title" data-i18n="svc-epc-title">ENDÜSTRİYEL EPC</h3>
@@ -99,10 +92,7 @@
                         </div>
                     </div>
                     <div class="service-card" id="bess">
-                        <div class="service-image-wrapper">
-                            <img src="images/bess.PNG" alt="BESS" loading="lazy" />
-                            <div class="service-overlay"></div>
-                        </div>
+                        <div class="service-image-wrapper"><img src="images/bess.PNG" alt="BESS" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-battery-full"></i></div>
                             <h3 class="service-title" data-i18n="svc-bess-title">BATARYA DEPOLAMA (BESS)</h3>
@@ -111,10 +101,7 @@
                         </div>
                     </div>
                     <div class="service-card" id="carbon">
-                        <div class="service-image-wrapper">
-                            <img src="images/carbon.jpg" alt="Carbon" loading="lazy" />
-                            <div class="service-overlay"></div>
-                        </div>
+                        <div class="service-image-wrapper"><img src="images/carbon.jpg" alt="Carbon" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-leaf"></i></div>
                             <h3 class="service-title" data-i18n="svc-carbon-title">KARBON DANIŞMANLIĞI</h3>
@@ -123,10 +110,7 @@
                         </div>
                     </div>
                     <div class="service-card" id="consult">
-                        <div class="service-image-wrapper">
-                            <img src="images/consulting.jpg" alt="Consulting" loading="lazy" />
-                            <div class="service-overlay"></div>
-                        </div>
+                        <div class="service-image-wrapper"><img src="images/consulting.jpg" alt="Consulting" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-handshake"></i></div>
                             <h3 class="service-title" data-i18n="svc-consult-title">MÜHENDİSLİK DANIŞMANLIĞI</h3>
@@ -141,7 +125,7 @@
         <section class="section">
             <div class="container text-center">
                 <h2 class="section-title" data-i18n="svc-cta-title">İzmir'de Projeniz mi Var?</h2>
-                <p class="section-subtitle" style="margin-bottom:2rem;" data-i18n="svc-cta-desc">EPC, GES veya BESS projeniz için uzman ekibimizle hemen iletişime geçin.</p>
+                <p class="section-subtitle" style="margin-bottom:2rem" data-i18n="svc-cta-desc">EPC, GES veya BESS projeniz için uzman ekibimizle hemen iletişime geçin.</p>
                 <a href="contact.html" class="btn btn-primary btn-large" data-i18n="btn-quote-long">TEKLİF ALIN</a>
             </div>
         </section>
@@ -152,7 +136,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="index.html" class="footer-logo"><span>VITAVOLT GLOBAL</span></a>
-                    <p class="footer-description" data-i18n="footer-desc">İzmir merkezli yenilenebilir enerji ve endüstriyel EPC firması.</p>
+                    <p class="footer-description" data-i18n="footer-desc">İzmir merkezli yenilenebilir enerji firması.</p>
                 </div>
                 <div class="footer-col">
                     <h4 class="footer-title" data-i18n="footer-links">HIZLI LİNKLER</h4>
@@ -172,12 +156,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p data-i18n="copyright">&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
-            </div>
+            <div class="footer-bottom"><p data-i18n="copyright">&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p></div>
         </div>
     </footer>
-
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
 </body>

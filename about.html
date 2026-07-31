@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="1D5sMwbZpjcK5cGHV18pFPNqGqis-X7pSCm_Iw9ku-o" />
     <title>Hakkımızda | İzmir Yenilenebilir Enerji Firması Vitavolt Global</title>
-    <meta name="description" content="Vitavolt Global hakkında: İzmir merkezli yenilenebilir enerji firması. Vizyon, misyon ve değerlerimiz. GES, EPC ve batarya depolama alanında uzman ekip." />
+    <meta name="description" content="Vitavolt Global hakkında: İzmir merkezli yenilenebilir enerji firması." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://vitavoltglobal.com/about.html" />
     <meta name="theme-color" content="#07111C" />
@@ -16,24 +16,22 @@
         .about-hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
         .about-hero .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(7, 17, 28, 0.55), rgba(15, 26, 43, 0.85)), url('images/office.jpg') center/cover no-repeat; background-attachment: fixed; z-index: 0; }
         .about-hero .hero-content { position: relative; z-index: 1; padding: 6rem 1.5rem; }
-        .about-hero .hero-title { font-size: 4.2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ffffff 30%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .about-hero .hero-title { font-size: 4.2rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ffffff 30%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .about-hero .hero-subtitle { font-size: 1.4rem; font-weight: 300; color: rgba(255, 255, 255, 0.8); letter-spacing: 0.12em; text-transform: uppercase; }
         .about-hero .hero-divider { width: 70px; height: 3px; background: linear-gradient(90deg, #22d3ee, #a855f7); margin: 1.2rem auto 0; border-radius: 4px; }
         .story-text { font-size: 1.1rem; line-height: 1.9; color: #e2e8f0; }
-        .story-text strong { color: #22d3ee; }
-        .mission-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 1.5rem; padding: 2.5rem 2rem; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; height: 100%; }
-        .mission-card:hover { transform: translateY(-6px); border-color: rgba(34, 211, 238, 0.25); box-shadow: 0 16px 32px -12px rgba(0,0,0,0.5); }
+        .mission-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 1.5rem; padding: 2.5rem 2rem; height: 100%; }
         .mission-card .icon { font-size: 2.8rem; color: #22d3ee; margin-bottom: 1.25rem; display: inline-block; }
-        .mission-card h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 0.75rem; color: #f1f5f9; }
+        .mission-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; color: #f1f5f9; }
         .mission-card p { color: #94a3b8; line-height: 1.8; font-size: 0.95rem; }
         .cta-about { background: linear-gradient(135deg, rgba(34,211,238,0.06), rgba(168,85,247,0.06)); border: 1px solid rgba(34,211,238,0.08); border-radius: 2rem; padding: 3.5rem 2.5rem; text-align: center; }
         .cta-about h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.75rem; background: linear-gradient(135deg, #f1f5f9, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .cta-about p { color: #94a3b8; max-width: 500px; margin: 0 auto 2rem; font-size: 1.1rem; line-height: 1.8; }
-        @media (max-width: 768px) { .about-hero .hero-title { font-size: 2.8rem; } .about-hero .hero-subtitle { font-size: 1.1rem; } }
+        .cta-about p { color: #94a3b8; max-width: 500px; margin: 0 auto 2rem; font-size: 1.1rem; }
+        @media (max-width: 768px) { .about-hero .hero-title { font-size: 2.8rem; } }
     </style>
 </head>
 <body>
-    <header class="header" role="banner">
+    <header class="header">
         <div class="top-bar">
             <div class="container">
                 <div class="top-bar-content">
@@ -66,10 +64,13 @@
                         <a href="contact.html" class="btn btn-primary btn-cta-mobile" data-i18n="btn-quote">TEKLİF AL</a>
                     </div>
                     <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
-                    <button class="menu-toggle" id="menuToggle" aria-label="Menü" type="button"><span></span><span></span><span></span></button>
+                    <div class="lang-mobile">
+                        <button class="lang-btn active" data-lang="tr" type="button">TR</button>
+                        <button class="lang-btn" data-lang="en" type="button">EN</button>
+                    </div>
+                    <button class="menu-toggle" id="menuToggle" type="button"><span></span><span></span><span></span></button>
                 </div>
             </div>
-            <div class="menu-overlay" id="menuOverlay"></div>
         </nav>
     </header>
 
@@ -82,23 +83,19 @@
                 <div class="hero-divider"></div>
             </div>
         </section>
-
         <section class="section scroll-reveal">
             <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title" data-i18n="about-who">BİZ KİMİZ?</h2>
-                </div>
-                <div class="story-text" style="max-width: 900px; margin: 0 auto;">
-                    <p data-i18n="about-p1"><strong>Vitavolt Global</strong>, İzmir merkezli yenilenebilir enerji ve sürdürülebilir mühendislik firmasıdır.</p>
+                <div class="section-header text-center"><h2 class="section-title" data-i18n="about-who">BİZ KİMİZ?</h2></div>
+                <div class="story-text" style="max-width:900px;margin:0 auto;">
+                    <p data-i18n="about-p1">Vitavolt Global, İzmir merkezli yenilenebilir enerji ve sürdürülebilir mühendislik firmasıdır.</p>
                     <p data-i18n="about-p2">Güneş Enerjisi Santralleri (GES), Batarya Enerji Depolama Sistemleri (BESS), Endüstriyel EPC, karbon danışmanlığı ve teknik mühendislik danışmanlığı alanlarında hizmet veriyoruz.</p>
                     <p data-i18n="about-p3">Amacımız geleceğin enerji sistemlerini şekillendirecek sürdürülebilir, güvenilir ve yüksek verimli çözümler geliştirmektir.</p>
                 </div>
             </div>
         </section>
-
-        <section class="section scroll-reveal" style="background: rgba(255, 255, 255, 0.015);">
+        <section class="section scroll-reveal" style="background:rgba(255,255,255,0.015)">
             <div class="container">
-                <div class="grid grid-2" style="gap: 2.5rem;">
+                <div class="grid grid-2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;">
                     <div class="mission-card">
                         <span class="icon"><i class="fas fa-bullseye"></i></span>
                         <h3 data-i18n="mission-title">MİSYONUMUZ</h3>
@@ -112,13 +109,12 @@
                 </div>
             </div>
         </section>
-
         <section class="section scroll-reveal">
             <div class="container">
                 <div class="cta-about">
                     <h2 data-i18n="about-cta-title">PROJENİZİ KONUŞMAK İSTER MİSİNİZ?</h2>
                     <p data-i18n="about-cta-desc">Uzman ekibimizle enerji ihtiyaçlarınıza özel çözümler geliştirelim.</p>
-                    <a href="contact.html" class="btn btn-primary btn-cta" style="padding: 0.9rem 3rem;" data-i18n="btn-quote-long">TEKLİF ALIN</a>
+                    <a href="contact.html" class="btn btn-primary btn-cta" style="padding:0.9rem 3rem" data-i18n="btn-quote-long">TEKLİF ALIN</a>
                 </div>
             </div>
         </section>
@@ -149,12 +145,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p data-i18n="copyright">&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
-            </div>
+            <div class="footer-bottom"><p data-i18n="copyright">&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p></div>
         </div>
     </footer>
-
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
 </body>
