@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="1D5sMwbZpjcK5cGHV18pFPNqGqis-X7pSCm_Iw9ku-o" />
     <title>İletişim | İzmir EPC & GES Teklif Alın | Vitavolt Global</title>
-    <meta name="description" content="Vitavolt Global İzmir iletişim. GES, EPC, batarya depolama teklifi." />
+    <meta name="description" content="Vitavolt Global İzmir iletişim. GES, EPC, batarya depolama teklifi. Folkart Towers, Bayraklı." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://vitavoltglobal.com/contact.html" />
+    <link rel="alternate" hreflang="tr" href="https://vitavoltglobal.com/contact.html" />
+    <link rel="alternate" hreflang="en" href="https://vitavoltglobal.com/contact.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#07111C" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -29,9 +32,10 @@
         .form-premium label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.35rem; }
         .form-premium input, .form-premium textarea, .form-premium select { width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; color: #f1f5f9; font-size: 1rem; outline: none; }
         .form-premium .btn-submit { width: 100%; padding: 0.9rem; background: linear-gradient(135deg, #22d3ee, #a855f7); border: none; border-radius: 0.75rem; font-weight: 600; color: #000; cursor: pointer; }
-        .form-premium .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        @media (max-width: 576px) { .form-premium .form-row { grid-template-columns: 1fr; } .contact-hero .hero-title { font-size: 2.4rem; } }
+        .map-container { border-radius: 1.25rem; overflow: hidden; margin-top: 2.5rem; border: 1px solid rgba(255,255,255,0.06); }
+        .map-container iframe { width: 100%; height: 380px; border: 0; display: block; }
         .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100; background: #25D366; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; text-decoration: none; }
+        @media (max-width: 576px) { .contact-hero .hero-title { font-size: 2.4rem; } }
     </style>
 </head>
 <body>
@@ -105,13 +109,23 @@
                 <div class="contact-card">
                     <span class="icon"><i class="fas fa-map-pin"></i></span>
                     <h3 data-i18n="contact-address">Adres</h3>
-                    <p>Folkart Towers, Bayraklı / İzmir</p>
+                    <p>Folkart Towers No:47B<br>Bayraklı / İzmir</p>
                 </div>
                 <div class="contact-card">
                     <span class="icon"><i class="fas fa-clock"></i></span>
                     <h3 data-i18n="contact-hours">Çalışma Saatleri</h3>
                     <p data-i18n="contact-hours-val">09:00 – 18:00</p>
                 </div>
+            </div>
+
+            <div class="map-container">
+                <iframe
+                    title="Vitavolt Global - Folkart Towers Bayraklı"
+                    src="https://www.google.com/maps?q=Folkart+Towers,+Manas+Bulvar%C4%B1,+Bayrakl%C4%B1%2F%C4%B0zmir&hl=tr&z=16&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
     </section>
@@ -124,20 +138,22 @@
             </div>
             <div class="form-premium">
                 <form id="contact-form">
-                    <div class="form-group"><label for="from_name">Name *</label><input type="text" id="from_name" name="from_name" required /></div>
-                    <div class="form-group"><label for="reply_to">Email *</label><input type="email" id="reply_to" name="reply_to" required /></div>
-                    <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" /></div>
-                    <div class="form-group"><label for="service">Service *</label>
+                    <div class="form-group"><label for="from_name">Ad Soyad / Name *</label><input type="text" id="from_name" name="from_name" required /></div>
+                    <div class="form-group"><label for="reply_to">E-posta / Email *</label><input type="email" id="reply_to" name="reply_to" required /></div>
+                    <div class="form-group"><label for="phone">Telefon / Phone</label><input type="tel" id="phone" name="phone" /></div>
+                    <div class="form-group"><label for="service">Hizmet / Service *</label>
                         <select id="service" name="service" required>
-                            <option value="">-- Select --</option>
-                            <option value="GES">Solar (GES)</option>
+                            <option value="">-- Seçin / Select --</option>
+                            <option value="GES">GES / Solar</option>
                             <option value="EPC">EPC</option>
                             <option value="BESS">BESS</option>
-                            <option value="Other">Other</option>
+                            <option value="Carbon">Karbon / Carbon</option>
+                            <option value="Other">Diğer / Other</option>
                         </select>
                     </div>
-                    <div class="form-group"><label for="message">Message *</label><textarea id="message" name="message" required></textarea></div>
-                    <button type="submit" class="btn-submit">SEND</button>
+                    <div class="form-group"><label for="message">Mesaj / Message *</label><textarea id="message" name="message" required></textarea></div>
+                    <p style="font-size:0.8rem;color:#7A8A9A;margin-bottom:1rem">Formu göndererek <a href="privacy.html">Gizlilik Politikası</a>’nı kabul etmiş olursunuz.</p>
+                    <button type="submit" class="btn-submit">GÖNDER / SEND</button>
                 </form>
             </div>
         </div>
@@ -159,6 +175,7 @@
                         <li><a href="about.html" data-i18n="footer-about">Hakkımızda</a></li>
                         <li><a href="services.html" data-i18n="footer-services-link">Hizmetler</a></li>
                         <li><a href="contact.html" data-i18n="footer-contact-link">İletişim</a></li>
+                        <li><a href="privacy.html">Gizlilik / KVKK</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -185,10 +202,10 @@
             var btn = this.querySelector('.btn-submit');
             var orig = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = 'Sending...';
+            btn.innerHTML = 'Gönderiliyor...';
             emailjs.sendForm('service_viiccsc', 'template_mjrxy4j', this, { publicKey: 'TyI4fVN4OLgH5OKgH' })
-                .then(function() { alert('✅ Sent'); form.reset(); })
-                .catch(function() { alert('❌ Error'); })
+                .then(function() { alert('✅ Talebiniz gönderildi.'); form.reset(); })
+                .catch(function() { alert('❌ Gönderim hatası.'); })
                 .finally(function() { btn.disabled = false; btn.innerHTML = orig; });
         });
     });
