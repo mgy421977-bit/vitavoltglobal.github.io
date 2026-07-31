@@ -1,7 +1,6 @@
 /* Vitavolt Global - TR / EN Translations */
 const translations = {
   tr: {
-    // Nav
     "nav-home": "ANA SAYFA",
     "nav-about": "HAKKIMIZDA",
     "nav-services": "HİZMETLERİMİZ",
@@ -9,37 +8,34 @@ const translations = {
     "btn-quote": "TEKLİF AL",
     "btn-quote-long": "TEKLİF ALIN",
 
-    // Hero (index)
     "hero-subtitle": "Geleceğe Güç Veren Mühendislik | İzmir",
-    "hero-desc": "Vitavolt Global, İzmir merkezli yenilenebilir enerji firmasıdır. Güneş enerjisi santralleri (GES), endüstriyel EPC, batarya enerji depolama sistemleri (BESS) ve karbon danışmanlığı hizmetleri sunuyoruz.",
+    "hero-desc": "Vitavolt Global, İzmir merkezli yenilenebilir enerji firmasıdır. Güneş enerjisi santralleri (GES), endüstriyel EPC, batarya enerji depolama sistemleri (BESS), su yönetimi ve karbon danışmanlığı hizmetleri sunuyoruz.",
     "btn-services": "HİZMETLERİMİZ",
 
-    // Services section
     "services-title": "HİZMETLERİMİZ",
-    "services-subtitle": "İzmir ve Ege Bölgesi'nde kapsamlı enerji mühendisliği çözümleri",
+    "services-subtitle": "İzmir ve Ege Bölgesi'nde kapsamlı enerji ve su mühendisliği çözümleri",
     "svc-ges-title": "GES (GÜNEŞ ENERJİSİ)",
     "svc-ges-desc": "İzmir ve çevresinde yüksek verimli güneş enerjisi santralları tasarım ve kurulumu.",
     "svc-epc-title": "ENDÜSTRİYEL EPC",
     "svc-epc-desc": "İzmir merkezli EPC: Mühendislik, tedarik ve inşaat yönetimi.",
     "svc-bess-title": "BATARYA DEPOLAMA (BESS)",
     "svc-bess-desc": "Lityum-iyon batarya sistemleri ile enerji optimizasyonu.",
+    "svc-water-title": "SU YÖNETİMİ",
+    "svc-water-desc": "Yağmur suyu toplama, gri su arıtma ve sürdürülebilir su geri kazanım sistemleri.",
     "svc-carbon-title": "KARBON DANIŞMANLIĞI",
     "svc-carbon-desc": "Karbon ayak izi analizi ve net-zero stratejileri.",
     "svc-consult-title": "MÜHENDİSLİK DANIŞMANLIĞI",
     "svc-consult-desc": "Teknik fizibilite, saha analizi ve tedarikçi değerlendirmesi.",
     "btn-detail": "Detay",
 
-    // Stats
     "stat-projects": "TAMAMLANAN PROJE",
     "stat-mw": "MW KURULU GÜÇ",
     "stat-countries": "ÜLKEDE TEKNİK DESTEK",
     "stat-team": "UZMANLAŞMIŞ KADRO",
 
-    // CTA
     "cta-title": "PROJENİZ İÇİN BİZİMLE İLETİŞİME GEÇİN",
-    "cta-desc": "İzmir ve Türkiye genelinde size özel enerji çözümleri tasarlayalım.",
+    "cta-desc": "İzmir ve Türkiye genelinde size özel enerji ve su çözümleri tasarlayalım.",
 
-    // Footer
     "footer-desc": "İzmir merkezli Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri sunmaktadır.",
     "footer-links": "HIZLI LİNKLER",
     "footer-services": "HİZMETLERİMİZ",
@@ -51,18 +47,18 @@ const translations = {
     "footer-ges": "GES",
     "footer-epc": "Endüstriyel EPC",
     "footer-bess": "Batarya Depolama",
+    "footer-water": "Su Yönetimi",
     "footer-carbon": "Karbon Danışmanlığı",
     "visitor-label": "Ziyaretçi Sayısı:",
     "copyright": "© 2026 Vitavolt Global. Tüm hakları saklıdır.",
     "location": "İzmir, Türkiye",
     "location-bayrakli": "Bayraklı, İzmir",
 
-    // About
     "about-hero": "HAKKIMIZDA",
     "about-hero-sub": "Vizyonumuz, Misyonumuz & Değerlerimiz",
     "about-who": "BİZ KİMİZ?",
     "about-p1": "Vitavolt Global, İzmir merkezli yenilenebilir enerji ve sürdürülebilir mühendislik firmasıdır.",
-    "about-p2": "Güneş Enerjisi Santralleri (GES), Batarya Enerji Depolama Sistemleri (BESS), Endüstriyel EPC, karbon danışmanlığı ve teknik mühendislik danışmanlığı alanlarında hizmet veriyoruz.",
+    "about-p2": "Güneş Enerjisi Santralleri (GES), Batarya Enerji Depolama Sistemleri (BESS), Endüstriyel EPC, su yönetimi, karbon danışmanlığı ve teknik mühendislik danışmanlığı alanlarında hizmet veriyoruz.",
     "about-p3": "Amacımız geleceğin enerji sistemlerini şekillendirecek sürdürülebilir, güvenilir ve yüksek verimli çözümler geliştirmektir.",
     "mission-title": "MİSYONUMUZ",
     "mission-text": "Yenilenebilir enerji teknolojileri ve ileri mühendislik ile enerji sistemini temiz, verimli ve erişilebilir kılmak.",
@@ -71,17 +67,15 @@ const translations = {
     "about-cta-title": "PROJENİZİ KONUŞMAK İSTER MİSİNİZ?",
     "about-cta-desc": "Uzman ekibimizle enerji ihtiyaçlarınıza özel çözümler geliştirelim.",
 
-    // Services page
     "svc-hero-title": "İzmir EPC Hizmetleri",
-    "svc-hero-sub": "Endüstriyel EPC • GES • BESS • Mühendislik Danışmanlığı",
+    "svc-hero-sub": "Endüstriyel EPC • GES • BESS • Su Yönetimi",
     "svc-main-title": "ANA HİZMETLERİMİZ",
-    "svc-main-sub": "İzmir ve Ege Bölgesi'nde uçtan uca enerji mühendisliği çözümleri",
+    "svc-main-sub": "İzmir ve Ege Bölgesi'nde uçtan uca enerji ve su mühendisliği çözümleri",
     "svc-cta-title": "İzmir'de Projeniz mi Var?",
-    "svc-cta-desc": "EPC, GES veya BESS projeniz için uzman ekibimizle hemen iletişime geçin.",
+    "svc-cta-desc": "EPC, GES, BESS veya su yönetimi projeniz için uzman ekibimizle hemen iletişime geçin.",
 
-    // Contact
     "contact-hero": "İLETİŞİM",
-    "contact-hero-sub": "İzmir EPC, GES ve BESS projeleriniz için bize ulaşın",
+    "contact-hero-sub": "İzmir EPC, GES, BESS ve su projeleriniz için bize ulaşın",
     "contact-reach": "BİZE ULAŞIN",
     "contact-reach-sub": "İzmir merkez ofisimiz ve tüm iletişim kanallarımız",
     "contact-phone": "Telefon",
@@ -91,7 +85,7 @@ const translations = {
     "contact-hours-val": "09:00 – 18:00",
     "contact-hours-sub": "Pazartesi – Cuma",
     "contact-form-title": "PROJE TEKLİFİ FORMU",
-    "contact-form-sub": "GES, EPC veya BESS projeniz için detayları yazın, özel teklif oluşturalım."
+    "contact-form-sub": "GES, EPC, BESS veya su yönetimi projeniz için detayları yazın, özel teklif oluşturalım."
   },
   en: {
     "nav-home": "HOME",
@@ -102,17 +96,19 @@ const translations = {
     "btn-quote-long": "GET A QUOTE",
 
     "hero-subtitle": "Engineering Powering the Future | Izmir",
-    "hero-desc": "Vitavolt Global is an Izmir-based renewable energy company. We provide solar power plants (PV), industrial EPC, battery energy storage systems (BESS) and carbon advisory services.",
+    "hero-desc": "Vitavolt Global is an Izmir-based renewable energy company. We provide solar power plants (PV), industrial EPC, battery energy storage systems (BESS), water management and carbon advisory services.",
     "btn-services": "OUR SERVICES",
 
     "services-title": "OUR SERVICES",
-    "services-subtitle": "Comprehensive energy engineering solutions in Izmir and the Aegean Region",
+    "services-subtitle": "Comprehensive energy and water engineering solutions in Izmir and the Aegean Region",
     "svc-ges-title": "SOLAR (PV)",
     "svc-ges-desc": "High-efficiency solar power plant design and installation in and around Izmir.",
     "svc-epc-title": "INDUSTRIAL EPC",
     "svc-epc-desc": "Izmir-based EPC: Engineering, procurement and construction management.",
     "svc-bess-title": "BATTERY STORAGE (BESS)",
     "svc-bess-desc": "Energy optimization with lithium-ion battery systems.",
+    "svc-water-title": "WATER MANAGEMENT",
+    "svc-water-desc": "Rainwater harvesting, greywater treatment and sustainable water recovery systems.",
     "svc-carbon-title": "CARBON ADVISORY",
     "svc-carbon-desc": "Carbon footprint analysis and net-zero strategies.",
     "svc-consult-title": "ENGINEERING CONSULTING",
@@ -125,7 +121,7 @@ const translations = {
     "stat-team": "EXPERT TEAM",
 
     "cta-title": "GET IN TOUCH FOR YOUR PROJECT",
-    "cta-desc": "Let's design tailored energy solutions for you across Izmir and Turkey.",
+    "cta-desc": "Let's design tailored energy and water solutions for you across Izmir and Turkey.",
 
     "footer-desc": "Izmir-based Vitavolt Global provides engineering solutions in renewable energy.",
     "footer-links": "QUICK LINKS",
@@ -138,6 +134,7 @@ const translations = {
     "footer-ges": "Solar (PV)",
     "footer-epc": "Industrial EPC",
     "footer-bess": "Battery Storage",
+    "footer-water": "Water Management",
     "footer-carbon": "Carbon Advisory",
     "visitor-label": "Visitors:",
     "copyright": "© 2026 Vitavolt Global. All rights reserved.",
@@ -148,7 +145,7 @@ const translations = {
     "about-hero-sub": "Our Vision, Mission & Values",
     "about-who": "WHO WE ARE",
     "about-p1": "Vitavolt Global is an Izmir-based renewable energy and sustainable engineering company.",
-    "about-p2": "We serve in Solar Power Plants (PV), Battery Energy Storage Systems (BESS), Industrial EPC, carbon advisory and technical engineering consulting.",
+    "about-p2": "We serve in Solar Power Plants (PV), Battery Energy Storage Systems (BESS), Industrial EPC, water management, carbon advisory and technical engineering consulting.",
     "about-p3": "Our goal is to develop sustainable, reliable and high-efficiency solutions that will shape the energy systems of the future.",
     "mission-title": "OUR MISSION",
     "mission-text": "To make the energy system clean, efficient and accessible through renewable energy technologies and advanced engineering.",
@@ -158,14 +155,14 @@ const translations = {
     "about-cta-desc": "Let's develop tailored solutions for your energy needs with our expert team.",
 
     "svc-hero-title": "Izmir EPC Services",
-    "svc-hero-sub": "Industrial EPC • Solar • BESS • Engineering Consulting",
+    "svc-hero-sub": "Industrial EPC • Solar • BESS • Water Management",
     "svc-main-title": "OUR MAIN SERVICES",
-    "svc-main-sub": "End-to-end energy engineering solutions in Izmir and the Aegean Region",
+    "svc-main-sub": "End-to-end energy and water engineering solutions in Izmir and the Aegean Region",
     "svc-cta-title": "Have a Project in Izmir?",
-    "svc-cta-desc": "Contact our expert team right away for your EPC, Solar or BESS project.",
+    "svc-cta-desc": "Contact our expert team for your EPC, Solar, BESS or water management project.",
 
     "contact-hero": "CONTACT",
-    "contact-hero-sub": "Reach us for your Izmir EPC, Solar and BESS projects",
+    "contact-hero-sub": "Reach us for your Izmir EPC, Solar, BESS and water projects",
     "contact-reach": "REACH US",
     "contact-reach-sub": "Our Izmir head office and all contact channels",
     "contact-phone": "Phone",
@@ -175,7 +172,7 @@ const translations = {
     "contact-hours-val": "09:00 – 18:00",
     "contact-hours-sub": "Monday – Friday",
     "contact-form-title": "PROJECT QUOTE FORM",
-    "contact-form-sub": "Write the details of your Solar, EPC or BESS project and we will prepare a custom quote."
+    "contact-form-sub": "Write the details of your Solar, EPC, BESS or water project and we will prepare a custom quote."
   }
 };
 
