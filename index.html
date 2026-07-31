@@ -52,13 +52,13 @@
                     <div class="top-bar-right">
                         <span class="top-bar-item">
                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            <span>İzmir, Türkiye</span>
+                            <span data-i18n="location">İzmir, Türkiye</span>
                         </span>
                         <span class="divider" aria-hidden="true">|</span>
                         <div class="language-selector">
-                            <button class="lang-btn active" data-lang="tr">TR</button>
+                            <button class="lang-btn active" data-lang="tr" type="button">TR</button>
                             <span class="lang-divider">|</span>
-                            <button class="lang-btn" data-lang="en">EN</button>
+                            <button class="lang-btn" data-lang="en" type="button">EN</button>
                         </div>
                     </div>
                 </div>
@@ -72,14 +72,14 @@
                         <span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span>
                     </a>
                     <div class="nav-menu" id="navMenu">
-                        <a href="index.html" class="nav-link active">ANA SAYFA</a>
-                        <a href="about.html" class="nav-link">HAKKIMIZDA</a>
-                        <a href="services.html" class="nav-link">HİZMETLERİMİZ</a>
-                        <a href="contact.html" class="nav-link">İLETİŞİM</a>
-                        <a href="contact.html" class="btn btn-primary btn-cta-mobile">TEKLİF AL</a>
+                        <a href="index.html" class="nav-link active" data-i18n="nav-home">ANA SAYFA</a>
+                        <a href="about.html" class="nav-link" data-i18n="nav-about">HAKKIMIZDA</a>
+                        <a href="services.html" class="nav-link" data-i18n="nav-services">HİZMETLERİMİZ</a>
+                        <a href="contact.html" class="nav-link" data-i18n="nav-contact">İLETİŞİM</a>
+                        <a href="contact.html" class="btn btn-primary btn-cta-mobile" data-i18n="btn-quote">TEKLİF AL</a>
                     </div>
-                    <a href="contact.html" class="btn btn-primary btn-cta">TEKLİF AL</a>
-                    <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+                    <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Menü" type="button">
                         <span></span><span></span><span></span>
                     </button>
                 </div>
@@ -97,13 +97,13 @@
                     <h1 class="hero-title scroll-reveal">
                         ENGINEERING<br>TOMORROW'S<br><span class="gradient-text">ENERGY</span>
                     </h1>
-                    <p class="hero-subtitle scroll-reveal">Geleceğe Güç Veren Mühendislik | İzmir</p>
-                    <p class="hero-description scroll-reveal">
+                    <p class="hero-subtitle scroll-reveal" data-i18n="hero-subtitle">Geleceğe Güç Veren Mühendislik | İzmir</p>
+                    <p class="hero-description scroll-reveal" data-i18n="hero-desc">
                         Vitavolt Global, İzmir merkezli yenilenebilir enerji firmasıdır. Güneş enerjisi santralleri (GES), endüstriyel EPC, batarya enerji depolama sistemleri (BESS) ve karbon danışmanlığı hizmetleri sunuyoruz.
                     </p>
                     <div class="hero-buttons scroll-reveal">
-                        <a href="#services" class="btn btn-primary btn-large">HİZMETLERİMİZ</a>
-                        <a href="contact.html" class="btn btn-outline btn-large">TEKLİF AL</a>
+                        <a href="#services" class="btn btn-primary btn-large" data-i18n="btn-services">HİZMETLERİMİZ</a>
+                        <a href="contact.html" class="btn btn-outline btn-large" data-i18n="btn-quote">TEKLİF AL</a>
                     </div>
                 </div>
             </div>
@@ -112,8 +112,8 @@
         <section class="section services-section" id="services">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title scroll-reveal">HİZMETLERİMİZ</h2>
-                    <p class="section-subtitle scroll-reveal">İzmir ve Ege Bölgesi'nde kapsamlı enerji mühendisliği çözümleri</p>
+                    <h2 class="section-title scroll-reveal" data-i18n="services-title">HİZMETLERİMİZ</h2>
+                    <p class="section-subtitle scroll-reveal" data-i18n="services-subtitle">İzmir ve Ege Bölgesi'nde kapsamlı enerji mühendisliği çözümleri</p>
                 </div>
                 <div class="services-grid scroll-reveal">
                     <div class="service-card">
@@ -123,9 +123,9 @@
                         </div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-sun"></i></div>
-                            <h3 class="service-title">GES (GÜNEŞ ENERJİSİ)</h3>
-                            <p class="service-description">İzmir ve çevresinde yüksek verimli güneş enerjisi santralları tasarım ve kurulumu.</p>
-                            <a href="services.html#ges" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="service-title" data-i18n="svc-ges-title">GES (GÜNEŞ ENERJİSİ)</h3>
+                            <p class="service-description" data-i18n="svc-ges-desc">İzmir ve çevresinde yüksek verimli güneş enerjisi santralları tasarım ve kurulumu.</p>
+                            <a href="services.html#ges" class="btn btn-text"><span data-i18n="btn-detail">Detay</span> <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="service-card">
@@ -135,9 +135,9 @@
                         </div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
-                            <h3 class="service-title">ENDÜSTRİYEL EPC</h3>
-                            <p class="service-description">İzmir merkezli EPC: Mühendislik, tedarik ve inşaat yönetimi.</p>
-                            <a href="services.html#epc" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="service-title" data-i18n="svc-epc-title">ENDÜSTRİYEL EPC</h3>
+                            <p class="service-description" data-i18n="svc-epc-desc">İzmir merkezli EPC: Mühendislik, tedarik ve inşaat yönetimi.</p>
+                            <a href="services.html#epc" class="btn btn-text"><span data-i18n="btn-detail">Detay</span> <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="service-card">
@@ -147,9 +147,9 @@
                         </div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-battery-full"></i></div>
-                            <h3 class="service-title">BATARYA DEPOLAMA (BESS)</h3>
-                            <p class="service-description">Lityum-iyon batarya sistemleri ile enerji optimizasyonu.</p>
-                            <a href="services.html#bess" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="service-title" data-i18n="svc-bess-title">BATARYA DEPOLAMA (BESS)</h3>
+                            <p class="service-description" data-i18n="svc-bess-desc">Lityum-iyon batarya sistemleri ile enerji optimizasyonu.</p>
+                            <a href="services.html#bess" class="btn btn-text"><span data-i18n="btn-detail">Detay</span> <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="service-card">
@@ -159,9 +159,9 @@
                         </div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-leaf"></i></div>
-                            <h3 class="service-title">KARBON DANIŞMANLIĞI</h3>
-                            <p class="service-description">Karbon ayak izi analizi ve net-zero stratejileri.</p>
-                            <a href="services.html#carbon" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="service-title" data-i18n="svc-carbon-title">KARBON DANIŞMANLIĞI</h3>
+                            <p class="service-description" data-i18n="svc-carbon-desc">Karbon ayak izi analizi ve net-zero stratejileri.</p>
+                            <a href="services.html#carbon" class="btn btn-text"><span data-i18n="btn-detail">Detay</span> <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="service-card">
@@ -171,9 +171,9 @@
                         </div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-handshake"></i></div>
-                            <h3 class="service-title">MÜHENDİSLİK DANIŞMANLIĞI</h3>
-                            <p class="service-description">Teknik fizibilite, saha analizi ve tedarikçi değerlendirmesi.</p>
-                            <a href="services.html#consult" class="btn btn-text">Detay <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="service-title" data-i18n="svc-consult-title">MÜHENDİSLİK DANIŞMANLIĞI</h3>
+                            <p class="service-description" data-i18n="svc-consult-desc">Teknik fizibilite, saha analizi ve tedarikçi değerlendirmesi.</p>
+                            <a href="services.html#consult" class="btn btn-text"><span data-i18n="btn-detail">Detay</span> <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -187,22 +187,22 @@
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
                         <div class="stat-number" data-count="30">0</div>
-                        <div class="stat-label">TAMAMLANAN PROJE</div>
+                        <div class="stat-label" data-i18n="stat-projects">TAMAMLANAN PROJE</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-bolt"></i></div>
                         <div class="stat-number" data-count="55">0</div>
-                        <div class="stat-label">MW KURULU GÜÇ</div>
+                        <div class="stat-label" data-i18n="stat-mw">MW KURULU GÜÇ</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-globe"></i></div>
                         <div class="stat-number" data-count="3">0</div>
-                        <div class="stat-label">ÜLKEDE TEKNİK DESTEK</div>
+                        <div class="stat-label" data-i18n="stat-countries">ÜLKEDE TEKNİK DESTEK</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div class="stat-number" style="font-size: 2.5rem; color: var(--color-primary);">✦</div>
-                        <div class="stat-label">UZMANLAŞMIŞ KADRO</div>
+                        <div class="stat-label" data-i18n="stat-team">UZMANLAŞMIŞ KADRO</div>
                     </div>
                 </div>
             </div>
@@ -211,9 +211,9 @@
         <section class="section cta-section">
             <div class="cta-background" style="background: linear-gradient(135deg, rgba(7, 17, 28, 0.8), rgba(15, 26, 43, 0.8)), url('images/cta.jpg') center/cover; background-attachment: fixed;"></div>
             <div class="container cta-container text-center">
-                <h2 class="cta-title scroll-reveal">PROJENİZ İÇİN BİZİMLE İLETİŞİME GEÇİN</h2>
-                <p class="cta-description scroll-reveal">İzmir ve Türkiye genelinde size özel enerji çözümleri tasarlayalım.</p>
-                <a href="contact.html" class="btn btn-primary btn-large scroll-reveal">TEKLİF AL</a>
+                <h2 class="cta-title scroll-reveal" data-i18n="cta-title">PROJENİZ İÇİN BİZİMLE İLETİŞİME GEÇİN</h2>
+                <p class="cta-description scroll-reveal" data-i18n="cta-desc">İzmir ve Türkiye genelinde size özel enerji çözümleri tasarlayalım.</p>
+                <a href="contact.html" class="btn btn-primary btn-large scroll-reveal" data-i18n="btn-quote">TEKLİF AL</a>
             </div>
         </section>
     </main>
@@ -223,45 +223,43 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="index.html" class="footer-logo"><span>VITAVOLT GLOBAL</span></a>
-                    <p class="footer-description">İzmir merkezli Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri sunmaktadır.</p>
+                    <p class="footer-description" data-i18n="footer-desc">İzmir merkezli Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri sunmaktadır.</p>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">HIZLI LİNKLER</h4>
+                    <h4 class="footer-title" data-i18n="footer-links">HIZLI LİNKLER</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Ana Sayfa</a></li>
-                        <li><a href="about.html">Hakkımızda</a></li>
-                        <li><a href="services.html">Hizmetler</a></li>
-                        <li><a href="contact.html">İletişim</a></li>
+                        <li><a href="index.html" data-i18n="footer-home">Ana Sayfa</a></li>
+                        <li><a href="about.html" data-i18n="footer-about">Hakkımızda</a></li>
+                        <li><a href="services.html" data-i18n="footer-services-link">Hizmetler</a></li>
+                        <li><a href="contact.html" data-i18n="footer-contact-link">İletişim</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">HİZMETLERİMİZ</h4>
+                    <h4 class="footer-title" data-i18n="footer-services">HİZMETLERİMİZ</h4>
                     <ul class="footer-links">
-                        <li><a href="services.html#ges">GES</a></li>
-                        <li><a href="services.html#epc">Endüstriyel EPC</a></li>
-                        <li><a href="services.html#bess">Batarya Depolama</a></li>
-                        <li><a href="services.html#carbon">Karbon Danışmanlığı</a></li>
+                        <li><a href="services.html#ges" data-i18n="footer-ges">GES</a></li>
+                        <li><a href="services.html#epc" data-i18n="footer-epc">Endüstriyel EPC</a></li>
+                        <li><a href="services.html#bess" data-i18n="footer-bess">Batarya Depolama</a></li>
+                        <li><a href="services.html#carbon" data-i18n="footer-carbon">Karbon Danışmanlığı</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">İLETİŞİM</h4>
+                    <h4 class="footer-title" data-i18n="footer-contact">İLETİŞİM</h4>
                     <ul class="footer-contact">
                         <li><a href="tel:+905454411977"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
                         <li><a href="mailto:info@vitavoltglobal.com"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
-                        <li><span><i class="fas fa-map-marker-alt"></i> Bayraklı, İzmir</span></li>
+                        <li><span><i class="fas fa-map-marker-alt"></i> <span data-i18n="location-bayrakli">Bayraklı, İzmir</span></span></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <!-- Metin tabanlı ziyaretçi sayacı -->
                 <div id="visitor-counter" style="margin-bottom: 12px; padding: 8px 14px; background: rgba(7,17,28,0.7); border-radius: 8px; border: 1px solid rgba(0,255,136,0.25); display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #00ff88;">
                     <i class="fas fa-users" style="color:#00ff88;"></i>
-                    <span>Ziyaretçi Sayısı:</span>
+                    <span data-i18n="visitor-label">Ziyaretçi Sayısı:</span>
                     <strong id="visit-count" style="color:#fff; font-weight:700;">...</strong>
                 </div>
-
-                <p>&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
+                <p data-i18n="copyright">&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>
@@ -285,19 +283,15 @@
     }
     </script>
 
+    <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Stabil metin sayacı -->
     <script>
     (function() {
         var el = document.getElementById('visit-count');
         if (!el) return;
-
-        // Önce localStorage'dan göster (hızlı)
         var cached = localStorage.getItem('vv_visits');
         if (cached) el.textContent = Number(cached).toLocaleString('tr-TR');
-
-        // Sonra gerçek sayıyı çek
         fetch('https://countapi.mileshilliard.com/api/v1/hit/vitavoltglobal-com')
             .then(function(r) { return r.json(); })
             .then(function(data) {
@@ -308,7 +302,6 @@
                 }
             })
             .catch(function() {
-                // API düşerse en azından cache veya 1 göster
                 if (!cached) el.textContent = '1';
             });
     })();
