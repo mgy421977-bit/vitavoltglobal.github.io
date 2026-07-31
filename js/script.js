@@ -74,14 +74,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // 4. NAVBAR ACTIVE
     // ============================================================
     const navLinks = document.querySelectorAll('.nav-link');
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const path = window.location.pathname;
+    const currentPage = path.split('/').pop() || 'index.html';
     navLinks.forEach(link => {
-        const href = link.getAttribute('href');
+        const href = link.getAttribute('href') || '';
+        let isActive = false;
         if (href === currentPage || (href === 'index.html' && (currentPage === '' || currentPage === '/'))) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
+            isActive = true;
         }
+        if (href === 'blog/' && path.indexOf('/blog') !== -1) {
+            isActive = true;
+        }
+        if (href === 'contact.html' && currentPage === 'contact.html') isActive = true;
+        if (href === 'about.html' && currentPage === 'about.html') isActive = true;
+        if (href === 'services.html' && currentPage === 'services.html') isActive = true;
+        link.classList.toggle('active', isActive);
     });
 
     // ============================================================
@@ -89,17 +96,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================================
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+
+    function closeMenu() {
+        if (navMenu) navMenu.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
+
+    function openMenu() {
+        if (navMenu) navMenu.classList.add('active');
+        if (menuToggle) menuToggle.classList.add('active');
+        if (menuOverlay) menuOverlay.classList.add('active');
+        document.body.classList.add('menu-open');
+    }
+
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            this.classList.toggle('active');
+            if (navMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
         navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
+            link.addEventListener('click', closeMenu);
         });
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', closeMenu);
+        }
     }
 
     // ============================================================
@@ -110,13 +136,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (dict[key] !== undefined) {
-                // Preserve child icons if any (e.g. arrow)
                 const icon = el.querySelector('i');
                 if (icon) {
                     el.childNodes.forEach(node => {
                         if (node.nodeType === Node.TEXT_NODE) node.textContent = '';
                     });
-                    // Put text before icon
                     if (el.firstChild && el.firstChild.nodeType === Node.TEXT_NODE) {
                         el.firstChild.textContent = dict[key] + ' ';
                     } else {
@@ -130,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.lang = lang;
         localStorage.setItem('vitavolt-lang', lang);
 
-        // Active button state
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
@@ -195,9 +218,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            if (window.innerWidth > 1023 && navMenu) {
-                navMenu.classList.remove('active');
-                if (menuToggle) menuToggle.classList.remove('active');
+            if (window.innerWidth > 1023) {
+                closeMenu();
             }
         }, 250);
     }, { passive: true });
