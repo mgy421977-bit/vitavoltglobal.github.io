@@ -1,8 +1,4 @@
-# Vitavolt Global - Robots.txt
 User-agent: *
 Allow: /
-Allow: /blog/
-Disallow: /admin/
-Disallow: /*.json$
 
 Sitemap: https://vitavoltglobal.com/sitemap.xml

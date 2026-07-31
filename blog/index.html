@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitavolt Blog - Yenilenebilir Enerji ve Sürdürülebilirlik</title>
-    <meta name="description" content="Vitavolt Global Blog - Karbon yasası, GES teşvikleri, BESS teknolojileri ve enerji sektöründen güncel haberler, makaleler.">
-    <meta name="keywords" content="blog, karbon kanunu, GES, BESS, yenilenebilir enerji, sürdürülebilirlik">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Yenilenebilir Enerji &amp; EPC | Vitavolt Global</title>
+  <meta name="description" content="Vitavolt Global blog: İzmir GES, EPC, batarya depolama ve karbon yönetimi hakkında yazılar." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vitavoltglobal.com/blog/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .blog-list { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .blog-list h1 { font-size: 2.25rem; margin-bottom: 0.5rem; }
+    .blog-list .intro { color: #7A8A9A; margin-bottom: 2.5rem; }
+    .post-card {
+      display: block; padding: 1.5rem; margin-bottom: 1rem;
+      background: rgba(16,37,61,0.45); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 1rem; text-decoration: none; color: inherit;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .post-card:hover { border-color: rgba(0,174,239,0.35); transform: translateY(-3px); }
+    .post-card h2 { font-size: 1.2rem; margin-bottom: 0.4rem; color: #fff; }
+    .post-card p { color: #C6D2DC; font-size: 0.95rem; margin: 0; }
+    .post-card .date { color: #7A8A9A; font-size: 0.8rem; margin-bottom: 0.35rem; display: block; }
+  </style>
 </head>
 <body>
-    <!-- Header reuse main -->
-    <header class="header">
-        <nav class="navbar">
-            <a href="../index.html" class="logo">VITAVOLT GLOBAL</a>
-            <a href="../index.html">Ana Sayfa</a>
-        </nav>
-    </header>
-
-    <main>
-        <div class="container" style="padding: 40px 20px;">
-            <h1 style="color: #00AEEF; text-align: center;">Vitavolt Blog</h1>
-            <p style="text-align: center; font-size: 1.2rem;">Yenilenebilir enerji, sürdürülebilirlik ve sektör gelişmeleri</p>
-
-            <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-                <div class="blog-card" style="border: 1px solid #10253D; border-radius: 12px; overflow: hidden; background: #10253D;">
-                    <img src="../images/carbon.jpg" alt="Karbon Kanunu" style="width: 100%; height: 200px; object-fit: cover;" loading="lazy">
-                    <div style="padding: 20px;">
-                        <span style="color: #38D67A;">Temmuz 2025</span>
-                        <h2 style="margin: 10px 0;"><a href="karbon-iklim-kanunu-2025.html" style="color: white;">Türkiye'nin İlk İklim Kanunu: 7552 Sayılı Kanun</a></h2>
-                        <p>Net-sıfır hedefleri, karbon teşvikleri ve firmalara rehber.</p>
-                        <a href="karbon-iklim-kanunu-2025.html" style="color: #00AEEF;">Devamını Oku →</a>
-                    </div>
-                </div>
-            </div>
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <a href="../index.html" class="logo"><span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span></a>
+          <a href="../contact.html" class="btn btn-primary btn-cta">Teklif Al</a>
         </div>
-    </main>
+      </div>
+    </nav>
+  </header>
 
-    <script src="../js/script.js"></script>
+  <main class="blog-list">
+    <h1>Blog</h1>
+    <p class="intro">Yenilenebilir enerji, EPC ve regülasyon hakkında bilgilendirici yazılar.</p>
+
+    <a class="post-card" href="karbon-iklim-kanunu-2025.html">
+      <span class="date">2025 · Regülasyon</span>
+      <h2>Türkiye’de Karbon ve İklim Düzenlemeleri: Firmalar Ne Yapmalı?</h2>
+      <p>Karbon ayak izi, raporlama ve net-zero yol haritası için pratik bir özet.</p>
+    </a>
+
+    <p style="margin-top:2rem"><a href="../index.html" class="btn btn-outline">← Ana Sayfa</a></p>
+  </main>
 </body>
 </html>
