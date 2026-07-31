@@ -1,0 +1,182 @@
+/* Vitavolt Global - TR / EN Translations */
+const translations = {
+  tr: {
+    // Nav
+    "nav-home": "ANA SAYFA",
+    "nav-about": "HAKKIMIZDA",
+    "nav-services": "HİZMETLERİMİZ",
+    "nav-contact": "İLETİŞİM",
+    "btn-quote": "TEKLİF AL",
+    "btn-quote-long": "TEKLİF ALIN",
+
+    // Hero (index)
+    "hero-subtitle": "Geleceğe Güç Veren Mühendislik | İzmir",
+    "hero-desc": "Vitavolt Global, İzmir merkezli yenilenebilir enerji firmasıdır. Güneş enerjisi santralleri (GES), endüstriyel EPC, batarya enerji depolama sistemleri (BESS) ve karbon danışmanlığı hizmetleri sunuyoruz.",
+    "btn-services": "HİZMETLERİMİZ",
+
+    // Services section
+    "services-title": "HİZMETLERİMİZ",
+    "services-subtitle": "İzmir ve Ege Bölgesi'nde kapsamlı enerji mühendisliği çözümleri",
+    "svc-ges-title": "GES (GÜNEŞ ENERJİSİ)",
+    "svc-ges-desc": "İzmir ve çevresinde yüksek verimli güneş enerjisi santralları tasarım ve kurulumu.",
+    "svc-epc-title": "ENDÜSTRİYEL EPC",
+    "svc-epc-desc": "İzmir merkezli EPC: Mühendislik, tedarik ve inşaat yönetimi.",
+    "svc-bess-title": "BATARYA DEPOLAMA (BESS)",
+    "svc-bess-desc": "Lityum-iyon batarya sistemleri ile enerji optimizasyonu.",
+    "svc-carbon-title": "KARBON DANIŞMANLIĞI",
+    "svc-carbon-desc": "Karbon ayak izi analizi ve net-zero stratejileri.",
+    "svc-consult-title": "MÜHENDİSLİK DANIŞMANLIĞI",
+    "svc-consult-desc": "Teknik fizibilite, saha analizi ve tedarikçi değerlendirmesi.",
+    "btn-detail": "Detay",
+
+    // Stats
+    "stat-projects": "TAMAMLANAN PROJE",
+    "stat-mw": "MW KURULU GÜÇ",
+    "stat-countries": "ÜLKEDE TEKNİK DESTEK",
+    "stat-team": "UZMANLAŞMIŞ KADRO",
+
+    // CTA
+    "cta-title": "PROJENİZ İÇİN BİZİMLE İLETİŞİME GEÇİN",
+    "cta-desc": "İzmir ve Türkiye genelinde size özel enerji çözümleri tasarlayalım.",
+
+    // Footer
+    "footer-desc": "İzmir merkezli Vitavolt Global, yenilenebilir enerji alanında mühendislik çözümleri sunmaktadır.",
+    "footer-links": "HIZLI LİNKLER",
+    "footer-services": "HİZMETLERİMİZ",
+    "footer-contact": "İLETİŞİM",
+    "footer-home": "Ana Sayfa",
+    "footer-about": "Hakkımızda",
+    "footer-services-link": "Hizmetler",
+    "footer-contact-link": "İletişim",
+    "footer-ges": "GES",
+    "footer-epc": "Endüstriyel EPC",
+    "footer-bess": "Batarya Depolama",
+    "footer-carbon": "Karbon Danışmanlığı",
+    "visitor-label": "Ziyaretçi Sayısı:",
+    "copyright": "© 2026 Vitavolt Global. Tüm hakları saklıdır.",
+    "location": "İzmir, Türkiye",
+    "location-bayrakli": "Bayraklı, İzmir",
+
+    // About
+    "about-hero": "HAKKIMIZDA",
+    "about-hero-sub": "Vizyonumuz, Misyonumuz & Değerlerimiz",
+    "about-who": "BİZ KİMİZ?",
+    "about-p1": "Vitavolt Global, İzmir merkezli yenilenebilir enerji ve sürdürülebilir mühendislik firmasıdır.",
+    "about-p2": "Güneş Enerjisi Santralleri (GES), Batarya Enerji Depolama Sistemleri (BESS), Endüstriyel EPC, karbon danışmanlığı ve teknik mühendislik danışmanlığı alanlarında hizmet veriyoruz.",
+    "about-p3": "Amacımız geleceğin enerji sistemlerini şekillendirecek sürdürülebilir, güvenilir ve yüksek verimli çözümler geliştirmektir.",
+    "mission-title": "MİSYONUMUZ",
+    "mission-text": "Yenilenebilir enerji teknolojileri ve ileri mühendislik ile enerji sistemini temiz, verimli ve erişilebilir kılmak.",
+    "vision-title": "VİZYONUMUZ",
+    "vision-text": "Karbon nötr bir geleceğin inşasında lider mühendislik ortağı olmak.",
+    "about-cta-title": "PROJENİZİ KONUŞMAK İSTER MİSİNİZ?",
+    "about-cta-desc": "Uzman ekibimizle enerji ihtiyaçlarınıza özel çözümler geliştirelim.",
+
+    // Services page
+    "svc-hero-title": "İzmir EPC Hizmetleri",
+    "svc-hero-sub": "Endüstriyel EPC • GES • BESS • Mühendislik Danışmanlığı",
+    "svc-main-title": "ANA HİZMETLERİMİZ",
+    "svc-main-sub": "İzmir ve Ege Bölgesi'nde uçtan uca enerji mühendisliği çözümleri",
+    "svc-cta-title": "İzmir'de Projeniz mi Var?",
+    "svc-cta-desc": "EPC, GES veya BESS projeniz için uzman ekibimizle hemen iletişime geçin.",
+
+    // Contact
+    "contact-hero": "İLETİŞİM",
+    "contact-hero-sub": "İzmir EPC, GES ve BESS projeleriniz için bize ulaşın",
+    "contact-reach": "BİZE ULAŞIN",
+    "contact-reach-sub": "İzmir merkez ofisimiz ve tüm iletişim kanallarımız",
+    "contact-phone": "Telefon",
+    "contact-email": "E-posta",
+    "contact-address": "Adres",
+    "contact-hours": "Çalışma Saatleri",
+    "contact-hours-val": "09:00 – 18:00",
+    "contact-hours-sub": "Pazartesi – Cuma",
+    "contact-form-title": "PROJE TEKLİFİ FORMU",
+    "contact-form-sub": "GES, EPC veya BESS projeniz için detayları yazın, özel teklif oluşturalım."
+  },
+  en: {
+    "nav-home": "HOME",
+    "nav-about": "ABOUT US",
+    "nav-services": "OUR SERVICES",
+    "nav-contact": "CONTACT",
+    "btn-quote": "GET QUOTE",
+    "btn-quote-long": "GET A QUOTE",
+
+    "hero-subtitle": "Engineering Powering the Future | Izmir",
+    "hero-desc": "Vitavolt Global is an Izmir-based renewable energy company. We provide solar power plants (PV), industrial EPC, battery energy storage systems (BESS) and carbon advisory services.",
+    "btn-services": "OUR SERVICES",
+
+    "services-title": "OUR SERVICES",
+    "services-subtitle": "Comprehensive energy engineering solutions in Izmir and the Aegean Region",
+    "svc-ges-title": "SOLAR (PV)",
+    "svc-ges-desc": "High-efficiency solar power plant design and installation in and around Izmir.",
+    "svc-epc-title": "INDUSTRIAL EPC",
+    "svc-epc-desc": "Izmir-based EPC: Engineering, procurement and construction management.",
+    "svc-bess-title": "BATTERY STORAGE (BESS)",
+    "svc-bess-desc": "Energy optimization with lithium-ion battery systems.",
+    "svc-carbon-title": "CARBON ADVISORY",
+    "svc-carbon-desc": "Carbon footprint analysis and net-zero strategies.",
+    "svc-consult-title": "ENGINEERING CONSULTING",
+    "svc-consult-desc": "Technical feasibility, site analysis and supplier evaluation.",
+    "btn-detail": "Details",
+
+    "stat-projects": "COMPLETED PROJECTS",
+    "stat-mw": "MW INSTALLED CAPACITY",
+    "stat-countries": "COUNTRIES WITH SUPPORT",
+    "stat-team": "EXPERT TEAM",
+
+    "cta-title": "GET IN TOUCH FOR YOUR PROJECT",
+    "cta-desc": "Let's design tailored energy solutions for you across Izmir and Turkey.",
+
+    "footer-desc": "Izmir-based Vitavolt Global provides engineering solutions in renewable energy.",
+    "footer-links": "QUICK LINKS",
+    "footer-services": "OUR SERVICES",
+    "footer-contact": "CONTACT",
+    "footer-home": "Home",
+    "footer-about": "About Us",
+    "footer-services-link": "Services",
+    "footer-contact-link": "Contact",
+    "footer-ges": "Solar (PV)",
+    "footer-epc": "Industrial EPC",
+    "footer-bess": "Battery Storage",
+    "footer-carbon": "Carbon Advisory",
+    "visitor-label": "Visitors:",
+    "copyright": "© 2026 Vitavolt Global. All rights reserved.",
+    "location": "Izmir, Turkey",
+    "location-bayrakli": "Bayrakli, Izmir",
+
+    "about-hero": "ABOUT US",
+    "about-hero-sub": "Our Vision, Mission & Values",
+    "about-who": "WHO WE ARE",
+    "about-p1": "Vitavolt Global is an Izmir-based renewable energy and sustainable engineering company.",
+    "about-p2": "We serve in Solar Power Plants (PV), Battery Energy Storage Systems (BESS), Industrial EPC, carbon advisory and technical engineering consulting.",
+    "about-p3": "Our goal is to develop sustainable, reliable and high-efficiency solutions that will shape the energy systems of the future.",
+    "mission-title": "OUR MISSION",
+    "mission-text": "To make the energy system clean, efficient and accessible through renewable energy technologies and advanced engineering.",
+    "vision-title": "OUR VISION",
+    "vision-text": "To be a leading engineering partner in building a carbon-neutral future.",
+    "about-cta-title": "WOULD YOU LIKE TO DISCUSS YOUR PROJECT?",
+    "about-cta-desc": "Let's develop tailored solutions for your energy needs with our expert team.",
+
+    "svc-hero-title": "Izmir EPC Services",
+    "svc-hero-sub": "Industrial EPC • Solar • BESS • Engineering Consulting",
+    "svc-main-title": "OUR MAIN SERVICES",
+    "svc-main-sub": "End-to-end energy engineering solutions in Izmir and the Aegean Region",
+    "svc-cta-title": "Have a Project in Izmir?",
+    "svc-cta-desc": "Contact our expert team right away for your EPC, Solar or BESS project.",
+
+    "contact-hero": "CONTACT",
+    "contact-hero-sub": "Reach us for your Izmir EPC, Solar and BESS projects",
+    "contact-reach": "REACH US",
+    "contact-reach-sub": "Our Izmir head office and all contact channels",
+    "contact-phone": "Phone",
+    "contact-email": "Email",
+    "contact-address": "Address",
+    "contact-hours": "Working Hours",
+    "contact-hours-val": "09:00 – 18:00",
+    "contact-hours-sub": "Monday – Friday",
+    "contact-form-title": "PROJECT QUOTE FORM",
+    "contact-form-sub": "Write the details of your Solar, EPC or BESS project and we will prepare a custom quote."
+  }
+};
+
+window.translations = translations;
