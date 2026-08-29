@@ -98,11 +98,11 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- GA4 placeholder: replace G-XXXXXXXXXX with your Measurement ID to enable analytics -->
+    <!-- GA4: integrated per request -->
     <script>
     (function(){
-      var measId = 'G-XXXXXXXXXX'; // REPLACE with your GA4 Measurement ID (e.g. G-XXXXXXX)
-      if (measId !== 'G-XXXXXXXXXX') {
+      var measId = 'G-WHVQDXEQSE'; // provided by user
+      if (measId && measId.indexOf('G-') === 0) {
         var s = document.createElement('script');
         s.src = 'https://www.googletagmanager.com/gtag/js?id='+measId;
         s.async = true;
@@ -112,7 +112,7 @@
         gtag('js', new Date());
         gtag('config', measId, { 'anonymize_ip': true });
       } else {
-        console.info('GA4 not initialized: replace G-XXXXXXXXXX in the script with your Measurement ID.');
+        console.info('GA4 not initialized: measurement ID missing or invalid.');
       }
     })();
     </script>
@@ -248,7 +248,7 @@
             </div>
         </div>
     </footer>
-    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label[...]
+    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
     <script src="js/translations.js" defer></script>
     <script src="js/script.js" defer></script>
     <script>
