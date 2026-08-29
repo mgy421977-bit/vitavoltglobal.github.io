@@ -98,6 +98,24 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- GA4 placeholder: replace G-XXXXXXXXXX with your Measurement ID to enable analytics -->
+    <script>
+    (function(){
+      var measId = 'G-XXXXXXXXXX'; // REPLACE with your GA4 Measurement ID (e.g. G-XXXXXXX)
+      if (measId !== 'G-XXXXXXXXXX') {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id='+measId;
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', measId, { 'anonymize_ip': true });
+      } else {
+        console.info('GA4 not initialized: replace G-XXXXXXXXXX in the script with your Measurement ID.');
+      }
+    })();
+    </script>
 </head>
 <body>
     <header class="header" role="banner">
@@ -214,7 +232,7 @@
                     <h4 class="footer-title" data-i18n="footer-contact">İLETİŞİM</h4>
                     <ul class="footer-contact">
                         <li><a href="tel:+905454411977"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
-                        <li><a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer"><i class=[...]
+                        <li><a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-right"></i> Bilgi Hattı</a></li>
                         <li><a href="mailto:info@vitavoltglobal.com"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
                         <li><span><i class="fas fa-map-marker-alt"></i> <span data-i18n="location-bayrakli">Bayraklı, İzmir · Kuşadası</span></span></li>
                     </ul>
