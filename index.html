@@ -35,40 +35,61 @@
           "logo": "https://vitavoltglobal.com/favicon.svg",
           "email": "info@vitavoltglobal.com",
           "telephone": "+90-545-441-19-77",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Bayraklı",
-            "addressRegion": "İzmir",
-            "addressCountry": "TR"
-          },
-          "areaServed": ["İzmir", "Kuşadası", "Ege", "Türkiye"]
+          "sameAs": [],
+          "areaServed": ["İzmir", "Kuşadası", "Aydın", "Ege", "Türkiye"]
         },
         {
-          "@type": "WebSite",
-          "@id": "https://vitavoltglobal.com/#website",
-          "url": "https://vitavoltglobal.com/",
-          "name": "Vitavolt Global",
-          "publisher": { "@id": "https://vitavoltglobal.com/#organization" },
-          "inLanguage": "tr"
-        },
-        {
-          "@type": "ProfessionalService",
-          "@id": "https://vitavoltglobal.com/#localbusiness",
-          "name": "Vitavolt Global",
-          "url": "https://vitavoltglobal.com/",
-          "image": "https://vitavoltglobal.com/images/hero.jpg",
+          "@type": "LocalBusiness",
+          "@id": "https://vitavoltglobal.com/#local-izmir",
+          "name": "Vitavolt Global - İzmir Ofis",
           "telephone": "+90-545-441-19-77",
           "email": "info@vitavoltglobal.com",
+          "url": "https://vitavoltglobal.com/",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Bayraklı",
+            "streetAddress": "Bayraklı (Ofis adresinizi buraya yazın)",
+            "addressLocality": "İzmir",
             "addressRegion": "İzmir",
+            "postalCode": "35000",
             "addressCountry": "TR"
           },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 38.4445,
+            "longitude": 27.1585
+          },
+          "image": "https://vitavoltglobal.com/images/office.jpg",
+          "priceRange": "₺₺",
+          "areaServed": { "@type": "AdministrativeArea", "name": "İzmir" },
+          "openingHours": "Mo-Fr 09:00-18:00",
+          "parentOrganization": { "@id": "https://vitavoltglobal.com/#organization" }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://vitavoltglobal.com/#local-kusadasi",
+          "name": "Vitavolt Global - Kuşadası Hizmetleri",
+          "telephone": "+90-545-441-19-77",
+          "email": "info@vitavoltglobal.com",
+          "url": "https://vitavoltglobal.com/kusadasi/",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Kuşadası (Şube/temsilci adresi)",
+            "addressLocality": "Kuşadası",
+            "addressRegion": "Aydın",
+            "postalCode": "09400",
+            "addressCountry": "TR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 37.8623,
+            "longitude": 27.2568
+          },
+          "image": "https://vitavoltglobal.com/images/office.jpg",
           "areaServed": [
-            { "@type": "AdministrativeArea", "name": "İzmir" },
-            { "@type": "AdministrativeArea", "name": "Kuşadası" }
+            { "@type": "AdministrativeArea", "name": "Kuşadası" },
+            { "@type": "AdministrativeArea", "name": "Aydın" }
           ],
+          "openingHours": "Mo-Fr 09:00-18:00",
           "parentOrganization": { "@id": "https://vitavoltglobal.com/#organization" }
         }
       ]
@@ -132,7 +153,7 @@
                 <div class="hero-content">
                     <h1 class="hero-title scroll-reveal">ENGINEERING<br>TOMORROW'S<br><span class="gradient-text">ENERGY</span></h1>
                     <p class="hero-subtitle scroll-reveal" data-i18n="hero-subtitle">Geleceğe Güç Veren Mühendislik | İzmir & Kuşadası</p>
-                    <p class="hero-description scroll-reveal" data-i18n="hero-desc">Vitavolt Global, İzmir ve Kuşadası'nda faaliyet gösteren yenilenebilir enerji firmasıdır. Güneş enerjisi santralleri (GES), endüstriyel EPC, batarya enerji depolama sistemleri (BESS), su yönetimi ve karbon danışmanlığı hizmetleri sunuyoruz.</p>
+                    <p class="hero-description scroll-reveal" data-i18n="hero-desc">Vitavolt Global, İzmir ve Kuşadası'nda faaliyet gösteren yenilenebilir enerji firmasıdır. Güneş enerjis[...]</p>
                     <div class="hero-buttons scroll-reveal">
                         <a href="#services" class="btn btn-primary btn-large" data-i18n="btn-services">HİZMETLERİMİZ</a>
                         <a href="contact.html" class="btn btn-outline btn-large" data-i18n="btn-quote">TEKLİF AL</a>
@@ -148,7 +169,7 @@
                 </div>
                 <div class="services-grid scroll-reveal">
                     <div class="service-card">
-                        <div class="service-image-wrapper"><img src="images/solar%20panels.jpg" alt="İzmir Kuşadası GES" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/solar%20panels.jpg" alt="İzmir Kuşadası GES" loading="lazy" decoding="async" width="600" height="400" /><div class="[...]"
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-sun"></i></div>
                             <h3 class="service-title" data-i18n="svc-ges-title">GES (GÜNEŞ ENERJİSİ)</h3>
@@ -157,7 +178,7 @@
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-image-wrapper"><img src="images/epc.jpg" alt="İzmir EPC" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/epc.jpg" alt="İzmir EPC" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div[...]
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
                             <h3 class="service-title" data-i18n="svc-epc-title">ENDÜSTRİYEL EPC</h3>
@@ -166,7 +187,7 @@
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-image-wrapper"><img src="images/bess.PNG" alt="BESS" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/bess.PNG" alt="BESS" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div></di[...]
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-battery-full"></i></div>
                             <h3 class="service-title" data-i18n="svc-bess-title">BATARYA DEPOLAMA (BESS)</h3>
@@ -175,7 +196,7 @@
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-image-wrapper"><img src="images/carbon.jpg" alt="Karbon" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/carbon.jpg" alt="Karbon" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div>[...]
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-leaf"></i></div>
                             <h3 class="service-title" data-i18n="svc-carbon-title">KARBON DANIŞMANLIĞI</h3>
@@ -184,7 +205,7 @@
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-image-wrapper"><img src="images/office.jpg" alt="Su" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/office.jpg" alt="Su" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div></di[...]
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-tint"></i></div>
                             <h3 class="service-title" data-i18n="svc-water-title">SU YÖNETİMİ</h3>
@@ -193,7 +214,7 @@
                         </div>
                     </div>
                     <div class="service-card">
-                        <div class="service-image-wrapper"><img src="images/consulting.jpg" alt="Danışmanlık" loading="lazy" decoding="async" width="600" height="400" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/consulting.jpg" alt="Danışmanlık" loading="lazy" decoding="async" width="600" height="400" /><div class="service-ove[...]
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-handshake"></i></div>
                             <h3 class="service-title" data-i18n="svc-consult-title">MÜHENDİSLİK DANIŞMANLIĞI</h3>
@@ -208,10 +229,10 @@
             <div class="stats-background" style="background-image: linear-gradient(135deg, rgba(7, 17, 28, 0.85), rgba(15, 26, 43, 0.85)), url('images/hero.jpg');"></div>
             <div class="container stats-container">
                 <div class="stats-grid scroll-reveal">
-                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-briefcase"></i></div><div class="stat-number" data-count="30">0</div><div class="stat-label" data-i18n="stat-projects">TAMAMLANAN PROJE</div></div>
-                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-bolt"></i></div><div class="stat-number" data-count="55">0</div><div class="stat-label" data-i18n="stat-mw">MW KURULU GÜÇ</div></div>
-                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-globe"></i></div><div class="stat-number" data-count="3">0</div><div class="stat-label" data-i18n="stat-countries">ÜLKEDE TEKNİK DESTEK</div></div>
-                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-number" style="font-size:2.5rem;color:var(--color-primary)">✦</div><div class="stat-label" data-i18n="stat-team">UZMANLAŞMIŞ KADRO</div></div>
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-briefcase"></i></div><div class="stat-number" data-count="30">0</div><div class="stat-label" data-i18n="stat-pro[...]
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-bolt"></i></div><div class="stat-number" data-count="55">0</div><div class="stat-label" data-i18n="stat-mw">MW K[...]
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-globe"></i></div><div class="stat-number" data-count="3">0</div><div class="stat-label" data-i18n="stat-countrie[...]
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-number" style="font-size:2.5rem;color:var(--color-primary)">✦</div><div clas[...]
                 </div>
             </div>
         </section>
@@ -256,14 +277,14 @@
                     <h4 class="footer-title" data-i18n="footer-contact">İLETİŞİM</h4>
                     <ul class="footer-contact">
                         <li><a href="tel:+905454411977"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
-                        <li><a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer"><i class=[...]
                         <li><a href="mailto:info@vitavoltglobal.com"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
                         <li><span><i class="fas fa-map-marker-alt"></i> <span data-i18n="location-bayrakli">Bayraklı, İzmir · Kuşadası</span></span></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div id="visitor-counter" style="margin-bottom:12px;padding:8px 14px;background:rgba(7,17,28,0.7);border-radius:8px;border:1px solid rgba(0,255,136,0.25);display:inline-flex;align-items:center;gap:8px;font-size:0.9rem;color:#00ff88;">
+                <div id="visitor-counter" style="margin-bottom:12px;padding:8px 14px;background:rgba(7,17,28,0.7);border-radius:8px;border:1px solid rgba(0,255,136,0.25);display:inline-flex;align[...]
                     <i class="fas fa-users" style="color:#00ff88"></i>
                     <span data-i18n="visitor-label">Ziyaretçi Sayısı:</span>
                     <strong id="visit-count" style="color:#fff;font-weight:700">...</strong>
@@ -272,7 +293,7 @@
             </div>
         </div>
     </footer>
-    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Bilgi Hattı"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label[...]
     <script src="js/translations.js" defer></script>
     <script src="js/script.js" defer></script>
     <script>
