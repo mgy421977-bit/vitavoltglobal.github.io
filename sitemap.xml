@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://vitavoltglobal.com/contact.html</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -149,5 +149,11 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vitavoltglobal.com/kusadasi/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
