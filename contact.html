@@ -18,6 +18,39 @@
     <meta property="og:image" content="https://vitavoltglobal.com/images/office.jpg" />
     <meta property="og:site_name" content="Vitavolt Global" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- GA4: integrated (G-WHVQDXEQSE) -->
+    <script>
+    (function(){
+      var measId = 'G-WHVQDXEQSE';
+      if (measId && measId.indexOf('G-') === 0) {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id='+measId;
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', measId, { 'anonymize_ip': true });
+      } else {
+        console.info('GA4 not initialized on contact.html: measurement ID missing or invalid.');
+      }
+    })();
+    </script>
+
+    <script>
+      // safe wrapper to send events if gtag exists
+      function sendGtagEvent(name, params) {
+        try {
+          if (window.gtag && typeof window.gtag === 'function') {
+            window.gtag('event', name, params || {});
+          } else {
+            console.info('gtag not ready — event queued:', name, params);
+          }
+        } catch (e) { console.error('sendGtagEvent error', e); }
+      }
+    </script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,7 +58,7 @@
         {
           "@type": "Organization",
           "@id": "https://vitavoltglobal.com/#organization",
-          "name": "Vitavolt Global Enerji İnşaat Taahüt Ltd. Şti.",
+          "name": "Vitavolt Global",
           "url": "https://vitavoltglobal.com/",
           "email": "info@vitavoltglobal.com",
           "telephone": "+90-545-441-19-77",
@@ -111,9 +144,9 @@
             <div class="container">
                 <div class="top-bar-content">
                     <div class="top-bar-left">
-                        <a href="tel:+905454411977" class="top-bar-item"><i class="fas fa-phone"></i><span>+90 545 441 19 77</span></a>
+                        <a href="tel:+905454411977" class="top-bar-item" onclick="sendGtagEvent('phone_click',{label:'topbar'});"><i class="fas fa-phone"></i><span>+90 545 441 19 77</span></a>
                         <span class="divider">|</span>
-                        <a href="mailto:info@vitavoltglobal.com" class="top-bar-item"><i class="fas fa-envelope"></i><span>info@vitavoltglobal.com</span></a>
+                        <a href="mailto:info@vitavoltglobal.com" class="top-bar-item" onclick="sendGtagEvent('email_click',{label:'topbar'});"><i class="fas fa-envelope"></i><span>info@vitavoltglobal.com</span></a>
                     </div>
                     <div class="top-bar-right">
                         <span class="top-bar-item"><i class="fas fa-map-marker-alt"></i><span data-i18n="location">İzmir & Kuşadası</span></span>
@@ -130,21 +163,8 @@
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-content">
-                    <a href="index.html" class="logo"><span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span></a>
-                    <div class="nav-menu" id="navMenu">
-                        <a href="index.html" class="nav-link" data-i18n="nav-home">ANA SAYFA</a>
-                        <a href="about.html" class="nav-link" data-i18n="nav-about">HAKKIMIZDA</a>
-                        <a href="services.html" class="nav-link" data-i18n="nav-services">HİZMETLERİMİZ</a>
-                        <a href="blog/" class="nav-link" data-i18n="nav-blog">BLOG</a>
-                        <a href="contact.html" class="nav-link active" data-i18n="nav-contact">İLETİŞİM</a>
-                        <a href="contact.html" class="btn btn-primary btn-cta-mobile" data-i18n="btn-quote">TEKLİF AL</a>
-                    </div>
-                    <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
-                    <div class="lang-mobile">
-                        <button class="lang-btn active" data-lang="tr" type="button">TR</button>
-                        <button class="lang-btn" data-lang="en" type="button">EN</button>
-                    </div>
-                    <button class="menu-toggle" id="menuToggle" type="button"><span></span><span></span><span></span></button>
+                    <a href="index.html" class="logo">VITAVOLT GLOBAL</a>
+                    <a href="contact.html" class="btn btn-primary">Teklif Al</a>
                 </div>
             </div>
         </nav>
@@ -163,17 +183,17 @@
                     <div class="contact-card">
                         <span class="icon"><i class="fas fa-phone"></i></span>
                         <h3>Telefon</h3>
-                        <a href="tel:+905454411977">+90 545 441 19 77</a>
+                        <a href="tel:+905454411977" onclick="sendGtagEvent('phone_click',{label:'contact-page'});">+90 545 441 19 77</a>
                     </div>
                     <div class="contact-card">
                         <span class="icon"><i class="fab fa-whatsapp"></i></span>
                         <h3>WhatsApp</h3>
-                        <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer">Bilgi Hattı</a>
+                        <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer" onclick="sendGtagEvent('whatsapp_click',{label:'contact-page'});">Bilgi Hattı</a>
                     </div>
                     <div class="contact-card">
                         <span class="icon"><i class="fas fa-envelope"></i></span>
                         <h3>E-posta</h3>
-                        <a href="mailto:info@vitavoltglobal.com">info@vitavoltglobal.com</a>
+                        <a href="mailto:info@vitavoltglobal.com" onclick="sendGtagEvent('email_click',{label:'contact-page'});">info@vitavoltglobal.com</a>
                     </div>
                     <div class="contact-card">
                         <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
@@ -254,9 +274,9 @@
                 <div class="footer-col">
                     <h4 class="footer-title">İLETİŞİM</h4>
                     <ul class="footer-contact">
-                        <li><a href="tel:+905454411977"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
-                        <li><a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Bilgi Hattı</a></li>
-                        <li><a href="mailto:info@vitavoltglobal.com"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
+                        <li><a href="tel:+905454411977" onclick="sendGtagEvent('phone_click',{label:'footer'});"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
+                        <li><a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer" onclick="sendGtagEvent('whatsapp_click',{label:'footer'});"><i class="fab fa-whatsapp"></i> Bilgi Hattı</a></li>
+                        <li><a href="mailto:info@vitavoltglobal.com" onclick="sendGtagEvent('email_click',{label:'footer'});"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
                         <li><span><i class="fas fa-map-marker-alt"></i> Bayraklı, İzmir · Kuşadası, Aydın</span></li>
                     </ul>
                 </div>
@@ -264,7 +284,7 @@
             <div class="footer-bottom"><p>&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p></div>
         </div>
     </footer>
-    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
+    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onclick="sendGtagEvent('whatsapp_click',{label:'float'});"></a>
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
     <script>
@@ -273,6 +293,12 @@
       if (!form) return;
       form.addEventListener('submit', function(e){
         e.preventDefault();
+        // send GA4 event for contact form submission
+        sendGtagEvent('contact_form_submit', {
+          method: 'site',
+          event_category: 'engagement',
+          event_label: (document.getElementById('service') ? document.getElementById('service').value : 'unknown')
+        });
         alert('Mesajınız alındı. En kısa sürede dönüş yapacağız. Acil için WhatsApp bilgi hattını kullanabilirsiniz.');
         form.reset();
       });
