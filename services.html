@@ -19,7 +19,7 @@
     <meta property="og:site_name" content="Vitavolt Global" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Service","serviceType":"Endüstriyel EPC, GES, BESS, Su Yönetimi, Karbon Danışmanlığı","provider":{"@type":"Organization","name":"Vitavolt Global","url":"https://vitavoltglobal.com/","telephone":"+90-545-441-19-77","email":"info@vitavoltglobal.com","address":{"@type":"PostalAddress","addressLocality":"Bayraklı","addressRegion":"İzmir","addressCountry":"TR"}},"areaServed":["İzmir","Kuşadası","Ege"],"url":"https://vitavoltglobal.com/services.html"}
+    {"@context":"https://schema.org","@type":"Service","serviceType":"Endüstriyel EPC, GES, BESS, Su Yönetimi, Karbon Danışmanlığı","provider":{"@type":"Organization","@id":"https://vitavoltglobal.com/#organization","name":"Vitavolt Global","url":"https://vitavoltglobal.com/","telephone":"+90-545-441-19-77","email":"info@vitavoltglobal.com","address":{"@type":"PostalAddress","addressLocality":"Bayraklı","addressRegion":"İzmir","addressCountry":"TR"}},"areaServed":["İzmir","Kuşadası","Ege"],"url":"https://vitavoltglobal.com/services.html"}
     </script>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -83,6 +83,7 @@
             <a href="izmir-ges.html" style="padding:1.1rem;border-radius:1rem;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.25);color:#22d3ee;text-decoration:none;font-weight:600;">İzmir GES <span style="display:block;color:#94a3b8;font-weight:400;font-size:.85rem;margin-top:.3rem;">Çatı & endüstriyel güneş</span></a>
             <a href="izmir-bess-enerji-depolama.html" style="padding:1.1rem;border-radius:1rem;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.25);color:#22d3ee;text-decoration:none;font-weight:600;">İzmir BESS <span style="display:block;color:#94a3b8;font-weight:400;font-size:.85rem;margin-top:.3rem;">Batarya enerji depolama</span></a>
             <a href="izmir-karbon-danismanligi.html" style="padding:1.1rem;border-radius:1rem;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.25);color:#22d3ee;text-decoration:none;font-weight:600;">İzmir Karbon Danışmanlığı <span style="display:block;color:#94a3b8;font-weight:400;font-size:.85rem;margin-top:.3rem;">ETS · SKDM · azaltım</span></a>
+            <a href="izmir-enerji-karbon-donusumu.html" style="padding:1.1rem;border-radius:1rem;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.25);color:#22d3ee;text-decoration:none;font-weight:600;">Enerji &amp; Karbon Dönüşümü <span style="display:block;color:#94a3b8;font-weight:400;font-size:.85rem;margin-top:.3rem;">İzmir bilgi merkezi</span></a>
           </div>
         </div>
         <section class="section services-section" id="main-services">
@@ -93,7 +94,7 @@
                 </div>
                 <div class="services-grid">
                     <div class="service-card" id="ges">
-                        <div class="service-image-wrapper"><img src="images/solar%20panels.jpg" alt="İzmir GES güneş enerjisi" loading="lazy" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/solar%20panels.jpg" alt="İzmir GES" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-sun"></i></div>
                             <h3 class="service-title" data-i18n="svc-ges-title">GES (GÜNEŞ ENERJİSİ)</h3>
@@ -113,7 +114,7 @@
                         </div>
                     </div>
                     <div class="service-card" id="bess">
-                        <div class="service-image-wrapper"><img src="images/bess.PNG" alt="Batarya enerji depolama BESS" loading="lazy" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/bess.PNG" alt="BESS" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-battery-full"></i></div>
                             <h3 class="service-title" data-i18n="svc-bess-title">BATARYA DEPOLAMA (BESS)</h3>
@@ -123,17 +124,18 @@
                         </div>
                     </div>
                     <div class="service-card" id="carbon">
-                        <div class="service-image-wrapper"><img src="images/carbon.jpg" alt="Karbon danışmanlığı" loading="lazy" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/carbon.jpg" alt="Karbon" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-leaf"></i></div>
                             <h3 class="service-title" data-i18n="svc-carbon-title">KARBON DANIŞMANLIĞI</h3>
                             <p class="service-description" data-i18n="svc-carbon-desc">Karbon ayak izi analizi ve net-zero stratejileri.</p>
                             <a href="izmir-karbon-danismanligi.html" class="btn btn-text">Detay →</a>
+                            <a href="izmir-enerji-karbon-donusumu.html" class="btn btn-text">Dönüşüm hub →</a>
                             <a href="contact.html" class="btn btn-text" data-i18n="btn-quote">TEKLİF AL</a>
                         </div>
                     </div>
                     <div class="service-card" id="water">
-                        <div class="service-image-wrapper"><img src="images/office.jpg" alt="Su yönetimi" loading="lazy" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/office.jpg" alt="Su" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-tint"></i></div>
                             <h3 class="service-title" data-i18n="svc-water-title">SU YÖNETİMİ</h3>
@@ -142,7 +144,7 @@
                         </div>
                     </div>
                     <div class="service-card" id="consult">
-                        <div class="service-image-wrapper"><img src="images/consulting.jpg" alt="Mühendislik danışmanlığı" loading="lazy" /><div class="service-overlay"></div></div>
+                        <div class="service-image-wrapper"><img src="images/consulting.jpg" alt="Danışmanlık" loading="lazy" /><div class="service-overlay"></div></div>
                         <div class="service-content">
                             <div class="service-icon"><i class="fas fa-handshake"></i></div>
                             <h3 class="service-title" data-i18n="svc-consult-title">MÜHENDİSLİK DANIŞMANLIĞI</h3>
@@ -177,6 +179,7 @@
                         <li><a href="izmir-ges.html">İzmir GES</a></li>
                         <li><a href="izmir-bess-enerji-depolama.html">İzmir BESS</a></li>
                         <li><a href="izmir-karbon-danismanligi.html">Karbon Danışmanlığı</a></li>
+                        <li><a href="izmir-enerji-karbon-donusumu.html">Enerji &amp; Karbon Dönüşümü</a></li>
                         <li><a href="contact.html">İletişim</a></li>
                     </ul>
                 </div>
