@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (navMenu) navMenu.classList.remove('active');
         if (menuToggle) menuToggle.classList.remove('active');
         if (menuOverlay) menuOverlay.classList.remove('active');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
     }
 
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (navMenu) navMenu.classList.add('active');
         if (menuToggle) menuToggle.classList.add('active');
         if (menuOverlay) menuOverlay.classList.add('active');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
         document.body.classList.add('menu-open');
     }
 
@@ -131,6 +133,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================================
     // 6. i18n - LANGUAGE SWITCHER (TR / EN)
     // ============================================================
+    const solutionCopy = {
+        solar: { title: 'path-solar-result-title', description: 'path-solar-result-desc', meta: 'path-solar-result-meta', href: 'izmir-ges.html' },
+        efficiency: { title: 'path-efficiency-result-title', description: 'path-efficiency-result-desc', meta: 'path-efficiency-result-meta', href: 'services.html#consult' },
+        storage: { title: 'path-storage-result-title', description: 'path-storage-result-desc', meta: 'path-storage-result-meta', href: 'izmir-bess-enerji-depolama.html' },
+        carbon: { title: 'path-carbon-result-title', description: 'path-carbon-result-desc', meta: 'path-carbon-result-meta', href: 'izmir-enerji-karbon-donusumu.html' }
+    };
+
+    function renderSolution(solutionId, lang) {
+        const dict = (window.translations && window.translations[lang]) || {};
+        const copy = solutionCopy[solutionId] || solutionCopy.solar;
+        const result = document.querySelector('.solution-result');
+        if (!result) return;
+        const title = result.querySelector('[data-solution-target="title"]');
+        const description = result.querySelector('[data-solution-target="description"]');
+        const meta = result.querySelector('[data-solution-target="meta"]');
+        const link = result.querySelector('[data-solution-target="link"]');
+        if (title) title.textContent = dict[copy.title] || '';
+        if (description) description.textContent = dict[copy.description] || '';
+        if (meta) meta.textContent = dict[copy.meta] || '';
+        if (link) link.href = copy.href;
+        if (result) {
+            result.classList.remove('solution-result-refresh');
+            window.requestAnimationFrame(() => result.classList.add('solution-result-refresh'));
+        }
+    }
+
     function applyLanguage(lang) {
         const dict = (window.translations && window.translations[lang]) || {};
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -151,12 +179,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+        });
         document.documentElement.lang = lang;
         localStorage.setItem('vitavolt-lang', lang);
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
+        const activeSolution = document.querySelector('.solution-option.is-active');
+        if (activeSolution) renderSolution(activeSolution.dataset.solution, lang);
     }
 
     const savedLang = localStorage.getItem('vitavolt-lang') || 'tr';
@@ -167,6 +201,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const newLang = this.getAttribute('data-lang');
             if (!newLang) return;
             applyLanguage(newLang);
+        });
+    });
+
+    document.querySelectorAll('.solution-option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.solution-option').forEach(item => {
+                const active = item === option;
+                item.classList.toggle('is-active', active);
+                item.setAttribute('aria-selected', String(active));
+            });
+            renderSolution(option.dataset.solution, document.documentElement.lang || savedLang);
         });
     });
 

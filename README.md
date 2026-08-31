@@ -19,7 +19,8 @@ Vitavolt Global, güneş enerjisi sistemleri (GES), endüstriyel EPC çözümler
 - 🎬 **Scroll Animasyonları** - Yumuşak geçişler
 - 📊 **Animasyonlu Sayaçlar** - İstatistik gösterimi
 - 🔄 **Smooth Scroll** - İçeri gitmede yumuşak kaydırma
-- 📩 **İletişim Formu** - Çalışan form sistemi
+- 🧭 **Proje Rotası** - İhtiyaca göre hizmet ve ilk adım yönlendirmesi
+- 📩 **İki Aşamalı Teklif Formu** - Doğrulamalı, mailto tabanlı teklif akışı
 - 🔍 **SEO Uyumlu** - Meta etiketler, sitemap, robots.txt
 - ♿ **Erişilebilir** - WCAG standartları
 - 🚀 **Hızlı Yükleme** - Lazy loading, optimized assets
@@ -190,8 +191,9 @@ localStorage.setItem('language', 'tr');
 - ✅ HTTPS (GitHub Pages)
 - ✅ No API keys exposed
 - ✅ WCAG accessibility compliance
-- ✅ XSS prevention
-- ✅ No external dependencies risk
+- ✅ **XSS prevention**
+- ✅ **No external dependencies risk**
+- ✅ **Şeffaf form akışı** - GitHub Pages backend'i olmadığı için form, kullanıcıya e-posta taslağı açacağını açıkça belirtir.
 
 ---
 

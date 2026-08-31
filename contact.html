@@ -139,114 +139,155 @@
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main">İçeriğe geç</a>
     <header class="header">
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="top-bar-left">
-                        <a href="tel:+905454411977" class="top-bar-item" onclick="sendGtagEvent('phone_click',{label:'topbar'});"><i class="fas fa-phone"></i><span>+90 545 441 19 77</span></a>
-                        <span class="divider">|</span>
-                        <a href="mailto:info@vitavoltglobal.com" class="top-bar-item" onclick="sendGtagEvent('email_click',{label:'topbar'});"><i class="fas fa-envelope"></i><span>info@vitavoltglobal.com</span></a>
-                    </div>
-                    <div class="top-bar-right">
-                        <span class="top-bar-item"><i class="fas fa-map-marker-alt"></i><span data-i18n="location">İzmir & Kuşadası</span></span>
-                        <span class="divider">|</span>
-                        <div class="language-selector">
-                            <button class="lang-btn active" data-lang="tr" type="button">TR</button>
-                            <span class="lang-divider">|</span>
-                            <button class="lang-btn" data-lang="en" type="button">EN</button>
-                        </div>
-                    </div>
+        <div class="top-bar"><div class="container"><div class="top-bar-content">
+            <div class="top-bar-left">
+                <a href="tel:+905454411977" class="top-bar-item" onclick="sendGtagEvent('phone_click',{label:'topbar'});"><i class="fas fa-phone"></i><span>+90 545 441 19 77</span></a>
+                <span class="divider">|</span>
+                <a href="mailto:info@vitavoltglobal.com" class="top-bar-item" onclick="sendGtagEvent('email_click',{label:'topbar'});"><i class="fas fa-envelope"></i><span>info@vitavoltglobal.com</span></a>
+            </div>
+            <div class="top-bar-right">
+                <span class="top-bar-item"><i class="fas fa-map-marker-alt"></i><span data-i18n="location">İzmir & Kuşadası</span></span>
+                <span class="divider">|</span>
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="tr" type="button">TR</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en" type="button">EN</button>
                 </div>
             </div>
-        </div>
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-content">
-                    <a href="index.html" class="logo">VITAVOLT GLOBAL</a>
-                    <a href="contact.html" class="btn btn-primary">Teklif Al</a>
-                </div>
+        </div></div></div>
+        <nav class="navbar"><div class="container"><div class="navbar-content">
+            <a href="index.html" class="logo"><span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span></a>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link" data-i18n="nav-home">ANA SAYFA</a>
+                <a href="about.html" class="nav-link" data-i18n="nav-about">HAKKIMIZDA</a>
+                <a href="services.html" class="nav-link" data-i18n="nav-services">HİZMETLERİMİZ</a>
+                <a href="blog/" class="nav-link" data-i18n="nav-blog">BLOG</a>
+                <a href="vaka-calismalari.html" class="nav-link" data-i18n="nav-technical">TEKNİK ÇALIŞMALAR</a>
+                <a href="contact.html" class="nav-link" data-i18n="nav-contact">İLETİŞİM</a>
+                <a href="contact.html" class="btn btn-primary btn-cta-mobile" data-i18n="btn-quote">TEKLİF AL</a>
             </div>
-        </nav>
+            <a href="contact.html" class="btn btn-primary btn-cta" data-i18n="btn-quote">TEKLİF AL</a>
+            <div class="lang-mobile"><button class="lang-btn active" data-lang="tr" type="button">TR</button><button class="lang-btn" data-lang="en" type="button">EN</button></div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menü" type="button" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div></div><div class="menu-overlay" id="menuOverlay"></div></nav>
     </header>
     <main id="main">
         <section class="contact-hero">
             <div class="hero-bg"></div>
             <div class="hero-content">
-                <h1 class="hero-title">İLETİŞİM</h1>
-                <p class="hero-subtitle">İzmir (Bayraklı) & Kuşadası · Teklif ve Bilgi Hattı</p>
+                <p class="section-kicker" data-i18n="contact-kicker">PROJE DANIŞMANLIĞI</p>
+                <h1 class="hero-title" data-i18n="contact-hero">İLETİŞİM</h1>
+                <p class="hero-subtitle" data-i18n="contact-hero-sub">İzmir (Bayraklı) & Kuşadası · Teklif ve bilgi hattı</p>
             </div>
         </section>
-        <section class="section">
+        <section class="section contact-page-section">
             <div class="container">
+                <div class="section-header text-center contact-intro">
+                    <p class="section-kicker" data-i18n="contact-reach-kicker">BİR SONRAKİ ADIM</p>
+                    <h2 class="section-title" data-i18n="contact-reach">BİZE ULAŞIN</h2>
+                    <p class="section-subtitle" data-i18n="contact-reach-sub">Projenizin hedefini paylaşın; doğru mühendislik rotasını birlikte oluşturalım.</p>
+                </div>
                 <div class="contact-grid">
                     <div class="contact-card">
                         <span class="icon"><i class="fas fa-phone"></i></span>
-                        <h3>Telefon</h3>
+                        <h3 data-i18n="contact-phone">Telefon</h3>
                         <a href="tel:+905454411977" onclick="sendGtagEvent('phone_click',{label:'contact-page'});">+90 545 441 19 77</a>
                     </div>
                     <div class="contact-card">
                         <span class="icon"><i class="fab fa-whatsapp"></i></span>
-                        <h3>WhatsApp</h3>
-                        <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer" onclick="sendGtagEvent('whatsapp_click',{label:'contact-page'});">Bilgi Hattı</a>
+                        <h3 data-i18n="contact-whatsapp">WhatsApp</h3>
+                        <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer" onclick="sendGtagEvent('whatsapp_click',{label:'contact-page'});" data-i18n="contact-whatsapp-link">Bilgi Hattı</a>
                     </div>
                     <div class="contact-card">
                         <span class="icon"><i class="fas fa-envelope"></i></span>
-                        <h3>E-posta</h3>
+                        <h3 data-i18n="contact-email">E-posta</h3>
                         <a href="mailto:info@vitavoltglobal.com" onclick="sendGtagEvent('email_click',{label:'contact-page'});">info@vitavoltglobal.com</a>
                     </div>
                     <div class="contact-card">
-                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                        <h3>İzmir Ofis</h3>
-                        <p>Vitavolt Global Enerji İnşaat Taahüt Ltd. Şti.<br/>Adalet Mah. Manas Bulvarı Folkart Towers A Kule K.26 D2601<br/>Bayraklı, 35530 — İzmir</p>
-                    </div>
-                    <div class="contact-card">
-                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                        <h3>Kuşadası Ofis</h3>
-                        <p>Kuşadası, Aydın</p>
+                        <span class="icon"><i class="fas fa-clock"></i></span>
+                        <h3 data-i18n="contact-hours">Çalışma Saatleri</h3>
+                        <p><span data-i18n="contact-hours-val">09:00 – 18:00</span><br/><small data-i18n="contact-hours-sub">Pazartesi – Cuma</small></p>
                     </div>
                 </div>
-                <div class="form-premium" style="margin-top:3rem">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Ad Soyad</label>
-                            <input type="text" id="name" name="name" required />
+                <div class="contact-workspace">
+                    <div class="form-premium">
+                        <div class="form-heading">
+                            <p class="section-kicker" data-i18n="contact-form-kicker">BİLGİLERİ PAYLAŞIN</p>
+                            <h2 data-i18n="contact-form-title">PROJE TEKLİFİ FORMU</h2>
+                            <p data-i18n="contact-form-sub">Projenizin temel detaylarını paylaşın; size özel ilk değerlendirme için dönüş yapalım.</p>
                         </div>
-                        <div class="form-group">
-                            <label for="email">E-posta</label>
-                            <input type="email" id="email" name="email" required />
+                        <form id="contactForm" novalidate>
+                            <div class="form-progress" aria-label="Form ilerlemesi">
+                                <span class="form-progress-step is-active" data-progress="1"><span>1</span><b data-i18n="form-step-project">Proje</b></span>
+                                <span class="form-progress-line"></span>
+                                <span class="form-progress-step" data-progress="2"><span>2</span><b data-i18n="form-step-contact">İletişim</b></span>
+                            </div>
+                            <div class="form-step is-active" data-step="1">
+                                <div class="form-group">
+                                    <label for="name" data-i18n="form-name">Ad Soyad</label>
+                                    <input type="text" id="name" name="name" autocomplete="name" required data-i18n-placeholder="form-name-placeholder" placeholder="Adınızı ve soyadınızı yazın" />
+                                </div>
+                                <div class="form-step-grid">
+                                    <div class="form-group">
+                                        <label for="company" data-i18n="form-company">Şirket</label>
+                                        <input type="text" id="company" name="company" autocomplete="organization" data-i18n-placeholder="form-company-placeholder" placeholder="Şirketiniz" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" data-i18n="form-phone">Telefon</label>
+                                        <input type="tel" id="phone" name="phone" autocomplete="tel" data-i18n-placeholder="form-phone-placeholder" placeholder="+90 ..." />
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <span></span>
+                                    <button type="button" class="btn btn-primary" data-next-step data-i18n="form-next">Devam et <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-step" data-step="2" hidden>
+                                <div class="form-group">
+                                    <label for="email" data-i18n="form-email">E-posta</label>
+                                    <input type="email" id="email" name="email" autocomplete="email" required data-i18n-placeholder="form-email-placeholder" placeholder="ornek@sirket.com" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="service" data-i18n="form-service">İlgilendiğiniz hizmet</label>
+                                    <select id="service" name="service">
+                                        <option value="ges" data-i18n="form-service-ges">GES (Güneş Enerjisi)</option>
+                                        <option value="epc" data-i18n="form-service-epc">Endüstriyel EPC</option>
+                                        <option value="bess" data-i18n="form-service-bess">Batarya Depolama (BESS)</option>
+                                        <option value="water" data-i18n="form-service-water">Su Yönetimi</option>
+                                        <option value="carbon" data-i18n="form-service-carbon">Karbon Danışmanlığı</option>
+                                        <option value="other" data-i18n="form-service-other">Diğer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message" data-i18n="form-message">Projenizi kısaca anlatın</label>
+                                    <textarea id="message" name="message" rows="5" required data-i18n-placeholder="form-message-placeholder" placeholder="Lokasyon, yaklaşık kapasite ve hedefiniz..." ></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-back" data-prev-step><i class="fas fa-arrow-left" aria-hidden="true"></i> <span data-i18n="form-back">Geri</span></button>
+                                    <button type="submit" class="btn btn-primary" data-i18n="form-submit">E-posta taslağı oluştur <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                            <p class="form-note"><i class="fas fa-lock" aria-hidden="true"></i> <span data-i18n="form-note">Form gönderildiğinde cihazınızdaki e-posta uygulamasında bir taslak açılır.</span></p>
+                            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                        </form>
+                    </div>
+                    <aside class="contact-side-panel">
+                        <p class="section-kicker" data-i18n="contact-side-kicker">NEDEN VITAVOLT?</p>
+                        <h2 data-i18n="contact-side-title">Sorunuzdan uygulanabilir plana.</h2>
+                        <p data-i18n="contact-side-desc">İlk görüşmede hedefinizi, sahanızı ve zaman planınızı netleştirir; sonraki adımı ölçülebilir çıktılarla tarif ederiz.</p>
+                        <div class="contact-side-list">
+                            <div><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="contact-side-item-1">İhtiyaca göre doğru hizmet eşleştirmesi</span></div>
+                            <div><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="contact-side-item-2">İzmir, Kuşadası ve Ege Bölgesi saha erişimi</span></div>
+                            <div><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="contact-side-item-3">Tek ekip ile fizibilite ve uygulama bakışı</span></div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone" />
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Hizmet</label>
-                            <select id="service" name="service">
-                                <option value="ges">GES</option>
-                                <option value="epc">Endüstriyel EPC</option>
-                                <option value="bess">Batarya Depolama</option>
-                                <option value="water">Su Yönetimi</option>
-                                <option value="carbon">Karbon Danışmanlığı</option>
-                                <option value="other">Diğer</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mesaj</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">GÖNDER</button>
-                    </form>
+                        <a class="side-whatsapp" href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20projem%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." target="_blank" rel="noopener noreferrer" onclick="sendGtagEvent('whatsapp_click',{label:'contact-side'});"><i class="fab fa-whatsapp" aria-hidden="true"></i><span data-i18n="contact-side-whatsapp">WhatsApp'tan hızlı yazın</span></a>
+                    </aside>
                 </div>
-                <div style="margin-top:2.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
-                    <div style="padding:1.25rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);">
-                        <h3 style="color:#22d3ee;font-size:1rem;margin:0 0 .5rem;">İzmir — Bayraklı</h3>
-                        <p style="color:#cbd5e1;margin:0;line-height:1.6;font-size:.95rem;">Ana ofis: Vitavolt Global Enerji İnşaat Taahüt Ltd. Şti.<br/>Adalet Mah. Manas Bulvarı Folkart Towers A Kule K.26 D2601, Bayraklı — 35530</p>
-                    </div>
-                    <div style="padding:1.25rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);">
-                        <h3 style="color:#22d3ee;font-size:1rem;margin:0 0 .5rem;">Kuşadası — Aydın</h3>
-                        <p style="color:#cbd5e1;margin:0;line-height:1.6;font-size:.95rem;">Şube ofis. Kuşadası ve çevresinde (otel, tesis, sanayi) GES, enerji ve EPC saha erişimi.</p>
-                    </div>
+                <div class="office-grid">
+                    <div class="office-card"><div class="office-card-header"><span class="office-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></span><h3 data-i18n="office-izmir-title">İzmir — Bayraklı</h3></div><p data-i18n="office-izmir-text">Ana ofis: Adalet Mah. Manas Bulvarı Folkart Towers A Kule K.26 D2601, Bayraklı — 35530</p></div>
+                    <div class="office-card"><div class="office-card-header"><span class="office-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></span><h3 data-i18n="office-kusadasi-title">Kuşadası — Aydın</h3></div><p data-i18n="office-kusadasi-text">Şube ofis. Kuşadası ve çevresinde otel, tesis ve sanayi projeleri için saha erişimi.</p></div>
                 </div>
                 <div class="map-container">
                     <iframe src="https://www.google.com/maps?q=38.4561,27.1801&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Bayraklı Harita"></iframe>
@@ -264,18 +305,18 @@
                 <div class="footer-col">
                     <h4 class="footer-title" data-i18n="footer-links">HIZLI LİNKLER</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Ana Sayfa</a></li>
-                        <li><a href="about.html">Hakkımızda</a></li>
-                        <li><a href="services.html">Hizmetler</a></li>
-                        <li><a href="blog/">Blog</a></li>
-                        <li><a href="contact.html">İletişim</a></li>
+                        <li><a href="index.html" data-i18n="footer-home">Ana Sayfa</a></li>
+                        <li><a href="about.html" data-i18n="footer-about">Hakkımızda</a></li>
+                        <li><a href="services.html" data-i18n="footer-services-link">Hizmetler</a></li>
+                        <li><a href="blog/" data-i18n="footer-blog">Blog</a></li>
+                        <li><a href="contact.html" data-i18n="footer-contact-link">İletişim</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">İLETİŞİM</h4>
+                    <h4 class="footer-title" data-i18n="footer-contact">İLETİŞİM</h4>
                     <ul class="footer-contact">
                         <li><a href="tel:+905454411977" onclick="sendGtagEvent('phone_click',{label:'footer'});"><i class="fas fa-phone"></i> +90 545 441 19 77</a></li>
-                        <li><a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer" onclick="sendGtagEvent('whatsapp_click',{label:'footer'});"><i class="fab fa-whatsapp"></i> Bilgi Hattı</a></li>
+                        <li><a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer" onclick="sendGtagEvent('whatsapp_click',{label:'footer'});"><i class="fab fa-whatsapp"></i> <span data-i18n="contact-whatsapp-link">Bilgi Hattı</span></a></li>
                         <li><a href="mailto:info@vitavoltglobal.com" onclick="sendGtagEvent('email_click',{label:'footer'});"><i class="fas fa-envelope"></i> info@vitavoltglobal.com</a></li>
                         <li><span><i class="fas fa-map-marker-alt"></i> Bayraklı, İzmir · Kuşadası, Aydın</span></li>
                     </ul>
@@ -284,23 +325,79 @@
             <div class="footer-bottom"><p>&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p></div>
         </div>
     </footer>
-    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onclick="sendGtagEvent('whatsapp_click',{label:'float'});"></a>
+    <a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20bilgi%20hatt%C4%B1ndan%20yaz%C4%B1yorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onclick="sendGtagEvent('whatsapp_click',{label:'float'});"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
     <script>
     (function(){
       var form = document.getElementById('contactForm');
       if (!form) return;
+      var steps = Array.from(form.querySelectorAll('[data-step]'));
+      var progress = Array.from(form.querySelectorAll('[data-progress]'));
+      var status = document.getElementById('formStatus');
+      var currentStep = 1;
+      var service = document.getElementById('service');
+      var serviceLabels = {
+        ges: 'GES (Güneş Enerjisi)', epc: 'Endüstriyel EPC', bess: 'Batarya Depolama (BESS)',
+        water: 'Su Yönetimi', carbon: 'Karbon Danışmanlığı', other: 'Diğer'
+      };
+
+      function setStatus(message, type) {
+        status.textContent = message;
+        status.className = 'form-status' + (type ? ' is-' + type : '');
+      }
+      function validateStep(stepNumber) {
+        var fields = steps[stepNumber - 1].querySelectorAll('input, select, textarea');
+        for (var i = 0; i < fields.length; i += 1) {
+          if (!fields[i].checkValidity()) {
+            fields[i].reportValidity();
+            return false;
+          }
+        }
+        return true;
+      }
+      function setStep(stepNumber) {
+        currentStep = stepNumber;
+        steps.forEach(function(step) {
+          var active = Number(step.dataset.step) === stepNumber;
+          step.classList.toggle('is-active', active);
+          step.hidden = !active;
+        });
+        progress.forEach(function(item) {
+          item.classList.toggle('is-active', Number(item.dataset.progress) === stepNumber);
+        });
+        setStatus('');
+        var firstField = steps[stepNumber - 1].querySelector('input, select, textarea');
+        if (firstField) window.setTimeout(function(){ firstField.focus(); }, 30);
+      }
+      form.querySelector('[data-next-step]').addEventListener('click', function() {
+        if (validateStep(1)) setStep(2);
+      });
+      form.querySelector('[data-prev-step]').addEventListener('click', function() { setStep(1); });
       form.addEventListener('submit', function(e){
         e.preventDefault();
-        // send GA4 event for contact form submission
-        sendGtagEvent('contact_form_submit', {
-          method: 'site',
-          event_category: 'engagement',
-          event_label: (document.getElementById('service') ? document.getElementById('service').value : 'unknown')
-        });
-        alert('Mesajınız alındı. En kısa sürede dönüş yapacağız. Acil için WhatsApp bilgi hattını kullanabilirsiniz.');
-        form.reset();
+        if (!validateStep(2)) return;
+        var data = new FormData(form);
+        var lang = document.documentElement.lang || 'tr';
+        var emailCopy = lang === 'en'
+          ? { subject: 'Vitavolt Global project inquiry — ', name: 'Full name', company: 'Company', phone: 'Phone', service: 'Service', details: 'Project details:', missing: 'Not provided' }
+          : { subject: 'Vitavolt Global proje talebi — ', name: 'Ad Soyad', company: 'Şirket', phone: 'Telefon', service: 'Hizmet', details: 'Proje detayları:', missing: 'Belirtilmedi' };
+        var selectedService = service.options[service.selectedIndex].textContent.trim();
+        var subject = emailCopy.subject + selectedService;
+        var body = [
+          emailCopy.name + ': ' + data.get('name'),
+          emailCopy.company + ': ' + (data.get('company') || emailCopy.missing),
+          emailCopy.phone + ': ' + (data.get('phone') || emailCopy.missing),
+          emailCopy.service + ': ' + selectedService,
+          '',
+          emailCopy.details,
+          data.get('message')
+        ].join('\n');
+        var mailto = 'mailto:info@vitavoltglobal.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        sendGtagEvent('contact_form_submit', { method: 'mailto', event_category: 'engagement', event_label: data.get('service') });
+        var statusCopy = window.translations && window.translations[lang] && window.translations[lang]['form-status-mailto'];
+        setStatus(statusCopy || 'E-posta taslağınız hazırlanıyor.', 'success');
+        window.location.href = mailto;
       });
     })();
     </script>
