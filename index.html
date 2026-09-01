@@ -34,6 +34,117 @@
 .btn-hero-primary{border-radius:999px!important;padding-left:1.75rem!important;padding-right:1.75rem!important;font-weight:600!important;text-transform:none!important;box-shadow:0 8px 24px rgba(37,99,235,.35)}
 .btn-hero-secondary{border-radius:999px!important;padding-left:1.5rem!important;padding-right:1.5rem!important;font-weight:500!important;text-transform:none!important;border-color:rgba(255,255,255,.35)!important;color:#fff!important;background:rgba(255,255,255,.06)!important}
 @media(max-width:768px){.hero-content--modern{text-align:center;margin:0 auto}.hero-meta,.hero-buttons--modern{justify-content:center}.hero-subtitle--modern{margin-left:auto;margin-right:auto}}
+
+/* Hızlı Hesapla Styles */
+.hizli-hesapla-section {
+  background: linear-gradient(180deg, #07111C 0%, #0a1828 100%);
+  padding: 4rem 0;
+  border-top: 1px solid rgba(0,174,239,0.12);
+  border-bottom: 1px solid rgba(0,174,239,0.12);
+}
+.hizli-hesapla-box {
+  max-width: 820px;
+  margin: 0 auto;
+  background: rgba(16, 37, 61, 0.55);
+  border: 1px solid rgba(0, 174, 239, 0.18);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+.hizli-hesapla-box h2 {
+  font-size: 1.85rem;
+  margin-bottom: 0.5rem;
+  color: #f8fafc;
+}
+.hizli-hesapla-box > p {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+.hizli-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.hizli-form input,
+.hizli-form select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(7,17,28,0.7);
+  color: #f1f5f9;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.hizli-form input:focus,
+.hizli-form select:focus {
+  outline: none;
+  border-color: #00AEEF;
+  box-shadow: 0 0 0 3px rgba(0,174,239,0.15);
+}
+.hizli-form input::placeholder {
+  color: rgba(148,163,184,0.7);
+}
+.hizli-form select {
+  appearance: none;
+  cursor: pointer;
+}
+.hizli-form .full-width {
+  grid-column: 1 / -1;
+}
+.hizli-form button {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00AEEF, #0088BB);
+  color: #07111C;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.hizli-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,174,239,0.35);
+}
+.hizli-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+#sonucKutusu {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.75rem;
+  background: rgba(7,17,28,0.8);
+  border: 1px solid rgba(56,214,122,0.25);
+  border-radius: 1rem;
+}
+#sonucKutusu h3 {
+  color: #38bdf8;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+#sonucKutusu p {
+  margin-bottom: 0.6rem;
+  color: #e2e8f0;
+  font-size: 0.98rem;
+}
+#sonucKutusu .sonuc-not {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+@media (max-width: 640px) {
+  .hizli-form { grid-template-columns: 1fr; }
+  .hizli-hesapla-box { padding: 1.5rem; }
+}
 </style>
 <script>(function(){var m='G-WHVQDXEQSE';if(m.indexOf('G-')===0){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id='+m;s.async=true;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config',m,{anonymize_ip:true});}})();</script>
 </head>
@@ -88,6 +199,40 @@
 </div>
 </div></div>
 </section>
+
+<!-- ========== HIZLI HESAPLA BÖLÜMÜ ========== -->
+<section class="hizli-hesapla-section" id="hizli-hesapla">
+  <div class="container">
+    <div class="hizli-hesapla-box">
+      <h2>Hızlı Hesapla</h2>
+      <p>30 saniyede ön fizibilite alın. Detaylı teknik teklifi biz hazırlayıp sizinle iletişime geçelim.</p>
+
+      <form id="vitaHizliForm" class="hizli-form">
+        <input type="text" name="ad_soyad" placeholder="Ad Soyad *" required>
+        <input type="tel" name="telefon" placeholder="Telefon *" required>
+        <input type="email" name="email" placeholder="E-posta *" required>
+        <input type="text" name="sehir" placeholder="Şehir *" required>
+        <input type="number" name="cati_alani" placeholder="Çatı Alanı (m²) *" min="10" step="1" required>
+        <input type="number" name="fatura" placeholder="Aylık Elektrik Faturası (TL)" min="0">
+        <select name="bina_tipi" class="full-width">
+          <option value="">Bina Tipi Seçin</option>
+          <option value="Konut">Konut</option>
+          <option value="Ticari">Ticari</option>
+          <option value="Endüstriyel">Endüstriyel</option>
+        </select>
+        <button type="submit" id="hesaplaBtn">Hesapla ve Bilgi Al</button>
+      </form>
+
+      <div id="sonucKutusu">
+        <h3>Ön Fizibilite Sonucu</h3>
+        <div id="sonucIcerik"></div>
+        <p class="sonuc-not">Detaylı teknik rapor ve teklif için en kısa sürede sizinle iletişime geçeceğiz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== /HIZLI HESAPLA ========== -->
+
 <section class="section services-section" id="services">
 <div class="container">
 <div class="section-header text-center">
@@ -142,6 +287,61 @@
 <script src="js/script.js" defer></script>
 <script>
 (function(){var el=document.getElementById('visit-count');if(!el)return;var cached=localStorage.getItem('vv_visits');if(cached)el.textContent=Number(cached).toLocaleString('tr-TR');fetch('https://countapi.mileshilliard.com/api/v1/hit/vitavoltglobal-com').then(function(r){return r.json();}).then(function(data){if(data&&data.value!==undefined){var num=Number(data.value);el.textContent=num.toLocaleString('tr-TR');localStorage.setItem('vv_visits',num);}}).catch(function(){if(!cached)el.textContent='1';});})();
+
+// Hızlı Hesapla Logic
+document.getElementById('vitaHizliForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('hesaplaBtn');
+  btn.disabled = true;
+  btn.textContent = 'Hesaplanıyor...';
+
+  var formData = new FormData(this);
+  var data = Object.fromEntries(formData.entries());
+
+  // Basit GES Hesaplama
+  var cati = parseFloat(data.cati_alani) || 0;
+  var panelAlani = 2.6;          // m² / panel
+  var panelGucu = 0.55;          // kW (550W panel)
+  var panelSayisi = Math.floor(cati / panelAlani);
+  var sistemGucu = (panelSayisi * panelGucu).toFixed(1);
+  var yillikUretim = Math.round(sistemGucu * 1450); // İzmir ort.
+  var yatirimMin = Math.round(sistemGucu * 11000);
+  var yatirimMax = Math.round(sistemGucu * 14500);
+  var co2 = (yillikUretim * 0.00045).toFixed(1);
+
+  // Sonuçları göster
+  document.getElementById('sonucIcerik').innerHTML = 
+    '<p><strong>Önerilen Sistem Gücü:</strong> ' + sistemGucu + ' kWp</p>' +
+    '<p><strong>Yıllık Tahmini Üretim:</strong> ' + yillikUretim.toLocaleString('tr-TR') + ' kWh</p>' +
+    '<p><strong>Yaklaşık Yatırım Aralığı:</strong> ' + yatirimMin.toLocaleString('tr-TR') + ' – ' + yatirimMax.toLocaleString('tr-TR') + ' TL</p>' +
+    '<p><strong>Yıllık CO₂ Kazanımı:</strong> ' + co2 + ' ton</p>';
+
+  document.getElementById('sonucKutusu').style.display = 'block';
+  document.getElementById('sonucKutusu').scrollIntoView({behavior: 'smooth', block: 'nearest'});
+
+  // Mail için veri hazırla (Formspree veya backend eklenecek)
+  var mailData = {
+    ...data,
+    sistem_gucu_kwp: sistemGucu,
+    yillik_uretim_kwh: yillikUretim,
+    yatirim_min_tl: yatirimMin,
+    yatirim_max_tl: yatirimMax,
+    co2_ton: co2,
+    kaynak: 'Hızlı Hesapla - Ana Sayfa'
+  };
+
+  console.log('Hızlı Hesapla Talebi:', mailData);
+
+  // TODO: Formspree endpoint eklenince burası aktif olacak
+  // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(mailData)
+  // });
+
+  btn.disabled = false;
+  btn.textContent = 'Hesapla ve Bilgi Al';
+});
 </script>
 </body>
 </html>
