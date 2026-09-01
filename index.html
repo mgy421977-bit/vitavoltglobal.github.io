@@ -288,7 +288,7 @@
 <script>
 (function(){var el=document.getElementById('visit-count');if(!el)return;var cached=localStorage.getItem('vv_visits');if(cached)el.textContent=Number(cached).toLocaleString('tr-TR');fetch('https://countapi.mileshilliard.com/api/v1/hit/vitavoltglobal-com').then(function(r){return r.json();}).then(function(data){if(data&&data.value!==undefined){var num=Number(data.value);el.textContent=num.toLocaleString('tr-TR');localStorage.setItem('vv_visits',num);}}).catch(function(){if(!cached)el.textContent='1';});})();
 
-// Hızlı Hesapla Logic
+// Hızlı Hesapla Logic + Formspree
 document.getElementById('vitaHizliForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var btn = document.getElementById('hesaplaBtn');
@@ -300,11 +300,11 @@ document.getElementById('vitaHizliForm').addEventListener('submit', function(e) 
 
   // Basit GES Hesaplama
   var cati = parseFloat(data.cati_alani) || 0;
-  var panelAlani = 2.6;          // m² / panel
-  var panelGucu = 0.55;          // kW (550W panel)
+  var panelAlani = 2.6;
+  var panelGucu = 0.55;
   var panelSayisi = Math.floor(cati / panelAlani);
   var sistemGucu = (panelSayisi * panelGucu).toFixed(1);
-  var yillikUretim = Math.round(sistemGucu * 1450); // İzmir ort.
+  var yillikUretim = Math.round(sistemGucu * 1450);
   var yatirimMin = Math.round(sistemGucu * 11000);
   var yatirimMax = Math.round(sistemGucu * 14500);
   var co2 = (yillikUretim * 0.00045).toFixed(1);
@@ -319,28 +319,46 @@ document.getElementById('vitaHizliForm').addEventListener('submit', function(e) 
   document.getElementById('sonucKutusu').style.display = 'block';
   document.getElementById('sonucKutusu').scrollIntoView({behavior: 'smooth', block: 'nearest'});
 
-  // Mail için veri hazırla (Formspree veya backend eklenecek)
+  // Formspree'ye gönder
   var mailData = {
-    ...data,
+    ad_soyad: data.ad_soyad,
+    telefon: data.telefon,
+    email: data.email,
+    sehir: data.sehir,
+    cati_alani: data.cati_alani,
+    fatura: data.fatura || '-',
+    bina_tipi: data.bina_tipi || '-',
     sistem_gucu_kwp: sistemGucu,
     yillik_uretim_kwh: yillikUretim,
     yatirim_min_tl: yatirimMin,
     yatirim_max_tl: yatirimMax,
     co2_ton: co2,
-    kaynak: 'Hızlı Hesapla - Ana Sayfa'
+    kaynak: 'Hızlı Hesapla - Ana Sayfa',
+    _subject: 'Yeni Hızlı Hesapla Talebi - ' + data.ad_soyad + ' (' + data.sehir + ')'
   };
 
-  console.log('Hızlı Hesapla Talebi:', mailData);
-
-  // TODO: Formspree endpoint eklenince burası aktif olacak
-  // fetch('https://formspree.io/f/YOUR_FORM_ID', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(mailData)
-  // });
-
-  btn.disabled = false;
-  btn.textContent = 'Hesapla ve Bilgi Al';
+  fetch('https://formspree.io/f/xwlklbnd', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(mailData)
+  })
+  .then(function(response) {
+    if (response.ok) {
+      console.log('Mail başarıyla gönderildi');
+    } else {
+      console.log('Mail gönderiminde sorun oluştu');
+    }
+  })
+  .catch(function(error) {
+    console.log('Hata:', error);
+  })
+  .finally(function() {
+    btn.disabled = false;
+    btn.textContent = 'Hesapla ve Bilgi Al';
+  });
 });
 </script>
 </body>
