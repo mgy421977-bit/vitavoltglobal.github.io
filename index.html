@@ -205,20 +205,29 @@
   <div class="container">
     <div class="hizli-hesapla-box">
       <h2>Hızlı Hesapla</h2>
-      <p>30 saniyede ön fizibilite alın. Detaylı teknik teklifi biz hazırlayıp sizinle iletişime geçelim.</p>
+      <p>Konut, ticari ve endüstriyel tesisler için 30 saniyede ön fizibilite + karbon tahmini alın. Detaylı teknik teklifi biz hazırlayıp sizinle iletişime geçelim.</p>
 
       <form id="vitaHizliForm" class="hizli-form">
         <input type="text" name="ad_soyad" placeholder="Ad Soyad *" required>
         <input type="tel" name="telefon" placeholder="Telefon *" required>
         <input type="email" name="email" placeholder="E-posta *" required>
         <input type="text" name="sehir" placeholder="Şehir *" required>
-        <input type="number" name="cati_alani" placeholder="Çatı Alanı (m²) *" min="10" step="1" required>
-        <input type="number" name="fatura" placeholder="Aylık Elektrik Faturası (TL)" min="0">
-        <select name="bina_tipi" class="full-width">
-          <option value="">Bina Tipi Seçin</option>
+        <select name="tesis_tipi" class="full-width" required>
+          <option value="">Tesis / Proje Tipi *</option>
           <option value="Konut">Konut</option>
           <option value="Ticari">Ticari</option>
-          <option value="Endüstriyel">Endüstriyel</option>
+          <option value="Endüstriyel Tesis">Endüstriyel Tesis</option>
+          <option value="Fabrika / Üretim">Fabrika / Üretim</option>
+          <option value="Depo / Lojistik">Depo / Lojistik</option>
+          <option value="Diğer">Diğer</option>
+        </select>
+        <input type="number" name="cati_alani" placeholder="Çatı Alanı (m²) *" min="10" step="1" required>
+        <input type="number" name="aylik_tuketim" class="full-width" placeholder="Aylık Elektrik Tüketimi (kWh) veya Fatura (TL)" min="0">
+        <input type="number" name="yillik_tuketim" class="full-width" placeholder="Yıllık Enerji Tüketimi (kWh) – opsiyonel" min="0">
+        <select name="karbon_biliniyor" class="full-width">
+          <option value="">Mevcut Karbon Ayak İzi biliniyor mu?</option>
+          <option value="Evet">Evet</option>
+          <option value="Hayır">Hayır</option>
         </select>
         <button type="submit" id="hesaplaBtn">Hesapla ve Bilgi Al</button>
       </form>
@@ -288,7 +297,7 @@
 <script>
 (function(){var el=document.getElementById('visit-count');if(!el)return;var cached=localStorage.getItem('vv_visits');if(cached)el.textContent=Number(cached).toLocaleString('tr-TR');fetch('https://countapi.mileshilliard.com/api/v1/hit/vitavoltglobal-com').then(function(r){return r.json();}).then(function(data){if(data&&data.value!==undefined){var num=Number(data.value);el.textContent=num.toLocaleString('tr-TR');localStorage.setItem('vv_visits',num);}}).catch(function(){if(!cached)el.textContent='1';});})();
 
-// Hızlı Hesapla Logic + Formspree
+// Hızlı Hesapla Logic + Formspree (Endüstriyel + Karbon destekli)
 document.getElementById('vitaHizliForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var btn = document.getElementById('hesaplaBtn');
@@ -298,24 +307,51 @@ document.getElementById('vitaHizliForm').addEventListener('submit', function(e) 
   var formData = new FormData(this);
   var data = Object.fromEntries(formData.entries());
 
-  // Basit GES Hesaplama
+  // GES Hesaplama
   var cati = parseFloat(data.cati_alani) || 0;
-  var panelAlani = 2.6;
-  var panelGucu = 0.55;
+  var panelAlani = 2.6;          // m² / panel
+  var panelGucu = 0.55;          // kWp / panel
   var panelSayisi = Math.floor(cati / panelAlani);
-  var sistemGucu = (panelSayisi * panelGucu).toFixed(1);
-  var yillikUretim = Math.round(sistemGucu * 1450);
-  var yatirimMin = Math.round(sistemGucu * 11000);
-  var yatirimMax = Math.round(sistemGucu * 14500);
-  var co2 = (yillikUretim * 0.00045).toFixed(1);
+  var sistemGucu = +(panelSayisi * panelGucu).toFixed(1);
+
+  // Endüstriyel tesislerde biraz daha yüksek özgül üretim varsayımı
+  var tesisTipi = data.tesis_tipi || '';
+  var isEndustriyel = /Endüstriyel|Fabrika|Depo/i.test(tesisTipi);
+  var spesifikUretim = isEndustriyel ? 1520 : 1450; // kWh / kWp / yıl (Türkiye ortalaması civarı)
+  var yillikUretim = Math.round(sistemGucu * spesifikUretim);
+
+  // Yatırım aralığı (2026 tahmini TL)
+  var yatirimMin = Math.round(sistemGucu * (isEndustriyel ? 10500 : 11000));
+  var yatirimMax = Math.round(sistemGucu * (isEndustriyel ? 13800 : 14500));
+
+  // Yıllık CO₂ azaltımı (Türkiye şebeke emisyon faktörü ~0.45 kg CO₂/kWh)
+  var co2Azaltim = +(yillikUretim * 0.00045).toFixed(1);
+
+  // Basit karbon ayak izi tahmini (elektrik tüketimine göre)
+  var aylikTuketim = parseFloat(data.aylik_tuketim) || 0;
+  var yillikTuketim = parseFloat(data.yillik_tuketim) || 0;
+  if (!yillikTuketim && aylikTuketim > 0) {
+    // Kullanıcı fatura (TL) girmiş olabilir → kabaca kWh'e çevir (ortalama ~3 TL/kWh varsayımı)
+    if (aylikTuketim > 500) { // muhtemelen TL
+      yillikTuketim = Math.round((aylikTuketim / 3) * 12);
+    } else { // muhtemelen kWh
+      yillikTuketim = Math.round(aylikTuketim * 12);
+    }
+  }
+  var karbonAyakIzi = yillikTuketim > 0 ? +(yillikTuketim * 0.00045).toFixed(1) : null;
 
   // Sonuçları göster
-  document.getElementById('sonucIcerik').innerHTML = 
-    '<p><strong>Önerilen Sistem Gücü:</strong> ' + sistemGucu + ' kWp</p>' +
+  var sonucHTML =
+    '<p><strong>Önerilen GES Gücü:</strong> ' + sistemGucu + ' kWp</p>' +
     '<p><strong>Yıllık Tahmini Üretim:</strong> ' + yillikUretim.toLocaleString('tr-TR') + ' kWh</p>' +
     '<p><strong>Yaklaşık Yatırım Aralığı:</strong> ' + yatirimMin.toLocaleString('tr-TR') + ' – ' + yatirimMax.toLocaleString('tr-TR') + ' TL</p>' +
-    '<p><strong>Yıllık CO₂ Kazanımı:</strong> ' + co2 + ' ton</p>';
+    '<p><strong>Yıllık CO₂ Azaltımı:</strong> ' + co2Azaltim + ' ton</p>';
 
+  if (karbonAyakIzi !== null) {
+    sonucHTML += '<p><strong>Basit Karbon Ayak İzi Tahmini (elektrik):</strong> ~' + karbonAyakIzi + ' ton CO₂/yıl</p>';
+  }
+
+  document.getElementById('sonucIcerik').innerHTML = sonucHTML;
   document.getElementById('sonucKutusu').style.display = 'block';
   document.getElementById('sonucKutusu').scrollIntoView({behavior: 'smooth', block: 'nearest'});
 
@@ -325,16 +361,19 @@ document.getElementById('vitaHizliForm').addEventListener('submit', function(e) 
     telefon: data.telefon,
     email: data.email,
     sehir: data.sehir,
+    tesis_tipi: data.tesis_tipi || '-',
     cati_alani: data.cati_alani,
-    fatura: data.fatura || '-',
-    bina_tipi: data.bina_tipi || '-',
+    aylik_tuketim: data.aylik_tuketim || '-',
+    yillik_tuketim: data.yillik_tuketim || '-',
+    karbon_biliniyor: data.karbon_biliniyor || '-',
     sistem_gucu_kwp: sistemGucu,
     yillik_uretim_kwh: yillikUretim,
     yatirim_min_tl: yatirimMin,
     yatirim_max_tl: yatirimMax,
-    co2_ton: co2,
-    kaynak: 'Hızlı Hesapla - Ana Sayfa',
-    _subject: 'Yeni Hızlı Hesapla Talebi - ' + data.ad_soyad + ' (' + data.sehir + ')'
+    co2_azaltim_ton: co2Azaltim,
+    karbon_ayak_izi_tahmini_ton: karbonAyakIzi !== null ? karbonAyakIzi : '-',
+    kaynak: 'Hızlı Hesapla - Ana Sayfa (Endüstriyel + Karbon)',
+    _subject: 'Yeni Hızlı Hesapla Talebi - ' + data.ad_soyad + ' (' + data.sehir + ' / ' + (data.tesis_tipi || 'Belirtilmedi') + ')'
   };
 
   fetch('https://formspree.io/f/xwlklbnd', {
