@@ -3,63 +3,235 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Teknik Çalışmalar | Endüstriyel GES Vakaları | Vitavolt Global</title>
-<meta name="description" content="Vitavolt Global teknik portföyünden seçili endüstriyel çatı ve OSB GES çalışmaları. Firma adları gizlilik nedeniyle yayımlanmaz." />
-<meta name="robots" content="index, follow" />
+<title>Teknik Çalışmalar | Endüstriyel GES Portföyü | Vitavolt Global</title>
+<meta name="description" content="Vitavolt Global teknik portföyünden seçili endüstriyel çatı ve OSB GES çalışmaları. Kapasite, tahmini yıllık üretim, CO₂ azaltımı ve eşdeğer ağaç etkisi. Firma adları NDA kapsamında gizlidir." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://vitavoltglobal.com/vaka-calismalari.html" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <meta name="theme-color" content="#07111C" />
+<meta property="og:title" content="Teknik Çalışmalar | Endüstriyel GES Portföyü | Vitavolt Global" />
+<meta property="og:description" content="Seçili endüstriyel çatı ve OSB GES teknik çalışmaları. Kapasite, tahmini üretim ve karbon etkisi." />
+<meta property="og:url" content="https://vitavoltglobal.com/vaka-calismalari.html" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="tr_TR" />
+<meta property="og:site_name" content="Vitavolt Global" />
+<meta property="og:image" content="https://vitavoltglobal.com/images/solar%20panels.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CollectionPage","name":"Teknik Çalışmalar","url":"https://vitavoltglobal.com/vaka-calismalari.html","about":{"@id":"https://vitavoltglobal.com/#organization"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"Konya OSB — Çatı GES 1.300 kWp Alüminyum"},{"@type":"ListItem","position":2,"name":"Beyşehir — Çatı GES 1.100 kWp Mermer"},{"@type":"ListItem","position":3,"name":"Afyon OSB — GES 3.000 kWp"},{"@type":"ListItem","position":4,"name":"Konya OSB — GES 1.504 kWp"},{"@type":"ListItem","position":5,"name":"Kahramanmaraş OSB — GES 360 kWp"}]}}
+{"@context":"https://schema.org","@type":"CollectionPage","name":"Teknik Çalışmalar","url":"https://vitavoltglobal.com/vaka-calismalari.html","description":"Vitavolt Global endüstriyel GES teknik portföyü. Firma unvanları gizlilik nedeniyle yayımlanmaz.","about":{"@id":"https://vitavoltglobal.com/#organization"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"Konya OSB — Çatı GES 1.300 kWp Alüminyum"},{"@type":"ListItem","position":2,"name":"Beyşehir — Çatı GES 1.100 kWp Mermer"},{"@type":"ListItem","position":3,"name":"Afyon OSB — GES 3.000 kWp"},{"@type":"ListItem","position":4,"name":"Konya OSB — GES 1.504 kWp"},{"@type":"ListItem","position":5,"name":"Kahramanmaraş OSB — GES 360 kWp"}]}}
 </script>
 <link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin:2rem 0}
-.case-card{padding:1.35rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
-.case-title{font-weight:700;color:#f1f5f9;margin-bottom:.4rem}
-.case-meta{color:#22d3ee;font-size:.95rem;margin-bottom:.5rem}
-.case-card p{color:#94a3b8;font-size:.9rem;line-height:1.55;margin:0}
+.case-hero{padding:6.5rem 0 3rem;background:linear-gradient(180deg,#07111C 0%,#0a1828 100%);border-bottom:1px solid rgba(0,174,239,.12)}
+.case-hero h1{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-.02em;color:#f8fafc;margin:0 0 .75rem}
+.case-hero .lead{color:#94a3b8;font-size:1.05rem;line-height:1.65;max-width:42rem;margin:0}
+.case-nda{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:.45rem .9rem;font-size:.8125rem;font-weight:500;color:#e2e8f0;background:rgba(15,23,42,.55);border:1px solid rgba(255,255,255,.1);border-radius:999px}
+.case-nda i{color:#38bdf8}
+.case-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:2.5rem 0 0}
+.case-summary-item{padding:1.15rem 1rem;border-radius:1rem;background:rgba(16,37,61,.55);border:1px solid rgba(0,174,239,.15);text-align:center}
+.case-summary-item strong{display:block;font-size:1.5rem;font-weight:800;color:#22d3ee;margin-bottom:.25rem}
+.case-summary-item span{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.35rem;margin:2.5rem 0}
+.case-card{display:flex;flex-direction:column;padding:1.5rem;border-radius:1.15rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);transition:border-color .25s ease,transform .25s ease}
+.case-card:hover{border-color:rgba(34,211,238,.28);transform:translateY(-2px)}
+.case-card-header{margin-bottom:1rem}
+.case-title{font-size:1.125rem;font-weight:700;color:#f1f5f9;margin:0 0 .35rem;line-height:1.3}
+.case-meta{color:#22d3ee;font-size:.9rem;font-weight:600;margin:0}
+.case-sector{display:inline-block;margin-top:.5rem;padding:.2rem .55rem;font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#94a3b8;background:rgba(148,163,184,.12);border-radius:.35rem}
+.case-metrics{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin:1rem 0;padding:1rem 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.case-metric{display:flex;flex-direction:column;gap:.15rem}
+.case-metric b{font-size:.95rem;font-weight:700;color:#e2e8f0}
+.case-metric span{font-size:.7rem;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:#64748b}
+.case-desc{color:#94a3b8;font-size:.9rem;line-height:1.55;margin:0 0 1rem;flex:1}
+.case-scope{font-size:.8125rem;color:#cbd5e1;margin:0}
+.case-scope strong{color:#e2e8f0}
+.case-note{margin:2.5rem 0 1.5rem;padding:1.25rem 1.35rem;border-radius:1rem;background:rgba(15,23,42,.6);border:1px solid rgba(255,255,255,.08);color:#94a3b8;font-size:.875rem;line-height:1.65}
+.case-note strong{color:#e2e8f0}
+.case-cta{text-align:center;padding:2.5rem 1.5rem;margin:2rem 0 1rem;border-radius:1.25rem;background:linear-gradient(135deg,rgba(14,165,233,.12),rgba(6,182,212,.08));border:1px solid rgba(34,211,238,.2)}
+.case-cta h2{font-size:1.5rem;color:#f8fafc;margin:0 0 .5rem}
+.case-cta p{color:#94a3b8;margin:0 0 1.25rem}
+.case-cta .btn{margin:.25rem}
+@media(max-width:640px){
+  .case-metrics{grid-template-columns:1fr 1fr}
+  .case-summary{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
 <header class="header">
-<div class="top-bar"><div class="container"><div class="top-bar-content">
-<div class="top-bar-left"><a href="tel:+905454411977" class="top-bar-item"><i class="fas fa-phone"></i><span>+90 545 441 19 77</span></a></div>
-<div class="top-bar-right"><span class="top-bar-item"><i class="fas fa-map-marker-alt"></i><span>İzmir &amp; Kuşadası</span></span></div>
-</div></div></div>
-<nav class="navbar"><div class="container"><div class="navbar-content">
-<a href="index.html" class="logo"><span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span></a>
-<div class="nav-menu" id="navMenu">
-<a href="index.html" class="nav-link">ANA SAYFA</a>
-<a href="services.html" class="nav-link">HİZMETLERİMİZ</a>
-<a href="vaka-calismalari.html" class="nav-link active">TEKNİK ÇALIŞMALAR</a>
-<a href="contact.html" class="nav-link">İLETİŞİM</a>
-</div>
-<button class="menu-toggle" id="menuToggle" type="button" aria-label="Menü"><span></span><span></span><span></span></button>
-</div></div>
-<div class="menu-overlay" id="menuOverlay"></div>
-</nav>
+  <div class="top-bar"><div class="container"><div class="top-bar-content">
+    <div class="top-bar-left">
+      <a href="tel:+905454411977" class="top-bar-item" onclick="typeof sendGtagEvent==='function'&&sendGtagEvent('phone_click',{label:'vaka-topbar'});"><i class="fas fa-phone"></i><span>+90 545 441 19 77</span></a>
+      <span class="divider">|</span>
+      <a href="mailto:info@vitavoltglobal.com" class="top-bar-item" onclick="typeof sendGtagEvent==='function'&&sendGtagEvent('email_click',{label:'vaka-topbar'});"><i class="fas fa-envelope"></i><span>info@vitavoltglobal.com</span></a>
+    </div>
+    <div class="top-bar-right">
+      <span class="top-bar-item"><i class="fas fa-map-marker-alt"></i><span>İzmir</span></span>
+    </div>
+  </div></div></div>
+  <nav class="navbar"><div class="container"><div class="navbar-content">
+    <a href="index.html" class="logo"><span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span></a>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">ANA SAYFA</a>
+      <a href="about.html" class="nav-link">HAKKIMIZDA</a>
+      <a href="services.html" class="nav-link">HİZMETLERİMİZ</a>
+      <a href="blog/" class="nav-link">BLOG</a>
+      <a href="vaka-calismalari.html" class="nav-link active">TEKNİK ÇALIŞMALAR</a>
+      <a href="contact.html" class="nav-link">İLETİŞİM</a>
+      <a href="contact.html" class="btn btn-primary btn-cta-mobile">ÖN FİZİBİLİTE AL</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-cta">ÖN FİZİBİLİTE AL</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+  </nav>
 </header>
+
 <main id="main">
-<section class="section" style="padding-top:5.5rem">
-<div class="container" style="max-width:960px;margin:0 auto;padding:0 1.25rem">
-<h1>Seçili Teknik Çalışmalar</h1>
-<p style="color:#cbd5e1;line-height:1.7">Endüstriyel çatı ve OSB GES projelerinden seçili teknik çalışmalar. <strong>Firma unvanları gizlilik (NDA) nedeniyle yayımlanmaz.</strong></p>
-<div class="case-grid">
-<div class="case-card"><div class="case-title">Konya OSB — Çatı GES</div><div class="case-meta">1.300 kWp · Alüminyum</div><p>Endüstriyel çatı GES teknik boyutlandırma ve proje mühendisliği.</p></div>
-<div class="case-card"><div class="case-title">Beyşehir — Çatı GES</div><div class="case-meta">1.100 kWp · Mermer</div><p>Mermer sanayi çatı uygulaması; teknik tasarım ve mühendislik.</p></div>
-<div class="case-card"><div class="case-title">Afyon OSB — GES</div><div class="case-meta">3.000 kWp</div><p>OSB ölçeğinde GES teknik çalışması.</p></div>
-<div class="case-card"><div class="case-title">Konya OSB — GES</div><div class="case-meta">1.504 kWp</div><p>Endüstriyel GES kapasite ve saha mühendisliği.</p></div>
-<div class="case-card"><div class="case-title">Kahramanmaraş OSB — GES</div><div class="case-meta">360 kWp</div><p>OSB çatı / saha GES teknik çalışması.</p></div>
-</div>
-<p style="margin-top:2rem"><a href="contact.html" class="btn btn-primary">Projeniz için iletişim</a></p>
-</div>
-</section>
+  <section class="case-hero">
+    <div class="container" style="max-width:1040px;margin:0 auto;padding:0 1.25rem">
+      <p class="section-kicker" style="margin-bottom:.75rem">PORTFÖY</p>
+      <h1>Seçili Teknik Çalışmalar</h1>
+      <p class="lead">Endüstriyel çatı ve OSB ölçeğinde GES teknik boyutlandırma, mühendislik ve proje çalışmaları. Aşağıdaki kapasiteler gerçek portföyden alınmıştır; üretim ve karbon değerleri şeffaf ön fizibilite varsayımlarına dayalı tahminlerdir.</p>
+      <div class="case-nda"><i class="fas fa-shield-halved" aria-hidden="true"></i> NDA kapsamında müşteri unvanı paylaşılmamaktadır.</div>
+
+      <div class="case-summary" aria-label="Portföy özeti">
+        <div class="case-summary-item"><strong>5</strong><span>Seçili çalışma</span></div>
+        <div class="case-summary-item"><strong>~7,3 MWp</strong><span>Toplam kapasite</span></div>
+        <div class="case-summary-item"><strong>~7,1 GWh</strong><span>Tahmini yıllık üretim</span></div>
+        <div class="case-summary-item"><strong>~3.000 t</strong><span>Tahmini CO₂ azaltımı / yıl</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:2.5rem;padding-bottom:3rem">
+    <div class="container" style="max-width:1040px;margin:0 auto;padding:0 1.25rem">
+      <div class="case-grid">
+
+        <article class="case-card">
+          <div class="case-card-header">
+            <h2 class="case-title">Konya OSB — Çatı GES</h2>
+            <p class="case-meta">1.300 kWp · Alüminyum sektörü</p>
+            <span class="case-sector">Endüstriyel çatı</span>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric"><b>~1.274 MWh</b><span>Tahmini yıllık üretim</span></div>
+            <div class="case-metric"><b>~535 t</b><span>CO₂ azaltımı / yıl</span></div>
+            <div class="case-metric"><b>~24.300</b><span>Eşdeğer ağaç / yıl</span></div>
+            <div class="case-metric"><b>1.300 kWp</b><span>DC kapasite</span></div>
+          </div>
+          <p class="case-desc">Alüminyum sanayi tesisinde endüstriyel çatı GES teknik boyutlandırma ve proje mühendisliği.</p>
+          <p class="case-scope"><strong>Kapsam:</strong> Teknik tasarım, kapasite ve saha mühendisliği</p>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card-header">
+            <h2 class="case-title">Beyşehir — Çatı GES</h2>
+            <p class="case-meta">1.100 kWp · Mermer sektörü</p>
+            <span class="case-sector">Endüstriyel çatı</span>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric"><b>~1.078 MWh</b><span>Tahmini yıllık üretim</span></div>
+            <div class="case-metric"><b>~453 t</b><span>CO₂ azaltımı / yıl</span></div>
+            <div class="case-metric"><b>~20.600</b><span>Eşdeğer ağaç / yıl</span></div>
+            <div class="case-metric"><b>1.100 kWp</b><span>DC kapasite</span></div>
+          </div>
+          <p class="case-desc">Mermer sanayi çatı uygulaması; teknik tasarım ve mühendislik çalışması.</p>
+          <p class="case-scope"><strong>Kapsam:</strong> Teknik tasarım, proje mühendisliği</p>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card-header">
+            <h2 class="case-title">Afyon OSB — GES</h2>
+            <p class="case-meta">3.000 kWp · OSB</p>
+            <span class="case-sector">OSB ölçeği</span>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric"><b>~2.940 MWh</b><span>Tahmini yıllık üretim</span></div>
+            <div class="case-metric"><b>~1.235 t</b><span>CO₂ azaltımı / yıl</span></div>
+            <div class="case-metric"><b>~56.100</b><span>Eşdeğer ağaç / yıl</span></div>
+            <div class="case-metric"><b>3.000 kWp</b><span>DC kapasite</span></div>
+          </div>
+          <p class="case-desc">OSB ölçeğinde GES teknik çalışması; yüksek kapasiteli endüstriyel uygulama.</p>
+          <p class="case-scope"><strong>Kapsam:</strong> Teknik boyutlandırma, saha ve kapasite mühendisliği</p>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card-header">
+            <h2 class="case-title">Konya OSB — GES</h2>
+            <p class="case-meta">1.504 kWp · OSB</p>
+            <span class="case-sector">Endüstriyel GES</span>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric"><b>~1.474 MWh</b><span>Tahmini yıllık üretim</span></div>
+            <div class="case-metric"><b>~619 t</b><span>CO₂ azaltımı / yıl</span></div>
+            <div class="case-metric"><b>~28.100</b><span>Eşdeğer ağaç / yıl</span></div>
+            <div class="case-metric"><b>1.504 kWp</b><span>DC kapasite</span></div>
+          </div>
+          <p class="case-desc">Endüstriyel GES kapasite ve saha mühendisliği çalışması.</p>
+          <p class="case-scope"><strong>Kapsam:</strong> Kapasite planlama, teknik mühendislik</p>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card-header">
+            <h2 class="case-title">Kahramanmaraş OSB — GES</h2>
+            <p class="case-meta">360 kWp · OSB</p>
+            <span class="case-sector">OSB çatı / saha</span>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric"><b>~353 MWh</b><span>Tahmini yıllık üretim</span></div>
+            <div class="case-metric"><b>~148 t</b><span>CO₂ azaltımı / yıl</span></div>
+            <div class="case-metric"><b>~6.700</b><span>Eşdeğer ağaç / yıl</span></div>
+            <div class="case-metric"><b>360 kWp</b><span>DC kapasite</span></div>
+          </div>
+          <p class="case-desc">OSB çatı / saha GES teknik çalışması.</p>
+          <p class="case-scope"><strong>Kapsam:</strong> Teknik tasarım ve proje mühendisliği</p>
+        </article>
+
+      </div>
+
+      <div class="case-note">
+        <strong>Varsayımlar ve uyarı:</strong>
+        Tahmini yıllık üretim = DC kapasite (kWp) × 1.450 kWh/kWp·yıl × sistem kaybı (0,85) × performans oranı (0,80) ≈ efektif ~980 kWh/kWp·yıl.
+        CO₂ azaltımı = tahmini üretim × 0,42 kg CO₂/kWh (Türkiye şebeke emisyon faktörü varsayımı).
+        Eşdeğer ağaç = yıllık CO₂ / 22 kg (yaklaşık bir ağacın yıllık karbon tutumu; yaygın iletişimsel eşdeğer).
+        Bu değerler <strong>ön fizibilite / iletişim amaçlı yaklaşık hesaplardır</strong>. Gerçek üretim; lokasyon, eğim, gölgeleme, inverter verimi, bakım ve işletme koşullarına göre değişir. Nihai rakamlar saha ölçümü ve detay mühendislik sonrası netleşir.
+        Müşteri unvanları NDA kapsamında paylaşılmamaktadır.
+      </div>
+
+      <div class="case-cta">
+        <h2>Tesisiniz için benzer bir değerlendirme ister misiniz?</h2>
+        <p>Çatı / arazi alanınızı ve tüketim profilinizi paylaşın; size özel ön fizibilite hesaplayalım.</p>
+        <a href="index.html#hizli-hesapla" class="btn btn-primary">Ön Fizibilite Hesapla</a>
+        <a href="contact.html" class="btn btn-secondary" style="margin-left:.5rem">Projenizi Değerlendirelim</a>
+        <a href="https://wa.me/905454411977?text=Merhaba%2C%20teknik%20%C3%A7al%C4%B1%C5%9Fmalar%20sayfas%C4%B1ndan%20yaz%C4%B1yorum.%20Projem%20i%C3%A7in%20de%C4%9Ferlendirme%20istiyorum." class="btn btn-secondary" style="margin-left:.5rem" target="_blank" rel="noopener noreferrer" onclick="typeof sendGtagEvent==='function'&&sendGtagEvent('whatsapp_click',{label:'vaka-cta'});"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-bottom"><p>&copy; 2026 Vitavolt Global.</p></div></div></footer>
-<a href="https://wa.me/905454411977" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<script src="js/translations.js" defer></script>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="text-align:center;padding:1.5rem 0">
+      <p style="margin:0;color:#64748b;font-size:.875rem">&copy; 2026 Vitavolt Global. Tüm hakları saklıdır.</p>
+      <p style="margin:.35rem 0 0;font-size:.8rem">
+        <a href="privacy.html" style="color:#94a3b8">Gizlilik & KVKK</a>
+        · <a href="contact.html" style="color:#94a3b8">İletişim</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/905454411977?text=Merhaba%2C%20Vitavolt%20Global%20teknik%20%C3%A7al%C4%B1%C5%9Fmalar%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" onclick="typeof sendGtagEvent==='function'&&sendGtagEvent('whatsapp_click',{label:'vaka-float'});"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+function sendGtagEvent(name, params) {
+  try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {}
+}
+</script>
 <script src="js/script.js" defer></script>
 </body>
 </html>
