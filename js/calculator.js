@@ -123,9 +123,34 @@
     return Math.round(finite(value, 0)).toLocaleString(locale || 'tr-TR');
   }
 
+  /**
+   * Optionally load config from /database/calculations.json
+   * Falls back to DEFAULT_CONFIG on any failure.
+   */
+  function loadConfig() {
+    if (window.__vitavoltCalcConfig) {
+      return Promise.resolve(window.__vitavoltCalcConfig);
+    }
+    return fetch('/database/calculations.json', { credentials: 'same-origin' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('config fetch failed');
+        return res.json();
+      })
+      .then(function (json) {
+        window.__vitavoltCalcConfig = mergeConfig(json);
+        return window.__vitavoltCalcConfig;
+      })
+      .catch(function () {
+        window.__vitavoltCalcConfig = DEFAULT_CONFIG;
+        return DEFAULT_CONFIG;
+      });
+  }
+
   window.VitavoltCalculator = {
     calculate: calculate,
     formatNumber: formatNumber,
-    defaultConfig: DEFAULT_CONFIG
+    defaultConfig: DEFAULT_CONFIG,
+    loadConfig: loadConfig,
+    mergeConfig: mergeConfig
   };
 })(window);
