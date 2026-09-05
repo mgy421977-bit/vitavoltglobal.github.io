@@ -111,14 +111,16 @@
       data.bess_kwh=(calc.bess&&calc.bess.suggestedCapacityKwh)||0;
     }
     data.kaynak='Hızlı Hesapla';
+    data._captcha='false';
     data._subject='Hızlı Hesapla — '+(data.ad_soyad||'Yeni lead')+' ('+(data.sehir||'')+')';
     data._replyto=data.email||'';
-    fetch('https://formspree.io/f/xwlklbnd',{
+    fetch('https://formsubmit.co/ajax/info@vitavoltglobal.com',{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify(data)
-    }).then(function(res){
-      if(window.VitavoltForms) window.VitavoltForms.track('lead_form_submit',{method:'formspree',form:'vitaHizliForm',ok:res.ok});
+    }).then(function(res){return res.json().then(function(j){return {ok:res.ok,j:j};}).catch(function(){return {ok:res.ok};});})
+    .then(function(r){
+      if(window.VitavoltForms) window.VitavoltForms.track('lead_form_submit',{method:'formsubmit',form:'vitaHizliForm',ok:!!(r&&r.ok)});
     }).catch(function(){
       if(window.VitavoltForms) window.VitavoltForms.track('lead_form_error',{form:'vitaHizliForm'});
     }).finally(function(){
