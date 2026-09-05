@@ -57,14 +57,14 @@
     var panelPowerKw = Math.max(0.05, finite(config.solar.default_panel_power, 620) / 1000);
     var systemLoss = clamp(finite(config.solar.system_loss_factor, 0.85), 0.1, 1);
     var performanceRatio = clamp(finite(config.solar.performance_ratio, 0.8), 0.1, 1);
-    var yield = Math.max(300, finite(config.solar.default_specific_yield_kwh_kwp, 1450));
+    var specificYield = Math.max(300, finite(config.solar.default_specific_yield_kwh_kwp, 1450));
     var margin = clamp(finite(config.solar.design_margin, 1.1), 0.5, 2);
     var co2Factor = Math.max(0, finite(config.solar.co2_factor, 0.42));
 
     var theoreticalPanels = Math.floor(availableArea / panelArea);
     var panelCount = Math.max(0, theoreticalPanels);
     var dcCapacityKwp = Number((panelCount * panelPowerKw).toFixed(1));
-    var annualProductionKwh = Math.round(dcCapacityKwp * yield * systemLoss * performanceRatio);
+    var annualProductionKwh = Math.round(dcCapacityKwp * specificYield * systemLoss * performanceRatio);
     var selfConsumptionRatio = annualConsumption > 0
       ? clamp((annualConsumption * margin) / Math.max(annualProductionKwh, 1), 0, 1)
       : 0;
@@ -109,7 +109,7 @@
       assumptions: {
         panelPowerWp: Math.round(panelPowerKw * 1000),
         panelAreaM2: panelArea,
-        specificYieldKwhKwp: yield,
+        specificYieldKwhKwp: specificYield,
         systemLossFactor: systemLoss,
         performanceRatio: performanceRatio,
         co2FactorKgPerKwh: co2Factor,
@@ -123,10 +123,6 @@
     return Math.round(finite(value, 0)).toLocaleString(locale || 'tr-TR');
   }
 
-  /**
-   * Optionally load config from /database/calculations.json
-   * Falls back to DEFAULT_CONFIG on any failure.
-   */
   function loadConfig() {
     if (window.__vitavoltCalcConfig) {
       return Promise.resolve(window.__vitavoltCalcConfig);
