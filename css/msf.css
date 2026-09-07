@@ -99,13 +99,19 @@ img[loading="eager"] {
 .msf-step.is-done span { background: #22d3ee; color: #07111C; }
 
 .msf-panel {
-  display: none;
+  display: none !important;
   opacity: 0;
   transform: translateY(8px);
 }
 .msf-panel.is-active {
-  display: block;
+  display: block !important;
   animation: msfFadeIn 0.35s ease forwards;
+}
+.msf-panel[hidden] {
+  display: none !important;
+}
+.msf-panel.is-active[hidden] {
+  display: block !important;
 }
 @keyframes msfFadeIn {
   from { opacity: 0; transform: translateY(8px); }
