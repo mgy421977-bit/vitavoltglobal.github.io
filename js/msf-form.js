@@ -47,7 +47,6 @@
       var n = Number(panel.getAttribute('data-panel'));
       var active = n === current;
       panel.classList.toggle('is-active', active);
-      // Use only class visibility — HTML [hidden] uses display:none !important and breaks CSS
       if (active) {
         panel.removeAttribute('hidden');
         panel.style.display = '';
@@ -169,6 +168,7 @@
       arazi_m2: form.elements.arazi_m2.value,
       tuketim_birim: birimEl ? birimEl.value : 'kwh',
       aylik_tuketim: form.elements.aylik_tuketim.value,
+      aylik_su_tuketim: (form.elements.aylik_su_tuketim && form.elements.aylik_su_tuketim.value) || '',
       ad_soyad: form.elements.ad_soyad.value.trim(),
       telefon: form.elements.telefon.value.trim(),
       eposta: form.elements.eposta.value.trim()
@@ -200,12 +200,11 @@
       'Kurulum tipi: ' + data.kurulum_tipi,
       'Çatı (m²): ' + data.cati_m2,
       'Arazi (m²): ' + data.arazi_m2,
-      'Tüketim: ' + data.aylik_tuketim + ' (' + data.tuketim_birim + ')',
-      '',
-      'Ad Soyad: ' + data.ad_soyad,
-      'Telefon: ' + data.telefon,
-      'E-posta: ' + data.eposta
-    ].join('\n');
+      'Tüketim: ' + data.aylik_tuketim + ' (' + data.tuketim_birim + ')'
+    ];
+    if (data.aylik_su_tuketim) body.push('Aylık su: ' + data.aylik_su_tuketim);
+    body.push('', 'Ad Soyad: ' + data.ad_soyad, 'Telefon: ' + data.telefon, 'E-posta: ' + data.eposta);
+    body = body.join('\n');
     window.location.href =
       'mailto:info@vitavoltglobal.com' +
       '?subject=' + encodeURIComponent('Ön fizibilite talebi — ' + data.ad_soyad) +
