@@ -1,0 +1,252 @@
+/* Vitavolt Global — Multi-step form + image performance helpers */
+
+/* --- Image / LCP helpers --- */
+img, picture img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+img[loading="lazy"].is-loaded,
+img[loading="eager"] {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  img[loading="lazy"] { opacity: 1; transition: none; }
+}
+.service-image-wrapper img,
+.service-image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* --- Multi-step form --- */
+.msf-section {
+  padding: 3.5rem 1.25rem;
+  background: linear-gradient(180deg, #07111C 0%, #0a1828 100%);
+  border-top: 1px solid rgba(0, 174, 239, 0.12);
+  border-bottom: 1px solid rgba(0, 174, 239, 0.12);
+}
+.msf-box {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 2.25rem;
+  background: rgba(16, 37, 61, 0.55);
+  border: 1px solid rgba(0, 174, 239, 0.18);
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+.msf-title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  font-weight: 700;
+  color: #f8fafc;
+}
+.msf-lead {
+  margin: 0 0 1.5rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.msf-progress { margin-bottom: 1.5rem; }
+.msf-progress-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+.msf-progress-bar {
+  height: 100%;
+  width: 33.33%;
+  background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+.msf-steps {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
+}
+.msf-step {
+  flex: 1;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+.msf-step span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.25rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  font-size: 0.7rem;
+}
+.msf-step.is-active { color: #e2e8f0; }
+.msf-step.is-active span { background: #0ea5e9; color: #fff; }
+.msf-step.is-done span { background: #22d3ee; color: #07111C; }
+
+.msf-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.msf-panel.is-active {
+  display: block;
+  animation: msfFadeIn 0.35s ease forwards;
+}
+@keyframes msfFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .msf-panel.is-active { animation: none; opacity: 1; transform: none; }
+  .msf-progress-bar { transition: none; }
+}
+
+.msf-panel-title {
+  margin: 0 0 1.15rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+.msf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+@media (max-width: 520px) {
+  .msf-grid { grid-template-columns: 1fr; }
+  .msf-step { font-size: 0.65rem; }
+}
+.msf-field { margin-bottom: 1rem; }
+.msf-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.msf-label abbr { color: #22d3ee; text-decoration: none; }
+.msf-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(7, 17, 28, 0.65);
+  color: #f8fafc;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+.msf-input:focus {
+  border-color: rgba(34, 211, 238, 0.55);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+.msf-input.is-invalid { border-color: #f87171; }
+.msf-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.msf-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(7, 17, 28, 0.4);
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.msf-radio:has(input:checked) {
+  border-color: rgba(34, 211, 238, 0.55);
+  background: rgba(14, 165, 233, 0.15);
+}
+.msf-radio input { accent-color: #22d3ee; }
+.msf-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+.msf-error {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: #fca5a5;
+}
+.msf-error[hidden] { display: none !important; }
+.msf-check {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.msf-check a { color: #22d3ee; }
+.msf-check input { margin-top: 0.2rem; accent-color: #22d3ee; }
+.msf-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.msf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.925rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s;
+  font-family: inherit;
+}
+.msf-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.msf-btn-primary {
+  background: linear-gradient(135deg, #0ea5e9, #22d3ee);
+  color: #07111C;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
+}
+.msf-btn-primary:hover:not(:disabled) { transform: translateY(-1px); }
+.msf-btn-ghost {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.msf-btn-ghost:hover:not(:disabled) {
+  color: #e2e8f0;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.msf-status {
+  margin: 1rem 0 0;
+  min-height: 1.25rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.msf-status.is-success { color: #6ee7b7; }
+.msf-status.is-error { color: #fca5a5; }
