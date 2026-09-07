@@ -124,6 +124,7 @@
       cati_alani_m2: roof,
       arazi_alani_m2: land,
       aylik_tuketim_kwh: consumption,
+      aylik_su_tuketim: (form.elements.aylik_su_tuketim && form.elements.aylik_su_tuketim.value) || '',
       onerilen_kwp: calc.solar.dcCapacityKwp,
       yillik_uretim_kwh: calc.solar.annualProductionKwh,
       co2_kg: calc.solar.co2ReductionKg
