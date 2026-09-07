@@ -1,16 +1,18 @@
-/* Vitavolt Global — form helpers: real email via FormSubmit AJAX */
+/* Vitavolt Global — form helpers: real email via FormSubmit AJAX + müşteri otomatik yanıt */
 (function (window, document) {
   'use strict';
 
   /**
    * FormSubmit.co AJAX → info@vitavoltglobal.com
-   * İlk kullanımda FormSubmit aktivasyon maili gönderir; bir kez onaylanmalı.
+   * _autoresponse: müşteriye teşekkür e-postası
+   * İlk kullanımda FormSubmit aktivasyon maili gelir; bir kez onaylanmalı.
    */
   var FORM_CONFIG = {
     endpoint: 'https://formsubmit.co/ajax/info@vitavoltglobal.com',
     method: 'POST',
     mailtoFallback: true,
-    mailtoAddress: 'info@vitavoltglobal.com'
+    mailtoAddress: 'info@vitavoltglobal.com',
+    phoneDisplay: '0545 441 19 77'
   };
 
   function validate(form) {
@@ -65,6 +67,32 @@
     return obj;
   }
 
+  /**
+   * Müşteriye gidecek otomatik teşekkür metni (FormSubmit _autoresponse).
+   */
+  function buildAutoresponse(name) {
+    var who = (name && String(name).trim()) ? String(name).trim() : 'Değerli Müşterimiz';
+    return (
+      'Sayın ' + who + ',\n\n' +
+      'Firmamıza göstermiş olduğunuz ilgi için teşekkür ederiz.\n\n' +
+      'İlgili birimlerimiz teklifinizi hazırlamaya başlamış olup en kısa sürede tarafınızı bilgilendireceğiz.\n\n' +
+      'Her türlü sorunuz için ' + FORM_CONFIG.phoneDisplay + ' telefon numarasını arayabilirsiniz.\n\n' +
+      'Saygılarımızı sunar, bol güneşli günler dileriz.\n\n' +
+      'Vitavolt Mühendislik Ekibi\n' +
+      'Vitavolt Global\n' +
+      'https://vitavoltglobal.com\n' +
+      'info@vitavoltglobal.com'
+    );
+  }
+
+  function customerEmail(obj) {
+    return (obj && (obj.eposta || obj.email || obj.Email || '')) || '';
+  }
+
+  function customerName(obj) {
+    return (obj && (obj.ad_soyad || obj.name || obj.Name || '')) || '';
+  }
+
   function buildMailto(form, options) {
     options = options || {};
     var obj = formToObject(form);
@@ -73,10 +101,29 @@
       if (k.charAt(0) === '_') return;
       lines.push(k + ': ' + obj[k]);
     });
-    var subject = options.subject || ('Vitavolt web talebi — ' + (obj.ad_soyad || obj.name || 'Yeni lead'));
+    var subject = options.subject || ('Vitavolt web talebi — ' + (customerName(obj) || 'Yeni lead'));
     return 'mailto:' + encodeURIComponent(FORM_CONFIG.mailtoAddress) +
       '?subject=' + encodeURIComponent(subject) +
       '&body=' + encodeURIComponent(lines.join('\n'));
+  }
+
+  function attachDeliveryFields(payload, options) {
+    options = options || {};
+    var name = customerName(payload);
+    var email = customerEmail(payload);
+
+    payload._subject = options.subject || payload._subject || 'Vitavolt Global — Web talebi';
+    payload._template = 'table';
+    payload._captcha = 'false';
+    payload._source = 'vitavoltglobal.com';
+    payload._page = window.location.href;
+
+    if (email) {
+      payload._replyto = email;
+      // FormSubmit: müşteriye otomatik yanıt
+      payload._autoresponse = options.autoresponse || buildAutoresponse(name);
+    }
+    return payload;
   }
 
   function submitForm(form, options) {
@@ -98,12 +145,7 @@
     status(statusEl, '', '');
 
     var payload = formToObject(form);
-    payload._subject = options.subject || ('Vitavolt Global — Web talebi (' + (form.id || 'form') + ')');
-    payload._template = 'table';
-    payload._captcha = 'false';
-    payload._source = 'vitavoltglobal.com';
-    payload._page = window.location.href;
-    payload._replyto = payload.eposta || payload.email || '';
+    payload = attachDeliveryFields(payload, options);
 
     var endpoint = options.endpoint !== undefined ? options.endpoint : FORM_CONFIG.endpoint;
 
@@ -137,7 +179,7 @@
       .then(function (pack) {
         setLoading(btn, false);
         if (pack.res.ok) {
-          status(statusEl, options.successMessage || 'Talebiniz alındı ve e-posta ile iletildi. En kısa sürede dönüş yapacağız.', 'success');
+          status(statusEl, options.successMessage || 'Talebiniz alındı. Onay e-postası adresinize gönderildi; en kısa sürede dönüş yapacağız.', 'success');
           track('lead_form_submit', { method: 'formsubmit', form: form.id || 'unknown' });
           try { form.reset(); } catch (_) {}
           return { ok: true, method: 'formsubmit' };
@@ -158,14 +200,7 @@
   function submitPayload(payload, options) {
     options = options || {};
     var data = Object.assign({}, payload || {});
-    data._subject = options.subject || 'Vitavolt Global — Ön fizibilite lead';
-    data._template = 'table';
-    data._captcha = 'false';
-    data._source = 'vitavoltglobal.com';
-    data._page = window.location.href;
-    if (data.email || data.eposta) {
-      data._replyto = data.eposta || data.email;
-    }
+    data = attachDeliveryFields(data, options);
 
     return fetch(FORM_CONFIG.endpoint, {
       method: 'POST',
@@ -193,6 +228,7 @@
     track: track,
     formToObject: formToObject,
     buildMailto: buildMailto,
+    buildAutoresponse: buildAutoresponse,
     submitForm: submitForm,
     submitPayload: submitPayload,
     config: FORM_CONFIG
