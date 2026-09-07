@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="google-site-verification" content="1D5sMwbZpjcK5cGHV18pFPNqGqis-X7pSCm_Iw9ku-o" />
-<title>Yağmur Suyu Hasat Sistemi | Yağmur Suyu Toplama İzmir | Vitavolt Global</title>
-<meta name="description" content="Yağmur suyu hasat sistemi ve yağmur suyu toplama sistemi: çatı hasadı, depolama, filtreleme. İzmir & Ege sanayi ve ticari tesisler için mühendislik." />
+<title>Ege Yağmur Suyu Hasat Sistemi | İzmir Yağmur Suyu Toplama | Vitavolt</title>
+<meta name="description" content="Ege Bölgesi endüstriyel yağmur suyu hasat sistemi: İzmir yağmur suyu toplama, çatı hasadı, depo hacmi ön hesabı. Fabrika ve OSB için mühendislik." />
 <meta name="robots" content="index, follow, max-image-preview:large" />
-<meta name="keywords" content="yağmur suyu hasat sistemi, yağmur suyu toplama sistemi, yağmur suyu hasadı İzmir, rainwater harvesting, çatı suyu toplama" />
+<meta name="keywords" content="yağmur suyu hasat sistemi, yağmur suyu toplama sistemi, İzmir yağmur suyu toplama, Ege endüstriyel yağmur hasadı, depo hacmi" />
 <link rel="canonical" href="https://vitavoltglobal.com/izmir-yagmur-suyu-hasat.html" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <meta name="theme-color" content="#07111C" />
@@ -62,7 +62,7 @@
           "name": "Yağmur suyu toplama sistemi ile hasat aynı şey mi?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Günlük dilde çoğu zaman aynı sistemi ifade eder. Toplama yakalama ve depolamayı; hasat ise filtre ve kullanım zincirini de vurgular."
+            "text": "Günlük dilde çoğu zaman aynı sistemi ifade eder."
           }
         },
         {
@@ -97,6 +97,11 @@
 .faq-item{border:1px solid rgba(255,255,255,.1);border-radius:.75rem;margin-bottom:.65rem;overflow:hidden;background:rgba(16,37,61,.45)}
 .faq-q{width:100%;text-align:left;padding:1rem 1.15rem;background:transparent;border:none;color:#f1f5f9;font-size:.98rem;font-weight:600;cursor:pointer;font-family:inherit}
 .faq-a{display:none;padding:0 1.15rem 1.1rem;color:#94a3b8;font-size:.93rem;line-height:1.65}.faq-item.open .faq-a{display:block}
+.water-calc{margin:1.25rem 0 2rem;padding:1.25rem;border-radius:1rem;border:1px solid rgba(34,211,238,.22);background:rgba(16,37,61,.45);display:grid;gap:.85rem}
+.water-calc label{color:#cbd5e1;font-size:.88rem;display:block}
+.water-calc input{width:100%;margin-top:.35rem;padding:.65rem .75rem;border-radius:.6rem;border:1px solid rgba(255,255,255,.12);background:rgba(7,17,28,.7);color:#f1f5f9;font-family:inherit}
+.yc-sonuc{color:#e2e8f0;font-size:.95rem;line-height:1.6;min-height:1.5rem}
+.yc-note{font-size:.8rem;color:#94a3b8;margin:0;line-height:1.5}
 </style>
 </head>
 <body>
@@ -122,8 +127,8 @@
 <main id="main">
 <section class="land-hero"><div class="bg"></div><div class="content">
 <nav class="breadcrumb" aria-label="breadcrumb"><a href="index.html">Ana Sayfa</a> → <a href="services.html">Hizmetler</a> → Yağmur Suyu Hasat</nav>
-<h1>Yağmur Suyu Hasat Sistemi</h1>
-<p class="sub">Yağmur suyu toplama sistemi — çatı hasadı, filtreleme ve depolama. İzmir & Ege tesisleri.</p>
+<h1>Yağmur Suyu Hasat & Toplama Sistemi (İzmir / Ege)</h1>
+<p class="sub">Ege Bölgesi endüstriyel yağmur suyu hasadı — çatı toplama, filtre, depo hacmi. Fabrika ve OSB odaklı.</p>
 </div></section>
 <section class="land-section"><div class="container" style="max-width:820px;margin:0 auto;padding:0 1.25rem">
 <p>Vitavolt Global, <strong>yağmur suyu hasat sistemi</strong> ve <strong>yağmur suyu toplama sistemi</strong> tasarımında mühendislik desteği sunar.</p>
@@ -145,6 +150,19 @@
 <li>Su faturasını düşürmek isteyen OSB tesisleri</li>
 <li><a href="izmir-gri-su-yonetimi.html">Gri su yönetimi</a> ile bütüncül su planı</li>
 </ul>
+
+<h2>Ön depo hacmi tahmini (yaklaşık)</h2>
+<p>Çatı alanı ve yıllık yağış varsayımı ile kaba depo boyutu. <strong>Ön fizibilite</strong> amaçlıdır.</p>
+<div class="water-calc" id="yagmurCalc">
+  <label>Çatı alanı (m²)<br><input type="number" id="ycCati" min="10" step="1" value="2000" inputmode="decimal"></label>
+  <label>Yıllık yağış varsayımı (mm)<br><input type="number" id="ycYagis" min="100" step="10" value="700" inputmode="decimal"></label>
+  <label>Toplanabilirlik katsayısı (0–1)<br><input type="number" id="ycKatsayi" min="0.3" max="0.95" step="0.05" value="0.75" inputmode="decimal"></label>
+  <label>Hedef depolama süresi (gün)<br><input type="number" id="ycGun" min="1" max="90" step="1" value="21" inputmode="numeric"></label>
+  <button type="button" id="ycBtn" class="btn btn-primary">Hesapla</button>
+  <div id="ycSonuc" class="yc-sonuc" aria-live="polite"></div>
+  <p class="yc-note">Yıllık hacim ≈ alan × yağış(mm)/1000 × katsayı (m³/yıl). Depo ≈ (yıllık/365)×gün. Talep profili ile netleştirilir.</p>
+</div>
+
 <h2>GES çatısı ile ilişki</h2>
 <p>Endüstriyel <a href="izmir-ges.html">GES</a> projelerinde çatı hem enerji hem su yüzeyi olabilir; panel yerleşimi ve oluk güzergâhı birlikte düşünülmelidir.</p>
 <div class="cta-box">
@@ -179,6 +197,21 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     if(!open) item.classList.add('open');
   });
 });
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('ycBtn');
+  if(!btn) return;
+  function num(id){ var v=parseFloat(document.getElementById(id).value); return isFinite(v)?v:NaN; }
+  btn.addEventListener('click', function(){
+    var A=num('ycCati'), P=num('ycYagis'), C=num('ycKatsayi'), D=num('ycGun');
+    var out=document.getElementById('ycSonuc');
+    if(!(A>0 && P>0 && C>0 && C<=1 && D>0)){ out.textContent='Geçerli pozitif değerler girin.'; return; }
+    var yillik = A * (P/1000) * C;
+    var depo = (yillik/365) * D;
+    out.innerHTML = '<strong>Yaklaşık yıllık hacim:</strong> ' + yillik.toFixed(0) + ' m³/yıl<br><strong>Kaba depo (' + D + ' gün):</strong> ' + depo.toFixed(0) + ' m³';
+  });
+})();
 </script>
 </body>
 </html>
