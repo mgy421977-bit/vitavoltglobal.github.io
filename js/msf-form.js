@@ -47,8 +47,14 @@
       var n = Number(panel.getAttribute('data-panel'));
       var active = n === current;
       panel.classList.toggle('is-active', active);
-      if (active) panel.removeAttribute('hidden');
-      else panel.setAttribute('hidden', '');
+      // Use only class visibility — HTML [hidden] uses display:none !important and breaks CSS
+      if (active) {
+        panel.removeAttribute('hidden');
+        panel.style.display = '';
+      } else {
+        panel.setAttribute('hidden', 'hidden');
+        panel.style.display = 'none';
+      }
     });
     steps.forEach(function (s) {
       var n = Number(s.getAttribute('data-step'));
