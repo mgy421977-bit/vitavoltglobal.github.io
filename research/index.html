@@ -2,48 +2,62 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ANNE AI Research | AGI-Oriented Cognitive Architecture</title>
-<meta name="description" content="ANNE AI araştırma merkezi: AGI odaklı açık bilişsel mimari, orkestrasyon, bellek, doğrulama, provenance ve kontrollü eylem araştırması.">
+<title>Vitavolt Research | ANNE AI & EDCS Araştırma Merkezi</title>
+<meta name="description" content="Vitavolt Research: ANNE AI ve EDCS dahil olmak üzere bilişsel mimari, AI orkestrasyonu ve dağıtık otonom sistemler üzerine açık araştırma merkezi.">
+<meta name="keywords" content="Vitavolt Research, ANNE AI, ANNE AGI, AGI cognitive architecture, EDCS, drone swarm, autonomous systems research, AI orchestration">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://vitavoltglobal.com/research/">
-<meta property="og:title" content="ANNE AI Research | AGI-Oriented Cognitive Architecture">
-<meta property="og:description" content="ANNE AI — AGI odaklı açık bilişsel mimari araştırma merkezi.">
+<link rel="alternate" hreflang="tr" href="https://vitavoltglobal.com/research/">
+<link rel="alternate" hreflang="en" href="https://vitavoltglobal.com/research/">
+<meta property="og:title" content="Vitavolt Research | ANNE AI & EDCS">
+<meta property="og:description" content="Vitavolt Research — ANNE AI ve EDCS araştırma portföyü.">
 <meta property="og:url" content="https://vitavoltglobal.com/research/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Vitavolt Research">
 <style>
-:root{--bg:#0b1220;--panel:#121a2b;--line:#263247;--text:#e2e8f0;--muted:#b8c3d1;--accent:#5eead4;--link:#38bdf8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:900px;margin:auto;padding:30px 22px 60px}a{color:var(--link)}h1{font-size:clamp(2rem,7vw,3.4rem);line-height:1.1;margin:.3rem 0 1rem}h2{font-size:clamp(1.35rem,4vw,1.8rem);margin:0 0 .7rem}.k{color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:700}.lead{font-size:1.15rem;color:var(--text);max-width:760px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:30px}.brand{font-weight:700}.lang{display:inline-flex;gap:4px}.lang button{border:1px solid #3b4658;background:#111827;color:#aeb9c8;border-radius:8px;padding:7px 11px;font-weight:800;cursor:pointer}.lang button.active{background:var(--accent);color:#0b1220;border-color:var(--accent)}.cards{display:grid;gap:18px;margin-top:28px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}.card p{color:var(--muted);margin-top:0}.card a{font-weight:700;text-decoration:none}.card a:hover{text-decoration:underline}.note{margin:25px 0;padding:16px 18px;border-left:3px solid #fbbf24;background:rgba(251,191,36,.06);color:var(--muted)}footer{border-top:1px solid var(--line);margin-top:40px;padding-top:24px;color:#8fa0b3}footer a{margin-right:15px}
-[data-lang]{display:none}html[lang="tr"] [data-lang="tr"]{display:block}html[lang="en"] [data-lang="en"]{display:block}html[lang="tr"] .inline-tr{display:inline}html[lang="en"] .inline-en{display:inline} .inline-tr,.inline-en{display:none}
+:root{--bg:#07111c;--panel:#10253d;--line:#263b50;--text:#e5edf5;--muted:#aebdcb;--accent:#5eead4;--link:#38bdf8;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1020px;margin:auto;padding:28px 22px 64px}a{color:var(--link)}h1{font-size:clamp(2.1rem,7vw,3.8rem);line-height:1.06;margin:.35rem 0 1rem}h2{font-size:clamp(1.35rem,4vw,1.8rem);margin:0 0 .7rem}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:38px}.brand{font-weight:800}.brand small{display:block;color:var(--accent);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-top:3px}.lang{display:inline-flex;gap:4px}.lang button{border:1px solid #3b4658;background:#111827;color:#aeb9c8;border-radius:8px;padding:7px 11px;font-weight:800;cursor:pointer}.lang button.active{background:var(--accent);color:#07111c;border-color:var(--accent)}.k{color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:800}.lead{font-size:1.16rem;color:var(--text);max-width:850px}.note{margin:25px 0;padding:16px 18px;border-left:3px solid var(--warn);background:rgba(251,191,36,.06);color:var(--muted)}section{margin-top:42px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:18px}.card{background:rgba(16,37,61,.72);border:1px solid var(--line);border-radius:14px;padding:22px}.card .tag{display:inline-block;color:var(--accent);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}.card h2{margin-bottom:.55rem}.card p{color:var(--muted);margin-top:0}.card a{font-weight:800;text-decoration:none}.card a:hover{text-decoration:underline}.map{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.map>div{padding:20px;border:1px solid var(--line);border-radius:14px;background:#0c1b2b}.map strong{display:block;margin-bottom:6px}.map p{margin:0;color:var(--muted)}.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.btn{display:inline-block;padding:10px 14px;border:1px solid #31506a;border-radius:9px;text-decoration:none;font-weight:700;background:#0d1c2b}.btn.primary{border-color:rgba(56,189,248,.4);background:rgba(56,189,248,.08)}footer{border-top:1px solid var(--line);margin-top:48px;padding-top:24px;color:#8fa0b3}footer a{margin-right:16px}[data-lang]{display:none}html[lang="tr"] [data-lang="tr"]{display:block}html[lang="en"] [data-lang="en"]{display:block}html[lang="tr"] span[data-lang="tr"],html[lang="tr"] a[data-lang="tr"]{display:inline}html[lang="en"] span[data-lang="en"],html[lang="en"] a[data-lang="en"]{display:inline}@media(max-width:700px){.map{grid-template-columns:1fr}.top{align-items:flex-start}}
 </style>
 </head>
 <body>
 <main class="wrap">
 <header class="top">
-<div class="brand"><span data-lang="tr">Vitavolt Research · ANNE AI</span><span data-lang="en">Vitavolt Research · ANNE AI</span></div>
+<div class="brand">VITAVOLT RESEARCH<small><span data-lang="tr">Açık araştırma merkezi</span><span data-lang="en">Open research center</span></small></div>
 <div class="lang" role="group" aria-label="Language / Dil"><button type="button" data-lang-btn="tr" class="active" aria-pressed="true">TR</button><button type="button" data-lang-btn="en" aria-pressed="false">EN</button></div>
 </header>
 <section>
-<p class="k"><span data-lang="tr">Açık araştırma · AGI odaklı bilişsel mimari</span><span data-lang="en">Open research · AGI-oriented cognitive architecture</span></p>
-<h1><span data-lang="tr">ANNE AI Araştırma</span><span data-lang="en">ANNE AI Research</span></h1>
-<p class="lead" data-lang="tr">ANNE — AGI Odaklı Açık Bilişsel Mimari için araştırma merkezi. Orkestrasyon, bellek, doğrulama, provenance ve kontrollü eylem mekanizmalarını inceler.</p>
-<p class="lead" data-lang="en">Research hub for ANNE — AGI-Oriented Open Cognitive Architecture. It explores orchestration, memory, verification, provenance and controlled agency.</p>
-<div class="note"><strong><span data-lang="tr">Araştırma sınırı:</span><span data-lang="en">Research boundary:</span></strong> <span data-lang="tr">ANNE tamamlanmış AGI elde edildiğini iddia etmez. AGI, mimari bir araştırma yönü olarak ele alınır.</span><span data-lang="en">ANNE does not claim that completed AGI has been achieved. AGI is treated as an architectural research direction.</span></div>
+<p class="k"><span data-lang="tr">ANNE AI · EDCS · Açık teknoloji araştırması</span><span data-lang="en">ANNE AI · EDCS · Open technology research</span></p>
+<h1>Vitavolt Research</h1>
+<p class="lead" data-lang="tr">Vitavolt Research, şirketin gerçek enerji altyapısı faaliyetlerinden ayrı bir araştırma katmanı olarak; ANNE AI bilişsel mimarisi ve EDCS dağıtık otonom sistemleri gibi teknoloji projelerinin mimari, teknik ve deneysel çalışmalarını tek bir merkezde toplar.</p>
+<p class="lead" data-lang="en">Vitavolt Research is a research layer distinct from the company’s real-world energy infrastructure operations. It brings together the architectural, technical and experimental work around technology projects such as the ANNE AI cognitive architecture and EDCS distributed autonomous systems.</p>
+<div class="note"><strong><span data-lang="tr">Kanıt disiplini:</span><span data-lang="en">Evidence discipline:</span></strong> <span data-lang="tr">Araştırma sayfaları mevcut prototip, dokümantasyon ve doğrulanabilir geliştirme durumunu ayırır. ANNE tamamlanmış AGI olduğunu iddia etmez; EDCS mevcut durumda simülasyon prototipidir.</span><span data-lang="en">Research pages distinguish current prototypes, documentation and verifiable development status. ANNE does not claim achieved AGI; EDCS is currently a simulation prototype.</span></div>
 </section>
-<section class="cards">
-<article class="card"><h2><span data-lang="tr">ANNE AI nedir?</span><span data-lang="en">What Is ANNE AI?</span></h2><p data-lang="tr">Araştırma konumlandırması, AGI sorusu, mimari ve kanıt disiplini.</p><p data-lang="en">Research positioning, the AGI question, architecture and evidence discipline.</p><a href="anne-ai.html"><span data-lang="tr">Araştırmayı oku →</span><span data-lang="en">Read research →</span></a></article>
+<section>
+<h2 data-lang="tr">Araştırma portföyü</h2><h2 data-lang="en">Research portfolio</h2>
+<div class="cards">
+<article class="card"><span class="tag">ANNE AI</span><h2><span data-lang="tr">AGI Odaklı Açık Bilişsel Mimari</span><span data-lang="en">AGI-Oriented Open Cognitive Architecture</span></h2><p data-lang="tr">Heterojen AI orkestrasyonu, bilişsel döngü, bellek, provenance, doğrulama ve kontrollü eylem araştırması.</p><p data-lang="en">Research into heterogeneous AI orchestration, cognitive loops, memory, provenance, verification and controlled agency.</p><a href="anne-ai.html"><span data-lang="tr">ANNE araştırmasına git →</span><span data-lang="en">Explore ANNE research →</span></a></article>
+<article class="card"><span class="tag">EDCS</span><h2>Emergent Drone Coordination System</h2><p data-lang="tr">Dağıtık ve self-healing drone sürüsü koordinasyonu için mimari ve Python 2D simülasyon araştırması.</p><p data-lang="en">Architecture and Python 2D simulation research for distributed, self-healing drone swarm coordination.</p><a href="edcs.html"><span data-lang="tr">EDCS araştırmasına git →</span><span data-lang="en">Explore EDCS research →</span></a></article>
+</div>
+</section>
+<section>
+<h2 data-lang="tr">ANNE araştırma haritası</h2><h2 data-lang="en">ANNE research map</h2>
+<div class="cards">
+<article class="card"><h2><span data-lang="tr">ANNE AI nedir?</span><span data-lang="en">What Is ANNE AI?</span></h2><p data-lang="tr">Araştırma konumlandırması, AGI sorusu, mimari ve kanıt disiplini.</p><p data-lang="en">Research positioning, the AGI question, architecture and evidence discipline.</p><a href="anne-ai.html"><span data-lang="tr">Oku →</span><span data-lang="en">Read →</span></a></article>
 <article class="card"><h2><span data-lang="tr">ANNE Mimarisi</span><span data-lang="en">ANNE Architecture</span></h2><p data-lang="tr">Bilişsel orkestrasyon, heterojen AI, bellek, doğrulama ve kontrollü eylem.</p><p data-lang="en">Cognitive orchestration, heterogeneous AI, memory, verification and controlled agency.</p><a href="anne-architecture.html"><span data-lang="tr">Mimarinin detayları →</span><span data-lang="en">Read architecture →</span></a></article>
 <article class="card"><h2><span data-lang="tr">ANNE ve AI Agent'lar</span><span data-lang="en">ANNE vs AI Agents</span></h2><p data-lang="tr">Model merkezli agent yaklaşımı ile açık bilişsel orkestrasyonun mimari karşılaştırması.</p><p data-lang="en">An architectural comparison of model-centric agents and explicit cognitive orchestration.</p><a href="anne-vs-ai-agents.html"><span data-lang="tr">Karşılaştırmayı oku →</span><span data-lang="en">Read comparison →</span></a></article>
+</div>
 </section>
-<footer>
-<p><a href="../anne.html"><span data-lang="tr">ANNE ana araştırma sayfası</span><span data-lang="en">ANNE research hub</span></a><a href="../index.html"><span data-lang="tr">Vitavolt Global</span><span data-lang="en">Vitavolt Global</span></a><a href="https://github.com/mgy421977-bit/anne-ai">GitHub</a></p>
-</footer>
+<section>
+<h2 data-lang="tr">Portföy mimarisi</h2><h2 data-lang="en">Portfolio architecture</h2>
+<div class="map">
+<div><strong>Vitavolt Global</strong><p data-lang="tr">Enerji altyapısı, mühendislik, EPC, BESS, karbon ve gerçek saha çalışmaları.</p><p data-lang="en">Energy infrastructure, engineering, EPC, BESS, carbon and real-world field work.</p></div>
+<div><strong>Vitavolt Research</strong><p data-lang="tr">ANNE ve EDCS gibi araştırma projelerinin teknik ve deneysel bilgi katmanı.</p><p data-lang="en">Technical and experimental knowledge layer for research projects such as ANNE and EDCS.</p></div>
+</div>
+<div class="links"><a class="btn primary" href="../anne.html"><span data-lang="tr">ANNE ana sayfa →</span><span data-lang="en">ANNE main page →</span></a><a class="btn" href="../edcs.html"><span data-lang="tr">EDCS ana sayfa →</span><span data-lang="en">EDCS main page →</span></a><a class="btn" href="../index.html">Vitavolt Global →</a></div>
+</section>
+<footer><p><a href="../index.html">Vitavolt Global</a><a href="../anne.html">ANNE AI</a><a href="../edcs.html">EDCS</a><a href="https://github.com/mgy421977-bit/anne-ai">ANNE GitHub</a><a href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm">EDCS GitHub</a></p></footer>
 </main>
 <script>
-(function(){
- const buttons=document.querySelectorAll('[data-lang-btn]');
- function setLang(lang){document.documentElement.lang=lang;buttons.forEach(b=>{const active=b.dataset.langBtn===lang;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active?'true':'false')});try{localStorage.setItem('anneResearchLang',lang)}catch(e){}}
- buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.langBtn)));
- let lang='tr';try{const saved=localStorage.getItem('anneResearchLang');if(saved==='tr'||saved==='en')lang=saved}catch(e){}setLang(lang);
-})();
+(function(){const buttons=document.querySelectorAll('[data-lang-btn]');function setLang(lang){document.documentElement.lang=lang;buttons.forEach(b=>{const active=b.dataset.langBtn===lang;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active?'true':'false')});try{localStorage.setItem('vitavoltResearchLang',lang)}catch(e){}}buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.langBtn)));let lang='tr';try{const saved=localStorage.getItem('vitavoltResearchLang');if(saved==='tr'||saved==='en')lang=saved}catch(e){}setLang(lang)})();
 </script>
 </body></html>
