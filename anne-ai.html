@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ANNE — Open Cognitive Architecture | Vitavolt AI Research</title>
+<meta name="description" content="ANNE: açık kaynak bilişsel mimari. Heterojen AI koordinasyonu, bilişsel bellek, MITOS, Executive ANNE, Agency Gate. Research prototype — anne-core." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://vitavoltglobal.com/anne-ai.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:title" content="ANNE — Open Cognitive Architecture" />
+<meta property="og:description" content="Heterojen AI sistemlerini koordine eden, değerlendiren ve kalıcı bilişsel bellek ile yeniden kullanan açık bilişsel katman." />
+<meta property="og:url" content="https://vitavoltglobal.com/anne-ai.html" />
+<meta property="og:type" content="website" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+.anne{max-width:820px;margin:0 auto;padding:3.5rem 1.25rem 4rem}
+.anne h1{color:#f8fafc;font-size:clamp(1.75rem,4vw,2.5rem);margin:.35rem 0 1rem;letter-spacing:-.02em}
+.anne .lead{color:#94a3b8;font-size:1.1rem;line-height:1.55;max-width:36rem}
+.kicker{color:#38bdf8;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin:0}
+.badge{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px;margin-right:.35rem;margin-bottom:.35rem}
+.b-imp{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.3)}
+.b-exp{background:rgba(56,189,248,.12);color:#38bdf8;border:1px solid rgba(56,189,248,.25)}
+.b-hyp{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.25)}
+.b-road{background:rgba(148,163,184,.12);color:#94a3b8;border:1px solid rgba(148,163,184,.25)}
+.card{background:rgba(16,37,61,.5);border:1px solid rgba(0,174,239,.15);border-radius:1rem;padding:1.25rem 1.4rem;margin:1rem 0}
+.card h2,.card h3{color:#f1f5f9;font-size:1.1rem;margin:0 0 .5rem}
+.card p,.card li{color:#94a3b8;font-size:.95rem;line-height:1.55}
+.card ul{margin:.4rem 0 0;padding-left:1.15rem}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:1rem 0}
+.flow span{padding:.4rem .75rem;background:rgba(15,23,42,.7);border:1px solid rgba(255,255,255,.1);border-radius:.5rem;color:#e2e8f0;font-size:.75rem;font-weight:600}
+.flow i{color:#38bdf8;font-size:.65rem}
+table.status{width:100%;border-collapse:collapse;font-size:.85rem;margin:1rem 0}
+table.status th,table.status td{text-align:left;padding:.55rem .4rem;border-bottom:1px solid rgba(255,255,255,.08);color:#94a3b8}
+table.status th{color:#cbd5e1;font-weight:600}
+.links a{color:#38bdf8;margin-right:1rem}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ANNE Core — Open Cognitive Architecture","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Mustafa Gökhan Yılmaz"},"url":"https://github.com/mgy421977-bit/anne-core","description":"Executable research prototype for cognitive orchestration, evaluated memory, and bounded agency."}
+</script>
+</head>
+<body>
+<header class="header">
+<nav class="navbar"><div class="container"><div class="navbar-content">
+<a href="index.html" class="logo"><span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span></a>
+<div class="nav-menu" id="navMenu">
+<a href="index.html" class="nav-link">ANA SAYFA</a>
+<a href="services.html" class="nav-link">ALTYAPI</a>
+<a href="vita-energy-intelligence.html" class="nav-link">VITA</a>
+<a href="anne-ai.html" class="nav-link active">ANNE</a>
+<a href="vaka-calismalari.html" class="nav-link">TEKNİK ÇALIŞMALAR</a>
+<a href="blog/" class="nav-link">BLOG</a>
+<a href="about.html" class="nav-link">KURUMSAL</a>
+<a href="contact.html" class="nav-link">İLETİŞİM</a>
+</div>
+<a href="index.html#hizli-hesapla" class="btn btn-primary btn-cta">PROJENİ ANALİZ ET</a>
+<button class="menu-toggle" id="menuToggle" type="button" aria-label="Menü"><span></span><span></span><span></span></button>
+</div></div></nav>
+</header>
+
+<main id="main">
+<section class="anne">
+<p class="kicker">Vitavolt AI Research</p>
+<h1>ANNE — Open Cognitive Architecture</h1>
+<p class="lead">An open cognitive layer for coordinating, evaluating, learning from, and reusing the outputs of heterogeneous AI systems.</p>
+<p class="links" style="margin-top:1.25rem">
+<a href="https://github.com/mgy421977-bit/anne-core" target="_blank" rel="noopener">anne-core (GitHub)</a>
+<a href="https://github.com/mgy421977-bit/anne-ai" target="_blank" rel="noopener">anne-ai</a>
+<a href="vita-energy-intelligence.html">VITA hub</a>
+</p>
+
+<div class="card" style="margin-top:2rem">
+<span class="badge b-imp">Research prototype</span>
+<span class="badge b-exp">Not a foundation model</span>
+<span class="badge b-exp">Not a chatbot product</span>
+<h2>What is ANNE?</h2>
+<p>ANNE, heterojen yapay zekâ sistemlerini tek bir bilişsel çalışma süreci içinde koordine etmeyi; çıktılarından değerlendirilebilir ve yeniden kullanılabilir bilişsel yapılar üretmeyi; bu yapıları kalıcı bilişsel bellek üzerinden sonraki görevlerde kullanmayı amaçlayan <strong>açık kaynaklı bir bilişsel mimaridir</strong>.</p>
+<p>LLM veya foundation model değildir. Model üretir; ANNE süreç yönetir, değerlendirir, bellekler ve eylem yetkisini sınırlar.</p>
+</div>
+
+<div class="card">
+<h2>The problem</h2>
+<ul>
+<li>Farklı modeller çoğu zaman ayrı ayrı kullanılır</li>
+<li>Çıktılar geçici kalabilir</li>
+<li>Sistematik karşılaştırma zayıf kalabilir</li>
+<li>Önceki deneyimin yeniden kullanımı sınırlıdır</li>
+<li>Öneri ile gerçek dünya eylemi birbirinden ayrılmalıdır</li>
+</ul>
+<p>ANNE bu ayrımı mimari olarak kodlar: çıkarım ≠ yetki.</p>
+</div>
+
+<div class="card">
+<h2>Cognitive loop <span class="badge b-imp">Implemented (anne-core)</span></h2>
+<div class="flow">
+<span>Task</span><i class="fas fa-chevron-right"></i>
+<span>Memory search</span><i class="fas fa-chevron-right"></i>
+<span>MITOS</span><i class="fas fa-chevron-right"></i>
+<span>Providers</span><i class="fas fa-chevron-right"></i>
+<span>Evaluation</span><i class="fas fa-chevron-right"></i>
+<span>Memory store</span><i class="fas fa-chevron-right"></i>
+<span>Executive</span><i class="fas fa-chevron-right"></i>
+<span>Agency Gate</span><i class="fas fa-chevron-right"></i>
+<span>Output</span>
+</div>
+<p>Kaynak: <code>docs/ARCHITECTURE.md</code> — T→D→M→P→E→K→X→G→O eşlemesi.</p>
+</div>
+
+<div class="card">
+<h2>MITOS <span class="badge b-imp">Implemented</span></h2>
+<p>MITOS bir model sağlayıcı değildir. Süreç yöneticisidir:</p>
+<ul>
+<li>görev ayrıştırma (decompose)</li>
+<li>sağlayıcı seçimi ve sorgulama</li>
+<li>sonuç karşılaştırma (agreement / contradiction)</li>
+<li>daha fazla araştırma ihtiyacı notu</li>
+</ul>
+<p>Kod: <code>src/anne_core/mitos/engine.py</code></p>
+</div>
+
+<div class="card">
+<h2>Cognitive Memory <span class="badge b-imp">Implemented</span></h2>
+<p>Sohbet geçmişi değildir. Yapılandırılmış <em>CognitiveStructure</em> saklar: kanıt, provenance, çelişki, güven skoru; SQLite kalıcılık; arama ve yeniden kullanım yolu.</p>
+<p>Güven ≥ eşik ise <strong>reuse path</strong>; aksi halde yeni keşif. Kod: <code>src/anne_core/memory/</code>, <code>ANNECore.ask()</code>.</p>
+</div>
+
+<div class="card">
+<h2>Executive ANNE <span class="badge b-imp">Implemented</span></h2>
+<p>Ham provider metninden değil, değerlendirilmiş bilişsel yapıdan sentez üretir. Kod: <code>src/anne_core/executive/executive.py</code></p>
+</div>
+
+<div class="card">
+<h2>Agency Gate <span class="badge b-imp">Implemented</span></h2>
+<p><strong>Inference ≠ Authority.</strong> Varsayılan red (default-deny). Onaysız dış eylem yok. MVP’de onaylansa bile gerçek dış yan etki yapılmaz (güvenlik sınırı).</p>
+<p>Kod: <code>src/anne_core/safety/agency_gate.py</code></p>
+<p>“Tamamen güvenli” veya “safety solved” iddiası yoktur.</p>
+</div>
+
+<div class="card">
+<h2>Heterogeneous AI <span class="badge b-imp">Implemented</span></h2>
+<ul>
+<li><strong>MockProvider</strong> — zorunlu, deterministik, offline test</li>
+<li><strong>OpenAI</strong> — isteğe bağlı (env)</li>
+<li><strong>Grok</strong> — isteğe bağlı (env)</li>
+</ul>
+<p>Kod: <code>src/anne_core/providers/</code></p>
+</div>
+
+<div class="card">
+<h2>Knowledge Layer v0.2 <span class="badge b-exp">Experimental</span></h2>
+<ul>
+<li>ANNE-ID (yerel, non-PII kimlik)</li>
+<li>KnowledgeManifest (hash, provenance, consent scope)</li>
+<li>PrivateVault (AES-128-GCM, scrypt)</li>
+</ul>
+<p>P2P paylaşım <strong>açık değildir</strong>. Global bilgi ağı iddiası yoktur.</p>
+</div>
+
+<div class="card">
+<h2>ANNE Core vs anne-ai / anne</h2>
+<ul>
+<li><strong>anne-core</strong> — minimal, çalıştırılabilir, yeniden üretilebilir prototip (v0.2.0)</li>
+<li><strong>anne-ai / anne</strong> — daha geniş araştırma / geliştirme platformu (altı aşamalı DUY→…→YAP çizgisi, ek deneysel katmanlar)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>What makes it different?</h2>
+<p>Tek başına RAG, tek başına multi-agent veya chatbot değildir. Fark, aynı mimaride birleşen:</p>
+<ul>
+<li>heterojen AI koordinasyonu</li>
+<li>bilişsel süreç yönetimi (MITOS)</li>
+<li>değerlendirilmiş kalıcı yapılar</li>
+<li>bellek yeniden kullanımı</li>
+<li>executive sentez</li>
+<li>sınırlı agency (Agency Gate)</li>
+</ul>
+<p>“World’s first” iddiası kullanılmaz.</p>
+</div>
+
+<div class="card">
+<h2>Feature status</h2>
+<table class="status">
+<thead><tr><th>Özellik</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>MITOS decompose / explore / compare</td><td>IMPLEMENTED</td></tr>
+<tr><td>Provider abstraction + Mock/OpenAI/Grok</td><td>IMPLEMENTED</td></tr>
+<tr><td>Cognitive evaluation + structure</td><td>IMPLEMENTED</td></tr>
+<tr><td>SQLite cognitive memory + reuse path</td><td>IMPLEMENTED</td></tr>
+<tr><td>Executive synthesis</td><td>IMPLEMENTED</td></tr>
+<tr><td>Agency Gate default-deny</td><td>IMPLEMENTED</td></tr>
+<tr><td>Knowledge identity / vault / manifest</td><td>EXPERIMENTAL</td></tr>
+<tr><td>P2P distributed knowledge network</td><td>ROADMAP</td></tr>
+<tr><td>Energy / efficiency gains</td><td>HYPOTHESIS</td></tr>
+<tr><td>Fractal / re-entrant depth as product claim</td><td>HYPOTHESIS / partial in loop</td></tr>
+<tr><td>Autonomous research agent product</td><td>ROADMAP</td></tr>
+<tr><td>Hallucination / superiority claims</td><td>HYPOTHESIS — ölçüm gerekir</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<h2>Preprint</h2>
+<p>Mustafa Gökhan Yılmaz — <em>ANNE — Open Cognitive Architecture</em> (September 2026). Site metni, anne-core <code>ARCHITECTURE.md</code> eşlemesine bağlıdır; paper’da olup kodda olmayan iddialar ürün özelliği olarak yazılmaz.</p>
+</div>
+
+<div class="card">
+<h2>Vitavolt + VITA + ANNE</h2>
+<p><strong>Vitavolt</strong> enerji altyapısı ve saha mühendisliği sunar.<br>
+<strong>VITA</strong> enerji ön fizibilite / analiz katmanıdır (canlı: Quick Feasibility).<br>
+<strong>ANNE</strong> heterojen AI bilişsel orkestrasyon araştırma prototipidir.</p>
+<p>ANNE, VITA’nın “doğrulama katmanı” iddiasının araştırma tarafındaki karşılığıdır; enerji motoru ile birebir entegre canlı ürün değildir.</p>
+</div>
+
+<p style="margin-top:2rem">
+<a href="https://github.com/mgy421977-bit/anne-core" class="btn btn-primary" target="_blank" rel="noopener">anne-core on GitHub</a>
+<a href="vita-energy-intelligence.html" class="btn btn-outline" style="margin-left:.5rem">VITA hub</a>
+</p>
+</section>
+</main>
+<footer class="footer"><div class="container"><p style="color:#94a3b8">&copy; 2026 Vitavolt Global · AI Research</p></div></footer>
+<script src="js/script.js" defer></script>
+</body>
+</html>
