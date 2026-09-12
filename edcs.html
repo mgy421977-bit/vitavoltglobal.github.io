@@ -3,20 +3,32 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>EDCS — Emergent Drone Coordination System | Vitavolt Araştırma</title>
-<meta name="description" content="EDCS: merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. Simülasyon prototipi; saha denemeleri planlanıyor." />
-<meta name="robots" content="index, follow" />
+<title>EDCS — Dağıtık Drone Sürüsü Koordinasyonu | Savunma & UAV Araştırma</title>
+<meta name="description" content="EDCS (Emergent Drone Coordination System): merkezi komutasız, self-healing drone sürüsü koordinasyonu. GPS jamming / spoofing ve zayıf iletişim ortamları için araştırma. Simülasyon prototipi; savunma ve UAV senaryolarına yönelik model — operasyonel ürün iddiası değil." />
+<meta name="keywords" content="EDCS, drone sürüsü, swarm coordination, UAV, savunma sanayi, GPS jamming, self-healing swarm, dağıtık drone, SİHA koordinasyon, otonom sistemler araştırma" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="author" content="Mustafa Gökhan Yılmaz" />
 <link rel="canonical" href="https://vitavoltglobal.com/edcs.html" />
+<link rel="alternate" hreflang="tr" href="https://vitavoltglobal.com/edcs.html" />
+<link rel="alternate" hreflang="en" href="https://vitavoltglobal.com/edcs.html" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <meta name="theme-color" content="#07111C" />
-<meta property="og:title" content="EDCS — Emergent Drone Coordination System | Vitavolt Araştırma" />
-<meta property="og:description" content="Dağıtık, self-healing drone sürüsü koordinasyonu. GPS zayıf / jamming ortamları için araştırma projesi." />
+<meta property="og:title" content="EDCS — Dağıtık Drone Sürüsü | Savunma & UAV Araştırma" />
+<meta property="og:description" content="Merkezi komutasız, self-healing drone swarm. GPS engelli ve jamming ortamları için araştırma prototipi. Savunma ve UAV senaryoları — saha ürünü iddiası yok." />
 <meta property="og:url" content="https://vitavoltglobal.com/edcs.html" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="tr_TR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:site_name" content="Vitavolt Araştırma" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="EDCS — Dağıtık Drone Sürüsü Koordinasyonu" />
+<meta name="twitter:description" content="Self-healing swarm research for GPS-denied and jammed environments. Simulation stage." />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ResearchProject","name":"EDCS — Emergent Drone Coordination System","alternateName":"EDCS","description":"Merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyon sistemi. GPS zayıf veya engelli, jamming ve birim kaybı senaryoları için araştırma. Simülasyon prototipi aşamasında; savunma ve UAV kullanım alanlarına yönelik model.","url":"https://vitavoltglobal.com/edcs.html","keywords":"drone swarm, UAV coordination, self-healing swarm, GPS denied, defense research, distributed coordination","about":[{"@type":"Thing","name":"Unmanned aerial vehicle"},{"@type":"Thing","name":"Distributed systems"},{"@type":"Thing","name":"Defense research"}],"creator":{"@type":"Person","name":"Mustafa Gökhan Yılmaz"},"publisher":{"@type":"Organization","name":"Vitavolt Global","url":"https://vitavoltglobal.com/"},"codeRepository":"https://github.com/mgy421977-bit/EDCS-Drone-Swarm"}
+</script>
 <style>
 .logo-sub{font-weight:500;letter-spacing:.06em;opacity:.9;font-size:.72em;color:#5eead4}
 .lang-switch{display:inline-flex;align-items:center;gap:2px;margin-left:.75rem}
@@ -88,12 +100,12 @@ html[lang="tr"] table[data-lang="tr"]{display:table}
 <section class="edcs-hero">
 <div class="container edcs-wrap">
 <p style="color:#38bdf8;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .5rem;">
-<span data-lang="tr">Vitavolt Araştırma · Otonom sistemler</span>
-<span data-lang="en">Vitavolt Research · Autonomous systems</span>
+<span data-lang="tr">Vitavolt Araştırma · Otonom sistemler · Savunma & UAV</span>
+<span data-lang="en">Vitavolt Research · Autonomous systems · Defense & UAV</span>
 </p>
 <h1>EDCS — Emergent Drone Coordination System</h1>
-<p data-lang="tr">Merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. GPS’in zayıf veya engellendiği, iletişimin bozulduğu ve birim kayıplarının olabileceği saha koşulları için tasarlanmıştır.</p>
-<p data-lang="en">Distributed, self-healing drone swarm coordination without central command. Designed for weak or denied GPS, degraded links, and unit loss in field conditions.</p>
+<p data-lang="tr">Merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. GPS’in zayıf veya engellendiği, iletişimin bozulduğu ve birim kayıplarının olabileceği saha koşulları için tasarlanmıştır. Savunma ve UAV senaryolarına yönelik araştırma modeli.</p>
+<p data-lang="en">Distributed, self-healing drone swarm coordination without central command. Designed for weak or denied GPS, degraded links, and unit loss. Research model oriented to defense and UAV scenarios.</p>
 <div class="badge-row">
 <span class="badge badge-ok"><span data-lang="tr">Simülasyon prototipi</span><span data-lang="en">Simulation prototype</span></span>
 <span class="badge"><span data-lang="tr">Mimari + model tamam</span><span data-lang="en">Architecture + model done</span></span>
@@ -112,19 +124,19 @@ html[lang="tr"] table[data-lang="tr"]{display:table}
 <strong data-lang="tr">1. Referans sinyal yayılımı</strong>
 <strong data-lang="en">1. Reference signal propagation</strong>
 <span data-lang="tr">İlk doğru konuma sahip birim geçici referans olur; sinyal en yüksek RSSI komşuya iletilerek formasyon dağıtık başlatılır.</span>
-<span data-lang="en">The first unit with a valid position becomes a temporary reference; the signal propagates to the highest-RSSI neighbour so formation starts in a distributed way.</span>
+<span data-lang="en">The first unit with a valid position becomes a temporary reference; signal propagates to the highest-RSSI neighbour.</span>
 </div>
 <div class="mech">
 <strong data-lang="tr">2. Adaptif potansiyel alanlar</strong>
 <strong data-lang="en">2. Adaptive potential fields</strong>
 <span data-lang="tr">İtme (çarpışma önleme), birleşme (formasyon) ve hedef kuvvetleriyle yerel yörünge üretimi.</span>
-<span data-lang="en">Local trajectories from repulsion (collision avoidance), cohesion (formation), and goal forces.</span>
+<span data-lang="en">Local trajectories from repulsion, cohesion, and goal forces.</span>
 </div>
 <div class="mech">
 <strong data-lang="tr">3. Dağıtık self-healing</strong>
 <strong data-lang="en">3. Distributed self-healing</strong>
 <span data-lang="tr">Birim kaybı yerel tespit edilir; cevap yoksa sürü merkezi müdahale olmadan formasyonu yeniden kurar.</span>
-<span data-lang="en">Unit loss is detected locally; if no reply, the swarm reforms without central intervention.</span>
+<span data-lang="en">Unit loss detected locally; swarm reforms without central intervention.</span>
 </div>
 </div>
 </div></section>
@@ -140,8 +152,8 @@ html[lang="tr"] table[data-lang="tr"]{display:table}
 <li>Ölçeklenebilir yerel karar alma</li>
 </ul>
 <ul data-lang="en">
-<li>Fully distributed architecture — no permanent leader unit</li>
-<li>Minimal communication (passive Bluetooth RSSI approach)</li>
+<li>Fully distributed architecture — no permanent leader</li>
+<li>Minimal communication (passive Bluetooth RSSI)</li>
 <li>GPS-resilient operation goal</li>
 <li>Automatic recovery after unit loss</li>
 <li>Scalable local decision-making</li>
@@ -152,21 +164,21 @@ html[lang="tr"] table[data-lang="tr"]{display:table}
 <h2 data-lang="tr">Hedef kullanım alanları</h2>
 <h2 data-lang="en">Target use cases</h2>
 <ul data-lang="tr">
-<li><strong style="color:#cbd5e1">Tarım ilaçlama</strong> — geniş alanda formasyon ve GPS bağımlılığını azaltma</li>
+<li><strong style="color:#cbd5e1">UAV / taktik koordinasyon (savunma)</strong> — jamming’e daha dayanıklı sürü mantığı; araştırma senaryosu</li>
 <li><strong style="color:#cbd5e1">Afet / arama-kurtarma</strong> — altyapısı bozulmuş, sinyal zayıf ortamlar</li>
 <li><strong style="color:#cbd5e1">Alan tarama ve güvenlik</strong> — uzun süreli gözetleme</li>
-<li><strong style="color:#cbd5e1">UAV / taktik koordinasyon</strong> — jamming’e daha dayanıklı sürü mantığı</li>
-<li><strong style="color:#cbd5e1">Otoyol / trafik izleme</strong> — tarama ve olay müdahalesi senaryoları</li>
+<li><strong style="color:#cbd5e1">Tarım ilaçlama</strong> — geniş alanda formasyon</li>
+<li><strong style="color:#cbd5e1">Otoyol / trafik izleme</strong> — tarama ve olay müdahalesi</li>
 </ul>
 <ul data-lang="en">
-<li><strong style="color:#cbd5e1">Agricultural spraying</strong> — formation over large areas with less GPS dependence</li>
-<li><strong style="color:#cbd5e1">Disaster / search & rescue</strong> — degraded infrastructure, weak signal</li>
+<li><strong style="color:#cbd5e1">UAV / tactical coordination (defense research)</strong> — swarm logic more resilient to jamming</li>
+<li><strong style="color:#cbd5e1">Disaster / search & rescue</strong> — degraded infrastructure</li>
 <li><strong style="color:#cbd5e1">Area scan & security</strong> — long-duration surveillance</li>
-<li><strong style="color:#cbd5e1">UAV / tactical coordination</strong> — swarm logic more resilient to jamming</li>
-<li><strong style="color:#cbd5e1">Highway / traffic monitoring</strong> — scanning and incident response scenarios</li>
+<li><strong style="color:#cbd5e1">Agricultural spraying</strong> — formation over large areas</li>
+<li><strong style="color:#cbd5e1">Highway / traffic monitoring</strong></li>
 </ul>
-<p style="font-size:.88rem;margin-top:.75rem" data-lang="tr">Bunlar hedef senaryolardır; ticari saha operasyonu iddiası değildir.</p>
-<p style="font-size:.88rem;margin-top:.75rem" data-lang="en">These are target scenarios — not a claim of commercial field operations.</p>
+<p style="font-size:.88rem;margin-top:.75rem" data-lang="tr">Hedef senaryolardır; ticari saha veya sertifikalı savunma ürünü iddiası değildir.</p>
+<p style="font-size:.88rem;margin-top:.75rem" data-lang="en">Target scenarios only — not a claim of commercial field or certified defense product.</p>
 </div></section>
 
 <section class="edcs-section"><div class="container edcs-wrap">
@@ -186,7 +198,7 @@ html[lang="tr"] table[data-lang="tr"]{display:table}
 <table class="status-table" data-lang="en">
 <thead><tr><th>Component</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td>Technical architecture & mathematical model</td><td>Complete</td></tr>
+<tr><td>Architecture & mathematical model</td><td>Complete</td></tr>
 <tr><td>Simulation prototype</td><td>Running</td></tr>
 <tr><td>Technical paper / presentation</td><td>Available</td></tr>
 <tr><td>Hardware prototype</td><td>Planned</td></tr>
@@ -196,17 +208,17 @@ html[lang="tr"] table[data-lang="tr"]{display:table}
 </table>
 <div class="note">
 <strong style="color:#cbd5e1" data-lang="tr">Şeffaflık:</strong>
-<span data-lang="tr"> EDCS şu an araştırma ve simülasyon aşamasındadır. Üretimde konuşlanmış bir operasyonel sürü ürünü olarak sunulmaz.</span>
+<span data-lang="tr"> EDCS araştırma ve simülasyon aşamasındadır. Operasyonel sürü veya savunma ürünü olarak sunulmaz.</span>
 <strong style="color:#cbd5e1" data-lang="en">Transparency:</strong>
-<span data-lang="en"> EDCS is currently at research and simulation stage. It is not presented as a field-deployed operational swarm product.</span>
+<span data-lang="en"> EDCS is at research and simulation stage. Not presented as an operational swarm or defense product.</span>
 </div>
 </div></section>
 
 <section class="edcs-section"><div class="container edcs-wrap">
 <h2 data-lang="tr">Vitavolt ve ANNE ile ilişki</h2>
 <h2 data-lang="en">Relationship to Vitavolt and ANNE</h2>
-<p data-lang="tr"><strong style="color:#e2e8f0">Vitavolt Global</strong> enerji altyapısı ve intelligence katmanında çalışır. <strong style="color:#e2e8f0">ANNE</strong> açık bilişsel mimari araştırmasıdır. <strong style="color:#e2e8f0">EDCS</strong> aynı portföyde dağıtık sürü koordinasyonu araştırma projesidir.</p>
-<p data-lang="en"><strong style="color:#e2e8f0">Vitavolt Global</strong> — energy infrastructure. <strong style="color:#e2e8f0">ANNE</strong> — cognitive architecture research. <strong style="color:#e2e8f0">EDCS</strong> — distributed swarm coordination research in the same portfolio.</p>
+<p data-lang="tr"><strong style="color:#e2e8f0">Vitavolt Global</strong> enerji altyapısı; <strong style="color:#e2e8f0">ANNE</strong> AI orkestrasyon araştırması; <strong style="color:#e2e8f0">EDCS</strong> dağıtık sürü / UAV koordinasyon araştırması. Aynı portföy, ayrı katmanlar.</p>
+<p data-lang="en"><strong style="color:#e2e8f0">Vitavolt</strong> energy infrastructure; <strong style="color:#e2e8f0">ANNE</strong> AI orchestration research; <strong style="color:#e2e8f0">EDCS</strong> swarm / UAV coordination research. Same portfolio, separate layers.</p>
 <div class="links">
 <a class="btn btn-primary" href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm" target="_blank" rel="noopener">GitHub — EDCS-Drone-Swarm</a>
 <a class="btn btn-outline" href="anne.html"><span data-lang="tr">ANNE araştırması</span><span data-lang="en">ANNE research</span></a>
