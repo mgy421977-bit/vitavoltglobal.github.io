@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EDCS — Emergent Drone Coordination System | Vitavolt Global</title>
+<meta name="description" content="EDCS: merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. Simülasyon prototipi; saha denemeleri planlanıyor. ANNE ile aynı otonom sistemler vizyonunda." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://vitavoltglobal.com/edcs.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#07111C" />
+<meta property="og:title" content="EDCS — Emergent Drone Coordination System" />
+<meta property="og:description" content="Dağıtık, self-healing drone sürüsü koordinasyonu. GPS zayıf / jamming ortamları için tasarlanmış araştırma ve mühendislik projesi." />
+<meta property="og:url" content="https://vitavoltglobal.com/edcs.html" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="tr_TR" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+.edcs-wrap{max-width:840px;margin:0 auto}
+.edcs-hero{padding:3.5rem 0 1.5rem}
+.edcs-hero h1{color:#f8fafc;font-size:clamp(1.6rem,4vw,2.25rem);margin:0 0 .75rem;line-height:1.2}
+.edcs-hero p{color:#94a3b8;line-height:1.55;margin:0 0 1rem}
+.badge-row{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 0}
+.badge{display:inline-block;padding:.3rem .7rem;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.04em;border:1px solid rgba(255,255,255,.12);color:#cbd5e1}
+.badge-ok{border-color:rgba(74,222,128,.35);color:#4ade80}
+.badge-rd{border-color:rgba(56,189,248,.35);color:#38bdf8}
+.edcs-section{margin:2.5rem 0}
+.edcs-section h2{color:#f1f5f9;font-size:1.25rem;margin:0 0 1rem}
+.edcs-section p,.edcs-section li{color:#94a3b8;line-height:1.6}
+.edcs-section ul{padding-left:1.2rem}
+.mech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.mech{background:rgba(16,37,61,.55);border:1px solid rgba(0,174,239,.18);border-radius:1rem;padding:1.15rem 1.25rem}
+.mech strong{display:block;color:#e2e8f0;margin-bottom:.4rem;font-size:.95rem}
+.mech span{color:#94a3b8;font-size:.88rem;line-height:1.5}
+.status-table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:.75rem}
+.status-table th,.status-table td{text-align:left;padding:.65rem .75rem;border-bottom:1px solid rgba(255,255,255,.08);color:#94a3b8}
+.status-table th{color:#cbd5e1;font-weight:600}
+.status-table td:last-child{color:#e2e8f0}
+.note{margin-top:1.5rem;padding:1rem 1.15rem;border-radius:.85rem;border:1px solid rgba(255,255,255,.08);background:rgba(16,37,61,.4);color:#94a3b8;font-size:.88rem;line-height:1.55}
+.links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<header class="header">
+<nav class="navbar"><div class="container"><div class="navbar-content">
+<a href="index.html" class="logo"><span class="logo-text">VITAVOLT<span class="logo-sub">GLOBAL</span></span></a>
+<div class="nav-menu" id="navMenu">
+<a href="index.html" class="nav-link">ANA SAYFA</a>
+<a href="services.html" class="nav-link">ALTYAPI</a>
+<a href="vita-energy-intelligence.html" class="nav-link">VITA</a>
+<a href="anne.html" class="nav-link">ANNE</a>
+<a href="edcs.html" class="nav-link active">EDCS</a>
+<a href="vaka-calismalari.html" class="nav-link">TEKNİK ÇALIŞMALAR</a>
+<a href="blog/" class="nav-link">BLOG</a>
+<a href="about.html" class="nav-link">KURUMSAL</a>
+<a href="contact.html" class="nav-link">İLETİŞİM</a>
+</div>
+<a href="index.html#hizli-hesapla" class="btn btn-primary btn-cta">PROJENİ ANALİZ ET</a>
+<button class="menu-toggle" id="menuToggle" type="button" aria-label="Menü"><span></span><span></span><span></span></button>
+</div></div></nav>
+</header>
+<main id="main">
+<section class="edcs-hero">
+<div class="container edcs-wrap">
+<p style="color:#38bdf8;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .5rem;">Araştırma · Otonom sistemler</p>
+<h1>EDCS — Emergent Drone Coordination System</h1>
+<p>Merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. GPS’in zayıf veya engellendiği, iletişimin bozulduğu ve birim kayıplarının olabileceği saha koşulları için tasarlanmıştır.</p>
+<div class="badge-row">
+<span class="badge badge-ok">Simülasyon prototipi</span>
+<span class="badge">Mimari + model tamam</span>
+<span class="badge badge-rd">Donanım / saha: planlanıyor</span>
+</div>
+</div>
+</section>
+
+<section class="edcs-section"><div class="container edcs-wrap">
+<h2>Neden EDCS?</h2>
+<p>Klasik sürü mimarileri çoğu zaman merkezi bir komuta noktasına bağlıdır. Bu yapı tek nokta arızası, yüksek iletişim yükü, ölçeklenme zorluğu ve GPS jamming / spoofing’e karşı savunmasızlık risklerini taşır. EDCS bu riskleri üç mekanizma ile azaltmayı hedefler:</p>
+<div class="mech-grid">
+<div class="mech"><strong>1. Referans sinyal yayılımı</strong><span>İlk doğru konuma sahip birim geçici referans olur; sinyal en yüksek RSSI komşuya iletilerek formasyon dağıtık başlatılır.</span></div>
+<div class="mech"><strong>2. Adaptif potansiyel alanlar</strong><span>İtme (çarpışma önleme), birleşme (formasyon) ve hedef kuvvetleriyle yerel yörünge üretimi.</span></div>
+<div class="mech"><strong>3. Dağıtık self-healing</strong><span>Birim kaybı yerel tespit edilir; cevap yoksa sürü merkezi müdahale olmadan formasyonu yeniden kurar.</span></div>
+</div>
+</div></section>
+
+<section class="edcs-section"><div class="container edcs-wrap">
+<h2>Teknik özellikler</h2>
+<ul>
+<li>Tamamen dağıtık mimari — kalıcı lider birim yok</li>
+<li>Minimum iletişim (pasif Bluetooth RSSI yaklaşımı)</li>
+<li>GPS dayanıklı çalışma hedefi</li>
+<li>Birim kaybına karşı otomatik toparlanma</li>
+<li>Ölçeklenebilir yerel karar alma</li>
+</ul>
+</div></section>
+
+<section class="edcs-section"><div class="container edcs-wrap">
+<h2>Hedef kullanım alanları</h2>
+<ul>
+<li><strong style="color:#cbd5e1">Tarım ilaçlama</strong> — geniş alanda formasyon ve GPS bağımlılığını azaltma</li>
+<li><strong style="color:#cbd5e1">Afet / arama-kurtarma</strong> — altyapısı bozulmuş, sinyal zayıf ortamlar</li>
+<li><strong style="color:#cbd5e1">Alan tarama ve güvenlik</strong> — uzun süreli gözetleme</li>
+<li><strong style="color:#cbd5e1">UAV / taktik koordinasyon</strong> — jamming’e daha dayanıklı sürü mantığı</li>
+<li><strong style="color:#cbd5e1">Otoyol / trafik izleme</strong> — tarama ve olay müdahalesi senaryoları</li>
+</ul>
+<p style="font-size:.88rem;margin-top:.75rem;">Bunlar hedef senaryolardır; ticari saha operasyonu iddiası değildir.</p>
+</div></section>
+
+<section class="edcs-section"><div class="container edcs-wrap">
+<h2>Mevcut durum</h2>
+<table class="status-table">
+<thead><tr><th>Bileşen</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>Teknik mimari ve matematiksel model</td><td>Tamamlandı</td></tr>
+<tr><td>Simülasyon prototipi</td><td>Çalışıyor</td></tr>
+<tr><td>Teknik makale / sunum</td><td>Mevcut</td></tr>
+<tr><td>Donanım prototipi</td><td>Planlanıyor</td></tr>
+<tr><td>UWB entegrasyonu</td><td>Planlanıyor</td></tr>
+<tr><td>Saha denemeleri</td><td>Planlanıyor</td></tr>
+</tbody>
+</table>
+<div class="note">
+<strong style="color:#cbd5e1">Şeffaflık:</strong> EDCS şu an araştırma ve simülasyon aşamasındadır. Üretimde konuşlanmış bir operasyonel sürü ürünü olarak sunulmaz. Kanıt seviyesi simülasyon ve model ile sınırlıdır; saha sonuçları yayınlandıkça güncellenir.
+</div>
+</div></section>
+
+<section class="edcs-section"><div class="container edcs-wrap">
+<h2>Vitavolt ve ANNE ile ilişki</h2>
+<p><strong style="color:#e2e8f0">Vitavolt Global</strong> enerji altyapısı ve intelligence katmanında (GES, BESS, EPC, VITA) çalışır. <strong style="color:#e2e8f0">ANNE</strong> açık bilişsel mimari araştırmasıdır. <strong style="color:#e2e8f0">EDCS</strong> aynı kurumsal portföyde, etik ve otonom sistemler vizyonunun dağıtık koordinasyon ayağıdır — enerji ürünü değil, otonom sürü koordinasyonu araştırma projesidir.</p>
+<div class="links">
+<a class="btn btn-primary" href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm" target="_blank" rel="noopener">GitHub — EDCS-Drone-Swarm</a>
+<a class="btn btn-outline" href="anne.html">ANNE araştırması</a>
+<a class="btn btn-outline" href="vita-energy-intelligence.html">VITA</a>
+<a class="btn btn-outline" href="contact.html">İletişim</a>
+</div>
+</div></section>
+</main>
+<footer class="footer"><div class="container">
+<p style="color:#94a3b8;">&copy; 2026 Vitavolt Global · EDCS araştırma projesi</p>
+</div></footer>
+<script src="js/script.js" defer></script>
+</body>
+</html>
