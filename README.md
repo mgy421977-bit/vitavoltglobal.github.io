@@ -1,245 +1,104 @@
-# ⚡ Vitavolt Global - Kurumsal Web Sitesi
+# Vitavolt Global
 
-**Yenilenebilir enerji ve endüstriyel çözümlerde öncü mühendislik firmasıdır.**
+**Energy Infrastructure & Intelligence**
 
-## 🚀 Hakkında
+İzmir merkezli mühendislik firması. Canlı site: [vitavoltglobal.com](https://vitavoltglobal.com)
 
-Vitavolt Global, güneş enerjisi sistemleri (GES), endüstriyel EPC çözümleri, batarya enerji depolama sistemleri (BESS) ve karbon danışmanlığı alanında hizmet sunan yeni nesil bir mühendislik firmasıdır.
-
-**Canlı Site:** https://vitavoltglobal.com
-
----
-
-## ✨ Özellikler
-
-- 🌍 **Türkçe / İngilizce** - localStorage ile hatırlanır
-- 📱 **Tam Responsive** - Mobil, tablet ve masaüstü uyumlu
-- ⚡ **Modern Tasarım** - Apple, Tesla ve Siemens Energy ilhamı
-- 🎨 **Glassmorphism Cards** - Premium görünüm
-- 🎬 **Scroll Animasyonları** - Yumuşak geçişler
-- 📊 **Animasyonlu Sayaçlar** - İstatistik gösterimi
-- 🔄 **Smooth Scroll** - İçeri gitmede yumuşak kaydırma
-- 🧭 **Proje Rotası** - İhtiyaca göre hizmet ve ilk adım yönlendirmesi
-- 📩 **İki Aşamalı Teklif Formu** - Doğrulamalı, mailto tabanlı teklif akışı
-- 🔍 **SEO Uyumlu** - Meta etiketler, sitemap, robots.txt
-- ♿ **Erişilebilir** - WCAG standartları
-- 🚀 **Hızlı Yükleme** - Lazy loading, optimized assets
+> Enerji altyapısını veriden karara dönüştürüyoruz.  
+> Renewable Energy · BESS · Energy Intelligence · Carbon
 
 ---
 
-## 📁 Dosya Yapısı
+## Konumlandırma
 
-```
-vitavoltglobal.github.io/
-├── index.html           # Anasayfa - Hero, Hizmetler, İstatistikler
-├── about.html           # Hakkımızda - Vizyonumuz, Misyonumuz, Değerlerimiz
-├── services.html        # Hizmetler - GES, EPC, BESS, Karbon, Danışmanlık
-├── contact.html         # İletişim - Form, Bilgiler, Harita, SSS
-├── css/
-│   └── style.css        # Premium tasarım - 1000+ satır CSS
-├── js/
-│   └── script.js        # İnteractivite - 500+ satır JavaScript
-├── robots.txt           # SEO - Arama motoru kılavuzu
-├── sitemap.xml          # SEO - Site haritası
-├── CNAME                # DNS - vitavoltglobal.com
-└── README.md            # Bu dosya
-```
+| Katman | Anlamı |
+|--------|--------|
+| **Vitavolt** | Gerçek enerji altyapısı: GES, BESS, EPC, karbon, su |
+| **VITA** | Veri / hesap / karar destek katmanı |
+| **VITA Quick Feasibility** | Bugün çalışan ön fizibilite (`calculator.js`) |
+| **Anne AI** | Concept / development — canlı ürün iddiası yok |
+
+Teknik kanıt (yayımlanan portföy): **7.264 kWp** — [Teknik Çalışmalar](https://vitavoltglobal.com/vaka-calismalari.html)
 
 ---
 
-## 🎯 Hizmetler
+## Hizmetler (Altyapı)
 
-### ☀️ Güneş Enerjisi Santralleri (GES)
-- Çatı, arazi ve yüzer GES sistemleri
-- 150+ proje, 320 MW kurulu güç
-- Anahtar teslim çözümler
+- **GES** — çatı ve endüstriyel güneş
+- **BESS** — batarya depolama
+- **Endüstriyel EPC** — mühendislik, tedarik, uygulama
+- **Karbon & ESG** — emisyon azaltımı, ETS/CBAM bilgilendirme, **yeşil sertifika (YEK-G / I-REC) için teknik veri desteği** (belgeyi regülatör / ilgili sistem düzenler)
+- **Su yönetimi** — yağmur suyu, gri su
+- **VITA Quick Feasibility** — GES kapasite, üretim, CO₂, basit BESS önerisi
 
-### 🏗️ EPC (Mühendislik, Tedarik, İnşaat)
-- Proje fizibilitesi ve tasarım
-- Uluslararası tedarik ve lojistik
-- 12 ülkede başarılı projeler
-
-### 🔋 BESS (Batarya Enerji Depolama)
-- Lityum-iyon ve akış bataryaları
-- Şebeke stabilizasyonu
-- 50+ MWh depolama kapasitesi
-
-### 🌱 Karbon Çözümleri
-- Karbon ayak izi analizi
-- Azaltma ve dengeleme stratejileri
-- 100+ kuruma hizmet
-
-### 🤝 Danışmanlık
-- Teknik ve finansal danışmanlık
-- Teknoloji seçimi
-- 10+ yıl sektör deneyimi
+Detay: [services.html](https://vitavoltglobal.com/services.html) · [YEK-G & ESG yazısı](https://vitavoltglobal.com/blog/yesil-sertifika-yek-g-esg.html)
 
 ---
 
-## 🛠️ Teknoloji Stack
+## Teknik portföy (özet)
 
-- **HTML5** - Semantik ve erişilebilir
-- **CSS3** - Modern responsive tasarım
-- **Vanilla JavaScript** - Framework-free, hızlı
-- **Font Awesome 6** - İkonlar
-- **Google Fonts (Inter)** - Professional tipografi
-- **GitHub Pages** - Ücretsiz hosting
+| Konum | Tip | Kapasite |
+|-------|-----|----------|
+| Konya OSB | Çatı GES (alüminyum) | 1.300 kWp |
+| Beyşehir | Çatı GES (mermer) | 1.100 kWp |
+| Afyon OSB | GES | 3.000 kWp |
+| Konya OSB | GES | 1.504 kWp |
+| Kahramanmaraş OSB | GES | 360 kWp |
+| **Toplam** | | **7.264 kWp** |
 
----
+Çevresel metrikler (tahmini, varsayımlı): üretim, önlenen CO₂, TEP, ağaç-eşdeğer — sayfada şeffaf varsayımlarla.
 
-## 🎨 Renk Paleti
-
-| Adı | Kod | Kullanım |
-|------|------|----------|
-| Arka Plan | `#07111C` | Ana arka plan |
-| İkincil Arka Plan | `#10253D` | Kartlar, footer |
-| Primer Mavi | `#00AEEF` | Butonlar, başlıklar |
-| Aksent Yeşil | `#38D67A` | Vurgu, hover |
-| Aksent Altın | `#FFB400` | Özel öğeler |
-| Metin | `#FFFFFF` | Ana metin |
-| Metin İkincil | `#C6D2DC` | Açıklama metni |
+Firma unvanları gizlilik nedeniyle yayımlanmaz.
 
 ---
 
-## 📱 Responsive Breakpoints
+## VITA
 
-- **Desktop:** 1024px+
-- **Tablet:** 768px - 1023px
-- **Mobile:** 480px - 767px
-- **Small Mobile:** < 480px
+- **Canlı:** Quick Feasibility (çatı/arazi, kWp, üretim, öz tüketim, CO₂, basit BESS)
+- **Roadmap / Planned:** Financial Analysis, BESS Intelligence, Carbon Intelligence, Scenario Analysis, Technical Verification
+- **Anne AI:** Concept / Development
+
+Hub: [vita-energy-intelligence.html](https://vitavoltglobal.com/vita-energy-intelligence.html)
 
 ---
 
-## 🔧 Kurulum & Kullanım
+## Site haritası (özet)
 
-### Lokal olarak çalıştırmak:
+- `/` — Ana sayfa + fizibilite
+- `/services.html` — Altyapı
+- `/vita-energy-intelligence.html` — VITA
+- `/vaka-calismalari.html` — Teknik çalışmalar
+- `/blog/` — Insights (ETS, CBAM, YEK-G/ESG, ROI, BESS…)
+- `/contact.html` — İletişim (Bayraklı / İzmir)
+- Landing: `izmir-ges`, `izmir-bess-…`, `izmir-endustriyel-epc`, karbon, su
+
+SEO: `sitemap.xml`, `robots.txt`, canonical, OG, JSON-LD
+
+---
+
+## Teknoloji
+
+- Statik HTML / CSS / JS — GitHub Pages
+- `js/calculator.js` + `js/home-calculator.js` — ön fizibilite
+- Form lead → e-posta entegrasyonu
+- TR / EN i18n (`js/translations.js`)
+
+---
+
+## İletişim
+
+- **E-posta:** info@vitavoltglobal.com  
+- **Tel / WhatsApp:** +90 545 441 19 77  
+- **Adres:** Folkart Towers A Kule K.26 D.2601, Bayraklı / İzmir  
+
+Kuşadası ofis/şube olarak gösterilmez; İzmir merkezli, Ege’de hizmet.
+
+---
+
+## Katkı / deploy
 
 ```bash
-# Depoyu klonlayın
-git clone https://github.com/mgy421977-bit/vitavoltglobal.github.io.git
-
-# Dizine girin
-cd vitavoltglobal.github.io
-
-# Bir web sunucusu başlatın (Python)
-python -m http.server 8000
-
-# http://localhost:8000 adresinde açın
+# main branch → GitHub Pages → vitavoltglobal.com
 ```
 
-### GitHub Pages üzerinde:
-
-Repo ayarlarından GitHub Pages etkinleştirilmiştir. URL: **https://mgy421977-bit.github.io/vitavoltglobal.github.io/**
-
-Custom domain: **https://vitavoltglobal.com** (CNAME dosyasında belirtilmiştir)
-
----
-
-## 📊 Performans
-
-- ✅ Lighthouse Score: 95+
-- ✅ Sayfa yükleme: < 2 saniye
-- ✅ Lazy loading aktif
-- ✅ CSS optimized (minified)
-- ✅ JavaScript optimized
-- ✅ Resimler placeholder
-
----
-
-## 🌐 SEO & Metadata
-
-### Meta Etiketleri
-- Description (150 karakter)
-- Keywords
-- Canonical URL
-- Open Graph (OG) etiketleri
-- Twitter Card etiketleri
-
-### Yapılandırılmış Veri
-- JSON-LD Organization schema
-- BreadcrumbList
-- LocalBusiness markup
-
-### Sitemap & Robots
-- `sitemap.xml` - Arama motorlarına site haritası
-- `robots.txt` - Crawl kuralları
-
----
-
-## 🌍 İletişim
-
-📧 **Email:** info@vitavoltglobal.com  
-📱 **Telefon:** +90 545 441 19 77  
-📍 **Adres:** İzmir, Türkiye  
-🌐 **Web:** https://vitavoltglobal.com
-
----
-
-## 📝 Dil Desteği
-
-Site localStorage kullanarak seçilen dili hatırlar:
-
-```javascript
-// TR (Türkçe) veya EN (İngilizce) otomatik seçimi
-localStorage.setItem('language', 'tr');
-```
-
----
-
-## 🔐 Güvenlik
-
-- ✅ HTTPS (GitHub Pages)
-- ✅ No API keys exposed
-- ✅ WCAG accessibility compliance
-- ✅ **XSS prevention**
-- ✅ **No external dependencies risk**
-- ✅ **Şeffaf form akışı** - GitHub Pages backend'i olmadığı için form, kullanıcıya e-posta taslağı açacağını açıkça belirtir.
-
----
-
-## 📈 Gelişme Planı
-
-- [ ] Blog sekmesi
-- [ ] Proje galerisi
-- [ ] Video entegrasyonu
-- [ ] Sosyal medya bağlantıları
-- [ ] Email newsletter signup
-- [ ] Analytics integration
-- [ ] Mobile app
-- [ ] Multi-language (DE, ES, AR)
-
----
-
-## 📄 Lisans
-
-Propriyetary - Vitavolt Global Inc.
-
----
-
-## 👨‍💻 Geliştirici
-
-**Mustafa Gökhan Yılmaz**  
-GitHub: [@mgy421977-bit](https://github.com/mgy421977-bit)  
-Web: https://vitavoltglobal.com
-
----
-
-## 📞 Destek
-
-Herhangi bir sorun veya öneriniz için:
-- 📧 [E-mail gönder](mailto:info@vitavoltglobal.com)
-- 🐛 [GitHub Issues](https://github.com/mgy421977-bit/vitavoltglobal.github.io/issues)
-- 💬 [Sayfamızı ziyaret et](https://vitavoltglobal.com/contact.html)
-
----
-
-## 🙏 Teşekkürler
-
-- Font Awesome - İkonlar
-- Google Fonts - Tipografi
-- GitHub Pages - Hosting
-- All our clients and partners
-
----
-
-**Made with ⚡ by Vitavolt Global**
+**Kural:** Doğrulanmamış KPI, sertifika, patent, müşteri sayısı uydurulmaz. Roadmap açıkça Planned / Concept etiketlenir.
