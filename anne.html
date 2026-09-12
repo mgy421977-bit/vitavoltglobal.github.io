@@ -61,6 +61,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:#a5f3fc}
 <nav>
 <a href="https://github.com/mgy421977-bit/anne-ai">GitHub</a>
 <a href="https://github.com/mgy421977-bit/anne-core">anne-core</a>
+<a href="edcs.html">EDCS</a>
 <a href="vita-energy-intelligence.html">VITA</a>
 <a href="index.html">Vitavolt</a>
 </nav>
@@ -137,85 +138,42 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:#a5f3fc}
 </div>
 </div>
 <p>ANNE does not treat the language model as the sole authority. Probabilistic generation is combined with explicit evaluation, evidence, contradiction handling, memory and bounded action control.</p>
-<p><em>Complementarity:</em> models generate candidate reasoning; the architecture evaluates, constrains, records and governs its use. Code: <code>src/anne/neuro_symbolic/</code> (<code>NeuroSymbolicValidator</code>, <code>ReasoningAudit</code>).</p>
 </section>
 
 <section id="mitos">
 <h2>MITOS — discovery &amp; exploration layer</h2>
 <p>MITOS is not merely a task decomposer. In the research architecture it supports exploration: alternatives, comparison, hypothesis-oriented candidates, and process management for the discovery side of cognition.</p>
-<p>Modules under <code>src/anne/mythos/</code> (engine, discovery, candidate, selection, experience, synthesis, loop, agent_swarm, …).</p>
-<p><span class="badge b-ok">IMPLEMENTED</span> core process pieces · <span class="badge b-ex">EXPERIMENTAL</span> swarm / deeper multi-agent paths · Simulation scores retain <code>SIMULATION</code> provenance where applicable (hardening notes).</p>
+<p><span class="badge b-ok">IMPLEMENTED</span> core process pieces · <span class="badge b-ex">EXPERIMENTAL</span> swarm / deeper multi-agent paths.</p>
 <p><strong>Constitutional rule:</strong> MITOS generates ideas; it does not possess external agency.</p>
 </section>
 
 <section id="memory">
 <h2>Cognitive Memory</h2>
 <p>Persistent / fractal memory stores structured cognitive material (hypotheses, decisions, patterns, failure traces) — <strong>not</strong> raw chat history.</p>
-<p class="panel"><strong>Memory ≠ Learning.</strong> Claiming “learning” requires measurable behavioural change, repeated experience effects, rule updates, transfer, or post-error confidence/rule weakening — not storage alone.</p>
-<p>Code: <code>src/anne/memory/</code>, including fractal memory components.</p>
+<p class="panel"><strong>Memory ≠ Learning.</strong> Claiming “learning” requires measurable behavioural change — not storage alone.</p>
 </section>
 
 <section id="fractal">
 <h2>Fractal / Re-entrant Reasoning</h2>
-<p>Based on <code>src/anne/core/fractal_loop.py</code>:</p>
-<blockquote style="color:#cbd5e1;margin:0 0 1rem">Frame → branch → reframe → retry is <strong>bounded orchestration</strong>, not an unrestricted recursive agent. Every retry re-enters FailFast / ANLA / ethical paths.</blockquote>
-<ul>
-<li>Bounded recursion (<code>FractalBudget</code>: e.g. max depth, max iterations)</li>
-<li>Node lineage (parent cycle ids)</li>
-<li>Reframe / retry / failure recovery</li>
-<li>Gap detection / oscillation-related controls in the broader loop design</li>
-</ul>
-<p>Correct formulation: ANNE implements a <strong>bounded re-entrant</strong> mechanism in which validated or failed reasoning states can become structured inputs for subsequent cycles — not “unlimited recursive intelligence”.</p>
+<p>Bounded re-entrant mechanism: validated or failed reasoning states can become structured inputs for subsequent cycles — not unrestricted recursive intelligence.</p>
 <p><span class="badge b-ok">IMPLEMENTED</span> <span class="badge b-ex">BOUNDED</span></p>
 </section>
 
 <section id="executive">
 <h2>Executive ANNE</h2>
-<p>Synthesises from evaluated cognitive structure and process results — not a pass-through wrapper that only echoes a single model string. Coordinates decision-facing output after evaluation and memory context.</p>
+<p>Synthesises from evaluated cognitive structure and process results — not a pass-through wrapper that only echoes a single model string.</p>
 </section>
 
 <section id="agency">
 <h2>Agency Gate &amp; safety architecture</h2>
 <p><strong>Inference ≠ Authority.</strong> Silence is not consent. Model output alone is not permission for external side effects.</p>
 <ul>
-<li>AgencyGate (default-deny posture for external actions)</li>
+<li>AgencyGate (default-deny for external actions)</li>
 <li>Allowlisted tools; empty allowlist denies tools</li>
-<li>Credential redaction at memory boundaries (hardening)</li>
 <li>Evidence, contradiction handling, provenance</li>
-<li>Plan verification / bounded planning / FailFast</li>
-<li>Optional independent reference verification (exact trusted claims only — not a general fact oracle)</li>
-</ul>
-<p>Code: <code>src/anne/safety/agency_gate.py</code>, FailFast stage docs, HARDENING_REPORT_TR.md</p>
-<div class="panel">
-<h3>Constitutional rules</h3>
-<ul class="const">
-<li>Reality &gt; Simulation</li>
-<li>Evidence &gt; Confidence</li>
-<li>Memory ≠ Learning</li>
-<li>MITOS generates ideas; no external agency</li>
 <li>Safety &gt; Optimization</li>
 </ul>
-</div>
 <p>ANNE does <strong>not</strong> claim “fully safe” or “safety solved”.</p>
-</section>
-
-<section id="hetero">
-<h2>Heterogeneous AI</h2>
-<p>ANNE is not training a new frontier foundation model. It studies coordination of diverse resources in one cognitive workspace:</p>
-<p>Local models · API models · specialist models · tools</p>
-<div class="flow">
-<span>Generate</span><i>→</i><span>Compare</span><i>→</i><span>Evaluate</span><i>→</i><span>Structure</span><i>→</i><span>Remember</span><i>→</i><span>Reuse</span>
-</div>
-</section>
-
-<section id="hypothesis">
-<h2>Research hypothesis (efficiency)</h2>
-<p><strong>Not a proven product feature.</strong></p>
-<div class="panel">
-<p style="margin:0;color:#cbd5e1">Can persistent cognitive structures reduce repeated external inference while maintaining task success, provenance and bounded agency?</p>
-</div>
-<p>Metrics to measure in controlled experiments: task success, inference calls, token usage, latency, memory reuse, computational cost, energy per successful task, unsupported claim rate, traceability.</p>
-<p><span class="badge b-hy">HYPOTHESIS</span> Energy efficiency requires controlled measurement — not asserted as fact.</p>
 </section>
 
 <section id="status">
@@ -223,17 +181,13 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:#a5f3fc}
 <table>
 <thead><tr><th>Capability</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td>Six-stage cognitive pipeline (DUY…YAP)</td><td><span class="badge b-ok">IMPLEMENTED</span> (platform)</td></tr>
-<tr><td>Persistent / fractal memory + SFT</td><td><span class="badge b-ok">IMPLEMENTED</span></td></tr>
-<tr><td>Semantic validation / contradiction (ANLA)</td><td><span class="badge b-ok">IMPLEMENTED</span> · heuristic, not general fact-checker</td></tr>
-<tr><td>Neuro-symbolic validation / audit</td><td><span class="badge b-ok">IMPLEMENTED</span> / <span class="badge b-ex">EXPERIMENTAL</span></td></tr>
-<tr><td>MITOS discovery components</td><td><span class="badge b-ok">IMPLEMENTED</span> / <span class="badge b-ex">EXPERIMENTAL</span> (swarm paths)</td></tr>
+<tr><td>Six-stage cognitive pipeline (DUY…YAP)</td><td><span class="badge b-ok">IMPLEMENTED</span></td></tr>
+<tr><td>Persistent / fractal memory</td><td><span class="badge b-ok">IMPLEMENTED</span></td></tr>
 <tr><td>Agency Gate + tool allowlists</td><td><span class="badge b-ok">IMPLEMENTED</span></td></tr>
 <tr><td>Fractal / re-entrant loop</td><td><span class="badge b-ok">IMPLEMENTED</span>, <span class="badge b-ex">BOUNDED</span></td></tr>
 <tr><td>Multi-agent collaboration</td><td><span class="badge b-ex">EXPERIMENTAL</span></td></tr>
 <tr><td>Energy / cost reduction claims</td><td><span class="badge b-hy">HYPOTHESIS</span></td></tr>
 <tr><td>Autonomous research agent product</td><td><span class="badge b-rd">ROADMAP</span></td></tr>
-<tr><td>P2P global knowledge network</td><td><span class="badge b-rd">ROADMAP</span></td></tr>
 </tbody>
 </table>
 </section>
@@ -243,31 +197,22 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:#a5f3fc}
 <div class="grid2">
 <div class="panel">
 <h3>anne-ai</h3>
-<p>Broader research and development platform: cognitive stages, memory, safety, fractal reasoning, neuro-symbolic components, experiments, benchmarks, hardening.</p>
+<p>Broader research platform: cognitive stages, memory, safety, fractal reasoning, neuro-symbolic components.</p>
 <p><a href="https://github.com/mgy421977-bit/anne-ai">github.com/mgy421977-bit/anne-ai</a></p>
 </div>
 <div class="panel">
 <h3>anne-core</h3>
-<p>Minimal, reproducible, executable cognitive architecture prototype (MITOS loop, providers, evaluation, memory, Executive, Agency Gate, knowledge layer v0.2).</p>
+<p>Minimal executable prototype (MITOS, providers, evaluation, memory, Executive, Agency Gate).</p>
 <p><a href="https://github.com/mgy421977-bit/anne-core">github.com/mgy421977-bit/anne-core</a></p>
 </div>
 </div>
 </section>
 
-<section id="program">
-<h2>Research Program</h2>
-<ol>
-<li>Can heterogeneous AI outputs become persistent cognitive structures?</li>
-<li>Can structured memory reduce repeated reasoning?</li>
-<li>Can neuro-symbolic controls improve traceability and controllability?</li>
-<li>Can bounded fractal reasoning improve recovery from reasoning failures?</li>
-<li>Can ANNE learn which AI resource fits which task?</li>
-<li>Can these mechanisms reduce computational cost without reducing task success?</li>
-</ol>
-<div class="panel">
-<p style="margin:0 0 .5rem;color:#e2e8f0"><strong>Seeking research funding and technical collaboration</strong></p>
-<p style="margin:0">Open research · reproducible experimentation · evidence before broader claims. Not a commercial sales pitch.</p>
-</div>
+<section id="edcs">
+<h2>Related portfolio — EDCS</h2>
+<p><strong>EDCS (Emergent Drone Coordination System)</strong> is a distributed, self-healing drone swarm coordination project in the same Vitavolt research portfolio as ANNE: ethical and autonomous systems, without central command dependence. Target environments include weak/denied GPS and intermittent links.</p>
+<p><strong>Status:</strong> architecture and mathematical model complete · simulation prototype running · hardware / UWB / field trials planned. Not a field-deployed product claim.</p>
+<p><a href="edcs.html">EDCS page (TR)</a> · <a href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm">github.com/mgy421977-bit/EDCS-Drone-Swarm</a></p>
 </section>
 
 <section id="transparency">
@@ -275,21 +220,18 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:#a5f3fc}
 <ul>
 <li><a href="https://github.com/mgy421977-bit/anne-ai">anne-ai repository</a></li>
 <li><a href="https://github.com/mgy421977-bit/anne-core">anne-core repository</a></li>
-<li>Architecture docs under <code>docs/architecture/</code></li>
-<li>Hardening report: <code>HARDENING_REPORT_TR.md</code></li>
-<li>Benchmarks / validation artifacts in-repo</li>
-<li>Preprint: Mustafa Gökhan Yılmaz — <em>ANNE — Open Cognitive Architecture</em> (September 2026) — link when formally published</li>
+<li><a href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm">EDCS-Drone-Swarm repository</a></li>
 </ul>
 <div class="links">
 <a class="btn btn-p" href="https://github.com/mgy421977-bit/anne-ai">Open anne-ai on GitHub</a>
-<a class="btn btn-o" href="https://github.com/mgy421977-bit/anne-core">anne-core</a>
+<a class="btn btn-o" href="edcs.html">EDCS (swarm)</a>
 <a class="btn btn-o" href="vita-energy-intelligence.html">VITA (energy software)</a>
 </div>
 </section>
 
 <section>
 <h2>Relationship to Vitavolt</h2>
-<p><strong>Vitavolt</strong> — energy infrastructure company · <strong>VITA</strong> — energy feasibility software · <strong>ANNE</strong> — open cognitive architecture research. Separate layers; ANNE is not marketed as a shipped energy product module.</p>
+<p><strong>Vitavolt</strong> — energy infrastructure · <strong>VITA</strong> — energy feasibility software · <strong>ANNE</strong> — open cognitive architecture research · <strong>EDCS</strong> — distributed swarm coordination research. Separate layers; ANNE/EDCS are not marketed as shipped energy product modules.</p>
 </section>
 </main>
 
