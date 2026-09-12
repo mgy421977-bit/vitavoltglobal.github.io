@@ -1,22 +1,18 @@
-# Vitavolt Global — crawl rules for search engines
-# https://vitavoltglobal.com/
-
+# Vitavolt Global — https://vitavoltglobal.com/
 User-agent: *
 Allow: /
 Disallow: /kusadasi/
 Disallow: /404.html
 
-# Google
 User-agent: Googlebot
 Allow: /
 Disallow: /kusadasi/
 Disallow: /404.html
 
 User-agent: Googlebot-Image
-Allow: /images/
 Allow: /
+Allow: /images/
 
-# Bing
 User-agent: Bingbot
 Allow: /
 Disallow: /kusadasi/
