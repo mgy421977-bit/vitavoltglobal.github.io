@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>EDCS — Emergent Drone Coordination System | Vitavolt Araştırma</title>
-<meta name="description" content="EDCS: merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. Simülasyon prototipi; saha denemeleri planlanıyor. ANNE ile aynı otonom sistemler vizyonunda." />
+<meta name="description" content="EDCS: merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. Simülasyon prototipi; saha denemeleri planlanıyor." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://vitavoltglobal.com/edcs.html" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <meta name="theme-color" content="#07111C" />
 <meta property="og:title" content="EDCS — Emergent Drone Coordination System | Vitavolt Araştırma" />
-<meta property="og:description" content="Dağıtık, self-healing drone sürüsü koordinasyonu. GPS zayıf / jamming ortamları için tasarlanmış araştırma ve mühendislik projesi." />
+<meta property="og:description" content="Dağıtık, self-healing drone sürüsü koordinasyonu. GPS zayıf / jamming ortamları için araştırma projesi." />
 <meta property="og:url" content="https://vitavoltglobal.com/edcs.html" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="tr_TR" />
@@ -19,6 +19,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
 .logo-sub{font-weight:500;letter-spacing:.06em;opacity:.9;font-size:.72em;color:#5eead4}
+.lang-switch{display:inline-flex;align-items:center;gap:2px;margin-left:.75rem}
+.lang-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#94a3b8;cursor:pointer;font-weight:700;font-size:.75rem;padding:6px 10px;border-radius:8px;min-width:40px;font-family:inherit}
+.lang-btn.active{background:#5eead4;color:#0b1220;border-color:#5eead4}
 .edcs-wrap{max-width:840px;margin:0 auto}
 .edcs-hero{padding:3.5rem 0 1.5rem}
 .edcs-hero h1{color:#f8fafc;font-size:clamp(1.6rem,4vw,2.25rem);margin:0 0 .75rem;line-height:1.2}
@@ -41,6 +44,21 @@
 .status-table td:last-child{color:#e2e8f0}
 .note{margin-top:1.5rem;padding:1rem 1.15rem;border-radius:.85rem;border:1px solid rgba(255,255,255,.08);background:rgba(16,37,61,.4);color:#94a3b8;font-size:.88rem;line-height:1.55}
 .links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+[data-lang="en"]{display:none}
+html[lang="en"] [data-lang="tr"]{display:none}
+html[lang="en"] [data-lang="en"]{display:block}
+html[lang="en"] span[data-lang="en"],html[lang="en"] a[data-lang="en"],html[lang="en"] strong[data-lang="en"],html[lang="en"] li[data-lang="en"]{display:inline}
+html[lang="tr"] span[data-lang="en"],html[lang="tr"] a[data-lang="en"],html[lang="tr"] li[data-lang="en"]{display:none}
+html[lang="en"] span[data-lang="tr"],html[lang="en"] a[data-lang="tr"],html[lang="en"] li[data-lang="tr"]{display:none}
+html[lang="tr"] span[data-lang="tr"],html[lang="tr"] a[data-lang="tr"],html[lang="tr"] li[data-lang="tr"]{display:inline}
+html[lang="en"] ul[data-lang="en"],html[lang="en"] p[data-lang="en"],html[lang="en"] h2[data-lang="en"],html[lang="en"] div[data-lang="en"]{display:block}
+html[lang="tr"] ul[data-lang="en"],html[lang="tr"] p[data-lang="en"],html[lang="tr"] h2[data-lang="en"],html[lang="tr"] div[data-lang="en"]{display:none}
+html[lang="en"] ul[data-lang="tr"],html[lang="en"] p[data-lang="tr"],html[lang="en"] h2[data-lang="tr"],html[lang="en"] div[data-lang="tr"]{display:none}
+html[lang="tr"] ul[data-lang="tr"],html[lang="tr"] p[data-lang="tr"],html[lang="tr"] h2[data-lang="tr"],html[lang="tr"] div[data-lang="tr"]{display:block}
+html[lang="en"] table[data-lang="en"]{display:table}
+html[lang="tr"] table[data-lang="en"]{display:none}
+html[lang="en"] table[data-lang="tr"]{display:none}
+html[lang="tr"] table[data-lang="tr"]{display:table}
 </style>
 </head>
 <body>
@@ -58,6 +76,10 @@
 <a href="about.html" class="nav-link">KURUMSAL</a>
 <a href="contact.html" class="nav-link">İLETİŞİM</a>
 </div>
+<span class="lang-switch" role="group" aria-label="Dil / Language">
+<button type="button" class="lang-btn active" data-set-lang="tr" aria-pressed="true">TR</button>
+<button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+</span>
 <a href="index.html#hizli-hesapla" class="btn btn-primary btn-cta">PROJENİ ANALİZ ET</a>
 <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menü"><span></span><span></span><span></span></button>
 </div></div></nav>
@@ -65,53 +87,92 @@
 <main id="main">
 <section class="edcs-hero">
 <div class="container edcs-wrap">
-<p style="color:#38bdf8;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .5rem;">Vitavolt Araştırma · Otonom sistemler</p>
+<p style="color:#38bdf8;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .5rem;">
+<span data-lang="tr">Vitavolt Araştırma · Otonom sistemler</span>
+<span data-lang="en">Vitavolt Research · Autonomous systems</span>
+</p>
 <h1>EDCS — Emergent Drone Coordination System</h1>
-<p>Merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. GPS’in zayıf veya engellendiği, iletişimin bozulduğu ve birim kayıplarının olabileceği saha koşulları için tasarlanmıştır.</p>
+<p data-lang="tr">Merkezi komuta gerektirmeyen, dağıtık ve self-healing drone sürüsü koordinasyonu. GPS’in zayıf veya engellendiği, iletişimin bozulduğu ve birim kayıplarının olabileceği saha koşulları için tasarlanmıştır.</p>
+<p data-lang="en">Distributed, self-healing drone swarm coordination without central command. Designed for weak or denied GPS, degraded links, and unit loss in field conditions.</p>
 <div class="badge-row">
-<span class="badge badge-ok">Simülasyon prototipi</span>
-<span class="badge">Mimari + model tamam</span>
-<span class="badge badge-rd">Donanım / saha: planlanıyor</span>
+<span class="badge badge-ok"><span data-lang="tr">Simülasyon prototipi</span><span data-lang="en">Simulation prototype</span></span>
+<span class="badge"><span data-lang="tr">Mimari + model tamam</span><span data-lang="en">Architecture + model done</span></span>
+<span class="badge badge-rd"><span data-lang="tr">Donanım / saha: planlanıyor</span><span data-lang="en">Hardware / field: planned</span></span>
 </div>
 </div>
 </section>
 
 <section class="edcs-section"><div class="container edcs-wrap">
-<h2>Neden EDCS?</h2>
-<p>Klasik sürü mimarileri çoğu zaman merkezi bir komuta noktasına bağlıdır. Bu yapı tek nokta arızası, yüksek iletişim yükü, ölçeklenme zorluğu ve GPS jamming / spoofing’e karşı savunmasızlık risklerini taşır. EDCS bu riskleri üç mekanizma ile azaltmayı hedefler:</p>
+<h2 data-lang="tr">Neden EDCS?</h2>
+<h2 data-lang="en">Why EDCS?</h2>
+<p data-lang="tr">Klasik sürü mimarileri çoğu zaman merkezi bir komuta noktasına bağlıdır. Bu yapı tek nokta arızası, yüksek iletişim yükü, ölçeklenme zorluğu ve GPS jamming / spoofing’e karşı savunmasızlık risklerini taşır. EDCS bu riskleri üç mekanizma ile azaltmayı hedefler:</p>
+<p data-lang="en">Classical swarm architectures often depend on a central command node. That creates single-point failure, high communication load, scaling difficulty, and vulnerability to GPS jamming / spoofing. EDCS targets these risks with three mechanisms:</p>
 <div class="mech-grid">
-<div class="mech"><strong>1. Referans sinyal yayılımı</strong><span>İlk doğru konuma sahip birim geçici referans olur; sinyal en yüksek RSSI komşuya iletilerek formasyon dağıtık başlatılır.</span></div>
-<div class="mech"><strong>2. Adaptif potansiyel alanlar</strong><span>İtme (çarpışma önleme), birleşme (formasyon) ve hedef kuvvetleriyle yerel yörünge üretimi.</span></div>
-<div class="mech"><strong>3. Dağıtık self-healing</strong><span>Birim kaybı yerel tespit edilir; cevap yoksa sürü merkezi müdahale olmadan formasyonu yeniden kurar.</span></div>
+<div class="mech">
+<strong data-lang="tr">1. Referans sinyal yayılımı</strong>
+<strong data-lang="en">1. Reference signal propagation</strong>
+<span data-lang="tr">İlk doğru konuma sahip birim geçici referans olur; sinyal en yüksek RSSI komşuya iletilerek formasyon dağıtık başlatılır.</span>
+<span data-lang="en">The first unit with a valid position becomes a temporary reference; the signal propagates to the highest-RSSI neighbour so formation starts in a distributed way.</span>
+</div>
+<div class="mech">
+<strong data-lang="tr">2. Adaptif potansiyel alanlar</strong>
+<strong data-lang="en">2. Adaptive potential fields</strong>
+<span data-lang="tr">İtme (çarpışma önleme), birleşme (formasyon) ve hedef kuvvetleriyle yerel yörünge üretimi.</span>
+<span data-lang="en">Local trajectories from repulsion (collision avoidance), cohesion (formation), and goal forces.</span>
+</div>
+<div class="mech">
+<strong data-lang="tr">3. Dağıtık self-healing</strong>
+<strong data-lang="en">3. Distributed self-healing</strong>
+<span data-lang="tr">Birim kaybı yerel tespit edilir; cevap yoksa sürü merkezi müdahale olmadan formasyonu yeniden kurar.</span>
+<span data-lang="en">Unit loss is detected locally; if no reply, the swarm reforms without central intervention.</span>
+</div>
 </div>
 </div></section>
 
 <section class="edcs-section"><div class="container edcs-wrap">
-<h2>Teknik özellikler</h2>
-<ul>
+<h2 data-lang="tr">Teknik özellikler</h2>
+<h2 data-lang="en">Technical features</h2>
+<ul data-lang="tr">
 <li>Tamamen dağıtık mimari — kalıcı lider birim yok</li>
 <li>Minimum iletişim (pasif Bluetooth RSSI yaklaşımı)</li>
 <li>GPS dayanıklı çalışma hedefi</li>
 <li>Birim kaybına karşı otomatik toparlanma</li>
 <li>Ölçeklenebilir yerel karar alma</li>
 </ul>
+<ul data-lang="en">
+<li>Fully distributed architecture — no permanent leader unit</li>
+<li>Minimal communication (passive Bluetooth RSSI approach)</li>
+<li>GPS-resilient operation goal</li>
+<li>Automatic recovery after unit loss</li>
+<li>Scalable local decision-making</li>
+</ul>
 </div></section>
 
 <section class="edcs-section"><div class="container edcs-wrap">
-<h2>Hedef kullanım alanları</h2>
-<ul>
+<h2 data-lang="tr">Hedef kullanım alanları</h2>
+<h2 data-lang="en">Target use cases</h2>
+<ul data-lang="tr">
 <li><strong style="color:#cbd5e1">Tarım ilaçlama</strong> — geniş alanda formasyon ve GPS bağımlılığını azaltma</li>
 <li><strong style="color:#cbd5e1">Afet / arama-kurtarma</strong> — altyapısı bozulmuş, sinyal zayıf ortamlar</li>
 <li><strong style="color:#cbd5e1">Alan tarama ve güvenlik</strong> — uzun süreli gözetleme</li>
 <li><strong style="color:#cbd5e1">UAV / taktik koordinasyon</strong> — jamming’e daha dayanıklı sürü mantığı</li>
 <li><strong style="color:#cbd5e1">Otoyol / trafik izleme</strong> — tarama ve olay müdahalesi senaryoları</li>
 </ul>
-<p style="font-size:.88rem;margin-top:.75rem;">Bunlar hedef senaryolardır; ticari saha operasyonu iddiası değildir.</p>
+<ul data-lang="en">
+<li><strong style="color:#cbd5e1">Agricultural spraying</strong> — formation over large areas with less GPS dependence</li>
+<li><strong style="color:#cbd5e1">Disaster / search & rescue</strong> — degraded infrastructure, weak signal</li>
+<li><strong style="color:#cbd5e1">Area scan & security</strong> — long-duration surveillance</li>
+<li><strong style="color:#cbd5e1">UAV / tactical coordination</strong> — swarm logic more resilient to jamming</li>
+<li><strong style="color:#cbd5e1">Highway / traffic monitoring</strong> — scanning and incident response scenarios</li>
+</ul>
+<p style="font-size:.88rem;margin-top:.75rem" data-lang="tr">Bunlar hedef senaryolardır; ticari saha operasyonu iddiası değildir.</p>
+<p style="font-size:.88rem;margin-top:.75rem" data-lang="en">These are target scenarios — not a claim of commercial field operations.</p>
 </div></section>
 
 <section class="edcs-section"><div class="container edcs-wrap">
-<h2>Mevcut durum</h2>
-<table class="status-table">
+<h2 data-lang="tr">Mevcut durum</h2>
+<h2 data-lang="en">Current status</h2>
+<table class="status-table" data-lang="tr">
 <thead><tr><th>Bileşen</th><th>Durum</th></tr></thead>
 <tbody>
 <tr><td>Teknik mimari ve matematiksel model</td><td>Tamamlandı</td></tr>
@@ -122,25 +183,61 @@
 <tr><td>Saha denemeleri</td><td>Planlanıyor</td></tr>
 </tbody>
 </table>
+<table class="status-table" data-lang="en">
+<thead><tr><th>Component</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Technical architecture & mathematical model</td><td>Complete</td></tr>
+<tr><td>Simulation prototype</td><td>Running</td></tr>
+<tr><td>Technical paper / presentation</td><td>Available</td></tr>
+<tr><td>Hardware prototype</td><td>Planned</td></tr>
+<tr><td>UWB integration</td><td>Planned</td></tr>
+<tr><td>Field trials</td><td>Planned</td></tr>
+</tbody>
+</table>
 <div class="note">
-<strong style="color:#cbd5e1">Şeffaflık:</strong> EDCS şu an araştırma ve simülasyon aşamasındadır. Üretimde konuşlanmış bir operasyonel sürü ürünü olarak sunulmaz. Kanıt seviyesi simülasyon ve model ile sınırlıdır; saha sonuçları yayınlandıkça güncellenir.
+<strong style="color:#cbd5e1" data-lang="tr">Şeffaflık:</strong>
+<span data-lang="tr"> EDCS şu an araştırma ve simülasyon aşamasındadır. Üretimde konuşlanmış bir operasyonel sürü ürünü olarak sunulmaz.</span>
+<strong style="color:#cbd5e1" data-lang="en">Transparency:</strong>
+<span data-lang="en"> EDCS is currently at research and simulation stage. It is not presented as a field-deployed operational swarm product.</span>
 </div>
 </div></section>
 
 <section class="edcs-section"><div class="container edcs-wrap">
-<h2>Vitavolt ve ANNE ile ilişki</h2>
-<p><strong style="color:#e2e8f0">Vitavolt Global</strong> enerji altyapısı ve intelligence katmanında (GES, BESS, EPC, VITA) çalışır. <strong style="color:#e2e8f0">ANNE</strong> açık bilişsel mimari araştırmasıdır. <strong style="color:#e2e8f0">EDCS</strong> aynı kurumsal portföyde, etik ve otonom sistemler vizyonunun dağıtık koordinasyon ayağıdır — enerji ürünü değil, otonom sürü koordinasyonu araştırma projesidir.</p>
+<h2 data-lang="tr">Vitavolt ve ANNE ile ilişki</h2>
+<h2 data-lang="en">Relationship to Vitavolt and ANNE</h2>
+<p data-lang="tr"><strong style="color:#e2e8f0">Vitavolt Global</strong> enerji altyapısı ve intelligence katmanında çalışır. <strong style="color:#e2e8f0">ANNE</strong> açık bilişsel mimari araştırmasıdır. <strong style="color:#e2e8f0">EDCS</strong> aynı portföyde dağıtık sürü koordinasyonu araştırma projesidir.</p>
+<p data-lang="en"><strong style="color:#e2e8f0">Vitavolt Global</strong> — energy infrastructure. <strong style="color:#e2e8f0">ANNE</strong> — cognitive architecture research. <strong style="color:#e2e8f0">EDCS</strong> — distributed swarm coordination research in the same portfolio.</p>
 <div class="links">
 <a class="btn btn-primary" href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm" target="_blank" rel="noopener">GitHub — EDCS-Drone-Swarm</a>
-<a class="btn btn-outline" href="anne.html">ANNE araştırması</a>
+<a class="btn btn-outline" href="anne.html"><span data-lang="tr">ANNE araştırması</span><span data-lang="en">ANNE research</span></a>
 <a class="btn btn-outline" href="vita-energy-intelligence.html">VITA</a>
-<a class="btn btn-outline" href="contact.html">İletişim</a>
+<a class="btn btn-outline" href="contact.html"><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></a>
 </div>
 </div></section>
 </main>
 <footer class="footer"><div class="container">
-<p style="color:#94a3b8;">&copy; 2026 Vitavolt Araştırma · EDCS</p>
+<p style="color:#94a3b8;"><span data-lang="tr">&copy; 2026 Vitavolt Araştırma · EDCS</span><span data-lang="en">&copy; 2026 Vitavolt Research · EDCS</span></p>
 </div></footer>
 <script src="js/script.js" defer></script>
+<script>
+(function(){
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    try{ localStorage.setItem('vitavolt-lang', lang); }catch(e){}
+    document.querySelectorAll('[data-set-lang]').forEach(function(btn){
+      var on = btn.getAttribute('data-set-lang') === lang;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  var saved = 'tr';
+  try{ saved = localStorage.getItem('vitavolt-lang') || 'tr'; }catch(e){}
+  if(saved !== 'tr' && saved !== 'en') saved = 'tr';
+  setLang(saved);
+  document.querySelectorAll('[data-set-lang]').forEach(function(btn){
+    btn.addEventListener('click', function(){ setLang(this.getAttribute('data-set-lang')); });
+  });
+})();
+</script>
 </body>
 </html>
