@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">SOLIS-LUMEN Research Visualization</title>
+<desc id="desc">Mikro-optik ön yüz, PV hücresi ve pasif termal yayılım katmanlarını gösteren SOLIS-LUMEN araştırma mimarisi.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07111c"/><stop offset="1" stop-color="#10253d"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#38bdf8" stop-opacity=".45"/><stop offset=".5" stop-color="#5eead4" stop-opacity=".7"/><stop offset="1" stop-color="#38bdf8" stop-opacity=".45"/></linearGradient>
+  <linearGradient id="cell" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163f63"/><stop offset="1" stop-color="#0b233b"/></linearGradient>
+  <linearGradient id="thermal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#38d67a" stop-opacity=".3"/><stop offset=".5" stop-color="#fbbf24" stop-opacity=".8"/><stop offset="1" stop-color="#38d67a" stop-opacity=".3"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#5eead4"/></marker>
+</defs>
+<rect width="1600" height="900" rx="28" fill="url(#bg)"/>
+<text x="90" y="95" fill="#e7eef5" font-family="system-ui,Arial,sans-serif" font-size="42" font-weight="700">SOLIS-LUMEN</text>
+<text x="90" y="140" fill="#5eead4" font-family="system-ui,Arial,sans-serif" font-size="24">Mikro-Optik Işık Yönetimi + Pasif Termal Mimari</text>
+<text x="90" y="180" fill="#adbdcb" font-family="system-ui,Arial,sans-serif" font-size="18">PV modül mimarisi için modelleme → prototip → test → karşılaştırma → doğrulama</text>
+
+<!-- sunlight -->
+<g stroke="#fbbf24" stroke-width="10" stroke-linecap="round" filter="url(#glow)">
+ <line x1="230" y1="260" x2="560" y2="390"/>
+ <line x1="350" y1="210" x2="610" y2="390"/>
+ <line x1="490" y1="205" x2="670" y2="390"/>
+</g>
+<text x="90" y="285" fill="#fbbf24" font-family="system-ui,Arial,sans-serif" font-size="22" font-weight="600">Güneş ışınımı</text>
+
+<!-- panel stack -->
+<g transform="translate(560,350)">
+ <!-- micro optic glass -->
+ <polygon points="0,0 850,0 790,105 60,105" fill="url(#glass)" stroke="#5eead4" stroke-width="4"/>
+ <!-- prism pattern -->
+ <g fill="none" stroke="#e7eef5" stroke-opacity=".7" stroke-width="3">
+  <path d="M35 92 L75 18 L115 92 L155 18 L195 92 L235 18 L275 92 L315 18 L355 92 L395 18 L435 92 L475 18 L515 92 L555 18 L595 92 L635 18 L675 92 L715 18 L755 92"/>
+ </g>
+ <text x="25" y="145" fill="#5eead4" font-family="system-ui,Arial,sans-serif" font-size="24" font-weight="700">01 · Mikro-optik ön yüz</text>
+ <text x="25" y="176" fill="#adbdcb" font-family="system-ui,Arial,sans-serif" font-size="17">Yansıma ve kırılma davranışının açısal yönetimi</text>
+
+ <!-- encapsulant -->
+ <rect x="60" y="220" width="730" height="52" rx="8" fill="#d9f7ff" fill-opacity=".12" stroke="#263b50"/>
+ <text x="85" y="254" fill="#adbdcb" font-family="system-ui,Arial,sans-serif" font-size="17">EVA / enkapsülant</text>
+
+ <!-- PV cell -->
+ <rect x="60" y="300" width="730" height="185" rx="12" fill="url(#cell)" stroke="#38bdf8" stroke-width="4"/>
+ <g stroke="#38bdf8" stroke-opacity=".45" stroke-width="2">
+  <path d="M100 300V485 M180 300V485 M260 300V485 M340 300V485 M420 300V485 M500 300V485 M580 300V485 M660 300V485 M740 300V485"/>
+  <path d="M60 345H790 M60 395H790 M60 445H790"/>
+ </g>
+ <text x="85" y="395" fill="#e7eef5" font-family="system-ui,Arial,sans-serif" font-size="28" font-weight="700">02 · PV hücre mimarisi</text>
+ <text x="85" y="430" fill="#adbdcb" font-family="system-ui,Arial,sans-serif" font-size="17">Elektriksel çıktı: Voc · Isc · Pmax · ηPV</text>
+
+ <!-- thermal interface -->
+ <rect x="60" y="520" width="730" height="45" rx="8" fill="url(#thermal)" stroke="#fbbf24" stroke-width="2"/>
+ <text x="85" y="550" fill="#e7eef5" font-family="system-ui,Arial,sans-serif" font-size="17">03 · Termal arayüz / pasif ısı yayılım katmanı</text>
+
+ <!-- fins -->
+ <g stroke="#38d67a" stroke-width="8" stroke-linecap="round">
+  <line x1="100" y1="565" x2="100" y2="650"/><line x1="180" y1="565" x2="180" y2="680"/><line x1="260" y1="565" x2="260" y2="650"/><line x1="340" y1="565" x2="340" y2="680"/><line x1="420" y1="565" x2="420" y2="650"/><line x1="500" y1="565" x2="500" y2="680"/><line x1="580" y1="565" x2="580" y2="650"/><line x1="660" y1="565" x2="660" y2="680"/><line x1="740" y1="565" x2="740" y2="650"/>
+ </g>
+ <text x="25" y="735" fill="#38d67a" font-family="system-ui,Arial,sans-serif" font-size="22" font-weight="600">Isı yayılımı → daha kontrollü hücre sıcaklığı</text>
+</g>
+
+<!-- arrows and right panel -->
+<g fill="none" stroke="#5eead4" stroke-width="4" marker-end="url(#arrow)">
+ <path d="M1320 330 C1420 330 1420 400 1320 400"/>
+ <path d="M1320 500 C1420 500 1420 570 1320 570"/>
+</g>
+<g transform="translate(1080,250)">
+ <rect width="410" height="410" rx="22" fill="#07111c" stroke="#263b50" stroke-width="2"/>
+ <text x="35" y="55" fill="#e7eef5" font-family="system-ui,Arial,sans-serif" font-size="24" font-weight="700">Ölçüm ve doğrulama</text>
+ <g font-family="system-ui,Arial,sans-serif" font-size="18">
+  <text x="35" y="105" fill="#38bdf8">OPTİK</text><text x="35" y="132" fill="#adbdcb">• geliş açısı</text><text x="35" y="157" fill="#adbdcb">• yansıma / geçirgenlik</text>
+  <text x="35" y="205" fill="#fbbf24">TERMAL</text><text x="35" y="232" fill="#adbdcb">• yüzey sıcaklığı</text><text x="35" y="257" fill="#adbdcb">• ısı yayılımı</text>
+  <text x="35" y="305" fill="#5eead4">ELEKTRİKSEL</text><text x="35" y="332" fill="#adbdcb">• Pmax / Voc / Isc</text><text x="35" y="357" fill="#adbdcb">• net elektriksel performans</text>
+ </g>
+</g>
+
+<rect x="90" y="805" width="1420" height="55" rx="27" fill="#10253d" stroke="#263b50"/>
+<text x="800" y="841" text-anchor="middle" fill="#5eead4" font-family="system-ui,Arial,sans-serif" font-size="21" font-weight="600">Hedef: belirlenmiş çalışma koşullarında bağıl net elektriksel performans iyileşmesi potansiyelini araştırmak</text>
+</svg>
