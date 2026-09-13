@@ -1,10 +1,15 @@
 # Vitavolt Global
 
-> İzmir ve Kuşadası merkezli yenilenebilir enerji, endüstriyel EPC, BESS, karbon yönetimi ve Energy Infrastructure & Intelligence firması.
+> İzmir merkezli yenilenebilir enerji, endüstriyel EPC, BESS, karbon yönetimi ve Energy Infrastructure & Intelligence firması.
+
+## Strategic positioning
+- Vitavolt Global develops integrated energy infrastructure and intelligence solutions for industrial facilities and next-generation AI/data-center environments.
+- Core stack: Renewable Energy + BESS + EPC + Carbon + VITA Energy Intelligence + ANNE AI research.
+- AI/data-center direction: connect energy production, storage, load intelligence, carbon visibility and decision support. This is a strategic development direction; do not describe unreleased capabilities as deployed products.
 
 ## Şirket
 - Ad: Vitavolt Global
-- Konum: Bayraklı, İzmir · Kuşadası, Aydın · Ege Bölgesi, Türkiye
+- Konum: Bayraklı, İzmir · Ege Bölgesi, Türkiye
 - Telefon: +90 545 441 19 77
 - E-posta: info@vitavoltglobal.com
 - Web: https://vitavoltglobal.com/
@@ -20,20 +25,34 @@
 
 ## Energy Intelligence
 - VITA: https://vitavoltglobal.com/vita-energy-intelligence.html
+- VITA focus: energy data, feasibility, analysis and decision support for renewable energy, BESS, industrial infrastructure and next-generation AI/data-center environments.
 - ANNE AI: https://vitavoltglobal.com/anne.html
 - Research hub: https://vitavoltglobal.com/research/
+
+## Research portfolio
+- Oxygen ClimateTech: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+- ANNE AI: https://vitavoltglobal.com/anne.html
+- EDCS: https://vitavoltglobal.com/research/edcs.html
+- SOLIS-LUMEN: https://vitavoltglobal.com/research/solis-lumen.html
 
 ## Oxygen ClimateTech
 - https://vitavoltglobal.com/research/oxygen-climate-tech.html
 - Research vision integrating carbon management, biological systems, photosynthetic systems, biomass, water, renewable energy, BESS, resource recovery and digital intelligence.
 - Research components: Oxygen Factory, Biom, Miscanthus & Carbon Fields, VITA and ANNE.
 - Status discipline: distinguish established technologies, technologies under development and research hypotheses. Research concepts must not be presented as commercially proven without validation.
-- Vision: explore interconnected systems that can contribute to more livable environments.
+
+## AI / data-center research direction
+- VITA is the energy-intelligence layer within the Vitavolt ecosystem.
+- ANNE is an AGI-oriented open cognitive architecture research project, not a completed AGI or a deployed data-center control system.
+- The strategic opportunity is an integrated stack where renewable generation, BESS, energy data, carbon intelligence and AI-assisted decision support can work together for demanding digital infrastructure.
 
 ## Önemli sayfalar
 - https://vitavoltglobal.com/
 - https://vitavoltglobal.com/services.html
-- https://vitavoltglobal.com/izmir-enerji-karbon-donusumu.html
+- https://vitavoltglobal.com/vita-energy-intelligence.html
+- https://vitavoltglobal.com/anne.html
+- https://vitavoltglobal.com/research/
+- https://vitavoltglobal.com/research/oxygen-climate-tech.html
 - https://vitavoltglobal.com/izmir-ges.html
 - https://vitavoltglobal.com/izmir-bess-enerji-depolama.html
 - https://vitavoltglobal.com/izmir-endustriyel-epc.html
