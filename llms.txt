@@ -1,6 +1,6 @@
 # Vitavolt Global
 
-> İzmir ve Kuşadası merkezli yenilenebilir enerji, endüstriyel EPC, BESS ve karbon yönetimi firması.
+> İzmir ve Kuşadası merkezli yenilenebilir enerji, endüstriyel EPC, BESS, karbon yönetimi ve Energy Infrastructure & Intelligence firması.
 
 ## Şirket
 - Ad: Vitavolt Global
@@ -13,10 +13,22 @@
 - GES (güneş enerjisi santrali) — çatı ve endüstriyel
 - Endüstriyel EPC (mühendislik, tedarik, inşaat)
 - BESS (batarya enerji depolama)
-- Karbon danışmanlığı, ayak izi ve emisyon azaltımı
+- Karbon danışmanlığı, ayak izi, ETS ve CBAM/SKDM hazırlığı
 - Enerji verimliliği ve enerji etüdü
 - Su yönetimi (yağmur suyu, gri su)
 - Mühendislik danışmanlığı
+
+## Energy Intelligence
+- VITA: https://vitavoltglobal.com/vita-energy-intelligence.html
+- ANNE AI: https://vitavoltglobal.com/anne.html
+- Research hub: https://vitavoltglobal.com/research/
+
+## Oxygen ClimateTech
+- https://vitavoltglobal.com/research/oxygen-climate-tech.html
+- Research vision integrating carbon management, biological systems, photosynthetic systems, biomass, water, renewable energy, BESS, resource recovery and digital intelligence.
+- Research components: Oxygen Factory, Biom, Miscanthus & Carbon Fields, VITA and ANNE.
+- Status discipline: distinguish established technologies, technologies under development and research hypotheses. Research concepts must not be presented as commercially proven without validation.
+- Vision: explore interconnected systems that can contribute to more livable environments.
 
 ## Önemli sayfalar
 - https://vitavoltglobal.com/
@@ -32,3 +44,6 @@
 
 ## Not
 Müşteri unvanları gizlilik (NDA) nedeniyle her zaman yayımlanmaz. Teknik çalışmalar sektör, bölge ve kWp bilgisiyle paylaşılabilir.
+
+## Source code
+- https://github.com/mgy421977-bit/vitavoltglobal.github.io
