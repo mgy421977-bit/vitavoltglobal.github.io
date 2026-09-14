@@ -91,29 +91,121 @@
 }
 </script>
 <style>
-body{margin:0;background:#07111c;color:#e5edf5;font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:960px;margin:auto;padding:42px 22px 70px}a{color:#38bdf8}.k{color:#5eead4;text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;font-weight:800}.lead{color:#aebdcb;max-width:850px}.card{border:1px solid #263b50;background:#10253d;border-radius:14px;padding:22px;margin:18px 0}.card p{color:#aebdcb}.tag{color:#5eead4;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.links{display:flex;flex-wrap:wrap;gap:10px}.btn{border:1px solid #31506a;border-radius:8px;padding:8px 11px;text-decoration:none;background:#0d1c2b}.boundary{border-left:3px solid #fbbf24;background:#0d1b2a;padding:15px 18px;color:#aebdcb;margin:24px 0}h1{line-height:1.1;font-size:clamp(2rem,6vw,3.2rem)}h2{font-size:1.25rem;margin-bottom:.4rem}footer{border-top:1px solid #263b50;margin-top:42px;padding-top:20px;color:#8fa0b3}ul.lead{padding-left:1.2rem}
+body{margin:0;background:#07111c;color:#e5edf5;font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:960px;margin:auto;padding:42px 22px 70px}
+a{color:#38bdf8}
+.k{color:#5eead4;text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;font-weight:800}
+.lead{color:#aebdcb;max-width:850px}
+.card{border:1px solid #263b50;background:#10253d;border-radius:14px;padding:22px;margin:18px 0}
+.card p{color:#aebdcb}
+.tag{color:#5eead4;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{border:1px solid #31506a;border-radius:8px;padding:8px 11px;text-decoration:none;background:#0d1c2b}
+.boundary{border-left:3px solid #fbbf24;background:#0d1b2a;padding:15px 18px;color:#aebdcb;margin:24px 0}
+h1{line-height:1.1;font-size:clamp(2rem,6vw,3.2rem)}
+h2{font-size:1.25rem;margin-bottom:.4rem}
+footer{border-top:1px solid #263b50;margin-top:42px;padding-top:20px;color:#8fa0b3}
+ul.lead{padding-left:1.2rem}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:1.5rem}
+.lang{display:inline-flex;gap:4px}
+.lang button{border:1px solid #3b4658;background:#111827;color:#aeb9c8;border-radius:8px;padding:7px 11px;font-weight:800;cursor:pointer;font-family:inherit;font-size:.75rem}
+.lang button.active{background:#5eead4;color:#07111c;border-color:#5eead4}
+.back{text-decoration:none;color:#38bdf8;font-size:.9rem}
+[data-lang="tr"]{display:none}
+html[lang="tr"] [data-lang="en"]{display:none}
+html[lang="tr"] [data-lang="tr"]{display:block}
+html[lang="en"] [data-lang="en"]{display:block}
+html[lang="tr"] span[data-lang="tr"],html[lang="tr"] strong[data-lang="tr"]{display:inline}
+html[lang="en"] span[data-lang="en"],html[lang="en"] strong[data-lang="en"]{display:inline}
+html[lang="tr"] p[data-lang="tr"],html[lang="tr"] h1[data-lang="tr"],html[lang="tr"] h2[data-lang="tr"],html[lang="tr"] div[data-lang="tr"]{display:block}
+html[lang="en"] p[data-lang="en"],html[lang="en"] h1[data-lang="en"],html[lang="en"] h2[data-lang="en"],html[lang="en"] div[data-lang="en"]{display:block}
+html[lang="en"] p[data-lang="tr"],html[lang="en"] h1[data-lang="tr"],html[lang="en"] h2[data-lang="tr"],html[lang="en"] div[data-lang="tr"]{display:none}
+html[lang="tr"] p[data-lang="en"],html[lang="tr"] h1[data-lang="en"],html[lang="tr"] h2[data-lang="en"],html[lang="tr"] div[data-lang="en"]{display:none}
 </style>
 </head>
 <body>
 <main class="wrap">
-<p class="k">Vitavolt Research · AI Discoverability</p>
-<h1>Public Research Source Map</h1>
-<p class="lead">This page defines the public entity relationships used to describe Vitavolt Global, VITA and the current research portfolio. It is intended to make the public research trail easier for people, search engines and AI systems to understand.</p>
-<div class="boundary"><strong>Evidence rule:</strong> Research concepts are described according to their current public status. Experimental or planned capabilities are not presented as commercially proven products, field validation or achieved AGI.</div>
+<div class="topbar">
+<p class="k" style="margin:0">Vitavolt Research · AI Discoverability</p>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+<div class="lang" role="group" aria-label="Language">
+<button type="button" data-lang-btn="en" class="active">EN</button>
+<button type="button" data-lang-btn="tr">TR</button>
+</div>
+<a class="back" href="index.html">← Research</a>
+</div>
+</div>
+
+<h1 data-lang="en">Public Research Source Map</h1>
+<h1 data-lang="tr">Kamuya Açık Araştırma Kaynak Haritası</h1>
+
+<p class="lead" data-lang="en">This page defines the public entity relationships used to describe Vitavolt Global, VITA and the current research portfolio. It is intended to make the public research trail easier for people, search engines and AI systems to understand.</p>
+<p class="lead" data-lang="tr">Bu sayfa Vitavolt Global, VITA ve güncel araştırma portföyünü tanımlayan kamuya açık varlık ilişkilerini belirler. İnsanlar, arama motorları ve yapay zekâ sistemleri için kamuya açık araştırma izini daha anlaşılır kılmayı amaçlar.</p>
+
+<div class="boundary" data-lang="en"><strong>Evidence rule:</strong> Research concepts are described according to their current public status. Experimental or planned capabilities are not presented as commercially proven products, field validation or achieved AGI.</div>
+<div class="boundary" data-lang="tr"><strong>Kanıt kuralı:</strong> Araştırma kavramları güncel kamuya açık durumlarına göre anlatılır. Deneysel veya planlanan yetenekler ticari olarak kanıtlanmış ürün, saha doğrulaması veya gerçekleşmiş AGI olarak sunulmaz.</div>
+
 <section>
-<div class="card"><span class="tag">Company entity</span><h2>Vitavolt Global</h2><p>İzmir merkezli Energy Infrastructure & Intelligence şirketi. Public business scope includes renewable energy, GES, BESS, industrial EPC, carbon management, energy efficiency, water management and engineering consulting.</p><div class="links"><a class="btn" href="../">Company</a><a class="btn" href="../services.html">Services</a><a class="btn" href="../about.html">About</a><a class="btn" href="../contact.html">Contact</a><a class="btn" href="https://github.com/mgy421977-bit/vitavoltglobal.github.io">Source code</a></div></div>
-<div class="card"><span class="tag">Energy intelligence</span><h2>VITA Energy Intelligence</h2><p>VITA is Vitavolt Global's energy-intelligence layer for energy data, feasibility, analysis, scenario comparison and decision support across renewable energy, BESS and industrial infrastructure.</p><div class="links"><a class="btn" href="../vita-energy-intelligence.html">VITA page</a></div></div>
-<div class="card"><span class="tag">Research project</span><h2>ANNE AI — Adaptive Neural Nexus Engine</h2><p>AGI-oriented open cognitive architecture research. The public research scope includes cognitive orchestration, heterogeneous AI coordination, semantic validation, memory, provenance, deterministic verification and controlled agency. ANNE does not claim achieved AGI.</p><div class="links"><a class="btn" href="anne-ai.html">Research page</a><a class="btn" href="../anne.html">Main page</a><a class="btn" href="anne-architecture.html">Architecture</a><a class="btn" href="anne-vs-ai-agents.html">vs AI Agents</a><a class="btn" href="https://github.com/mgy421977-bit/anne-ai">GitHub</a><a class="btn" href="https://github.com/mgy421977-bit/anne-core">ANNE Core</a></div></div>
-<div class="card"><span class="tag">Research project</span><h2>EDCS — Emergent Drone Coordination System</h2><p>Research into distributed and self-healing drone swarm coordination using local decision-making. The current public implementation is a simulation prototype; hardware prototyping, UWB integration and field trials are planned.</p><div class="links"><a class="btn" href="edcs.html">Research page</a><a class="btn" href="../edcs.html">Main page</a><a class="btn" href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm">GitHub</a></div></div>
-<div class="card"><span class="tag">PV R&D</span><h2>SOLIS-LUMEN</h2><p>Research into micro-optical light management and passive thermal architecture for next-generation photovoltaic module design. Modelling and prototype testing are used to evaluate the concept; performance targets are not guarantees.</p><div class="links"><a class="btn" href="solis-lumen.html">Research page</a></div></div>
-<div class="card"><span class="tag">ClimateTech research</span><h2>Oxygen ClimateTech</h2><p>Research vision connecting carbon management, photosynthetic systems, biomass, water, renewable energy, BESS, resource recovery and digital intelligence. The project distinguishes established technologies, development work and research hypotheses.</p><div class="links"><a class="btn" href="oxygen-climate-tech.html">Research page</a></div></div>
+<div class="card">
+<span class="tag">Company entity</span>
+<h2 data-lang="en">Vitavolt Global</h2>
+<h2 data-lang="tr">Vitavolt Global</h2>
+<p data-lang="en">İzmir-based Energy Infrastructure & Intelligence company. Public business scope includes renewable energy, GES, BESS, industrial EPC, carbon management, energy efficiency, water management and engineering consulting.</p>
+<p data-lang="tr">İzmir merkezli Energy Infrastructure & Intelligence şirketi. Kamuya açık iş kapsamı yenilenebilir enerji, GES, BESS, endüstriyel EPC, karbon yönetimi, enerji verimliliği, su yönetimi ve mühendislik danışmanlığını içerir.</p>
+<div class="links"><a class="btn" href="../">Company</a><a class="btn" href="../services.html">Services</a><a class="btn" href="../about.html">About</a><a class="btn" href="../contact.html">Contact</a><a class="btn" href="https://github.com/mgy421977-bit/vitavoltglobal.github.io">Source code</a></div>
+</div>
+
+<div class="card">
+<span class="tag">Energy intelligence</span>
+<h2>VITA Energy Intelligence</h2>
+<p data-lang="en">VITA is Vitavolt Global's energy-intelligence layer for energy data, feasibility, analysis, scenario comparison and decision support across renewable energy, BESS and industrial infrastructure.</p>
+<p data-lang="tr">VITA, Vitavolt Global’ın enerji verisi, fizibilite, analiz, senaryo karşılaştırması ve karar desteği için enerji-intelligence katmanıdır; yenilenebilir enerji, BESS ve endüstriyel altyapı alanlarını kapsar.</p>
+<div class="links"><a class="btn" href="../vita-energy-intelligence.html">VITA page</a></div>
+</div>
+
+<div class="card">
+<span class="tag">Research project</span>
+<h2>ANNE AI — Adaptive Neural Nexus Engine</h2>
+<p data-lang="en">AGI-oriented open cognitive architecture research. The public research scope includes cognitive orchestration, heterogeneous AI coordination, semantic validation, memory, provenance, deterministic verification and controlled agency. ANNE does not claim achieved AGI.</p>
+<p data-lang="tr">AGI odaklı açık bilişsel mimari araştırması. Kamuya açık araştırma kapsamı bilişsel orkestrasyon, heterojen yapay zekâ koordinasyonu, semantik doğrulama, bellek, köken (provenance), deterministik doğrulama ve kontrollü eylemliliği içerir. ANNE gerçekleşmiş AGI iddiasında bulunmaz.</p>
+<div class="links"><a class="btn" href="anne-ai.html">Research page</a><a class="btn" href="../anne.html">Main page</a><a class="btn" href="anne-architecture.html">Architecture</a><a class="btn" href="anne-vs-ai-agents.html">vs AI Agents</a><a class="btn" href="https://github.com/mgy421977-bit/anne-ai">GitHub</a><a class="btn" href="https://github.com/mgy421977-bit/anne-core">ANNE Core</a></div>
+</div>
+
+<div class="card">
+<span class="tag">Research project</span>
+<h2>EDCS — Emergent Drone Coordination System</h2>
+<p data-lang="en">Research into distributed and self-healing drone swarm coordination using local decision-making. The current public implementation is a simulation prototype; hardware prototyping, UWB integration and field trials are planned.</p>
+<p data-lang="tr">Yerel karar verme ile dağıtık ve kendini iyileştiren drone sürüsü koordinasyonu araştırması. Güncel kamuya açık uygulama bir simülasyon prototipidir; donanım prototipleme, UWB entegrasyonu ve saha denemeleri planlanmaktadır.</p>
+<div class="links"><a class="btn" href="edcs.html">Research page</a><a class="btn" href="../edcs.html">Main page</a><a class="btn" href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm">GitHub</a></div>
+</div>
+
+<div class="card">
+<span class="tag">PV R&D</span>
+<h2>SOLIS-LUMEN</h2>
+<p data-lang="en">Research into micro-optical light management and passive thermal architecture for next-generation photovoltaic module design. Modelling and prototype testing are used to evaluate the concept; performance targets are not guarantees.</p>
+<p data-lang="tr">Yeni nesil fotovoltaik modül tasarımı için mikro-optik ışık yönetimi ve pasif termal mimari araştırması. Kavram modelleme ve prototip testleriyle değerlendirilir; performans hedefleri garanti değildir.</p>
+<div class="links"><a class="btn" href="solis-lumen.html">Research page</a></div>
+</div>
+
+<div class="card">
+<span class="tag">ClimateTech research</span>
+<h2>Oxygen ClimateTech</h2>
+<p data-lang="en">Research vision connecting carbon management, photosynthetic systems, biomass, water, renewable energy, BESS, resource recovery and digital intelligence. The project distinguishes established technologies, development work and research hypotheses.</p>
+<p data-lang="tr">Karbon yönetimi, fotosentetik sistemler, biyokütle, su, yenilenebilir enerji, BESS, kaynak geri kazanımı ve dijital intelligence’ı bağlayan araştırma vizyonu. Proje yerleşik teknolojiler, geliştirme çalışmaları ve araştırma hipotezlerini ayırt eder.</p>
+<div class="links"><a class="btn" href="oxygen-climate-tech.html">Research page</a></div>
+</div>
 </section>
-<section id="research-network"><h2>Research network</h2>
-<p class="lead">Vitavolt Global → VITA Energy Intelligence → Vitavolt Research → ANNE AI / EDCS / SOLIS-LUMEN / Oxygen ClimateTech → technical pages → publications → public repositories.</p>
-<p class="lead" style="font-size:.9rem">Entity map (canonical URLs for AI systems and citations):</p>
+
+<section id="research-network">
+<h2 data-lang="en">Research network</h2>
+<h2 data-lang="tr">Araştırma ağı</h2>
+<p class="lead" data-lang="en">Vitavolt Global → VITA Energy Intelligence → Vitavolt Research → ANNE AI / EDCS / SOLIS-LUMEN / Oxygen ClimateTech → technical pages → publications → public repositories.</p>
+<p class="lead" data-lang="tr">Vitavolt Global → VITA Energy Intelligence → Vitavolt Research → ANNE AI / EDCS / SOLIS-LUMEN / Oxygen ClimateTech → teknik sayfalar → yayınlar → kamuya açık depolar.</p>
+<p class="lead" style="font-size:.9rem" data-lang="en">Entity map (canonical URLs for AI systems and citations):</p>
+<p class="lead" style="font-size:.9rem" data-lang="tr">Varlık haritası (yapay zekâ sistemleri ve atıflar için kanonik URL’ler):</p>
 <ul class="lead" style="line-height:1.7">
 <li><strong>Research Hub</strong> — <a href="index.html">/research/</a></li>
-<li><strong>AI Discoverability</strong> — this page</li>
+<li><strong>AI Discoverability</strong> — this page / bu sayfa</li>
 <li><strong>Publication Map</strong> — <a href="publications.html">/research/publications.html</a></li>
 <li><strong>ANNE AI</strong> — <a href="../anne.html">/anne.html</a> (canonical) · <a href="anne-ai.html">research/anne-ai.html</a> · <a href="anne-architecture.html">architecture</a> · <a href="anne-vs-ai-agents.html">vs AI agents</a></li>
 <li><strong>EDCS</strong> — <a href="edcs.html">/research/edcs.html</a> · <a href="../edcs.html">/edcs.html</a></li>
@@ -134,7 +226,13 @@ body{margin:0;background:#07111c;color:#e5edf5;font:16px/1.65 system-ui,-apple-s
 <a class="btn" href="../llms.txt">llms.txt</a>
 </div>
 </section>
-<footer><p>This source map supports discoverability and source clarity; it does not guarantee ranking, citation or inclusion by any search engine or AI system.</p><p><a href="index.html">Vitavolt Research</a> · <a href="publications.html">Publication Map</a> · <a href="../">Vitavolt Global</a></p></footer>
+
+<footer>
+<p data-lang="en">This source map supports discoverability and source clarity; it does not guarantee ranking, citation or inclusion by any search engine or AI system.</p>
+<p data-lang="tr">Bu kaynak haritası keşfedilebilirlik ve kaynak netliğini destekler; herhangi bir arama motoru veya yapay zekâ sistemi tarafından sıralama, atıf veya dahil edilmeyi garanti etmez.</p>
+<p><a href="index.html">Vitavolt Research</a> · <a href="publications.html">Publication Map</a> · <a href="../">Vitavolt Global</a></p>
+</footer>
 </main>
+<script>(function(){const b=document.querySelectorAll("[data-lang-btn]");function s(l){document.documentElement.lang=l;b.forEach(x=>x.classList.toggle("active",x.dataset.langBtn===l));try{localStorage.setItem("vrLang",l)}catch(e){}}b.forEach(x=>x.addEventListener("click",()=>s(x.dataset.langBtn)));let l="en";try{const v=localStorage.getItem("vrLang");if(v==="tr"||v==="en")l=v}catch(e){}s(l)})();</script>
 </body>
 </html>
