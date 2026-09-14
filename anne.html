@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -114,9 +114,9 @@ html[lang="tr"] ul[data-lang="tr"],html[lang="tr"] p[data-lang="tr"],html[lang="
 <a href="edcs.html">EDCS</a>
 <a href="vita-energy-intelligence.html">VITA</a>
 <a href="index.html">Vitavolt</a>
-<span class="lang-switch" role="group" aria-label="Dil">
-<button type="button" class="lang-btn active" data-set-lang="tr" aria-pressed="true">TR</button>
-<button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+<span class="lang-switch" role="group" aria-label="Language">
+<button type="button" class="lang-btn" data-set-lang="tr" aria-pressed="false">TR</button>
+<button type="button" class="lang-btn active" data-set-lang="en" aria-pressed="true">EN</button>
 </span>
 </nav>
 </div></header>
@@ -240,41 +240,15 @@ html[lang="tr"] ul[data-lang="tr"],html[lang="tr"] p[data-lang="tr"],html[lang="
 <p class="panel"><strong>Memory ≠ Learning.</strong> <span data-lang="tr">“Öğrenme” ölçülebilir davranış değişimi gerektirir; yalnızca depolama yeterli değildir.</span><span data-lang="en">Learning requires measurable behavioural change — not storage alone.</span></p>
 </section>
 
-<section id="fractal">
-<h2 data-lang="tr">Fraktal / yeniden girişli muhakeme</h2>
-<h2 data-lang="en">Fractal / Re-entrant Reasoning</h2>
-<p data-lang="tr">Sınırlı yeniden giriş — sınırsız özyinelemeli zekâ iddiası değildir.</p>
-<p data-lang="en">Bounded re-entrant mechanism — not unrestricted recursive intelligence.</p>
-<p><span class="badge b-ok">IMPLEMENTED</span> <span class="badge b-ex">BOUNDED</span></p>
-</section>
-
-<section id="agency">
-<h2>Agency Gate</h2>
-<p data-lang="tr"><strong>Inference ≠ Authority.</strong> Model çıktısı tek başına dış etki için izin sayılmaz. Güvenlik > Optimizasyon. “Tamamen güvenli” iddiası yoktur.</p>
-<p data-lang="en"><strong>Inference ≠ Authority.</strong> Model output alone is not permission for side effects. Safety > Optimization.</p>
-</section>
-
 <section id="status">
-<h2 data-lang="tr">Araştırma durumu</h2>
-<h2 data-lang="en">Research Status</h2>
-<table>
-<thead><tr><th data-lang="tr">Konu</th><th data-lang="en">Topic</th><th>Status</th></tr></thead>
-<tbody>
-<tr><td data-lang="tr">Bilişsel mimari (DUY…YAP)</td><td data-lang="en">Cognitive architecture (DUY…YAP)</td><td><span class="badge b-ok">IMPLEMENTED</span></td></tr>
-<tr><td data-lang="tr">Kalıcı bilişsel bellek</td><td data-lang="en">Persistent cognitive memory</td><td><span class="badge b-ok">IMPLEMENTED</span></td></tr>
-<tr><td>Agency Gate</td><td><span class="badge b-ok">IMPLEMENTED</span></td></tr>
-<tr><td data-lang="tr">Fraktal / bounded loop</td><td data-lang="en">Fractal / bounded loop</td><td><span class="badge b-ok">IMPLEMENTED</span> <span class="badge b-ex">BOUNDED</span></td></tr>
-<tr><td data-lang="tr">Çoklu ajan</td><td data-lang="en">Multi-agent</td><td><span class="badge b-ex">EXPERIMENTAL</span></td></tr>
-<tr><td data-lang="tr">AGI yönelimi</td><td data-lang="en">AGI orientation</td><td><span class="badge b-hy">RESEARCH DIRECTION</span></td></tr>
-<tr><td data-lang="tr">Tamamlanmış AGI</td><td data-lang="en">Completed AGI</td><td><span class="badge b-rd">NOT CLAIMED</span></td></tr>
-<tr><td data-lang="tr">Ticari AGI dağıtımı</td><td data-lang="en">Commercial AGI deployment</td><td><span class="badge b-rd">NOT CLAIMED</span></td></tr>
-</tbody>
-</table>
+<h2 data-lang="tr">Durum (kanıt disiplini)</h2>
+<h2 data-lang="en">Status (evidence discipline)</h2>
+<p data-lang="tr">ANNE tamamlanmış AGI değildir. Kamuya açık durum: mimari tanım, prototip orkestrasyon ve araştırma hipotezleri. Saha doğrulaması ve ticari dağıtım iddiası yoktur.</p>
+<p data-lang="en">ANNE is not completed AGI. Public status: architectural definition, prototype orchestration and research hypotheses. No claim of field validation or commercial deployment.</p>
 </section>
 
 <section id="edcs">
-<h2 data-lang="tr">İlgili portföy — EDCS</h2>
-<h2 data-lang="en">Related portfolio — EDCS</h2>
+<h2>EDCS</h2>
 <p data-lang="tr"><strong>EDCS</strong>, dağıtık self-healing drone sürüsü / UAV koordinasyonu. Simülasyon aşaması; donanım/saha planlanıyor. ANNE ile aynı araştırma portföyünde, ayrı katman.</p>
 <p data-lang="en"><strong>EDCS</strong> distributed self-healing swarm / UAV coordination. Simulation stage; field planned. Same research portfolio as ANNE, separate layer.</p>
 <p><a href="edcs.html">EDCS</a> · <a href="https://github.com/mgy421977-bit/EDCS-Drone-Swarm">GitHub</a></p>
@@ -309,9 +283,9 @@ html[lang="tr"] ul[data-lang="tr"],html[lang="tr"] p[data-lang="tr"],html[lang="
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
   }
-  var saved = 'tr';
-  try{ saved = localStorage.getItem('vitavolt-lang') || 'tr'; }catch(e){}
-  if(saved !== 'tr' && saved !== 'en') saved = 'tr';
+  var saved = 'en';
+  try{ saved = localStorage.getItem('vitavolt-lang') || 'en'; }catch(e){}
+  if(saved !== 'tr' && saved !== 'en') saved = 'en';
   setLang(saved);
   document.querySelectorAll('[data-set-lang]').forEach(function(btn){
     btn.addEventListener('click', function(){ setLang(this.getAttribute('data-set-lang')); });
