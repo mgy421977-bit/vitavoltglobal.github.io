@@ -46,12 +46,26 @@
 - ANNE is an AGI-oriented open cognitive architecture research project, not a completed AGI or a deployed data-center control system.
 - The strategic opportunity is an integrated stack where renewable generation, BESS, energy data, carbon intelligence and AI-assisted decision support can work together for demanding digital infrastructure.
 
+## AI Discoverability & Publication Map
+- AI Discoverability (entity map for AI systems): https://vitavoltglobal.com/research/ai-discoverability.html
+- Publication Map (public research publications): https://vitavoltglobal.com/research/publications.html
+- ANNE Architecture: https://vitavoltglobal.com/research/anne-architecture.html
+- ANNE vs AI Agents: https://vitavoltglobal.com/research/anne-vs-ai-agents.html
+- Research EDCS page: https://vitavoltglobal.com/research/edcs.html
+- Research ANNE page: https://vitavoltglobal.com/research/anne-ai.html
+
+## Research network (canonical)
+Vitavolt Global → VITA Energy Intelligence → Vitavolt Research Hub → ANNE AI / EDCS / SOLIS-LUMEN / Oxygen ClimateTech → Publication Map → GitHub repositories.
+Primary citation sources for research claims should prefer /research/ pages and /llms.txt over marketing copy.
+
 ## Önemli sayfalar
 - https://vitavoltglobal.com/
 - https://vitavoltglobal.com/services.html
 - https://vitavoltglobal.com/vita-energy-intelligence.html
 - https://vitavoltglobal.com/anne.html
 - https://vitavoltglobal.com/research/
+- https://vitavoltglobal.com/research/ai-discoverability.html
+- https://vitavoltglobal.com/research/publications.html
 - https://vitavoltglobal.com/research/oxygen-climate-tech.html
 - https://vitavoltglobal.com/izmir-ges.html
 - https://vitavoltglobal.com/izmir-bess-enerji-depolama.html
