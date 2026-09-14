@@ -68,7 +68,8 @@
     var selfConsumptionRatio = annualConsumption > 0
       ? clamp((annualConsumption * margin) / Math.max(annualProductionKwh, 1), 0, 1)
       : 0;
-    var selfConsumedKwh = Math.min(annualProductionKwh, Math.round(annualProductionKwh * selfConsumptionRatio));
+    // Tasarım payı, fiziksel yıllık tüketimin üzerinde öz tüketim üretemez.
+    var selfConsumedKwh = Math.min(annualConsumption, annualProductionKwh, Math.round(annualProductionKwh * selfConsumptionRatio));
     var gridExportKwh = Math.max(0, annualProductionKwh - selfConsumedKwh);
     var co2ReductionKg = Math.round(annualProductionKwh * co2Factor);
 
@@ -82,6 +83,16 @@
       var dod = clamp(finite(config.battery.depth_of_discharge, 0.9), 0.5, 1);
       var rte = clamp(finite(config.battery.round_trip_efficiency, 0.95), 0.5, 1);
       suggestedBatteryKwh = Number((usableTarget / Math.max(dod * rte, 0.25)).toFixed(1));
+    }
+
+    var water = null;
+    if (window.VitaEngine && typeof window.VitaEngine.calculateWater === 'function') {
+      water = window.VitaEngine.calculateWater({
+        city: input && input.city,
+        roofAreaM2: roof,
+        monthlyWaterM3: positive(input && input.monthlyWaterM3),
+        roofType: input && input.roofType
+      });
     }
 
     return {
@@ -106,6 +117,7 @@
         depthOfDischarge: clamp(finite(config.battery.depth_of_discharge, 0.9), 0.5, 1),
         roundTripEfficiency: clamp(finite(config.battery.round_trip_efficiency, 0.95), 0.5, 1)
       },
+      water: water,
       assumptions: {
         panelPowerWp: Math.round(panelPowerKw * 1000),
         panelAreaM2: panelArea,

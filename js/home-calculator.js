@@ -49,6 +49,17 @@
         result.appendChild(bp);
       }
     }
+    if (r.water && r.water.rainfall && r.water.greywater) {
+      var water = document.createElement('div');
+      water.className = 'calc-water-results';
+      water.innerHTML = '<p><strong>Yağmur suyu potansiyeli:</strong> ' +
+        r.water.rainfall.annualUsableM3.toLocaleString('tr-TR') + ' m³/yıl · yaklaşık %' +
+        r.water.rainfall.demandCoveragePct.toLocaleString('tr-TR') + ' su talebi karşılanabilir.</p>' +
+        '<p><strong>Gri su potansiyeli:</strong> ' +
+        r.water.greywater.annualUsableM3.toLocaleString('tr-TR') + ' m³/yıl · yaklaşık %' +
+        r.water.greywater.demandCoveragePct.toLocaleString('tr-TR') + ' su talebi karşılanabilir.</p>';
+      result.appendChild(water);
+    }
     var a = document.createElement('div');
     a.className = 'calc-warning';
     a.textContent = r.warning + ' Varsayımlar: ' + r.assumptions.panelPowerWp + ' W panel, ' +
@@ -104,7 +115,9 @@
         landAvailable: araziVar,
         monthlyConsumptionKwh: consumption,
         nighttimeShare: gece > 0 ? gece / 100 : undefined,
-        peakDemandKw: num('pik_talep_kw')
+        peakDemandKw: num('pik_talep_kw'),
+        city: (form.elements.sehir && form.elements.sehir.value) || '',
+        monthlyWaterM3: num('aylik_su_tuketim')
       }, window.VitavoltCalculator.defaultConfig);
       render(calc);
       if (window.VitavoltForms) window.VitavoltForms.track('calculator_complete', { calculator: 'homepage' });
