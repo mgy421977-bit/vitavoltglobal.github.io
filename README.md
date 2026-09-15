@@ -18,7 +18,6 @@
 | **VITA Quick Feasibility** | Bugün çalışan tarayıcı tabanlı ön fizibilite (`calculator.js`) |
 | **VITA Engine** | VITA'nın hesaplama ve veri sözleşmesi etrafında gelişen Energy Intelligence çekirdeği |
 | **ANNE AI** | Concept / Development — bilişsel mimari ve AI araştırması |
-| **VINCULUM** | Concept / Development — dağıtık/evolutionary swarm intelligence araştırma vizyonu |
 
 Teknik kanıt (yayımlanan portföy): **7.264 kWp** — [Teknik Çalışmalar](https://vitavoltglobal.com/vaka-calismalari.html)
 
@@ -51,25 +50,9 @@ Uzun vadeli araştırma yönleri:
 - heterogeneous AI orchestration
 - cognitive memory
 - verification and agency controls
-- **N-LINK:** graphene-based neural-interface hardware araştırma vizyonu
 - insan–makine etkileşimi için yeni nesil bilişsel arayüzler
 
-N-LINK bugün doğrulanmış bir ticari donanım ürünü değildir; Ar-Ge roadmap'idir.
-
-### VINCULUM — Concept / Development
-
-VINCULUM, dağıtık ve evolutionary swarm intelligence yaklaşımı üzerine araştırma vizyonudur.
-
-Roadmap yönleri:
-
-- GPS-independent coordination
-- distributed swarm state
-- decentralized communication
-- adaptive collective behavior
-- fault-tolerant swarm coordination
-- heterogeneous autonomous-agent cooperation
-
-VINCULUM bugün ticari olarak deploy edilmiş bir swarm-control ürünü olarak sunulmaz; araştırma ve geliştirme vizyonudur.
+ANNE bugün tamamlanmış bir AGI veya ticari otonom kontrol ürünü olarak sunulmaz.
 
 ---
 
@@ -112,8 +95,7 @@ Yayımlanan **7.264 kWp** teknik portföy, VITA Engine'in gelecekteki model vali
 - **Canlı:** Quick Feasibility (çatı/arazi, kWp, üretim, öz tüketim, CO₂, basit BESS)
 - **Roadmap / Planned:** Financial Analysis, BESS Intelligence, Carbon Intelligence, Scenario Analysis, Technical Verification
 - **Research:** Continuous Training / Model Validation architecture
-- **Anne AI:** Concept / Development
-- **VINCULUM:** Concept / Development
+- **ANNE AI:** Concept / Development
 
 Hub: [vita-energy-intelligence.html](https://vitavoltglobal.com/vita-energy-intelligence.html)
 
