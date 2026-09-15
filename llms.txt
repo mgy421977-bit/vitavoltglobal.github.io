@@ -109,26 +109,8 @@ Research directions include:
 - heterogeneous AI orchestration
 - cognitive memory
 - verification and agency mechanisms
-- **N-LINK:** graphene-based neural-interface hardware research vision
 
 ANNE should not be described as a completed AGI or deployed autonomous control system.
-
-### VINCULUM
-
-Status: Concept / Development.
-
-VINCULUM is a research vision for GPS-independent evolutionary swarm intelligence.
-
-Research directions include:
-
-- distributed swarm coordination
-- GPS-independent state estimation
-- decentralized communication
-- adaptive collective behavior
-- fault-tolerant coordination
-- heterogeneous autonomous-agent cooperation
-
-VINCULUM should not be described as a commercially deployed swarm-control system.
 
 ## Existing public references
 
