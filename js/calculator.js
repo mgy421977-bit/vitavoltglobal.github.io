@@ -1,4 +1,32 @@
-/* Vitavolt Global — Central preliminary feasibility calculator */
+/**
+ * Vitavolt Global — VITA Engine Pre-Feasibility Core v1
+ *
+ * Technical role:
+ * Browser-safe deterministic preliminary feasibility calculator.
+ *
+ * The coefficients and calculation parameters in this module represent
+ * Vitavolt's current engineering assumptions/configuration. They MUST NOT
+ * be described as autonomously trained model weights unless an auditable
+ * training pipeline and model artifact are available.
+ *
+ * Current outputs:
+ * - PV capacity / panel count
+ * - estimated annual PV production
+ * - self-consumption
+ * - grid export
+ * - estimated CO2 reduction
+ * - preliminary BESS capacity recommendation
+ *
+ * Model governance:
+ * - Inputs are normalized and clamped.
+ * - Physical bounds are enforced.
+ * - Results are preliminary, not final engineering design.
+ * - No unsupported AI accuracy/KPI score is exposed.
+ *
+ * Target architecture:
+ * Field Data → Research/Training → Validation → Frozen Model Artifact
+ * → Browser Inference → Verification → Decision Support
+ */
 (function (window) {
   'use strict';
 
@@ -71,6 +99,12 @@
     // Tasarım payı, fiziksel yıllık tüketimin üzerinde öz tüketim üretemez.
     var selfConsumedKwh = Math.min(annualConsumption, annualProductionKwh, Math.round(annualProductionKwh * selfConsumptionRatio));
     var gridExportKwh = Math.max(0, annualProductionKwh - selfConsumedKwh);
+
+    /*
+     * CO2 estimate: assumption-based engineering estimate, not a measured
+     * avoided-emissions result. Do not expose an AI accuracy percentage
+     * without a validated benchmark and reproducible evaluation procedure.
+     */
     var co2ReductionKg = Math.round(annualProductionKwh * co2Factor);
 
     var dailyConsumptionKwh = annualConsumption > 0 ? annualConsumption / 365 : 0;
@@ -78,6 +112,12 @@
     var peakDemandKw = positive(input && input.peakDemandKw);
     var bessRecommended = nighttimeShare >= 0.40 || peakDemandKw >= Math.max(20, dcCapacityKwp * 0.35);
     var suggestedBatteryKwh = 0;
+
+    /*
+     * Preliminary BESS sizing. Without a detailed hourly/15-minute load
+     * profile this remains an assumption-based recommendation, not a final
+     * storage design.
+     */
     if (bessRecommended && dailyConsumptionKwh > 0) {
       var usableTarget = dailyConsumptionKwh * nighttimeShare * 0.75;
       var dod = clamp(finite(config.battery.depth_of_discharge, 0.9), 0.5, 1);
@@ -109,13 +149,25 @@
         selfConsumptionKwh: selfConsumedKwh,
         gridExportKwh: gridExportKwh,
         co2ReductionKg: co2ReductionKg,
+        co2Verification: {
+          status: 'assumption_based',
+          factorKgPerKwh: co2Factor,
+          aiScore: null
+        },
         estimatedAreaM2: panelCount * panelArea
       },
       bess: {
         recommended: bessRecommended,
         suggestedCapacityKwh: suggestedBatteryKwh,
         depthOfDischarge: clamp(finite(config.battery.depth_of_discharge, 0.9), 0.5, 1),
-        roundTripEfficiency: clamp(finite(config.battery.round_trip_efficiency, 0.95), 0.5, 1)
+        roundTripEfficiency: clamp(finite(config.battery.round_trip_efficiency, 0.95), 0.5, 1),
+        verification: {
+          status: 'preliminary',
+          basis: peakDemandKw > 0 || (input && input.nighttimeShare != null)
+            ? 'user_profile_inputs'
+            : 'default_assumptions',
+          aiScore: null
+        }
       },
       water: water,
       assumptions: {
