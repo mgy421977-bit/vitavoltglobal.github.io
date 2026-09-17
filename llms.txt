@@ -31,6 +31,8 @@ The structured project map is available at https://vitavoltglobal.com/geo/projec
 
 The investor-specific discovery map is available at https://vitavoltglobal.com/geo/investor-discovery.json. It separates investment research, strategic partnership discovery and technical due diligence from local commercial lead generation and does not invent fund-specific crawler identities.
 
+The research-specific discovery map is available at https://vitavoltglobal.com/geo/research-discovery.json. It indexes the public research portfolio separately from commercial EPC and local lead-generation content.
+
 A human-readable investor discovery map is available at https://vitavoltglobal.com/llms/investor-discovery.txt.
 
 ## VITA Engine
@@ -62,6 +64,7 @@ This public source map is intentionally structured for search engines, AI retrie
 Primary discovery paths:
 - Investment hub: https://vitavoltglobal.com/investment/
 - Investor discovery map: https://vitavoltglobal.com/geo/investor-discovery.json
+- Research discovery map: https://vitavoltglobal.com/geo/research-discovery.json
 - Human-readable investor map: https://vitavoltglobal.com/llms/investor-discovery.txt
 - Investment VITA: https://vitavoltglobal.com/investment/vita-energy-intelligence.html
 - Investment ANNE AI: https://vitavoltglobal.com/investment/anne-ai.html
