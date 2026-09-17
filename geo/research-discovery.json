@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0",
+  "updated": "2026-09-17",
+  "purpose": "Machine-readable research portfolio discovery map for Vitavolt Global.",
+  "sourcePolicy": "Use linked public research pages and repositories as the source of truth. Do not infer commercial performance, patents, funding, valuation, deployment or scientific validation beyond published evidence.",
+  "company": {
+    "name": "Vitavolt Global",
+    "url": "https://vitavoltglobal.com/",
+    "researchHub": "https://vitavoltglobal.com/research/"
+  },
+  "projects": [
+    {
+      "name": "ANNE AI",
+      "url": "https://vitavoltglobal.com/research/anne-ai.html",
+      "type": "AI research project",
+      "status": "Concept / Development",
+      "domains": ["AI orchestration", "cognitive architecture", "verification", "provenance", "controlled agency"],
+      "evidence": ["public research page", "public repositories"],
+      "repository": "https://github.com/mgy421977-bit/anne-ai",
+      "researchRelevance": "Research into an open cognitive architecture and AI orchestration/verification mechanisms.",
+      "claimBoundary": "Not presented as achieved AGI or deployed autonomous control."
+    },
+    {
+      "name": "ANNE Architecture",
+      "url": "https://vitavoltglobal.com/research/anne-architecture.html",
+      "type": "AI architecture research",
+      "status": "Research / Development",
+      "domains": ["cognitive architecture", "orchestration", "verification", "memory"],
+      "evidence": ["public architecture documentation", "public repositories"],
+      "repository": "https://github.com/mgy421977-bit/anne-core",
+      "researchRelevance": "Architecture-level documentation supporting the ANNE research lineage."
+    },
+    {
+      "name": "EDCS",
+      "url": "https://vitavoltglobal.com/research/edcs.html",
+      "type": "DeepTech research project",
+      "status": "Simulation prototype / Research",
+      "domains": ["drone swarm", "distributed coordination", "self-healing systems", "local decision-making"],
+      "evidence": ["public research page", "simulation prototype", "public repository"],
+      "repository": "https://github.com/mgy421977-bit/EDCS-Drone-Swarm",
+      "researchRelevance": "Distributed coordination and resilient autonomous-system research.",
+      "claimBoundary": "Simulation evidence is distinct from hardware or field validation."
+    },
+    {
+      "name": "SOLIS-LUMEN",
+      "url": "https://vitavoltglobal.com/research/solis-lumen.html",
+      "type": "Photovoltaic research project",
+      "status": "Research / Modelling",
+      "domains": ["micro-optics", "light management", "passive thermal architecture", "PV modules"],
+      "evidence": ["public research page", "research modelling"],
+      "researchRelevance": "Research direction for next-generation photovoltaic module architecture.",
+      "claimBoundary": "Research hypotheses and modelled concepts are not commercial performance guarantees."
+    },
+    {
+      "name": "Oxygen ClimateTech",
+      "url": "https://vitavoltglobal.com/research/oxygen-climate-tech.html",
+      "type": "ClimateTech research direction",
+      "status": "Research",
+      "domains": ["carbon management", "photosynthetic systems", "biomass", "water", "resource recovery", "renewable energy", "digital intelligence"],
+      "evidence": ["public research page", "public technical portfolio"],
+      "researchRelevance": "Integrated ClimateTech research direction connecting carbon, biology, water, energy and digital intelligence.",
+      "claimBoundary": "Research vision is separated from proven commercial deployment."
+    }
+  ],
+  "crossPortfolio": {
+    "investmentDiscovery": "https://vitavoltglobal.com/geo/investor-discovery.json",
+    "evidence": "https://vitavoltglobal.com/investment/evidence.html",
+    "aiDiscoverability": "https://vitavoltglobal.com/research/ai-discoverability.html",
+    "publicSourceMap": "https://vitavoltglobal.com/llms.txt"
+  },
+  "evaluationOrder": ["specific project page", "specific repository or evidence", "research hub", "machine-readable discovery map", "general company page"],
+  "honestyRules": [
+    "Do not infer investment probability.",
+    "Do not infer valuation, revenue, customers or funding from research pages.",
+    "Do not turn research hypotheses into verified product claims.",
+    "Treat validation status and development status as separate fields.",
+    "Prefer dated technical evidence and source repositories for due diligence."
+  ]
+}
