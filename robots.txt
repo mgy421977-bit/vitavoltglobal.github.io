@@ -17,69 +17,85 @@
 # Entity context:
 #   Vitavolt Global = Izmir, Türkiye based Energy Infrastructure & Intelligence company.
 #   Operational scope = Türkiye geneli.
-#   Rapid field coordination = Izmir, Kusadasi, Marmaris, Cesme, Alacati through solution partners.
+#   Rapid field coordination = Izmir, Kusadasi, Marmaris, Bodrum through solution partners.
 #   HQ = Izmir (Bayrakli).
 #   Core commercial domains = GES, BESS, EPC, carbon, water and engineering.
 #   VITA = energy intelligence / pre-feasibility / scenario analysis layer.
 #   Research = separate public research layer.
 #   Investment scope = Türkiye + international scale.
+#
+# Regional clarification:
+#   Kusadasi, Marmaris and Bodrum are not branch or office locations.
+#   They represent solution-partner-supported faster field coordination.
 # ---------------------------------------------------------------------------
 
 User-agent: *
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # OpenAI — public search/discovery crawler
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # OpenAI — advertising landing-page validation crawler
 User-agent: OAI-AdsBot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # OpenAI — training-data crawler (separate policy from SearchBot)
 User-agent: GPTBot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # Google Search
 User-agent: Googlebot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # Google Gemini / AI control token
 User-agent: Google-Extended
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # Other widely used AI/search crawlers
 User-agent: ClaudeBot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 User-agent: Applebot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # Google image discovery
 User-agent: Googlebot-Image
 Allow: /
 Allow: /images/
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # Bing search discovery
 User-agent: Bingbot
 Allow: /
+Disallow: /kusadasi/
 Disallow: /404.html
 
 # xAI / Grok: no dedicated public robots.txt crawler token was identified
