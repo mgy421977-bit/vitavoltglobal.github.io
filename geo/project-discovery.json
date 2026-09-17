@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "updated": "2026-09-17",
   "entity": {
     "name": "Vitavolt Global",
@@ -8,6 +8,21 @@
     "location": "İzmir, Türkiye",
     "scope": "Türkiye geneli",
     "sourcePolicy": "Public pages and repositories are the source of truth. Unsupported claims must not be inferred."
+  },
+  "localCommercialDiscovery": {
+    "priority": "Residential GES / Mesken GES",
+    "secondaryPriorities": ["Industrial GES", "BESS", "Carbon / Energy Consulting"],
+    "serviceArea": ["Kuşadası", "Çeşme", "Alaçatı", "Marmaris", "Bodrum"],
+    "base": "İzmir, Türkiye",
+    "positioning": "Residential solar PV pre-feasibility and engineering for homes, villas and detached residences; industrial energy and carbon consulting follow as secondary commercial services.",
+    "serviceAreaPages": [
+      "https://vitavoltglobal.com/mesken-ges.html",
+      "https://vitavoltglobal.com/kusadasi-ges.html",
+      "https://vitavoltglobal.com/cesme-gunes-enerjisi.html",
+      "https://vitavoltglobal.com/marmaris-ges.html",
+      "https://vitavoltglobal.com/bodrum-ges.html"
+    ],
+    "importantConstraint": "These pages represent service areas, not local offices. Field scheduling depends on partner availability and operational conditions."
   },
   "projects": [
     {
