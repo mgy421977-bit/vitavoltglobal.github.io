@@ -32,7 +32,7 @@
     }
     function loadScript(src,ready){return new Promise(function(resolve,reject){if(ready())return resolve();var s=document.createElement('script');s.src=src;s.async=false;s.onload=function(){ready()?resolve():reject(new Error('Modül yüklenemedi: '+src));};s.onerror=function(){reject(new Error('Modül yüklenemedi: '+src));};document.head.appendChild(s);});}
     function ensurePipeline(){
-      return loadScript('js/vita-engine-sizing.js?v=2026-09-17-consumption-sizing-v2',function(){return !!(window.VitaEngine&&window.VitaEngine.__consumptionSizingInstalled);})
+      return loadScript('js/vita-engine-sizing.js?v=2026-09-17-consumption-sizing-v3',function(){return !!(window.VitaEngine&&window.VitaEngine.__consumptionSizingInstalled);})
       .then(function(){return loadScript('js/mitos-core.js?v=2026-09-17-mitos-v2',function(){return !!(window.MitosCore&&typeof window.MitosCore.completeInputs==='function');});})
       .then(function(){return loadScript('js/anne-core.js?v=2026-09-17-anne-v4',function(){return !!(window.AnneCore&&typeof window.AnneCore.assess==='function');});})
       .then(function(){return window.AnneCore.ensureMitos?window.AnneCore.ensureMitos():Promise.resolve();});
