@@ -1,2 +1,209 @@
-/* Homepage hızlı fizibilite — VITA Engine + yönetici özeti + BOM raporu | build 2026-09-17-cost-v2 */
-(function(){'use strict';var form=document.getElementById('vitaHizliForm');if(!form)return;var btn=document.getElementById('hesaplaBtn'),box=document.getElementById('sonucKutusu'),result=document.getElementById('sonucIcerik');function num(k){var e=form.elements[k];if(!e)return 0;var v=Number(e.value);return Number.isFinite(v)?v:0}function money(v){return Number(v||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+' USD'}function bomText(b){return(b||[]).map(function(x){return x.category+' | '+x.item+' | '+x.quantity+' '+x.unit+' | '+x.basis}).join('\n')}function ensure(){if(window.VitavoltCalculator)return true;if(window.VitaEngine&&typeof window.VitaEngine.calculate==='function'){window.VitavoltCalculator={calculate:function(i,c){return window.VitaEngine.calculate(i,c&&c.pricing?c:{pricing:c||window.VitaEngine.getPricing()})},loadConfig:function(){return typeof window.VitaEngine.loadMarketData==='function'?window.VitaEngine.loadMarketData().then(function(p){return{pricing:p}}):Promise.resolve({pricing:window.VitaEngine.getPricing()})},defaultConfig:{pricing:window.VitaEngine.getPricing()}};return true}return false}function manager(r){var p=r.pricing||{},pc=p.projectCost||{},d=p.directCost||{},m=p.directMaterial||{},l=p.labor||{},b=p.battery||{},bos=p.bos||{};return['VITA YÖNETİCİ ÖZETİ','Engine: '+((r.engine&&r.engine.version)||'VITA Engine')+' | build '+((r.engine&&r.engine.build)||''),'GES: '+r.solar.dcCapacityKwp+' kWp | '+r.solar.panelCount+' panel | '+r.solar.annualProductionKwh.toLocaleString('tr-TR')+' kWh/yıl','BESS: '+(r.bess.recommended?'ön değerlendirmede öneriliyor':'ön değerlendirmede tetiklenmedi')+' | talep '+r.bess.suggestedCapacityKwh+' kWh | kurulu '+b.installedKwh+' kWh | '+b.units+' modül','DİREKT MALZEME MALİYETİ: '+money(m.baseUsd),'İŞÇİLİK: '+money(l.baseUsd)+' | '+money(l.rateUsdPerPanel)+' / panel × '+l.panelCount+' panel','TOPLAM DİREKT MALİYET: '+money(d.baseUsd),'BOS/EPC ORANSAL ALLOWANCE (direkt maliyete dahil değil): '+money(bos.baseUsd),'Ticari gösterim (%'+p.markupPct+' katman): '+money(p.commercialPrice&&p.commercialPrice.usd),'Maliyet modeli: '+(pc.basis||''),'Not: Fiyatı tanımlanmamış BOM kalemleri ve BOS/EPC allowance doğrudan maliyete sessizce eklenmez; saha metrajı ve satın alma teklifleriyle doğrulanır.'].join('\n')}function technical(r){return['GES: '+r.solar.dcCapacityKwp+' kWp / '+r.solar.panelCount+' panel','Panel: '+r.assumptions.panelPowerWp+' Wp, tahmini alan: '+r.solar.estimatedAreaM2+' m²','Yıllık PV üretimi: '+r.solar.annualProductionKwh+' kWh','Öz tüketim: '+r.solar.selfConsumptionKwh+' kWh','Şebeke ihracı: '+r.solar.gridExportKwh+' kWh','CO₂ azaltımı: '+r.solar.co2ReductionKg+' kg/yıl (faktör '+r.assumptions.co2FactorKgPerKwh+' kg/kWh varsayımı)','BESS: '+(r.bess.recommended?'öneriliyor':'tetiklenmedi')+' | talep '+r.bess.suggestedCapacityKwh+' kWh | kurulu kapasite motor tarafından modül adedine yuvarlanır','BESS DoD: '+Math.round(r.bess.depthOfDischarge*100)+'% | RTE: '+Math.round(r.bess.roundTripEfficiency*100)+'%','Yağmur suyu: '+(r.water&&r.water.rainfall?r.water.rainfall.annualUsableM3:0)+' m³/yıl','Gri su: '+(r.water&&r.water.greywater?r.water.greywater.annualUsableM3:0)+' m³/yıl','Hesap uyarısı: '+r.warning].join('\n')}function render(r){if(!result||!box)return;result.textContent='';var p=r.pricing||{},d=p.directCost||{},m=p.directMaterial||{},l=p.labor||{},b=p.battery||{};var rows=[['Önerilen DC GES Gücü',r.solar.dcCapacityKwp.toLocaleString('tr-TR')+' kWp'],['Tahmini panel adedi',String(r.solar.panelCount)],['Tahmini yıllık üretim',r.solar.annualProductionKwh.toLocaleString('tr-TR')+' kWh'],['Tahmini CO₂ azaltımı',r.solar.co2ReductionKg.toLocaleString('tr-TR')+' kg/yıl'],['Direkt malzeme maliyeti',money(m.baseUsd)],['İşçilik',money(l.baseUsd)],['Toplam direkt maliyet',money(d.baseUsd)],['Ticari gösterim',money(p.commercialPrice&&p.commercialPrice.usd)]];var t=document.createElement('div');t.className='calc-results';rows.forEach(function(x){var e=document.createElement('p'),s=document.createElement('strong');s.textContent=x[0]+': ';e.appendChild(s);e.appendChild(document.createTextNode(x[1]));t.appendChild(e)});result.appendChild(t);var note=document.createElement('p');note.className='calc-warning';note.textContent='VITA Engine build '+((r.engine&&r.engine.build)||'')+'. Direkt maliyet = malzeme + panel başı işçilik. BOS/EPC allowance ve fiyatı tanımlanmamış BOM kalemleri ayrı tutulur.';result.appendChild(note);if(r.bess&&r.bess.recommended){var e=document.createElement('p');e.textContent='BESS: '+r.bess.suggestedCapacityKwh+' kWh talep / '+b.installedKwh+' kWh kurulu ('+b.units+' × '+b.referenceUnitKwh+' kWh).';result.appendChild(e)}var mail=document.createElement('p');mail.className='calc-warning';mail.id='calcMailNote';mail.textContent='Yönetici özeti + BOM + teknik rapor hazırlanıyor...';result.appendChild(mail);box.style.display='block';try{box.scrollIntoView({behavior:'smooth',block:'nearest'})}catch(e){}}form.addEventListener('submit',function(ev){ev.preventDefault();if(form.reportValidity&&!form.reportValidity())return;var roof=num('cati_alani'),land=num('arazi_alani'),cons=num('aylik_tuketim'),landOk=form.elements.arazi_var?form.elements.arazi_var.value==='Evet':land>0;if(roof<=0&&land<=0){result.textContent='Çatı veya arazi alanından en az birini 0’dan büyük girin.';box.style.display='block';return}if(cons<0||roof<0||land<0){result.textContent='Negatif değerler kabul edilmez.';box.style.display='block';return}if(!ensure()){result.textContent='VITA Engine yüklenemedi. Sayfayı yenileyip tekrar deneyin.';box.style.display='block';return}if(window.VitavoltForms)window.VitavoltForms.setLoading(btn,true,'Hesaplanıyor...');var run=function(cfg){return window.VitavoltCalculator.calculate({roofAreaM2:roof,landAreaM2:land,landAvailable:landOk,monthlyConsumptionKwh:cons,nighttimeShare:num('gece_tuketim_payi')>0?num('gece_tuketim_payi')/100:undefined,peakDemandKw:num('pik_talep_kw'),city:(form.elements.sehir&&form.elements.sehir.value)||'',monthlyWaterM3:num('aylik_su_tuketim')},cfg)};var cp=window.VitavoltCalculator.loadConfig?window.VitavoltCalculator.loadConfig():Promise.resolve(window.VitavoltCalculator.defaultConfig);cp.then(function(cfg){var calc;try{calc=run(cfg);render(calc);if(window.VitavoltForms)window.VitavoltForms.track('calculator_complete',{calculator:'homepage',engine_build:calc.engine&&calc.engine.build})}catch(err){result.textContent='Hesaplama sırasında bir sorun oluştu. Girdi alanlarını kontrol edin.';box.style.display='block';if(window.VitavoltForms)window.VitavoltForms.setLoading(btn,false);return}var p=calc.pricing||{},d=p.directCost||{},m=p.directMaterial||{},l=p.labor||{},pc=p.projectCost||{},lead={ad_soyad:(form.elements.ad_soyad&&form.elements.ad_soyad.value)||'',telefon:(form.elements.telefon&&form.elements.telefon.value)||'',email:(form.elements.email&&form.elements.email.value)||'',sehir:(form.elements.sehir&&form.elements.sehir.value)||'',tesis_tipi:(form.elements.tesis_tipi&&form.elements.tesis_tipi.value)||'',cati_alani_m2:roof,arazi_alani_m2:land,aylik_tuketim_kwh:cons,aylik_su_tuketim:(form.elements.aylik_su_tuketim&&form.elements.aylik_su_tuketim.value)||'',onerilen_kwp:calc.solar.dcCapacityKwp,yillik_uretim_kwh:calc.solar.annualProductionKwh,co2_kg:calc.solar.co2ReductionKg,vita_engine_build:calc.engine&&calc.engine.build,vita_panel_maliyeti_usd:m.baseUsd||0,vita_inverter_maliyeti_usd:p.inverter?p.inverter.baseUsd:0,vita_bess_maliyeti_usd:p.battery?p.battery.baseUsd:0,vita_malzeme_maliyeti_usd:m.baseUsd||0,vita_iscilik_usd:l.baseUsd||0,vita_direkt_maliyet_usd:d.baseUsd||0,vita_bos_allowance_usd:p.bos?p.bos.baseUsd:0,vita_ticari_fiyat_usd:p.commercialPrice?p.commercialPrice.usd:0,vita_on_maliyet_usd:d.baseUsd||0,vita_tahmini_fiyat_usd:p.commercialPrice?p.commercialPrice.usd:0,vita_maliyet_bazisi:pc.basis||'user_catalog_plus_panel_labor',vita_referans_paket:'',vita_referans_teklif_usd:0,vita_referans_maliyet_usd:0,vita_referans_indirim_pct:10,fiyat_katmani_pct:p.markupPct||0,yonetici_ozeti:manager(calc),bom_listesi:bomText(p.bom),teknik_detaylar:technical(calc),maliyet_detayi:'Direkt malzeme: '+money(m.baseUsd)+' | Panel: '+money(p.panel&&p.panel.baseUsd)+' | İnverter: '+money(p.inverter&&p.inverter.baseUsd)+' | BESS: '+money(p.battery&&p.battery.baseUsd)+' | İşçilik: '+money(l.baseUsd)+' ('+money(l.rateUsdPerPanel)+'/panel) | TOPLAM DİREKT MALİYET: '+money(d.baseUsd)+' | BOS/EPC allowance: '+money(p.bos&&p.bos.baseUsd)+' (direkt maliyete dahil değil) | Ticari fiyat: '+money(p.commercialPrice&&p.commercialPrice.usd)};var note=document.getElementById('calcMailNote');if(window.VitavoltForms&&typeof window.VitavoltForms.submitPayload==='function')window.VitavoltForms.submitPayload(lead,{subject:'VITA — Yönetici Özeti + BOM + Direkt Maliyet + Ön Fizibilite | '+(lead.ad_soyad||'İsimsiz'),formName:'vitaHizliForm'}).then(function(x){if(note)note.textContent=x.ok?'Yönetici özeti, BOM, teknik detaylar ve direkt maliyet e-posta ile iletildi.':'Sonuç hesaplandı; e-posta iletiminde sorun oluştu.'}).finally(function(){if(window.VitavoltForms)window.VitavoltForms.setLoading(btn,false)})}).catch(function(){result.textContent='Piyasa/veri konfigürasyonu yüklenemedi. Sayfayı yenileyip tekrar deneyin.';box.style.display='block';if(window.VitavoltForms)window.VitavoltForms.setLoading(btn,false)})});document.querySelectorAll('.faq-q').forEach(function(x){x.addEventListener('click',function(){var i=this.parentElement,o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(z){z.classList.remove('open')});if(!o)i.classList.add('open');this.setAttribute('aria-expanded',String(!o))})})})();
+/* Homepage hızlı fizibilite — VITA Engine single authority | build 2026-09-17-v3-offline */
+(function () {
+  'use strict';
+  var form = document.getElementById('vitaHizliForm');
+  if (!form) return;
+  var btn = document.getElementById('hesaplaBtn');
+  var box = document.getElementById('sonucKutusu');
+  var result = document.getElementById('sonucIcerik');
+  function num(k) {
+    var e = form.elements[k];
+    if (!e) return 0;
+    var v = Number(e.value);
+    return Number.isFinite(v) ? v : 0;
+  }
+  function money(v) {
+    return Number(v || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
+  }
+  function bomText(b) {
+    return (b || [])
+      .map(function (x) {
+        var cost =
+          x.costStatus === 'PRICED' && x.totalCost != null
+            ? ' | ' + money(x.totalCost)
+            : x.costStatus === 'NOT_PRICED'
+              ? ' | NOT_PRICED'
+              : '';
+        return x.category + ' | ' + x.item + ' | ' + x.quantity + ' ' + x.unit + cost + ' | ' + (x.source || '');
+      })
+      .join('\n');
+  }
+  function manager(r) {
+    var p = r.pricing || {};
+    var d = p.directCost || {};
+    var m = p.directMaterial || {};
+    var l = p.labor || {};
+    var b = p.battery || {};
+    var bos = p.bos || {};
+    var w = r.water || {};
+    var lines = [
+      'VITA YÖNETİCİ ÖZETİ',
+      'Engine: ' + ((r.engine && r.engine.version) || 'VITA') + ' | build ' + ((r.engine && r.engine.build) || ''),
+      'GES: ' + r.solar.dcCapacityKwp + ' kWp | ' + r.solar.panelCount + ' panel | ' + r.solar.annualProductionKwh.toLocaleString('tr-TR') + ' kWh/yıl',
+      'BESS: ' +
+        (r.bess.recommended ? 'ön değerlendirmede öneriliyor' : 'ön değerlendirmede tetiklenmedi') +
+        ' | talep ' +
+        (b.requestedCapacityKwh != null ? b.requestedCapacityKwh : r.bess.suggestedCapacityKwh) +
+        ' kWh | kurulu ' +
+        (b.installedCapacityKwh != null ? b.installedCapacityKwh : b.installedKwh) +
+        ' kWh | ' +
+        (b.batteryModuleCount != null ? b.batteryModuleCount : b.units) +
+        ' modül',
+      'CO₂: ' + r.solar.co2ReductionKg + ' kg/yıl (factor ' + (r.solar.emissionFactor != null ? r.solar.emissionFactor : 0.42) + ' kg/kWh)',
+      'DİREKT MALZEME: ' + money(m.baseUsd),
+      'İŞÇİLİK: ' + money(l.baseUsd) + ' | ' + money(l.rateUsdPerPanel) + ' / panel × ' + l.panelCount + ' panel',
+      'TOPLAM DİREKT MALİYET (Direct Cost): ' + money(d.baseUsd),
+      'BOS/EPC ALLOWANCE (modeled, not in Direct Cost purchase lines): ' + money(bos.baseUsd),
+      'PROJECT COST (direct + BOS model): ' + money(p.projectCost && p.projectCost.usd),
+      'SALES PRICE (commercial layer %' + (p.markupPct || 15) + ' on Direct Cost): ' + money(p.salesPrice && p.salesPrice.usd),
+      'Validation: ' + (r.validation && r.validation.ok ? 'OK' : 'CHECK')
+    ];
+    if (w.rainfall && w.rainfall.selected) lines.push('Yağmur suyu: ' + w.rainfall.annualUsableM3 + ' m³/yıl (seçili)');
+    else lines.push('Yağmur suyu: seçilmedi / hesaplanmadı');
+    if (w.greywater && w.greywater.selected) lines.push('Gri su: ' + w.greywater.annualUsableM3 + ' m³/yıl (seçili)');
+    else lines.push('Gri su: seçilmedi / hesaplanmadı');
+    lines.push('Not: Bu rapor ön fizibilitedir; nihai sistem tasarımı saha, tüketim ve teknik analiz sonrasında belirlenir.');
+    return lines.join('\n');
+  }
+  function technical(r) {
+    var p = r.pricing || {};
+    var b = p.battery || {};
+    return [
+      'GES kWp: ' + r.solar.dcCapacityKwp,
+      'Panel adedi: ' + r.solar.panelCount,
+      'Panel Wp: ' + (r.assumptions && r.assumptions.panelPowerWp),
+      'Yıllık üretim kWh: ' + r.solar.annualProductionKwh,
+      'Öz tüketim kWh: ' + r.solar.selfConsumptionKwh,
+      'Şebeke ihracı kWh: ' + r.solar.gridExportKwh,
+      'CO₂ kg/yıl: ' + r.solar.co2ReductionKg,
+      'BESS talep kWh: ' + (b.requestedCapacityKwh != null ? b.requestedCapacityKwh : r.bess.suggestedCapacityKwh),
+      'BESS kurulu kWh: ' + (b.installedCapacityKwh != null ? b.installedCapacityKwh : ''),
+      'BESS modül adedi: ' + (b.batteryModuleCount != null ? b.batteryModuleCount : b.units),
+      'DoD: ' + r.bess.depthOfDischarge,
+      'RTE: ' + r.bess.roundTripEfficiency,
+      'Inverter: ' + (p.inverter && p.inverter.powerKw) + ' kW x' + (p.inverter && p.inverter.count) + ' (' + (p.inverter && p.inverter.selectionReason) + ')'
+    ].join('\n');
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (window.VitavoltForms) window.VitavoltForms.setLoading(btn, true, 'Hesaplanıyor...');
+    if (!(window.VitaEngine && typeof window.VitaEngine.calculate === 'function')) {
+      result.textContent = 'VITA Engine yüklenemedi. Sayfayı yenileyin.';
+      box.style.display = 'block';
+      if (window.VitavoltForms) window.VitavoltForms.setLoading(btn, false);
+      return;
+    }
+    var roof = num('cati_alani');
+    var land = num('arazi_alani');
+    var cons = num('aylik_tuketim');
+    var waterM = num('aylik_su_tuketim');
+    var night = num('gece_tuketim_payi');
+    var peak = num('pik_talep_kw');
+    var city = (form.elements.sehir && form.elements.sehir.value) || '';
+    var araziVar = form.elements.arazi_var && form.elements.arazi_var.value === 'Evet';
+    var load = typeof window.VitaEngine.loadMarketData === 'function' ? window.VitaEngine.loadMarketData() : Promise.resolve();
+    load
+      .then(function () {
+        var calc = window.VitaEngine.calculate({
+          roofAreaM2: roof,
+          landAreaM2: land,
+          landAvailable: araziVar,
+          annualConsumptionKwh: cons * 12,
+          monthlyWaterM3: waterM,
+          city: city,
+          nighttimeShare: night ? night / 100 : undefined,
+          peakDemandKw: peak || undefined,
+          greywaterSelected: waterM > 0,
+          rainwaterSelected: roof > 0
+        });
+        var p = calc.pricing || {};
+        var d = p.directCost || {};
+        var m = p.directMaterial || {};
+        var l = p.labor || {};
+        var pc = p.projectCost || {};
+        result.innerHTML =
+          '<p><strong>GES:</strong> ' +
+          calc.solar.dcCapacityKwp +
+          ' kWp · ' +
+          calc.solar.panelCount +
+          ' panel · ' +
+          calc.solar.annualProductionKwh.toLocaleString('tr-TR') +
+          ' kWh/yıl</p>' +
+          '<p><strong>CO₂:</strong> ' +
+          calc.solar.co2ReductionKg.toLocaleString('tr-TR') +
+          ' kg/yıl</p>' +
+          '<p><strong>Direct Cost:</strong> ' +
+          money(d.baseUsd) +
+          ' · <strong>Sales:</strong> ' +
+          money(p.salesPrice && p.salesPrice.usd) +
+          '</p>' +
+          '<p style="color:#94a3b8;font-size:.85rem">' +
+          calc.warning +
+          '</p>';
+        box.style.display = 'block';
+        var lead = {
+          ad_soyad: (form.elements.ad_soyad && form.elements.ad_soyad.value) || '',
+          telefon: (form.elements.telefon && form.elements.telefon.value) || '',
+          email: (form.elements.email && form.elements.email.value) || '',
+          sehir: city,
+          tesis_tipi: (form.elements.tesis_tipi && form.elements.tesis_tipi.value) || '',
+          cati_alani_m2: roof,
+          arazi_alani_m2: land,
+          aylik_tuketim_kwh: cons,
+          aylik_su_tuketim: waterM || '',
+          onerilen_kwp: calc.solar.dcCapacityKwp,
+          yillik_uretim_kwh: calc.solar.annualProductionKwh,
+          co2_kg: calc.solar.co2ReductionKg,
+          piyasa_panel_usd: p.marketPanelUsd != null ? p.marketPanelUsd : (p.panel && p.panel.baseUsd) || 0,
+          piyasa_inverter_usd: p.marketInverterUsd != null ? p.marketInverterUsd : (p.inverter && p.inverter.baseUsd) || 0,
+          piyasa_panel_inverter_usd: p.marketPanelInverterUsd != null ? p.marketPanelInverterUsd : 0,
+          vita_on_maliyet_usd: d.baseUsd || 0,
+          vita_tahmini_fiyat_usd: (p.salesPrice && p.salesPrice.usd) || (p.commercialPrice && p.commercialPrice.usd) || 0,
+          vita_maliyet_bazisi: pc.basis || 'user_catalog_plus_panel_labor',
+          vita_referans_paket: '',
+          vita_referans_teklif_usd: 0,
+          vita_referans_maliyet_usd: 0,
+          vita_referans_indirim_pct: 10,
+          fiyat_katmani_pct: p.markupPct || 15,
+          yonetici_ozeti: manager(calc),
+          bom_listesi: bomText(p.bom),
+          teknik_detaylar: technical(calc),
+          maliyet_detayi:
+            'Panel: ' +
+            money(p.panel && p.panel.baseUsd) +
+            ' | İnverter: ' +
+            money(p.inverter && p.inverter.baseUsd) +
+            ' | BESS: ' +
+            money(p.battery && p.battery.baseUsd) +
+            ' | İşçilik: ' +
+            money(l.baseUsd) +
+            ' | Direct Cost: ' +
+            money(d.baseUsd) +
+            ' | BOS: ' +
+            money(p.bos && p.bos.baseUsd) +
+            ' | Project: ' +
+            money(pc.usd) +
+            ' | Sales: ' +
+            money(p.salesPrice && p.salesPrice.usd)
+        };
+        var note = document.getElementById('calcMailNote');
+        if (window.VitavoltForms && typeof window.VitavoltForms.submitPayload === 'function') {
+          return window.VitavoltForms
+            .submitPayload(lead, {
+              subject: 'VITA — Yönetici Özeti + BOM + Ön Fizibilite | ' + (lead.ad_soyad || 'İsimsiz'),
+              formName: 'vitaHizliForm'
+            })
+            .then(function (x) {
+              if (note) note.textContent = x.ok ? 'Yönetici özeti e-posta ile iletildi.' : 'Sonuç hesaplandı; e-posta sorunlu olabilir.';
+            });
+        }
+      })
+      .catch(function () {
+        result.textContent = 'Hesaplama yüklenemedi. Sayfayı yenileyin.';
+        box.style.display = 'block';
+      })
+      .finally(function () {
+        if (window.VitavoltForms) window.VitavoltForms.setLoading(btn, false);
+      });
+  });
+})();
