@@ -1,5 +1,5 @@
 {
-  "version": "1.7",
+  "version": "1.8",
   "solar": {
     "default_panel_power": 620,
     "panel_area_m2": 2.6,
@@ -17,10 +17,11 @@
   "pricing": {
     "markup_pct": 15,
     "currency": "USD",
-    "tax_note": "Maliyet referansı KDV hariçtir. %15 Vitavolt fiyat katmanı maliyet referansının üzerine uygulanır; KDV hesaplanmaz.",
+    "tax_note": "Maliyet referansı KDV hariçtir. %15 Vitavolt fiyat katmanı ticari gösterim içindir; doğrudan maliyet hesabına eklenmez.",
     "provenance": "user_supplied_market_references_and_catalog",
     "last_updated": "2026-09-17",
     "cost_model": {
+      "labor_usd_per_panel": 20,
       "market_quote_discount_pct": 10,
       "market_quote_policy": "Karşılaştırılan dış tekliflerin KDV hariç tutarının %10 altı ön maliyet referansı olarak kullanılır.",
       "user_catalog_policy": "Kullanıcı tarafından sağlanan birim fiyat kataloğu doğrudan maliyet girdisi olarak korunur.",
@@ -29,7 +30,7 @@
         "bos_usd_per_kwp": 241.07855208,
         "fixed_bos_usd": 604.19354839,
         "basis": "2.4 kWh depolama = 800 USD kullanıcı fiyatı; Eko, Standart ve Konfor paketlerinin %10 altı maliyet referansları; 0.18 USD/W panel ve 6.2 kW MPPT 290 USD kullanıcı fiyatlarıyla oransal türetim.",
-        "note": "Batarya birim maliyeti kullanıcı tarafından verilen 2.4 kWh / 800 USD fiyatından doğrudan orantılanmıştır. BOS/EPC oranları ön maliyet modelidir; tek tek kablo, MC4, pano, konstrüksiyon, nakliye ve işçilik birim fiyatı olarak yorumlanmaz."
+        "note": "Batarya maliyeti fiziksel 2.4 kWh modül adedine göre hesaplanır. BOS/EPC oranları ön fizibilite modelidir; fiyatı ayrıca tanımlanmamış BOM kalemleri doğrudan maliyete sessizce eklenmez."
       },
       "bom_ratios": {
         "dc_cable_m_per_panel": 6.19,
@@ -62,9 +63,5 @@
       {"capacity_kwh": 5, "base_usd": 1666.67, "base_usd_per_kwh": 333.33333333, "source": "proportional_from_2.4kwh_user_price", "confidence": "derived"}
     ]
   },
-  "economics": {
-    "electricity_price": 0,
-    "inflation": 0,
-    "discount_rate": 0
-  }
+  "economics": {"electricity_price": 0,"inflation": 0,"discount_rate": 0}
 }
