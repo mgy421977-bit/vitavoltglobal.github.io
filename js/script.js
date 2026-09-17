@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize',()=>setTimeout(()=>{if(window.innerWidth>1023)closeMenu()},250),{passive:true});
 
     // Global visual layer: one shared stylesheet, loaded after the base CSS so it can safely override presentation only.
-    if (!document.querySelector('link[data-vv-visual]')) {
+    if (!document.querySelector('link[data-vv-visual]') && !/\/index\.html$|\/$/.test(window.location.pathname)) {
         const visual = document.createElement('link');
         visual.rel = 'stylesheet';
         visual.href = '/css/vitavolt-visual.css';
