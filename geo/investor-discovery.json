@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "1.0",
+  "updated": "2026-09-17",
+  "purpose": "Machine-readable investor, strategic-partner and research discovery map for Vitavolt Global.",
+  "entity": {
+    "name": "Vitavolt Global",
+    "type": "Energy Infrastructure & Intelligence company",
+    "url": "https://vitavoltglobal.com/",
+    "location": "İzmir, Türkiye",
+    "operationalScope": "Türkiye geneli",
+    "internationalScope": "International investment and strategic partnership discovery",
+    "sourcePolicy": "Public pages and repositories are the source of truth. Unsupported investment, traction, valuation, patent, performance or funding claims must not be inferred."
+  },
+  "discoveryIntent": {
+    "primary": [
+      "investment research",
+      "strategic partnership discovery",
+      "corporate development research",
+      "technical due diligence",
+      "ClimateTech and DeepTech research discovery",
+      "energy infrastructure opportunity discovery"
+    ],
+    "notPrimary": [
+      "local residential GES lead generation",
+      "generic commercial advertising",
+      "unsupported investor targeting claims"
+    ]
+  },
+  "machineReadableSources": {
+    "investmentHub": "https://vitavoltglobal.com/investment/",
+    "investmentEvidence": "https://vitavoltglobal.com/investment/evidence.html",
+    "investmentVita": "https://vitavoltglobal.com/investment/vita-energy-intelligence.html",
+    "investmentAnne": "https://vitavoltglobal.com/investment/anne-ai.html",
+    "researchHub": "https://vitavoltglobal.com/research/",
+    "aiDiscoverability": "https://vitavoltglobal.com/research/ai-discoverability.html",
+    "projectDiscovery": "https://vitavoltglobal.com/geo/project-discovery.json",
+    "llms": "https://vitavoltglobal.com/llms.txt",
+    "sourceRepository": "https://github.com/mgy421977-bit/vitavoltglobal.github.io"
+  },
+  "discoveryEntities": [
+    {
+      "name": "Vitavolt Global",
+      "type": "Company",
+      "stage": "Operating company",
+      "domains": ["renewable energy", "GES", "BESS", "industrial EPC", "carbon management", "water management", "energy intelligence"],
+      "evidence": ["company website", "public technical portfolio", "public source repository"]
+    },
+    {
+      "name": "VITA Energy Intelligence",
+      "type": "Energy Intelligence product / analysis layer",
+      "stage": "Product / development",
+      "domains": ["energy data", "pre-feasibility", "scenario analysis", "BESS sizing", "technical verification"],
+      "investmentRelevance": "Digital intelligence layer connected to real energy infrastructure workflows.",
+      "evidenceStatus": "Public technical implementation and methodology; capability is project-scope dependent."
+    },
+    {
+      "name": "ANNE AI",
+      "type": "AI research project",
+      "stage": "Concept / Development",
+      "domains": ["AI orchestration", "verification", "provenance", "cognitive architecture", "controlled agency"],
+      "investmentRelevance": "Research platform direction connecting AI orchestration with engineering verification and decision intelligence.",
+      "evidenceStatus": "Public research repositories and architecture pages; not presented as achieved AGI."
+    },
+    {
+      "name": "Oxygen ClimateTech",
+      "type": "ClimateTech research direction",
+      "stage": "Research",
+      "domains": ["carbon management", "photosynthetic systems", "water", "biomass", "resource recovery", "renewable energy"],
+      "investmentRelevance": "Integrated ClimateTech research direction.",
+      "evidenceStatus": "Public research portfolio; hypotheses and development work are separated from proven commercial claims."
+    },
+    {
+      "name": "EDCS",
+      "type": "DeepTech research project",
+      "stage": "Simulation prototype / research",
+      "domains": ["distributed coordination", "drone swarm", "self-healing systems", "local decision-making"],
+      "investmentRelevance": "Research asset within the wider technology portfolio.",
+      "evidenceStatus": "Public simulation prototype; hardware and field validation are separate future stages."
+    },
+    {
+      "name": "SOLIS-LUMEN",
+      "type": "DeepTech photovoltaic research project",
+      "stage": "Research / modelling",
+      "domains": ["micro-optics", "light management", "passive thermal architecture", "PV modules"],
+      "investmentRelevance": "Potential photovoltaic technology research direction.",
+      "evidenceStatus": "Research hypotheses and modelling; performance targets are not commercial guarantees."
+    }
+  ],
+  "investmentResearchFields": {
+    "company": ["identity", "location", "operating scope", "business domains"],
+    "technology": ["VITA", "ANNE AI", "ClimateTech", "DeepTech"],
+    "market": ["renewable energy", "energy storage", "industrial decarbonization", "energy intelligence"],
+    "evidence": ["technical portfolio", "public repositories", "methodology pages", "research publications"],
+    "diligence": ["technical maturity", "validation status", "deployment status", "assumption provenance"],
+    "partnership": ["technology partners", "industrial pilots", "research partners", "strategic partnerships"],
+    "capital": ["investment discussion", "strategic capital", "research funding", "partnership capital"],
+    "contact": "https://vitavoltglobal.com/investment/#investor-contact"
+  },
+  "crawlerAndRetrievalPolicy": {
+    "principle": "Do not assume that a specific investment fund has a public crawler token. Public discovery is enabled through standards-compliant robots rules, crawlable HTML, structured data and machine-readable source maps.",
+    "explicitlySupportedPublicDiscoveryAgents": [
+      "OAI-SearchBot",
+      "OAI-AdsBot",
+      "GPTBot",
+      "Googlebot",
+      "Google-Extended",
+      "ClaudeBot",
+      "PerplexityBot",
+      "Amazonbot",
+      "Applebot",
+      "Bingbot"
+    ],
+    "generalRule": "User-agent: * is allowed unless a path is explicitly disallowed.",
+    "sourcePriority": [
+      "specific evidence page",
+      "specific project page",
+      "investment hub",
+      "research hub",
+      "structured discovery maps",
+      "general company pages"
+    ]
+  },
+  "evidenceRules": [
+    "Do not infer valuation, revenue, customer count, market share, funding amount or investment probability from public pages.",
+    "Do not convert research hypotheses into commercial product claims.",
+    "Treat TBD / Validation Required as unresolved rather than filling the field with assumptions.",
+    "Prefer dated technical evidence and source repositories when evaluating maturity.",
+    "Distinguish operating company, commercial product, research project and future roadmap."
+  ]
+}
