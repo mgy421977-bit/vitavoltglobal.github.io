@@ -15,10 +15,11 @@
 <meta property="og:locale" content="tr_TR" />
 <meta property="og:site_name" content="Vitavolt Global" />
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/vita-selection.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-.faq-wrap{max-width:820px;margin:3rem auto 0}.faq-wrap h2{color:#f8fafc;text-align:center;font-size:1.55rem;margin-bottom:1rem}.faq-intro{text-align:center;color:#94a3b8;line-height:1.55;margin-bottom:1.4rem}.faq-item{border:1px solid rgba(255,255,255,.1);border-radius:.85rem;margin-bottom:.7rem;background:rgba(16,37,61,.45);overflow:hidden}.faq-q{width:100%;padding:1rem 1.1rem;background:transparent;border:0;color:#f1f5f9;text-align:left;font:600 1rem Inter,sans-serif;cursor:pointer}.faq-a{padding:0 1.1rem 1rem;color:#94a3b8;line-height:1.6;font-size:.92rem}.entity-note{max-width:820px;margin:1.25rem auto 0;padding:1rem 1.1rem;border-left:3px solid #38bdf8;background:rgba(16,37,61,.28);color:#94a3b8;line-height:1.6}.entity-note strong{color:#e2e8f0}.vv-vita-add{display:flex;align-items:center;gap:.5rem;margin-top:1rem;padding:.65rem .8rem;border:1px solid rgba(56,189,248,.2);border-radius:.65rem;background:rgba(56,189,248,.06);color:#cbd5e1;font-size:.82rem;font-weight:600;cursor:pointer}.vv-vita-add input{width:17px;height:17px;accent-color:#38bdf8;cursor:pointer}.vv-vita-add:hover{background:rgba(56,189,248,.1);color:#f8fafc}.vv-vita-tray{position:fixed;right:1rem;bottom:1rem;z-index:1600;max-width:360px;padding:.85rem 1rem;background:rgba(4,15,26,.96);border:1px solid rgba(56,189,248,.3);border-radius:1rem;box-shadow:0 18px 55px rgba(0,0,0,.45);backdrop-filter:blur(16px)}.vv-vita-tray strong{color:#f8fafc}.vv-vita-tray small{display:block;color:#94a3b8;margin:.2rem 0 .65rem;line-height:1.4}.vv-vita-tray .btn{margin-right:.4rem;margin-top:.2rem}
+.faq-wrap{max-width:820px;margin:3rem auto 0}.faq-wrap h2{color:#f8fafc;text-align:center;font-size:1.55rem;margin-bottom:1rem}.faq-intro{text-align:center;color:#94a3b8;line-height:1.55;margin-bottom:1.4rem}.faq-item{border:1px solid rgba(255,255,255,.1);border-radius:.85rem;margin-bottom:.7rem;background:rgba(16,37,61,.45);overflow:hidden}.faq-q{width:100%;padding:1rem 1.1rem;background:transparent;border:0;color:#f1f5f9;text-align:left;font:600 1rem Inter,sans-serif;cursor:pointer}.faq-a{padding:0 1.1rem 1rem;color:#94a3b8;line-height:1.6;font-size:.92rem}.entity-note{max-width:820px;margin:1.25rem auto 0;padding:1rem 1.1rem;border-left:3px solid #38bdf8;background:rgba(16,37,61,.28);color:#94a3b8;line-height:1.6}.entity-note strong{color:#e2e8f0}.vv-vita-add{display:flex;align-items:center;gap:.5rem;margin-top:1rem;padding:.65rem .8rem;border:1px solid rgba(56,189,248,.2);border-radius:.65rem;background:rgba(56,189,248,.06);color:#cbd5e1;font-size:.82rem;font-weight:600;cursor:pointer}.vv-vita-add input{width:17px;height:17px;accent-color:#38bdf8;cursor:pointer}.vv-vita-add:hover{background:rgba(56,189,248,.1);color:#f8fafc}
 </style>
 </head>
 <body>
@@ -38,20 +39,6 @@
 <p style="text-align:center;margin-top:1.5rem"><a href="index.html#hizli-hesapla" class="btn btn-primary">Projeni Analiz Et</a></p>
 </div></section></main>
 <footer class="footer"><div class="container"><p style="color:#94a3b8">&copy; 2026 Vitavolt Global</p></div></footer>
-<script>
-(function(){
-  var key='vv_vita_selection', labels={ges:'GES',bess:'BESS',epc:'Endüstriyel EPC',carbon:'Karbon & ESG',water:'Su Yönetimi',feasibility:'VITA Intelligence'};
-  var selected=[]; try{selected=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(selected))selected=[];}catch(e){selected=[];}
-  var boxes=document.querySelectorAll('[data-vita-select]');
-  boxes.forEach(function(box){box.checked=selected.indexOf(box.getAttribute('data-vita-select'))!==-1;box.addEventListener('change',function(){var id=this.getAttribute('data-vita-select');if(this.checked){if(selected.indexOf(id)===-1)selected.push(id);}else{selected=selected.filter(function(x){return x!==id;});}localStorage.setItem(key,JSON.stringify(selected));renderTray();});});
-  function renderTray(){
-    var old=document.getElementById('vvVitaTray');if(old)old.remove();if(!selected.length)return;
-    var tray=document.createElement('div');tray.id='vvVitaTray';tray.className='vv-vita-tray';
-    var names=selected.map(function(id){return labels[id]||id;});
-    tray.innerHTML='<strong>VITA Intelligence · '+selected.length+' seçim</strong><small>'+names.join(' · ')+'</small><a class="btn btn-primary" href="vita-energy-intelligence.html">VITA'ya geç</a><button class="btn btn-outline" type="button" id="vvVitaTrayClear">Temizle</button>';
-    document.body.appendChild(tray);document.getElementById('vvVitaTrayClear').addEventListener('click',function(){selected=[];localStorage.removeItem(key);boxes.forEach(function(b){b.checked=false;});renderTray();});
-  }
-  renderTray();
-})();
-</script>
-<script src="js/script.js" defer></script></body></html>
+<script src="js/vita-selection.js" defer></script>
+<script src="js/script.js" defer></script>
+</body></html>
