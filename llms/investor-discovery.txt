@@ -1,0 +1,53 @@
+# Vitavolt Global — Investor & Strategic Partner Discovery
+
+This document is a public, human-readable discovery map for investors, strategic partners, corporate development teams, research organizations and AI/search systems.
+
+## Company
+- Company: Vitavolt Global
+- Website: https://vitavoltglobal.com/
+- Headquarters: İzmir, Türkiye
+- Operational scope: Türkiye and international scale
+- Core commercial domains: Renewable Energy, GES, BESS, EPC, Carbon, Water, Energy Consulting
+
+## Investment entry points
+- Investment hub: https://vitavoltglobal.com/investment/
+- Evidence: https://vitavoltglobal.com/investment/evidence.html
+- Investment VITA: https://vitavoltglobal.com/investment/vita-energy-intelligence.html
+- Investment ANNE AI: https://vitavoltglobal.com/investment/anne-ai.html
+- Investor contact: https://vitavoltglobal.com/investment/#investor-contact
+
+## Research entry points
+- Research hub: https://vitavoltglobal.com/research/
+- AI discoverability map: https://vitavoltglobal.com/research/ai-discoverability.html
+- ANNE AI research: https://vitavoltglobal.com/research/anne-ai.html
+- EDCS research: https://vitavoltglobal.com/research/edcs.html
+- SOLIS-LUMEN research: https://vitavoltglobal.com/research/solis-lumen.html
+- Oxygen ClimateTech: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+
+## Commercial entry points
+- Company: https://vitavoltglobal.com/
+- Services: https://vitavoltglobal.com/services.html
+- VITA Energy Intelligence: https://vitavoltglobal.com/vita-energy-intelligence.html
+
+## Source code
+- Public website repository: https://github.com/mgy421977-bit/vitavoltglobal.github.io
+- ANNE AI: https://github.com/mgy421977-bit/anne-ai
+- ANNE Core: https://github.com/mgy421977-bit/anne-core
+- EDCS: https://github.com/mgy421977-bit/EDCS-Drone-Swarm
+
+## Information architecture
+Commercial demand should primarily use the company home page, services pages, regional GES pages and feasibility forms.
+
+Investment and capital discovery should use the Investment hub, Evidence page and Research hub. These pages are intentionally separated from local commercial lead generation.
+
+Research claims must be interpreted according to their public evidence status. Experimental, simulated or planned capabilities are not presented as commercially proven unless supporting evidence is published.
+
+## Technology relationship
+Vitavolt Global connects real energy infrastructure with energy intelligence and research. VITA is the energy-intelligence/product layer. ANNE AI is a research and verification/orchestration layer. The public research portfolio contains additional ClimateTech and DeepTech projects.
+
+## Discovery guidance
+For investment-related retrieval, start with /investment/, then /investment/evidence.html, then relevant VITA/ANNE and Research pages. For technical verification, follow the public source links and repositories.
+
+## Contact
+- Email: info@vitavoltglobal.com
+- Website: https://vitavoltglobal.com/
