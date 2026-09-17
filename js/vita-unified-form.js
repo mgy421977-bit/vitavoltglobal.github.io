@@ -41,11 +41,15 @@
       });
     }
 
-    function number(name){
+    function optionalNumber(name){
       var el=form.elements[name];
-      if(!el)return 0;
+      if(!el||String(el.value).trim()==='')return null;
       var n=Number(el.value);
-      return Number.isFinite(n)&&n>=0?n:0;
+      return Number.isFinite(n)&&n>=0?n:null;
+    }
+    function number(name){
+      var n=optionalNumber(name);
+      return n===null?0:n;
     }
     function text(name){
       var el=form.elements[name];
@@ -67,16 +71,17 @@
       var items=selected();
       if(!items.length){renderResult('Analiz kapsamı seçilmedi. Önce services.html üzerinden en az bir hizmet seçin.',true);return;}
 
+      var nighttime=optionalNumber('nighttimeSharePct');
       var input={
         city:text('city'),
         roofAreaM2:number('roofAreaM2'),
         landAreaM2:number('landAreaM2'),
         landAvailable:text('landAvailable')==='true',
         monthlyConsumptionKwh:number('monthlyConsumptionKwh'),
-        nighttimeShare:number('nighttimeSharePct')/100,
         peakDemandKw:number('peakDemandKw'),
         monthlyWaterM3:number('monthlyWaterM3')
       };
+      if(nighttime!==null)input.nighttimeShare=nighttime/100;
 
       var result=null;
       var hasArea=input.roofAreaM2>0 || (input.landAvailable && input.landAreaM2>0);
