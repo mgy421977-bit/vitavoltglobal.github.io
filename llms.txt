@@ -31,6 +31,8 @@ EPC is the physical implementation layer. VITA is the digital intelligence layer
 
 The structured project map is available at https://vitavoltglobal.com/geo/project-discovery.json. It describes public project categories, problem statements, technology areas, current development status, evidence/validation status, funding status and partnership opportunities without implying unsupported investment, customer, patent or performance claims. Values marked `TBD / Validation Required` require project-specific validation.
 
+The investor-specific discovery map is available at https://vitavoltglobal.com/geo/investor-discovery.json. It separates investment research, strategic partnership discovery and technical due diligence from local commercial lead generation and does not invent fund-specific crawler identities.
+
 ## VITA Engine
 
 VITA Engine is the computational core of Vitavolt's Energy Intelligence direction.
@@ -97,6 +99,7 @@ This public source map is intentionally structured for search engines, AI retrie
 Primary discovery paths:
 
 - Investment hub: https://vitavoltglobal.com/investment/
+- Investor discovery map: https://vitavoltglobal.com/geo/investor-discovery.json
 - Investment VITA: https://vitavoltglobal.com/investment/vita-energy-intelligence.html
 - Investment ANNE AI: https://vitavoltglobal.com/investment/anne-ai.html
 - Investment evidence: https://vitavoltglobal.com/investment/evidence.html
