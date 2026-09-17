@@ -1,64 +1,69 @@
-/* Vitavolt Visual System v2 — Fog Technology / Electric Blue
-   Site-wide visual layer. Visual only: no URLs, content, navigation, forms or calculators. */
+/* Vitavolt Visual System v2 — Fog / Graphite / Renewable Green
+   Global visual layer. No URL, content, navigation, form or calculator changes. */
 :root{
- --vv-fog-0:#ffffff;--vv-fog-1:#f6f8fa;--vv-fog-2:#edf1f4;--vv-fog-3:#dce3e8;
- --vv-graphite:#17212b;--vv-graphite-2:#26323d;--vv-blue:#1683e8;--vv-blue-2:#0b6fd1;
- --vv-muted:#687887;--vv-line:rgba(23,33,43,.11);
+ --vv-fog-0:#ffffff;--vv-fog-1:#f4f8f6;--vv-fog-2:#e8f0ed;--vv-fog-3:#d5e2dc;
+ --vv-graphite:#14232d;--vv-graphite-2:#24343e;--vv-green:#1f9d55;--vv-green-2:#147a40;--vv-green-soft:#69c88c;
+ --vv-muted:#647786;--vv-line:rgba(20,35,45,.11);--vv-watermark:rgba(31,157,85,.075);
 }
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+/* Global canvas and typography */
 body{background:var(--vv-fog-1);color:var(--vv-graphite);}
 h1,h2,h3,h4,h5,h6{color:var(--vv-graphite);}
-p,li{color:var(--vv-muted);}
-a{color:var(--vv-blue);}a:hover{color:var(--vv-blue-2);}
-.header{background:rgba(255,255,255,.90);border-bottom:1px solid var(--vv-line);box-shadow:0 8px 30px rgba(23,33,43,.05);backdrop-filter:blur(18px) saturate(1.05);-webkit-backdrop-filter:blur(18px) saturate(1.05);}
-.logo{color:var(--vv-graphite)!important;}.logo-sub{color:#71808d!important}.logo:hover{color:var(--vv-blue)!important;}
-.nav-link{color:#596a79!important}.nav-link:hover,.nav-link.active{color:var(--vv-graphite)!important}.nav-link::after{background:var(--vv-blue);}
-.btn-primary,.btn-cta{background:linear-gradient(135deg,#1b8af0,#0876d8);border-color:#1b8af0;color:#fff!important;box-shadow:0 8px 24px rgba(22,131,232,.18);}
-.btn-primary:hover,.btn-cta:hover{box-shadow:0 12px 30px rgba(22,131,232,.25);}
-.btn-outline{color:var(--vv-graphite)!important;border-color:rgba(23,33,43,.22);background:rgba(255,255,255,.55);}
-.btn-outline:hover{background:rgba(22,131,232,.06);border-color:var(--vv-blue);color:var(--vv-blue)!important;}
-/* Light editorial surfaces: this is the default site language. */
-.section{background:linear-gradient(180deg,var(--vv-fog-0),var(--vv-fog-1));}
-main .section:not(.hero):not(.hizli-hesapla-section):not(.vv-saha-bolge):not(.vita-hero):not(.segment-hero):not(.renew-hero) h1,
-main .section:not(.hero):not(.hizli-hesapla-section):not(.vv-saha-bolge):not(.vita-hero):not(.segment-hero):not(.renew-hero) h2,
-main .section:not(.hero):not(.hizli-hesapla-section):not(.vv-saha-bolge):not(.vita-hero):not(.segment-hero):not(.renew-hero) h3,
-main .section:not(.hero):not(.hizli-hesapla-section):not(.vv-saha-bolge):not(.vita-hero):not(.segment-hero):not(.renew-hero) h4,
-main .section:not(.hero):not(.hizli-hesapla-section):not(.vv-saha-bolge):not(.vita-hero):not(.segment-hero):not(.renew-hero) h5,
-main .section:not(.hero):not(.hizli-hesapla-section):not(.vv-saha-bolge):not(.vita-hero):not(.segment-hero):not(.renew-hero) h6{color:var(--vv-graphite)!important;}
-main .section:not(.hero):not(.hizli-hesapla-section):not(.vv-saha-bolge):not(.vita-hero):not(.segment-hero):not(.renew-hero) p,
-main .section:not(.hero):not(.hizli-hesapla-section):not(.vv-saha-bolge):not(.vita-hero):not(.segment-hero):not(.renew-hero) li{color:var(--vv-muted)!important;}
-/* Dark branded areas stay dark. */
+p{color:var(--vv-muted);}
+a{color:var(--vv-green);}a:hover{color:var(--vv-green-2);}
+/* Header */
+.header{background:rgba(255,255,255,.92);border-bottom:1px solid var(--vv-line);box-shadow:0 8px 30px rgba(20,35,45,.055);backdrop-filter:blur(18px) saturate(1.05);-webkit-backdrop-filter:blur(18px) saturate(1.05);}
+.logo{color:var(--vv-graphite);}.logo-sub{color:#71818d}.logo:hover{color:var(--vv-green);}
+.nav-link{color:#596b79}.nav-link:hover,.nav-link.active{color:var(--vv-graphite)}
+.nav-link::after{background:var(--vv-green);}
+/* Buttons */
+.btn-primary,.btn-cta{background:linear-gradient(135deg,#27a85f,#188c4d);border-color:#27a85f;color:#fff;box-shadow:0 8px 24px rgba(31,157,85,.18);}
+.btn-primary:hover,.btn-cta:hover{box-shadow:0 12px 30px rgba(31,157,85,.25);}
+.btn-outline{color:var(--vv-graphite);border-color:rgba(20,35,45,.22);background:rgba(255,255,255,.58);}
+.btn-outline:hover{background:rgba(31,157,85,.07);border-color:var(--vv-green);color:var(--vv-green-2);}
+/* Hero: retain photographic contrast, shift accents to renewable green */
 .hero{background:var(--vv-fog-2);}
-.hero-background{filter:saturate(.82) contrast(.94);}
-.hero h1,.hero h2,.hero h3,.hero h4,.hero h5,.hero h6{color:#f8fafc!important;}
-.hero p{color:rgba(226,232,240,.90)!important;}
-.hero .hero-eyebrow,.hero .hero-chip{color:#e2e8f0!important;}
-.hizli-hesapla-section,.vv-saha-bolge{background:linear-gradient(180deg,#1a2733 0%,#101a23 100%);}
-.hizli-hesapla-section h1,.hizli-hesapla-section h2,.hizli-hesapla-section h3,.hizli-hesapla-section h4,.vv-saha-bolge h1,.vv-saha-bolge h2,.vv-saha-bolge h3,.vv-saha-bolge h4{color:#f8fafc!important;}
-.hizli-hesapla-section p,.vv-saha-bolge p,.hizli-hesapla-section li,.vv-saha-bolge li{color:#a9bac6!important;}
-.hizli-hesapla-box,.vv-saha-bolge-box{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.13);box-shadow:0 20px 60px rgba(10,18,26,.16);}
-/* Named dark page heroes remain dark even when they use inline styles. */
-.vita-hero,.segment-hero,.renew-hero{color:#f8fafc;}
-.vita-hero h1,.vita-hero h2,.vita-hero h3,.segment-hero h1,.segment-hero h2,.segment-hero h3,.renew-hero h1,.renew-hero h2,.renew-hero h3{color:#f8fafc!important;}
-.vita-hero p,.segment-hero p,.renew-hero p{color:#a9bac6!important;}
-.card,.service-card,.stat-card,.path-card{background:rgba(255,255,255,.86);border-color:var(--vv-line);box-shadow:0 10px 30px rgba(23,33,43,.055);}
-.card:hover,.service-card:hover,.stat-card:hover,.path-card:hover{box-shadow:0 18px 45px rgba(23,33,43,.10);border-color:rgba(22,131,232,.22);}
-.footer{background:#07111c;}.footer,.footer *{color:inherit;}
+.hero-background{filter:saturate(.78) contrast(.95);}
+.hero h1,.hero h2,.hero h3,.hero h4,.hero h5,.hero h6{color:#f8fafc;}
+.hero p{color:rgba(226,232,240,.92);}
+.hero .hero-eyebrow,.hero .hero-chip{color:#e2e8f0;}
+/* Inline legacy cyan accents become renewable green */
+[class*="hero"] .hero-eyebrow,[class*="hero"] .hero-chip{border-color:rgba(31,157,85,.28);}
+/* Light sections */
+.section{background:linear-gradient(180deg,var(--vv-fog-0),var(--vv-fog-1));position:relative;overflow:hidden;}
+.section::after{content:"VITAVOLT";position:absolute;right:4%;bottom:7%;font-size:clamp(3rem,10vw,9rem);font-weight:800;letter-spacing:.08em;color:var(--vv-watermark);pointer-events:none;user-select:none;z-index:0;}
+.section > *{position:relative;z-index:1;}
+/* Soft renewable contour/wave watermark */
+.section::before{content:"";position:absolute;inset:0;opacity:.75;pointer-events:none;background:repeating-radial-gradient(ellipse at 85% 25%,transparent 0 18px,rgba(31,157,85,.035) 19px 20px,transparent 21px 34px);transform:rotate(-8deg) scale(1.15);}
+/* General content surfaces */
+.card,.service-card,.stat-card,.path-card{background:rgba(255,255,255,.88);border-color:var(--vv-line);box-shadow:0 10px 30px rgba(20,35,45,.055);}
+.card:hover,.service-card:hover,.stat-card:hover,.path-card:hover{box-shadow:0 18px 45px rgba(20,35,45,.10);border-color:rgba(31,157,85,.25);}
+/* Links/icons in common content */
+.section a:not(.btn),.card a:not(.btn),.service-card a:not(.btn){color:var(--vv-green);}
+/* Dark operational sections remain dark */
+.hizli-hesapla-section,.vv-saha-bolge{background:linear-gradient(180deg,#132a21 0%,#081a16 100%);}
+.hizli-hesapla-section h1,.hizli-hesapla-section h2,.hizli-hesapla-section h3,.vv-saha-bolge h1,.vv-saha-bolge h2,.vv-saha-bolge h3{color:#f8fafc;}
+.hizli-hesapla-section p,.vv-saha-bolge p{color:#b4c6bf;}
+.hizli-hesapla-box,.vv-saha-bolge-box{background:rgba(255,255,255,.055);border-color:rgba(105,200,140,.20);box-shadow:0 20px 60px rgba(5,18,13,.18);}
+/* Green accents inside dark areas */
+.hizli-hesapla-section .form-section-title,.vv-saha-kicker{color:#69c88c!important;}
+/* Forms retain contrast */
 .hizli-form input,.hizli-form select{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#f7fafc;}
-.whatsapp-float{box-shadow:0 10px 30px rgba(23,33,43,.20);}
-.menu-overlay{background:rgba(9,17,25,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+/* Preserve dark footer */
+.footer,.footer *{color:inherit;}
+/* WhatsApp */
+.whatsapp-float{box-shadow:0 10px 30px rgba(20,35,45,.20);}
+/* Mobile menu */
+.menu-overlay{background:rgba(9,20,16,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
 .menu-toggle span{background:var(--vv-graphite);}
-/* Horizontal-first service presentation where cards benefit from a row. */
-.services-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;}
-.service-card{min-width:0;}
-@media(max-width:1100px){.services-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
-@media(max-width:700px){
+@media(max-width:1023px){
  .nav-menu{background:rgba(248,250,252,.98)!important;color:var(--vv-graphite)!important;box-shadow:0 24px 70px rgba(10,18,26,.16)!important;border-left:1px solid var(--vv-line)!important}
- .nav-menu .nav-link{color:var(--vv-graphite)!important}.nav-menu .nav-link:hover,.nav-menu .nav-link.active{color:var(--vv-blue)!important}
- .services-grid{display:flex;overflow-x:auto;gap:14px;padding:4px 4px 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
- .services-grid::-webkit-scrollbar{display:none;}
- .services-grid .service-card{flex:0 0 82vw;max-width:330px;scroll-snap-align:start;}
- .section{padding-left:0;padding-right:0;}
- .container{padding-left:20px;padding-right:20px;}
+ .nav-menu .nav-link{color:var(--vv-graphite)}
+ .nav-menu .nav-link:hover,.nav-menu .nav-link.active{color:var(--vv-green)}
 }
-@media(min-width:701px) and (max-width:1023px){.nav-menu{background:rgba(248,250,252,.98)!important;color:var(--vv-graphite)!important;box-shadow:0 24px 70px rgba(10,18,26,.16)!important;border-left:1px solid var(--vv-line)!important}.nav-menu .nav-link{color:var(--vv-graphite)!important}.nav-menu .nav-link:hover,.nav-menu .nav-link.active{color:var(--vv-blue)!important}}
+/* Mobile-first horizontal cards: keep cards readable instead of shrinking them */
+@media(max-width:767px){
+ .services-grid,.solutions-grid,.cards-grid,.service-cards,.services-cards{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;gap:16px!important;padding:4px 4px 18px!important;scroll-snap-type:x mandatory!important;-webkit-overflow-scrolling:touch!important;}
+ .services-grid > *, .solutions-grid > *, .cards-grid > *, .service-cards > *, .services-cards > *{flex:0 0 78%!important;min-width:78%!important;scroll-snap-align:start!important;}
+}
+/* Any common inline cyan/sky accent used by legacy pages is harmonized to green */
+[style*="#38bdf8"],[style*="#00AEEF"],[style*="#1683e8"],[style*="#1b8af0"]{color:var(--vv-green)!important;}
