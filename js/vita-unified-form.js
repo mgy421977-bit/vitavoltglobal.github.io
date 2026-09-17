@@ -70,7 +70,11 @@
         message+='GES: '+result.solar.dcCapacityKwp+' kWp, '+result.solar.panelCount+' panel, yıllık yaklaşık '+result.solar.annualProductionKwh.toLocaleString('tr-TR')+' kWh üretim. ';
         message+='Öz tüketim yaklaşık '+result.solar.selfConsumptionKwh.toLocaleString('tr-TR')+' kWh; şebeke ihracı yaklaşık '+result.solar.gridExportKwh.toLocaleString('tr-TR')+' kWh. ';
         message+='BESS: '+(result.bess.recommended?'ön değerlendirmede öneriliyor':'ön değerlendirmede tetiklenmedi')+(result.bess.suggestedCapacityKwh>0?' ('+result.bess.suggestedCapacityKwh+' kWh)':'')+'. ';
-        if(result.pricing){message+='Piyasa referanslı panel + inverter tahmini: '+result.pricing.equipmentSubtotalUsd.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+' '+result.pricing.currency+' (KDV hariç). ';}
+        if(result.pricing){
+          var panelInverterUsd=result.pricing.total&&Number.isFinite(Number(result.pricing.total.sellUsd))?Number(result.pricing.total.sellUsd):0;
+          if(panelInverterUsd>0)message+='Piyasa referanslı panel + inverter tahmini: '+panelInverterUsd.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+' '+result.pricing.currency+' (KDV hariç). ';
+          if(result.pricing.projectCost&&result.pricing.projectCost.usd>0)message+='VITA ön maliyet referansı: '+Number(result.pricing.projectCost.usd).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+' '+result.pricing.currency+'; baz: '+result.pricing.projectCost.basis+'. ';
+        }
         if(result.water)message+='Su ön fizibilitesi de üretildi. ';
       }else message+='GES hesaplaması için çatı alanı veya arazi GES seçeneğiyle birlikte geçerli alan girilmedi; mevcut veriyle yalnızca analiz kapsamı oluşturuldu. ';
       message+='Bu çıktı ön fizibilitedir; nihai mühendislik sonucu değildir.';
