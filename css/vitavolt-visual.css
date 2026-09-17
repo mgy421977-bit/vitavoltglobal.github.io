@@ -5,65 +5,38 @@
  --vv-graphite:#14232d;--vv-graphite-2:#24343e;--vv-green:#1f9d55;--vv-green-2:#147a40;--vv-green-soft:#69c88c;
  --vv-muted:#647786;--vv-line:rgba(20,35,45,.11);--vv-watermark:rgba(31,157,85,.075);
 }
-/* Global canvas and typography */
 body{background:var(--vv-fog-1);color:var(--vv-graphite);}
 h1,h2,h3,h4,h5,h6{color:var(--vv-graphite);}
 p{color:var(--vv-muted);}
 a{color:var(--vv-green);}a:hover{color:var(--vv-green-2);}
-/* Header */
 .header{background:rgba(255,255,255,.92);border-bottom:1px solid var(--vv-line);box-shadow:0 8px 30px rgba(20,35,45,.055);backdrop-filter:blur(18px) saturate(1.05);-webkit-backdrop-filter:blur(18px) saturate(1.05);}
 .logo{color:var(--vv-graphite);}.logo-sub{color:#71818d}.logo:hover{color:var(--vv-green);}
-.nav-link{color:#596b79}.nav-link:hover,.nav-link.active{color:var(--vv-graphite)}
-.nav-link::after{background:var(--vv-green);}
-/* Buttons */
+.nav-link{color:#596b79}.nav-link:hover,.nav-link.active{color:var(--vv-graphite)}.nav-link::after{background:var(--vv-green);}
 .btn-primary,.btn-cta{background:linear-gradient(135deg,#27a85f,#188c4d);border-color:#27a85f;color:#fff;box-shadow:0 8px 24px rgba(31,157,85,.18);}
 .btn-primary:hover,.btn-cta:hover{box-shadow:0 12px 30px rgba(31,157,85,.25);}
 .btn-outline{color:var(--vv-graphite);border-color:rgba(20,35,45,.22);background:rgba(255,255,255,.58);}
 .btn-outline:hover{background:rgba(31,157,85,.07);border-color:var(--vv-green);color:var(--vv-green-2);}
-/* Hero: retain photographic contrast, shift accents to renewable green */
-.hero{background:var(--vv-fog-2);}
-.hero-background{filter:saturate(.78) contrast(.95);}
-.hero h1,.hero h2,.hero h3,.hero h4,.hero h5,.hero h6{color:#f8fafc;}
-.hero p{color:rgba(226,232,240,.92);}
-.hero .hero-eyebrow,.hero .hero-chip{color:#e2e8f0;}
-/* Inline legacy cyan accents become renewable green */
+.hero{background:var(--vv-fog-2);}.hero-background{filter:saturate(.78) contrast(.95);}
+.hero h1,.hero h2,.hero h3,.hero h4,.hero h5,.hero h6{color:#f8fafc;}.hero p{color:rgba(226,232,240,.92);}.hero .hero-eyebrow,.hero .hero-chip{color:#e2e8f0;}
 [class*="hero"] .hero-eyebrow,[class*="hero"] .hero-chip{border-color:rgba(31,157,85,.28);}
-/* Light sections */
 .section{background:linear-gradient(180deg,var(--vv-fog-0),var(--vv-fog-1));position:relative;overflow:hidden;}
 .section::after{content:"VITAVOLT";position:absolute;right:4%;bottom:7%;font-size:clamp(3rem,10vw,9rem);font-weight:800;letter-spacing:.08em;color:var(--vv-watermark);pointer-events:none;user-select:none;z-index:0;}
-.section > *{position:relative;z-index:1;}
-/* Soft renewable contour/wave watermark */
 .section::before{content:"";position:absolute;inset:0;opacity:.75;pointer-events:none;background:repeating-radial-gradient(ellipse at 85% 25%,transparent 0 18px,rgba(31,157,85,.035) 19px 20px,transparent 21px 34px);transform:rotate(-8deg) scale(1.15);}
-/* General content surfaces */
+.section > *{position:relative;z-index:1;}
+/* Existing homepage proof strip uses legacy inline light text; keep it readable on the fog surface. */
+.section p[style*="#e2e8f0"]{color:var(--vv-graphite)!important;}
 .card,.service-card,.stat-card,.path-card{background:rgba(255,255,255,.88);border-color:var(--vv-line);box-shadow:0 10px 30px rgba(20,35,45,.055);}
 .card:hover,.service-card:hover,.stat-card:hover,.path-card:hover{box-shadow:0 18px 45px rgba(20,35,45,.10);border-color:rgba(31,157,85,.25);}
-/* Links/icons in common content */
 .section a:not(.btn),.card a:not(.btn),.service-card a:not(.btn){color:var(--vv-green);}
-/* Dark operational sections remain dark */
 .hizli-hesapla-section,.vv-saha-bolge{background:linear-gradient(180deg,#132a21 0%,#081a16 100%);}
 .hizli-hesapla-section h1,.hizli-hesapla-section h2,.hizli-hesapla-section h3,.vv-saha-bolge h1,.vv-saha-bolge h2,.vv-saha-bolge h3{color:#f8fafc;}
 .hizli-hesapla-section p,.vv-saha-bolge p{color:#b4c6bf;}
 .hizli-hesapla-box,.vv-saha-bolge-box{background:rgba(255,255,255,.055);border-color:rgba(105,200,140,.20);box-shadow:0 20px 60px rgba(5,18,13,.18);}
-/* Green accents inside dark areas */
 .hizli-hesapla-section .form-section-title,.vv-saha-kicker{color:#69c88c!important;}
-/* Forms retain contrast */
 .hizli-form input,.hizli-form select{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#f7fafc;}
-/* Preserve dark footer */
 .footer,.footer *{color:inherit;}
-/* WhatsApp */
 .whatsapp-float{box-shadow:0 10px 30px rgba(20,35,45,.20);}
-/* Mobile menu */
-.menu-overlay{background:rgba(9,20,16,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
-.menu-toggle span{background:var(--vv-graphite);}
-@media(max-width:1023px){
- .nav-menu{background:rgba(248,250,252,.98)!important;color:var(--vv-graphite)!important;box-shadow:0 24px 70px rgba(10,18,26,.16)!important;border-left:1px solid var(--vv-line)!important}
- .nav-menu .nav-link{color:var(--vv-graphite)}
- .nav-menu .nav-link:hover,.nav-menu .nav-link.active{color:var(--vv-green)}
-}
-/* Mobile-first horizontal cards: keep cards readable instead of shrinking them */
-@media(max-width:767px){
- .services-grid,.solutions-grid,.cards-grid,.service-cards,.services-cards{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;gap:16px!important;padding:4px 4px 18px!important;scroll-snap-type:x mandatory!important;-webkit-overflow-scrolling:touch!important;}
- .services-grid > *, .solutions-grid > *, .cards-grid > *, .service-cards > *, .services-cards > *{flex:0 0 78%!important;min-width:78%!important;scroll-snap-align:start!important;}
-}
-/* Any common inline cyan/sky accent used by legacy pages is harmonized to green */
+.menu-overlay{background:rgba(9,20,16,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}.menu-toggle span{background:var(--vv-graphite);}
+@media(max-width:1023px){.nav-menu{background:rgba(248,250,252,.98)!important;color:var(--vv-graphite)!important;box-shadow:0 24px 70px rgba(10,18,26,.16)!important;border-left:1px solid var(--vv-line)!important}.nav-menu .nav-link{color:var(--vv-graphite)}.nav-menu .nav-link:hover,.nav-menu .nav-link.active{color:var(--vv-green)}}
+@media(max-width:767px){.services-grid,.solutions-grid,.cards-grid,.service-cards,.services-cards{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;gap:16px!important;padding:4px 4px 18px!important;scroll-snap-type:x mandatory!important;-webkit-overflow-scrolling:touch!important}.services-grid > *,.solutions-grid > *,.cards-grid > *,.service-cards > *,.services-cards > *{flex:0 0 78%!important;min-width:78%!important;scroll-snap-align:start!important}}
 [style*="#38bdf8"],[style*="#00AEEF"],[style*="#1683e8"],[style*="#1b8af0"]{color:var(--vv-green)!important;}
