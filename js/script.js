@@ -105,4 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const langBtns=document.querySelectorAll('[data-set-lang]');function setLang(lang){document.documentElement.lang=lang==='en'?'en':'tr';document.querySelectorAll('[data-lang]').forEach(el=>el.hidden=el.getAttribute('data-lang')!==lang);langBtns.forEach(btn=>{const on=btn.getAttribute('data-set-lang')===lang;btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on));});try{localStorage.setItem('vv_lang',lang)}catch(e){}}
     langBtns.forEach(btn=>btn.addEventListener('click',()=>setLang(btn.getAttribute('data-set-lang'))));let initialLang='tr';try{const stored=localStorage.getItem('vv_lang');if(stored==='en'||stored==='tr')initialLang=stored}catch(e){}if(langBtns.length)setLang(initialLang);
     window.addEventListener('resize',()=>setTimeout(()=>{if(window.innerWidth>1023)closeMenu()},250),{passive:true});
+
+    // Global visual layer: one shared stylesheet, loaded after the base CSS so it can safely override presentation only.
+    if (!document.querySelector('link[data-vv-visual]')) {
+        const visual = document.createElement('link');
+        visual.rel = 'stylesheet';
+        visual.href = '/css/vitavolt-visual.css';
+        visual.dataset.vvVisual = 'true';
+        document.head.appendChild(visual);
+    }
 });
