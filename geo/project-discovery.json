@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "1.2",
   "updated": "2026-09-17",
   "entity": {
     "name": "Vitavolt Global",
@@ -116,7 +116,9 @@
     "https://vitavoltglobal.com/services.html",
     "https://vitavoltglobal.com/research/",
     "https://vitavoltglobal.com/investment/",
+    "https://vitavoltglobal.com/investment/evidence.html",
     "https://vitavoltglobal.com/research/ai-discoverability.html",
+    "https://vitavoltglobal.com/geo/investor-discovery.json",
     "https://vitavoltglobal.com/llms.txt"
   ]
 }
