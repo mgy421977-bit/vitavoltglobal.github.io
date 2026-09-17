@@ -3,9 +3,19 @@
   'use strict';
   var KEY='vitavolt_vita_selection';
   var defs={ges:{title:'GES / Güneş Enerjisi',note:'Çatı veya arazi alanı, tüketim ve seçilen ekipman bilgileri VITA Engine ön fizibilitesine aktarılır.'},bess:{title:'BESS / Enerji Depolama',note:'Pik talep ve gece tüketim payı, BESS ön değerlendirmesinde kullanılır.'},epc:{title:'Endüstriyel EPC',note:'Mühendislik, tedarik ve uygulama kapsamı proje notlarıyla birlikte değerlendirilir.'},carbon:{title:'Karbon & ESG',note:'Karbon/ESG kapsamı bilgi toplama aşamasındadır; doğrulanmış canlı karbon muhasebesi sonucu üretilmez.'},water:{title:'Su Yönetimi',note:'Çatı alanı, şehir ve aylık su tüketimi VITA WATER ön fizibilite çekirdeğine aktarılabilir.'},feasibility:{title:'Genel Ön Fizibilite',note:'Seçilen hizmetlerin ortak proje bağlamını oluşturur.'}};
+  var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
   function selected(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(a)?a.filter(function(x){return Object.prototype.hasOwnProperty.call(defs,x);}):[];}catch(e){return[];}}
+  function setupCitySelector(form){
+    var city=form.elements.city;if(!city||city.tagName==='SELECT')return;
+    var select=document.createElement('select');select.id=city.id;select.name='city';select.autocomplete='address-level2';
+    var current=String(city.value||'').trim();
+    var placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Şehir seçin';select.appendChild(placeholder);
+    cities.forEach(function(name){var o=document.createElement('option');o.value=name;o.textContent=name;if(name===current)o.selected=true;select.appendChild(o);});
+    city.parentNode.replaceChild(select,city);
+  }
   function init(){
     var form=document.getElementById('vitaIntelligenceForm'),box=document.getElementById('vitaDynamicSections');if(!form||!box)return;
+    setupCitySelector(form);
     function draw(){var items=selected();box.innerHTML='';if(!items.length){box.innerHTML='<div class="vita-select-empty">Önce hizmet kartlarından <strong>VITA Intelligence’a Ekle</strong> seçimi yapın.</div>';return;}items.forEach(function(key){var d=defs[key],sec=document.createElement('section');sec.className='vita-dynamic-section';sec.dataset.vitaSection=key;sec.innerHTML='<h3></h3><p></p>';sec.querySelector('h3').textContent=d.title;sec.querySelector('p').textContent=d.note;box.appendChild(sec);});}
     function optionalNumber(name){var el=form.elements[name];if(!el||String(el.value).trim()==='')return null;var x=Number(el.value);return Number.isFinite(x)&&x>=0?x:null;}
     function number(name){var x=optionalNumber(name);return x===null?0:x;}
