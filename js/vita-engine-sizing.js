@@ -1,36 +1,68 @@
-/* Vitavolt Global — VITA Engine sizing extension | 2026-09-17-v4 */
+/* Vitavolt Global — VITA Engine sizing extension | 2026-09-17-v5 */
 (function (window) {
   'use strict';
   function num(v, fb) { var x = Number(v); return Number.isFinite(x) ? x : (fb || 0); }
   function round2(v) { return Math.round(num(v) * 100) / 100; }
+
+  /*
+   * Select an inverter combination around the requested AC/DC target.
+   * The catalog is authoritative. Total AC must not exceed DC when a
+   * feasible under-DC combination exists. Closeness to 0.80 is the first
+   * criterion; inverter count and cost are tie-breakers.
+   */
   function chooseInverter(dcKwp, pricing) {
-    var list = ((pricing && pricing.inverter_options) || []).slice().sort(function (a, b) { return num(a.power_kw) - num(b.power_kw); });
+    var list = ((pricing && pricing.inverter_options) || []).slice()
+      .filter(function (o) { return num(o.power_kw) > 0; })
+      .sort(function (a, b) { return num(a.power_kw) - num(b.power_kw); });
     if (!list.length || dcKwp <= 0) return { opt: null, count: 0, totalKw: 0, fallback: false, reason: 'no_catalog_or_zero_dc' };
+
     var target = dcKwp * 0.80;
+    var maxUnits = Math.min(12, Math.floor(dcKwp / Math.min.apply(null, list.map(function (o) { return num(o.power_kw); }))));
     var candidates = [];
-    list.forEach(function (opt) {
-      var unit = num(opt.power_kw);
-      if (unit <= 0) return;
-      var count = Math.floor((dcKwp + 1e-9) / unit);
-      if (count < 1) return;
-      var total = count * unit;
-      if (total <= dcKwp + 1e-9) candidates.push({ opt: opt, count: count, totalKw: total, cost: count * num(opt.base_usd) });
-    });
-    var preferred = candidates.filter(function (c) { return c.totalKw + 1e-9 >= target; });
-    var pool = preferred.length ? preferred : candidates;
-    if (pool.length) {
-      pool.sort(function (a, b) {
-        if (a.count !== b.count) return a.count - b.count;
-        var da = Math.abs(a.totalKw - target), db = Math.abs(b.totalKw - target);
-        if (Math.abs(da - db) > 0.0001) return da - db;
-        return a.cost - b.cost;
-      });
-      var best = pool[0];
-      return { opt: best.opt, count: best.count, totalKw: round2(best.totalKw), fallback: !preferred.length, reason: preferred.length ? 'dc_ac_target_80pct_preferred' : 'closest_catalog_below_dc_fallback' };
+
+    function walk(index, remainingKw, counts, totalKw, totalCost, units) {
+      if (index >= list.length) {
+        if (units > 0 && totalKw <= dcKwp + 1e-9) {
+          var combo = [];
+          list.forEach(function (o, i) { if (counts[i]) combo.push({ opt: o, count: counts[i] }); });
+          candidates.push({ combo: combo, totalKw: totalKw, cost: totalCost, units: units, distance: Math.abs(totalKw - target) });
+        }
+        return;
+      }
+      var unit = num(list[index].power_kw);
+      var maxCount = Math.min(Math.floor(remainingKw / unit + 1e-9), maxUnits - units);
+      for (var c = 0; c <= maxCount; c++) {
+        counts[index] = c;
+        walk(index + 1, remainingKw - c * unit, counts, totalKw + c * unit, totalCost + c * num(list[index].base_usd), units + c);
+      }
+      counts[index] = 0;
     }
-    var covering = list.find(function (opt) { return num(opt.power_kw) >= dcKwp; }) || list[list.length - 1];
-    return { opt: covering, count: 1, totalKw: round2(num(covering.power_kw)), fallback: true, reason: 'smallest_catalog_unit_covering_dc_fallback' };
+    walk(0, dcKwp, [], 0, 0, 0);
+
+    if (!candidates.length) {
+      var covering = list.find(function (o) { return num(o.power_kw) >= dcKwp; }) || list[list.length - 1];
+      return { opt: covering, count: 1, totalKw: round2(num(covering.power_kw)), fallback: true, reason: 'smallest_catalog_unit_covering_dc_fallback' };
+    }
+
+    candidates.sort(function (a, b) {
+      if (Math.abs(a.distance - b.distance) > 0.0001) return a.distance - b.distance;
+      if (a.units !== b.units) return a.units - b.units;
+      return a.cost - b.cost;
+    });
+
+    var best = candidates[0];
+    var primary = best.combo[0];
+    var sameModel = best.combo.every(function (x) { return x.opt.power_kw === primary.opt.power_kw; });
+    return {
+      opt: sameModel ? primary.opt : primary.opt,
+      combo: best.combo,
+      count: best.units,
+      totalKw: round2(best.totalKw),
+      fallback: false,
+      reason: 'closest_to_dc_ac_target_80pct'
+    };
   }
+
   function applyInverterRule(result) {
     if (!result || !result.solar || !result.pricing) return;
     var dc = Math.max(0, num(result.solar.dcCapacityKwp));
@@ -38,20 +70,24 @@
     var pricingCfg = window.VitaEngine && window.VitaEngine.config && window.VitaEngine.config.pricing;
     var selected = chooseInverter(dc, pricingCfg);
     if (!selected.opt || !selected.count) return;
+
     var p = result.pricing;
     var oldCost = num(p.inverter && p.inverter.baseUsd);
-    var newUnitCost = num(selected.opt.base_usd);
-    var newCost = round2(selected.count * newUnitCost);
+    var combo = selected.combo || [{ opt: selected.opt, count: selected.count }];
+    var newCost = round2(combo.reduce(function (sum, x) { return sum + x.count * num(x.opt.base_usd); }, 0));
     var delta = round2(newCost - oldCost);
+    var comboLabel = combo.map(function (x) { return x.count + '×' + num(x.opt.power_kw) + ' kW'; }).join(' + ');
+
     p.inverter = p.inverter || {};
     p.inverter.selection = 'auto_dc_ac_80pct_preferred';
     p.inverter.powerKw = num(selected.opt.power_kw);
     p.inverter.type = selected.opt.type || null;
     p.inverter.count = selected.count;
-    p.inverter.unitCost = newUnitCost;
+    p.inverter.unitCost = selected.count === 1 ? num(selected.opt.base_usd) : round2(newCost / selected.count);
     p.inverter.baseUsd = newCost;
-    p.inverter.source = selected.opt.source || 'DATABASE';
+    p.inverter.source = combo.length > 1 ? 'DATABASE_COMBINATION' : (selected.opt.source || 'DATABASE');
     p.inverter.selectionReason = selected.reason;
+    p.inverter.configuration = comboLabel;
     p.inverter.targetAcDcRatio = 0.80;
     p.inverter.actualAcDcRatio = round2(selected.totalKw / dc);
     p.inverter.dcAcRatio = selected.totalKw > 0 ? round2(dc / selected.totalKw) : 0;
@@ -61,11 +97,13 @@
     p.marketPanelInverterUsd = round2(num(p.marketPanelUsd) + newCost);
     if (p.directMaterial) p.directMaterial.baseUsd = round2(num(p.directMaterial.baseUsd) + delta);
     if (p.directCost) p.directCost.baseUsd = round2(num(p.directCost.baseUsd) + delta);
+
+    /* Commercial pricing is based on total project cost, not direct cost alone. */
     var direct = num(p.directCost && p.directCost.baseUsd);
     var bos = num(p.bos && p.bos.baseUsd);
     var project = round2(direct + bos);
     var markup = num(p.markupPct, 15);
-    var sales = round2(direct * (1 + markup / 100));
+    var sales = round2(project * (1 + markup / 100));
     if (p.projectCost) {
       p.projectCost.usd = project;
       p.projectCost.baseUsd = project;
@@ -73,21 +111,43 @@
       p.projectCost.components = p.projectCost.components || {};
       p.projectCost.components.directCost = direct;
       p.projectCost.components.bosAllowance = bos;
+      p.projectCost.components.commercialMarkup = round2(sales - project);
+      p.projectCost.pricingBasis = 'direct_cost_plus_bos_allowance_then_markup';
     }
-    if (p.commercialPrice) p.commercialPrice.usd = sales;
-    if (p.salesPrice) p.salesPrice.usd = sales;
-    (p.bom || []).some(function (row) {
-      if (row.category !== 'GES' || String(row.item || '').indexOf('Inverter') === -1) return false;
-      row.item = selected.opt.power_kw + ' kW Inverter'; row.quantity = selected.count; row.unitCost = newUnitCost; row.totalCost = round2(newCost); row.source = selected.opt.source || 'DATABASE'; row.costStatus = 'PRICED'; return true;
-    });
+    if (p.commercialPrice) { p.commercialPrice.usd = sales; p.commercialPrice.basis = 'total_project_cost'; }
+    if (p.salesPrice) { p.salesPrice.usd = sales; p.salesPrice.basis = 'total_project_cost'; }
+
+    var inverterRows = (p.bom || []).filter(function (row) { return row.category === 'GES' && String(row.item || '').indexOf('Inverter') !== -1; });
+    if (inverterRows.length) {
+      var first = inverterRows[0];
+      first.item = comboLabel + ' Inverter Configuration';
+      first.quantity = 1;
+      first.unitCost = newCost;
+      first.totalCost = newCost;
+      first.source = p.inverter.source;
+      first.costStatus = 'PRICED';
+      inverterRows.slice(1).forEach(function (row) { row.quantity = 0; row.totalCost = 0; row.costStatus = 'SUPERSEDED'; });
+    }
+
     result.assumptions = result.assumptions || {};
     result.assumptions.inverterAcDcTargetRatio = 0.80;
-    result.assumptions.inverterSelectionRule = 'AC inverter target is 20% below DC; catalog combinations stay at or below DC when possible.';
+    result.assumptions.inverterSelectionRule = 'AC inverter target is 20% below DC; catalog combinations are selected by closest feasible AC/DC ratio.';
     result.sizing = result.sizing || {};
-    result.sizing.inverter = { targetAcDcRatio: 0.80, selectedAcKw: selected.totalKw, actualAcDcRatio: round2(selected.totalKw / dc), dcAcRatio: selected.totalKw > 0 ? round2(dc / selected.totalKw) : 0, powerKw: num(selected.opt.power_kw), count: selected.count, fallback: !!selected.fallback, reason: selected.reason };
+    result.sizing.inverter = {
+      targetAcDcRatio: 0.80,
+      selectedAcKw: selected.totalKw,
+      actualAcDcRatio: round2(selected.totalKw / dc),
+      dcAcRatio: selected.totalKw > 0 ? round2(dc / selected.totalKw) : 0,
+      powerKw: num(selected.opt.power_kw),
+      count: selected.count,
+      configuration: comboLabel,
+      fallback: !!selected.fallback,
+      reason: selected.reason
+    };
   }
+
   function install() {
-    if (!window.VitaEngine || typeof window.VitaEngine.calculate !== 'function' || (window.VitaEngine.__consumptionSizingInstalled && window.VitaEngine.sizingBuild === '2026-09-17-consumption-sizing-v4-inverter-80pct-water-separated')) return false;
+    if (!window.VitaEngine || typeof window.VitaEngine.calculate !== 'function' || (window.VitaEngine.__consumptionSizingInstalled && window.VitaEngine.sizingBuild === '2026-09-17-consumption-sizing-v5-inverter-80pct-cost-fix')) return false;
     var baseCalculate = window.VitaEngine.calculate;
     window.VitaEngine.calculate = function (input, cfg) {
       input = Object.assign({}, input || {}); cfg = cfg || {};
@@ -126,7 +186,7 @@
       return result;
     };
     window.VitaEngine.__consumptionSizingInstalled = true;
-    window.VitaEngine.sizingBuild = '2026-09-17-consumption-sizing-v4-inverter-80pct-water-separated';
+    window.VitaEngine.sizingBuild = '2026-09-17-consumption-sizing-v5-inverter-80pct-cost-fix';
     return true;
   }
   var tries = 0; var timer = setInterval(function () { tries++; if (install() || tries > 400) clearInterval(timer); }, 25);
