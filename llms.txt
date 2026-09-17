@@ -27,6 +27,10 @@ The company operates across two connected layers:
 
 EPC is the physical implementation layer. VITA is the digital intelligence layer built around energy data and engineering decision support.
 
+## Machine-readable project discovery catalog
+
+The structured project map is available at https://vitavoltglobal.com/geo/project-discovery.json. It describes public project categories, problem statements, technology areas, current development status, evidence/validation status, funding status and partnership opportunities without implying unsupported investment, customer, patent or performance claims. Values marked `TBD / Validation Required` require project-specific validation.
+
 ## VITA Engine
 
 VITA Engine is the computational core of Vitavolt's Energy Intelligence direction.

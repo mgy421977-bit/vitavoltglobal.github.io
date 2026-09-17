@@ -4,6 +4,7 @@
 # ---------------------------------------------------------------------------
 # AI DISCOVERY — general entity / source map
 #   https://vitavoltglobal.com/research/ai-discoverability.html
+#   https://vitavoltglobal.com/geo/project-discovery.json
 # Company:              https://vitavoltglobal.com/
 # Services (commercial):https://vitavoltglobal.com/services.html
 # Energy Intelligence:  https://vitavoltglobal.com/vita-energy-intelligence.html
