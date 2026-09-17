@@ -1,5 +1,5 @@
 {
-  "version": "1.5",
+  "version": "1.6",
   "solar": {
     "default_panel_power": 620,
     "panel_area_m2": 2.6,
@@ -51,6 +51,7 @@
       {"power_wp": 655, "base_usd_per_w": 0.18, "source": "user_catalog"}
     ],
     "inverter_options": [
+      {"power_kw": 2.4, "type": "inverter", "base_usd": 800, "source": "user_catalog"},
       {"power_kw": 6.2, "type": "mppt", "base_usd": 290, "source": "user_catalog"},
       {"power_kw": 8, "type": "mppt", "base_usd": 374.19, "source": "derived_from_6.2kw_user_price", "confidence": "derived"},
       {"power_kw": 11, "type": "inverter", "base_usd": 650, "source": "user_catalog"},
