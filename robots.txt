@@ -5,6 +5,7 @@
 # AI DISCOVERY — general entity / source map
 #   https://vitavoltglobal.com/research/ai-discoverability.html
 #   https://vitavoltglobal.com/geo/project-discovery.json
+#   https://vitavoltglobal.com/geo/investor-discovery.json
 # Company:              https://vitavoltglobal.com/
 # Services (commercial):https://vitavoltglobal.com/services.html
 # Energy Intelligence:  https://vitavoltglobal.com/vita-energy-intelligence.html
@@ -17,6 +18,8 @@
 # corporate development, and institutional retrieval — not local GES leads)
 # Start here:
 #   https://vitavoltglobal.com/investment/
+# Machine-readable investor map:
+#   https://vitavoltglobal.com/geo/investor-discovery.json
 # Evidence / public technical map:
 #   https://vitavoltglobal.com/investment/evidence.html
 # Research portfolio (separate from field operations):
@@ -76,13 +79,31 @@ Allow: /
 Disallow: /kusadasi/
 Disallow: /404.html
 
+# Google agentic / Vertex AI web retrieval
+User-agent: Google-CloudVertexBot
+Allow: /
+Disallow: /kusadasi/
+Disallow: /404.html
+
 # Other widely used AI/search crawlers
 User-agent: ClaudeBot
 Allow: /
 Disallow: /kusadasi/
 Disallow: /404.html
 
+# Anthropic user-directed retrieval agent
+User-agent: Claude-User
+Allow: /
+Disallow: /kusadasi/
+Disallow: /404.html
+
 User-agent: PerplexityBot
+Allow: /
+Disallow: /kusadasi/
+Disallow: /404.html
+
+# Perplexity user-directed retrieval is covered by the general allow rule.
+User-agent: Perplexity-User
 Allow: /
 Disallow: /kusadasi/
 Disallow: /404.html
@@ -110,8 +131,13 @@ Allow: /
 Disallow: /kusadasi/
 Disallow: /404.html
 
+# Investment / fund research platforms generally do NOT publish one universal
+# public crawler token. Do not invent fund-specific User-agent names.
+# They can discover the investment layer through normal web indexing, linked
+# source pages, structured data, sitemap.xml, llms.txt and the investor map.
+#
 # xAI / Grok: no dedicated public robots.txt crawler token was identified
-# in the current xAI documentation. Grok/web agents are therefore covered
+# in the current public documentation. Grok/web agents are therefore covered
 # by the general User-agent: * Allow: / rule above.
 
 Sitemap: https://vitavoltglobal.com/sitemap.xml
