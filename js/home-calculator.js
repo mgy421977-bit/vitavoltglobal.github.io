@@ -1,4 +1,4 @@
-/* Homepage hızlı fizibilite — ANNE Core → VITA Engine | build 2026-09-17-anne */
+/* Homepage hızlı fizibilite — ANNE Core → VITA Engine | build 2026-09-17-anne-v2 */
 (function () {
   'use strict';
   var form = document.getElementById('vitaHizliForm');
@@ -75,7 +75,7 @@
     if (window.AnneCore && typeof window.AnneCore.assess === 'function') return Promise.resolve();
     return new Promise(function (resolve, reject) {
       var s = document.createElement('script');
-      s.src = 'js/anne-core.js?v=2026-09-17-anne-v1';
+      s.src = 'js/anne-core.js?v=2026-09-17-anne-v2';
       s.onload = function () { resolve(); };
       s.onerror = function () { reject(new Error('ANNE Core yüklenemedi')); };
       document.head.appendChild(s);
@@ -105,11 +105,12 @@
         greywaterSelected: waterM > 0,
         rainwaterSelected: roof > 0
       });
+      if (!calc.anne || calc.anne.status !== 'ANNE_VITA_VALIDATED') throw new Error('ANNE Core doğrulama zinciri tamamlanamadı');
       var p = calc.pricing || {}, d = p.directCost || {};
       result.innerHTML = '<p><strong>GES:</strong> ' + calc.solar.dcCapacityKwp + ' kWp · ' + calc.solar.panelCount + ' panel · ' + calc.solar.annualProductionKwh.toLocaleString('tr-TR') + ' kWh/yıl</p>' +
         '<p><strong>CO₂:</strong> ' + calc.solar.co2ReductionKg.toLocaleString('tr-TR') + ' kg/yıl</p>' +
         '<p><strong>Direct Cost:</strong> ' + money(d.baseUsd) + ' · <strong>Sales:</strong> ' + money(p.salesPrice && p.salesPrice.usd) + '</p>' +
-        '<p><strong>ANNE:</strong> ' + (calc.anne && calc.anne.confidence) + '</p>' +
+        '<p><strong>ANNE:</strong> ' + (calc.anne && calc.anne.status) + ' · ' + (calc.anne && calc.anne.confidence) + '</p>' +
         '<p style="color:#94a3b8;font-size:.85rem">' + calc.warning + '</p>';
       box.style.display = 'block';
       var lead = {
