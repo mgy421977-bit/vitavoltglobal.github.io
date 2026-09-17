@@ -67,21 +67,44 @@
     return obj;
   }
 
+  function brandFooter() {
+    return (
+      '\n\n' +
+      'Vitavolt HomeEnergy\n' +
+      'Powered by VITA Intelligence\n' +
+      'https://vitavoltglobal.com\n' +
+      'info@vitavoltglobal.com'
+    );
+  }
+
   /**
-   * Müşteriye gidecek otomatik teşekkür metni (FormSubmit _autoresponse).
+   * Genel müşteri teşekkür metni (FormSubmit _autoresponse).
    */
   function buildAutoresponse(name) {
     var who = (name && String(name).trim()) ? String(name).trim() : 'Değerli Müşterimiz';
     return (
       'Sayın ' + who + ',\n\n' +
       'Firmamıza göstermiş olduğunuz ilgi için teşekkür ederiz.\n\n' +
-      'İlgili birimlerimiz teklifinizi hazırlamaya başlamış olup en kısa sürede tarafınızı bilgilendireceğiz.\n\n' +
+      'Ekibimiz talebinizle ilgilenmektedir. En kısa sürede tarafınıza dönüş yapılacaktır.\n\n' +
       'Her türlü sorunuz için ' + FORM_CONFIG.phoneDisplay + ' telefon numarasını arayabilirsiniz.\n\n' +
-      'Saygılarımızı sunar, bol güneşli günler dileriz.\n\n' +
-      'Vitavolt Mühendislik Ekibi\n' +
+      'Saygılarımızı sunarız.\n' +
+      brandFooter()
+    );
+  }
+
+  /**
+   * Yatırımcı / stratejik ortaklık formu teşekkür metni.
+   */
+  function buildInvestorAutoresponse(name) {
+    var who = (name && String(name).trim()) ? String(name).trim() : 'Değerli Yatırımcımız';
+    return (
+      'Sayın ' + who + ',\n\n' +
+      'Yatırım ve stratejik ortaklık ilginiz için teşekkür ederiz.\n\n' +
+      'Ekibimiz bilgilerinizle ilgilenmektedir. En kısa sürede size dönüş yapılacaktır.\n\n' +
+      'Acil sorularınız için ' + FORM_CONFIG.phoneDisplay + ' numarasından bize ulaşabilirsiniz.\n\n' +
+      'Saygılarımızla,\n' +
       'Vitavolt Global\n' +
-      'https://vitavoltglobal.com\n' +
-      'info@vitavoltglobal.com'
+      brandFooter()
     );
   }
 
@@ -229,6 +252,7 @@
     formToObject: formToObject,
     buildMailto: buildMailto,
     buildAutoresponse: buildAutoresponse,
+    buildInvestorAutoresponse: buildInvestorAutoresponse,
     submitForm: submitForm,
     submitPayload: submitPayload,
     config: FORM_CONFIG
