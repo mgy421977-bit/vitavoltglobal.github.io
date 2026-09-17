@@ -33,5 +33,24 @@ assert(solar.solar.selfConsumptionKwh <= solar.inputs.annualConsumptionKwh,
 assert.strictEqual(solar.water.rainfall.annualUsableM3, water.rainfall.annualUsableM3);
 assert.strictEqual(solar.water.greywater.annualUsableM3, water.greywater.annualUsableM3);
 
+const pricingConfig = calculator.mergeConfig({
+  pricing: {
+    cost_model: {
+      market_quote_discount_pct: 10,
+      reference_packages: [
+        { id: 'standart', name: 'Standart', dc_kwp: 6.55, bess_kwh: 14.4, quoted_cost_usd: 5650, cost_usd: 5085, comparable: true }
+      ]
+    }
+  }
+});
+const priced = calculator.calculate({
+  roofAreaM2: 25, monthlyConsumptionKwh: 900, nighttimeShare: 0.60,
+  peakDemandKw: 8, city: 'Kuşadası'
+}, pricingConfig);
+assert(priced.bess.recommended, 'BESS ön değerlendirmesi tetiklenmeli');
+assert(priced.pricing.projectCost.usd > 0, 'VITA maliyet referansı üretilmeli');
+assert.strictEqual(priced.pricing.projectCost.basis, 'market_quote_minus_10pct');
+assert.strictEqual(priced.pricing.projectCost.marketReference.discountPct, 10);
+
 assert.throws(() => calculator.calculate({ roofAreaM2: 0, landAreaM2: 0 }), /geçerli/);
 console.log('VITA web adapter tests: PASS');
