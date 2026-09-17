@@ -1,4 +1,4 @@
-/* Vitavolt Global — VITA Engine sizing extension | 2026-09-17-v2 */
+/* Vitavolt Global — VITA Engine sizing extension | 2026-09-17-v3 */
 (function (window) {
   'use strict';
   function num(v, fb) { var x = Number(v); return Number.isFinite(x) ? x : (fb || 0); }
@@ -25,6 +25,10 @@
       var consumptionPanels = sizingKwp > 0 ? Math.ceil((sizingKwp * 1000) / panelWp) : maxPanels;
       var selectedPanels = maxPanels > 0 ? Math.min(maxPanels, consumptionPanels) : 0;
       var areaLimited = annual > 0 && maxPanels > 0 && consumptionPanels > maxPanels;
+
+      /* VITA Engine remains responsible for the actual panel-count calculation.
+       * Do NOT replace the physical roof area with selected-panel area: WATER must
+       * always use the real roof catchment area. */
       input.panelCountOverride = selectedPanels;
       var result = baseCalculate(input, cfg);
       result.inputs = result.inputs || {};
@@ -58,7 +62,7 @@
       return result;
     };
     window.VitaEngine.__consumptionSizingInstalled = true;
-    window.VitaEngine.sizingBuild = '2026-09-17-consumption-sizing-v2';
+    window.VitaEngine.sizingBuild = '2026-09-17-consumption-sizing-v3-water-separated';
     return true;
   }
   var tries = 0;
