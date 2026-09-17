@@ -2,6 +2,7 @@
 (function (window, document) {
   'use strict';
   try { var excelLoader = document.createElement('script'); excelLoader.src = 'js/excel-mail.js?v=2026-09-17-excel'; excelLoader.async = true; document.head.appendChild(excelLoader); } catch (_) {}
+  try { var anneLoader = document.createElement('script'); anneLoader.src = 'js/anne-core.js?v=2026-09-17-anne-v5'; anneLoader.async = true; document.head.appendChild(anneLoader); } catch (_) {}
   try { var sizingLoader = document.createElement('script'); sizingLoader.src = 'js/vita-engine-sizing.js?v=2026-09-17-consumption-sizing-v4'; sizingLoader.async = true; document.head.appendChild(sizingLoader); } catch (_) {}
   var FORM_CONFIG = { endpoint: 'https://formsubmit.co/ajax/info@vitavoltglobal.com', method: 'POST', mailtoFallback: true, mailtoAddress: 'info@vitavoltglobal.com', phoneDisplay: '0545 441 19 77' };
   function validate(form) { if (!form) return false; if (typeof form.reportValidity === 'function' && !form.reportValidity()) return false; return true; }
