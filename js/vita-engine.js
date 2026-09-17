@@ -1,6 +1,6 @@
 /* Vitavolt Global — VITA Engine web adapter
  * Browser-safe VITA Engine contract.
- * Water calculations + auditable market-reference pricing.
+ * Water calculations + auditable market-reference pricing + project cost model.
  * Pricing is a manually curated market-reference layer, not autonomous learning.
  */
 (function (window) {
@@ -25,17 +25,21 @@
     pricing: {
       markup_pct: 15,
       currency: 'USD',
-      tax_note: 'Fiyatlar + KDV. %15 fiyat katmani KDV\'nin uzerindedir; KDV hesaplanmaz.',
+      tax_note: 'Maliyet referansı KDV hariçtir. %15 fiyat katmanı maliyet referansının üzerine uygulanır; KDV hesaplanmaz.',
       panel_options: [
-        { power_wp: 620, base_usd_per_w: 0.18, source: 'user_market_reference' },
-        { power_wp: 655, base_usd_per_w: 0.195, source: 'user_market_reference' }
+        { power_wp: 620, base_usd_per_w: 0.18, source: 'user_catalog' },
+        { power_wp: 655, base_usd_per_w: 0.195, source: 'user_catalog' }
       ],
       inverter_options: [
-        { power_kw: 6.2, type: 'hybrid', base_usd: 366.36, source: 'estimated_from_11kw_reference' },
+        { power_kw: 6.2, type: 'hybrid', base_usd: 366.36, source: 'derived_from_user_market_reference' },
         { power_kw: 11, type: 'inverter', base_usd: 650, source: 'user_market_reference' },
         { power_kw: 50, type: 'inverter', base_usd: 3000, source: 'user_market_reference' },
         { power_kw: 100, type: 'inverter', base_usd: 3500, source: 'user_market_reference' }
-      ]
+      ],
+      cost_model: {
+        market_quote_discount_pct: 10,
+        reference_packages: []
+      }
     }
   };
 
@@ -111,6 +115,19 @@
     return options[options.length - 1];
   }
 
+  function chooseMarketPackage(dcCapacityKwp, bessCapacityKwh, pricing) {
+    var model = pricing && pricing.cost_model;
+    var packages = model && Array.isArray(model.reference_packages) ? model.reference_packages.filter(function (p) { return p && p.comparable !== false && Number(p.cost_usd) > 0; }) : [];
+    if (!packages.length || dcCapacityKwp <= 0 || bessCapacityKwh <= 0) return null;
+    var targetDc = Math.max(0.1, Number(dcCapacityKwp));
+    var targetBess = Math.max(0.1, Number(bessCapacityKwh));
+    return packages.reduce(function (best, current) {
+      var bestScore = Math.abs(Number(best.dc_kwp) - targetDc) / targetDc + Math.abs(Number(best.bess_kwh) - targetBess) / targetBess;
+      var currentScore = Math.abs(Number(current.dc_kwp) - targetDc) / targetDc + Math.abs(Number(current.bess_kwh) - targetBess) / targetBess;
+      return currentScore < bestScore ? current : best;
+    });
+  }
+
   function calculatePricing(input, pricingSource) {
     input = input || {};
     var pricing = pricingSource || CONFIG.pricing;
@@ -127,8 +144,12 @@
     var inverterCount = 0;
     if (inverterOption && dcCapacityKwp > 0) inverterCount = Math.max(1, Math.ceil(dcCapacityKwp / Number(inverterOption.power_kw)));
     var inverterBaseUsd = inverterCount * (inverterOption ? Math.max(0, finite(inverterOption.base_usd, 0)) : 0);
-    var baseTotalUsd = panelBaseUsd + inverterBaseUsd;
-    var sellTotalUsd = baseTotalUsd * markup;
+    var baseEquipmentUsd = panelBaseUsd + inverterBaseUsd;
+    var bessCapacityKwh = Math.max(0, finite(input.bessCapacityKwh, 0));
+    var marketPackage = chooseMarketPackage(dcCapacityKwp, bessCapacityKwh, pricing);
+    var projectCostUsd = marketPackage ? Number(marketPackage.cost_usd) : Number(baseEquipmentUsd.toFixed(2));
+    var projectCostBasis = marketPackage ? 'market_quote_minus_10pct' : 'user_catalog_components';
+    var projectPriceUsd = projectCostUsd * markup;
 
     return {
       currency: pricing.currency || 'USD',
@@ -153,13 +174,30 @@
         source: inverterOption ? inverterOption.source : 'not_available'
       },
       total: {
-        baseUsd: Number(baseTotalUsd.toFixed(2)),
-        sellUsd: Number(sellTotalUsd.toFixed(2)),
+        baseUsd: Number(baseEquipmentUsd.toFixed(2)),
+        sellUsd: Number((baseEquipmentUsd * markup).toFixed(2)),
         scope: 'panel_plus_selected_inverter_only'
+      },
+      projectCost: {
+        usd: Number(projectCostUsd.toFixed(2)),
+        estimatedPriceUsd: Number(projectPriceUsd.toFixed(2)),
+        bessCapacityKwh: Number(bessCapacityKwh.toFixed(1)),
+        basis: projectCostBasis,
+        marketReference: marketPackage ? {
+          id: marketPackage.id,
+          name: marketPackage.name,
+          dcKwp: Number(marketPackage.dc_kwp),
+          bessKwh: Number(marketPackage.bess_kwh),
+          quotedCostUsd: Number(marketPackage.quoted_cost_usd),
+          costUsd: Number(marketPackage.cost_usd),
+          discountPct: Number((pricing.cost_model && pricing.cost_model.market_quote_discount_pct) || 10),
+          source: marketPackage.source
+        } : null,
+        note: marketPackage ? 'Ön maliyet, karşılaştırılan GES+BESS teklifinin %10 altı referansından seçilmiştir. Nihai satın alma maliyeti değildir.' : 'BESS paket referansı oluşmadığı için kullanıcı fiyat kataloğundaki panel + inverter maliyetleri gösterilmiştir.'
       },
       verification: {
         status: 'market_reference',
-        note: 'Fiyatlar kullanıcı tarafından sağlanan piyasa referanslarına dayanır; %15 fiyat katmanı üzerine eklenmiştir. KDV, konstrüksiyon, kablo, koruma, işçilik, nakliye ve diğer EPC kalemleri dahil değildir.'
+        note: 'Fiyatlar kullanıcı tarafından sağlanan fiyat kataloğu ve dış teklif referanslarına dayanır. %10 altı dış teklif maliyeti ön referanstır; KDV, saha koşulları ve doğrulanmamış ek kalemler kesin maliyet kabul edilmez.'
       }
     };
   }
@@ -169,6 +207,8 @@
     var merged = Object.assign({}, CONFIG.pricing, source);
     if (Array.isArray(source.panel_options)) merged.panel_options = source.panel_options;
     if (Array.isArray(source.inverter_options)) merged.inverter_options = source.inverter_options;
+    if (source.cost_model) merged.cost_model = Object.assign({}, CONFIG.pricing.cost_model, source.cost_model);
+    if (source.cost_model && Array.isArray(source.cost_model.reference_packages)) merged.cost_model.reference_packages = source.cost_model.reference_packages;
     return merged;
   }
 
@@ -188,7 +228,7 @@
   }
 
   window.VitaEngine = {
-    version: 'web-contract-1.1',
+    version: 'web-contract-1.2',
     config: CONFIG,
     calculateWater: calculateWater,
     calculatePricing: calculatePricing,
