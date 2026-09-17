@@ -10,6 +10,14 @@
     document.head.appendChild(excelLoader);
   } catch (_) {}
 
+  /* VITA Engine consumption-driven sizing extension. */
+  try {
+    var sizingLoader = document.createElement('script');
+    sizingLoader.src = 'js/vita-engine-sizing.js?v=2026-09-17-consumption-sizing-v1';
+    sizingLoader.async = true;
+    document.head.appendChild(sizingLoader);
+  } catch (_) {}
+
   var FORM_CONFIG = {
     endpoint: 'https://formsubmit.co/ajax/info@vitavoltglobal.com',
     method: 'POST',
