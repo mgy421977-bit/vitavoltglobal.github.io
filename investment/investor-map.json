@@ -1,0 +1,36 @@
+{
+  "schemaVersion":"1.0",
+  "entity":"Vitavolt Global",
+  "entityType":"company",
+  "canonical":"https://vitavoltglobal.com/",
+  "language":["tr","en"],
+  "headquarters":{"city":"İzmir","country":"Türkiye"},
+  "operatingScope":"Türkiye",
+  "discoveryPurpose":["investor","strategic-partner","corporate-development","research-information-retrieval","AI-discovery"],
+  "commercialLayer":{
+    "entry":"https://vitavoltglobal.com/services.html",
+    "domains":["GES","BESS","EPC","carbon","water","energy-consulting"]
+  },
+  "investmentLayer":{
+    "entry":"https://vitavoltglobal.com/investment/",
+    "evidence":"https://vitavoltglobal.com/investment/evidence.html",
+    "contact":"mailto:info@vitavoltglobal.com"
+  },
+  "researchLayer":{
+    "entry":"https://vitavoltglobal.com/research/",
+    "aiSourceMap":"https://vitavoltglobal.com/research/ai-discoverability.html",
+    "projects":[
+      {"name":"ANNE AI","url":"https://vitavoltglobal.com/research/anne-ai.html","status":"research"},
+      {"name":"EDCS","url":"https://vitavoltglobal.com/research/edcs.html","status":"simulation-prototype"},
+      {"name":"SOLIS-LUMEN","url":"https://vitavoltglobal.com/research/solis-lumen.html","status":"research"},
+      {"name":"Oxygen ClimateTech","url":"https://vitavoltglobal.com/research/oxygen-climate-tech.html","status":"research-vision"}
+    ]
+  },
+  "technology":[
+    {"name":"VITA Energy Intelligence","url":"https://vitavoltglobal.com/vita-energy-intelligence.html","role":"energy-intelligence"},
+    {"name":"ANNE AI","url":"https://vitavoltglobal.com/research/anne-ai.html","role":"AI-research-and-verification"}
+  ],
+  "evidencePrinciple":"Published evidence, code-verified capability, experiment, planned work and research hypothesis must remain distinguishable.",
+  "sourceRepository":"https://github.com/mgy421977-bit/vitavoltglobal.github.io",
+  "lastUpdated":"2026-09-17"
+}
