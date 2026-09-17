@@ -1,21 +1,65 @@
 # Vitavolt Global — https://vitavoltglobal.com/
+# Public AI/search discovery is intentionally enabled. Do not use robots.txt as a keyword or ranking mechanism.
+
 User-agent: *
 Allow: /
-Disallow: /kusadasi/
 Disallow: /404.html
 
+# OpenAI — public search/discovery crawler
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /404.html
+
+# OpenAI — advertising landing-page validation crawler
+User-agent: OAI-AdsBot
+Allow: /
+Disallow: /404.html
+
+# OpenAI — training-data crawler (separate policy from SearchBot)
+User-agent: GPTBot
+Allow: /
+Disallow: /404.html
+
+# Google Search
 User-agent: Googlebot
 Allow: /
-Disallow: /kusadasi/
 Disallow: /404.html
 
+# Google Gemini / AI control token
+User-agent: Google-Extended
+Allow: /
+Disallow: /404.html
+
+# Other widely used AI/search crawlers
+User-agent: ClaudeBot
+Allow: /
+Disallow: /404.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /404.html
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /404.html
+
+User-agent: Applebot
+Allow: /
+Disallow: /404.html
+
+# Google image discovery
 User-agent: Googlebot-Image
 Allow: /
 Allow: /images/
+Disallow: /404.html
 
+# Bing search discovery
 User-agent: Bingbot
 Allow: /
-Disallow: /kusadasi/
 Disallow: /404.html
+
+# xAI / Grok: no dedicated public robots.txt crawler token was identified
+# in the current xAI documentation. Grok/web agents are therefore covered
+# by the general User-agent: * Allow: / rule above.
 
 Sitemap: https://vitavoltglobal.com/sitemap.xml
