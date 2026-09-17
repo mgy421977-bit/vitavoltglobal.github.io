@@ -56,7 +56,17 @@
     var failed = checks.filter(function (c) { return !c.ok; });
     return { ok: failed.length === 0, status: failed.length === 0 ? 'PASSED' : 'FAILED', checks: checks, failedCount: failed.length, mustNot: 'recompute_or_override_vita_engineering' };
   }
-  function ensureMitos() { if (window.MitosCore && typeof window.MitosCore.completeInputs === 'function') return Promise.resolve(); return new Promise(function (resolve, reject) { var s = document.createElement('script'); s.src = 'js/mitos-core.js?v=2026-09-17-mitos-v2'; s.onload = resolve; s.onerror = function () { reject(new Error('MITOS Core yüklenemedi')); }; document.head.appendChild(s); }); }
+  function ensureMitos() {
+    if (window.MitosCore && typeof window.MitosCore.completeInputs === 'function' && window.MitosCore.build === '2026-09-17-mitos-v3-81-city-solar') return Promise.resolve();
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = 'js/mitos-core.js?v=2026-09-17-mitos-v3-81-city-solar';
+      s.async = false;
+      s.onload = function () { if (window.MitosCore && window.MitosCore.build === '2026-09-17-mitos-v3-81-city-solar') resolve(); else reject(new Error('MITOS Core sürümü doğrulanamadı')); };
+      s.onerror = function () { reject(new Error('MITOS Core yüklenemedi')); };
+      document.head.appendChild(s);
+    });
+  }
   function runPipeline(rawInput, options) {
     options = options || {};
     if (!window.VitaEngine || typeof window.VitaEngine.calculate !== 'function') throw new Error('VITA Engine is required — deterministic motor must exist first');
