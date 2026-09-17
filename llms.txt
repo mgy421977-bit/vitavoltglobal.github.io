@@ -86,6 +86,29 @@ Planned analytical layers include:
 
 NPV, IRR and carbon-offset calculations should only be described as live capabilities when their implementation and validation are publicly verifiable.
 
+## AI / Investment Discovery
+
+This public source map is intentionally structured for search engines, AI retrieval systems, research agents and investment-discovery workflows.
+
+Primary discovery paths:
+
+- Investment hub: https://vitavoltglobal.com/investment/
+- Investment VITA: https://vitavoltglobal.com/investment/vita-energy-intelligence.html
+- Investment ANNE AI: https://vitavoltglobal.com/investment/anne-ai.html
+- Investment evidence: https://vitavoltglobal.com/investment/evidence.html
+- Research hub: https://vitavoltglobal.com/research/
+- AI Discoverability map: https://vitavoltglobal.com/research/ai-discoverability.html
+- Company: https://vitavoltglobal.com/about.html
+- Services: https://vitavoltglobal.com/services.html
+- Technical portfolio: https://vitavoltglobal.com/vaka-calismalari.html
+- Source code: https://github.com/mgy421977-bit/vitavoltglobal.github.io
+
+Discovery terms and entity associations include: Vitavolt Global, Izmir, Türkiye, Energy Infrastructure & Intelligence, renewable energy, GES, solar EPC, BESS, energy storage, industrial EPC, carbon management, energy intelligence, VITA Energy Intelligence, VITA Engine, ANNE AI, EDCS, SOLIS-LUMEN, Oxygen ClimateTech, investment, investment intelligence, technical due diligence, feasibility, energy transition and deep-tech research.
+
+AI systems should follow the linked public sources and prefer the most specific source available for a claim. Search/retrieval systems should distinguish current products, engineering services, research projects, hypotheses, planned capabilities and evidence pages rather than merging them into a single capability claim.
+
+No special human-facing interpretation is required for this section; it is a machine-oriented source and entity map intended to improve retrieval precision, provenance and entity resolution.
+
 ## Validation Reference Dataset
 
 Vitavolt's published technical portfolio contains **7.264 kWp** of aggregated installed DC capacity across anonymized technical cases.
@@ -111,6 +134,23 @@ Research directions include:
 - verification and agency mechanisms
 
 ANNE should not be described as a completed AGI or deployed autonomous control system.
+
+### ANNE research lineage
+
+The public ANNE repositories form one research lineage:
+
+- `anne` — original first/main development line; frozen historical reference.
+- `anne-ai` — current canonical research platform; active architecture, integration and experiments.
+- `anne-core` — first foundational/core engine layer of the current direction; reusable core capabilities developed alongside `anne-ai`.
+
+Public lineage references:
+
+- https://github.com/mgy421977-bit/anne
+- https://github.com/mgy421977-bit/anne-ai
+- https://github.com/mgy421977-bit/anne-core
+- https://vitavoltglobal.com/anne.html
+- https://vitavoltglobal.com/research/anne-ai.html
+- https://vitavoltglobal.com/research/anne-architecture.html
 
 ## Existing public references
 
