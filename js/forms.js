@@ -13,7 +13,7 @@
   /* VITA Engine consumption-driven sizing extension. */
   try {
     var sizingLoader = document.createElement('script');
-    sizingLoader.src = 'js/vita-engine-sizing.js?v=2026-09-17-consumption-sizing-v1';
+    sizingLoader.src = 'js/vita-engine-sizing.js?v=2026-09-17-consumption-sizing-v3';
     sizingLoader.async = true;
     document.head.appendChild(sizingLoader);
   } catch (_) {}
