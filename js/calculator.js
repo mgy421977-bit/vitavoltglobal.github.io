@@ -4,9 +4,8 @@
  * Technical role:
  * Browser-safe deterministic preliminary feasibility calculator.
  *
- * Pricing is data-driven from /database/calculations.json. The market
- * references are user-supplied and the Vitavolt pricing layer adds the
- * configured markup; this is not autonomous model training.
+ * Pricing is data-driven from /database/calculations.json and is executed
+ * through the browser-safe VITA Engine adapter when available.
  */
 (function (window) {
   'use strict';
@@ -17,15 +16,16 @@
     pricing: {
       markup_pct: 15, currency: 'USD',
       panel_options: [
-        { power_wp: 620, base_usd_per_w: 0.18, source: 'user_market_reference' },
-        { power_wp: 655, base_usd_per_w: 0.195, source: 'user_market_reference' }
+        { power_wp: 620, base_usd_per_w: 0.18, source: 'user_catalog' },
+        { power_wp: 655, base_usd_per_w: 0.195, source: 'user_catalog' }
       ],
       inverter_options: [
-        { power_kw: 6.2, type: 'hybrid', base_usd: 366.36, source: 'estimated_from_11kw_reference', confidence: 'derived' },
+        { power_kw: 6.2, type: 'hybrid', base_usd: 366.36, source: 'derived_from_user_market_reference', confidence: 'derived' },
         { power_kw: 11, type: 'inverter', base_usd: 650, source: 'user_market_reference' },
         { power_kw: 50, type: 'inverter', base_usd: 3000, source: 'user_market_reference' },
         { power_kw: 100, type: 'inverter', base_usd: 3500, source: 'user_market_reference' }
-      ]
+      ],
+      cost_model: { market_quote_discount_pct: 10, reference_packages: [] }
     }
   };
 
@@ -61,13 +61,26 @@
     var inverterOption = requestedInverterKw > 0 ? findOption(inverterOptions, requestedInverterKw, 'power_kw') : autoInverter(inverterOptions, dcCapacityKwp);
     var inverterQty = inverterOption ? Math.max(1, Math.ceil(dcCapacityKwp / Number(inverterOption.power_kw))) : 0;
     var inverterBaseUsd = inverterOption ? inverterQty * Math.max(0, finite(inverterOption.base_usd, 0)) : 0, inverterSellUsd = inverterBaseUsd * multiplier;
+
+    if (window.VitaEngine && typeof window.VitaEngine.calculatePricing === 'function') {
+      return window.VitaEngine.calculatePricing({
+        panelPowerWp: panelPowerWp,
+        panelCount: panelCount,
+        dcCapacityKwp: dcCapacityKwp,
+        inverterPowerKw: requestedInverterKw > 0 ? requestedInverterKw : 'auto',
+        bessCapacityKwh: positive(input && input.bessCapacityKwh)
+      }, pricing);
+    }
+
     return {
       currency: pricing.currency || 'USD', markupPct: markupPct,
       taxNote: pricing.tax_note || 'Fiyatlar + KDV; KDV hesaplanmaz.',
       source: pricing.provenance || 'configured_market_references',
       panel: { selectedPowerWp: panelPowerWp, unitBaseUsdPerW: basePanelUsdPerW, unitSellUsd: Number((panelPowerWp * basePanelUsdPerW * multiplier).toFixed(2)), quantity: panelCount, baseUsd: Number(panelBaseUsd.toFixed(2)), sellUsd: Number(panelSellUsd.toFixed(2)), referenceSource: panelOption ? panelOption.source : 'not_configured' },
       inverter: { selectedPowerKw: inverterOption ? Number(inverterOption.power_kw) : null, type: inverterOption ? inverterOption.type : null, quantity: inverterQty, unitBaseUsd: inverterOption ? Number(inverterOption.base_usd) : 0, unitSellUsd: inverterOption ? Number((Number(inverterOption.base_usd) * multiplier).toFixed(2)) : 0, baseUsd: Number(inverterBaseUsd.toFixed(2)), sellUsd: Number(inverterSellUsd.toFixed(2)), selectionMode: requestedInverterKw > 0 ? 'user_selected' : 'auto_capacity_fit', referenceSource: inverterOption ? inverterOption.source : 'not_configured', confidence: inverterOption ? (inverterOption.confidence || 'market_reference') : 'not_configured' },
-      equipmentSubtotalUsd: Number((panelSellUsd + inverterSellUsd).toFixed(2)), scope: 'panel_plus_inverter_only'
+      equipmentSubtotalUsd: Number((panelSellUsd + inverterSellUsd).toFixed(2)),
+      projectCost: { usd: Number((panelBaseUsd + inverterBaseUsd).toFixed(2)), estimatedPriceUsd: Number(((panelBaseUsd + inverterBaseUsd) * multiplier).toFixed(2)), basis: 'user_catalog_components', marketReference: null },
+      scope: 'panel_plus_inverter_only'
     };
   }
 
@@ -83,7 +96,7 @@
     var systemLoss = clamp(finite(config.solar.system_loss_factor, 0.85), 0.1, 1), performanceRatio = clamp(finite(config.solar.performance_ratio, 0.8), 0.1, 1), specificYield = Math.max(300, finite(config.solar.default_specific_yield_kwh_kwp, 1450)), margin = clamp(finite(config.solar.design_margin, 1.1), 0.5, 2), co2Factor = Math.max(0, finite(config.solar.co2_factor, 0.42));
     var panelCount = Math.max(0, Math.floor(availableArea / panelArea)), dcCapacityKwp = Number((panelCount * panelPowerKw).toFixed(1));
     var annualProductionKwh = Math.round(dcCapacityKwp * specificYield * systemLoss * performanceRatio);
-    var selfConsumptionRatio = annualConsumption > 0 ? clamp((annualConsumption * margin) / Math.max(annualProductionKwh, 1), 0, 1) : 0;
+    var selfConsumptionRatio = annualConsumption > 0 ? clamp((annualConsumption * margin) / Math.max(annualProductionKwh, 1), 0, 1);
     var selfConsumedKwh = Math.min(annualConsumption, annualProductionKwh, Math.round(annualProductionKwh * selfConsumptionRatio)), gridExportKwh = Math.max(0, annualProductionKwh - selfConsumedKwh), co2ReductionKg = Math.round(annualProductionKwh * co2Factor);
     var dailyConsumptionKwh = annualConsumption > 0 ? annualConsumption / 365 : 0, nighttimeShare = input.nighttimeShare != null ? clamp(finite(input.nighttimeShare, 0), 0, 1) : 0.35, peakDemandKw = positive(input.peakDemandKw);
     var bessRecommended = nighttimeShare >= 0.40 || peakDemandKw >= Math.max(20, dcCapacityKwp * 0.35), suggestedBatteryKwh = 0;
@@ -94,7 +107,7 @@
       inputs: { roofAreaM2: roof, landAreaM2: land, landAvailable: useLand, annualConsumptionKwh: annualConsumption },
       solar: { panelCount: panelCount, dcCapacityKwp: dcCapacityKwp, annualProductionKwh: annualProductionKwh, selfConsumptionKwh: selfConsumedKwh, gridExportKwh: gridExportKwh, co2ReductionKg: co2ReductionKg, co2Verification: { status: 'assumption_based', factorKgPerKwh: co2Factor, aiScore: null }, estimatedAreaM2: panelCount * panelArea },
       bess: { recommended: bessRecommended, suggestedCapacityKwh: suggestedBatteryKwh, depthOfDischarge: clamp(finite(config.battery.depth_of_discharge, 0.9), 0.5, 1), roundTripEfficiency: clamp(finite(config.battery.round_trip_efficiency, 0.95), 0.5, 1), verification: { status: 'preliminary', basis: peakDemandKw > 0 || input.nighttimeShare != null ? 'user_profile_inputs' : 'default_assumptions', aiScore: null } },
-      pricing: calculatePricing(input, config, dcCapacityKwp, panelCount), water: water,
+      pricing: calculatePricing(Object.assign({}, input, { panelPowerWp: panelPowerWp, bessCapacityKwh: suggestedBatteryKwh }), config, dcCapacityKwp, panelCount), water: water,
       assumptions: { panelPowerWp: panelPowerWp, panelAreaM2: panelArea, specificYieldKwhKwp: specificYield, systemLossFactor: systemLoss, performanceRatio: performanceRatio, co2FactorKgPerKwh: co2Factor, designMargin: margin },
       warning: 'Bu sonuç ön fizibilite amaçlı yaklaşık hesaplamadır. Nihai sistem tasarımı saha, tüketim ve teknik analiz sonrasında belirlenir.'
     };
