@@ -23,7 +23,6 @@ a{color:var(--vv-green);}a:hover{color:var(--vv-green-2);}
 .section::after{content:"VITAVOLT";position:absolute;right:4%;bottom:7%;font-size:clamp(3rem,10vw,9rem);font-weight:800;letter-spacing:.08em;color:var(--vv-watermark);pointer-events:none;user-select:none;z-index:0;}
 .section::before{content:"";position:absolute;inset:0;opacity:.75;pointer-events:none;background:repeating-radial-gradient(ellipse at 85% 25%,transparent 0 18px,rgba(31,157,85,.035) 19px 20px,transparent 21px 34px);transform:rotate(-8deg) scale(1.15);}
 .section > *{position:relative;z-index:1;}
-/* Existing homepage proof strip uses legacy inline light text; keep it readable on the fog surface. */
 .section p[style*="#e2e8f0"]{color:var(--vv-graphite)!important;}
 .card,.service-card,.stat-card,.path-card{background:rgba(255,255,255,.88);border-color:var(--vv-line);box-shadow:0 10px 30px rgba(20,35,45,.055);}
 .card:hover,.service-card:hover,.stat-card:hover,.path-card:hover{box-shadow:0 18px 45px rgba(20,35,45,.10);border-color:rgba(31,157,85,.25);}
@@ -40,3 +39,16 @@ a{color:var(--vv-green);}a:hover{color:var(--vv-green-2);}
 @media(max-width:1023px){.nav-menu{background:rgba(248,250,252,.98)!important;color:var(--vv-graphite)!important;box-shadow:0 24px 70px rgba(10,18,26,.16)!important;border-left:1px solid var(--vv-line)!important}.nav-menu .nav-link{color:var(--vv-graphite)}.nav-menu .nav-link:hover,.nav-menu .nav-link.active{color:var(--vv-green)}}
 @media(max-width:767px){.services-grid,.solutions-grid,.cards-grid,.service-cards,.services-cards{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;gap:16px!important;padding:4px 4px 18px!important;scroll-snap-type:x mandatory!important;-webkit-overflow-scrolling:touch!important}.services-grid > *,.solutions-grid > *,.cards-grid > *,.service-cards > *,.services-cards > *{flex:0 0 78%!important;min-width:78%!important;scroll-snap-align:start!important}}
 [style*="#38bdf8"],[style*="#00AEEF"],[style*="#1683e8"],[style*="#1b8af0"]{color:var(--vv-green)!important;}
+
+/* VITA proof strip: photographic-feel editorial surface with renewable-green intelligence accents. */
+.hero + .section{min-height:340px;display:flex;align-items:center;background:radial-gradient(circle at 12% 55%,rgba(105,200,140,.20),transparent 24%),radial-gradient(circle at 88% 50%,rgba(31,157,85,.10),transparent 26%),linear-gradient(120deg,#f8fbfa 0%,#eaf3ef 48%,#f7faf9 100%);border-top:1px solid rgba(31,157,85,.08);border-bottom:1px solid rgba(31,157,85,.10);}
+.hero + .section::before{opacity:.95;background:repeating-radial-gradient(ellipse at 50% 45%,transparent 0 20px,rgba(31,157,85,.035) 21px 22px,transparent 23px 38px),radial-gradient(circle at 8% 70%,rgba(72,167,91,.16),transparent 18%),radial-gradient(circle at 94% 35%,rgba(22,131,232,.08),transparent 20%);transform:rotate(-7deg) scale(1.25);}
+.hero + .section::after{content:"VITA";right:50%;bottom:50%;transform:translate(50%,50%);font-size:clamp(9rem,25vw,22rem);letter-spacing:.18em;color:rgba(31,157,85,.055);z-index:0;}
+.hero + .section .container{position:relative;z-index:2;width:100%;}
+.hero + .section .container > div{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem!important;align-items:center;}
+.hero + .section .container > div > div{position:relative;padding:1.5rem .75rem;text-align:center;}
+.hero + .section .container > div > div:not(:last-child)::after{content:"";position:absolute;right:-1rem;top:25%;height:50%;width:1px;background:linear-gradient(transparent,rgba(31,157,85,.25),transparent);}
+.hero + .section .container > div > div p:first-child{color:var(--vv-green)!important;font-weight:700!important;letter-spacing:.16em!important;font-size:.78rem!important;}
+.hero + .section .container > div > div p:last-child{color:var(--vv-graphite)!important;font-size:clamp(1.05rem,2.2vw,1.35rem)!important;font-weight:500;line-height:1.45;}
+.hero + .section .container > div > div:nth-child(2) p:first-child{color:var(--vv-green-2)!important;}
+@media(max-width:767px){.hero + .section{min-height:430px;padding:3.5rem 0!important;}.hero + .section .container > div{grid-template-columns:1fr!important;gap:.4rem!important}.hero + .section .container > div > div{padding:1rem .5rem}.hero + .section .container > div > div:not(:last-child)::after{right:15%;left:15%;top:auto;bottom:-.2rem;width:70%;height:1px;background:linear-gradient(90deg,transparent,rgba(31,157,85,.25),transparent)}.hero + .section::after{font-size:clamp(8rem,42vw,14rem);letter-spacing:.12em;}}
