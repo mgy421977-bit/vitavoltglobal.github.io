@@ -3,7 +3,6 @@
   'use strict';
   function num(v, fb) { var x = Number(v); return Number.isFinite(x) ? x : (fb || 0); }
   function round2(v) { return Math.round(num(v) * 100) / 100; }
-
   function chooseInverter(dcKwp, pricing) {
     var list = ((pricing && pricing.inverter_options) || []).slice().sort(function (a, b) { return num(a.power_kw) - num(b.power_kw); });
     if (!list.length || dcKwp <= 0) return { opt: null, count: 0, totalKw: 0, fallback: false, reason: 'no_catalog_or_zero_dc' };
@@ -32,7 +31,6 @@
     var covering = list.find(function (opt) { return num(opt.power_kw) >= dcKwp; }) || list[list.length - 1];
     return { opt: covering, count: 1, totalKw: round2(num(covering.power_kw)), fallback: true, reason: 'smallest_catalog_unit_covering_dc_fallback' };
   }
-
   function applyInverterRule(result) {
     if (!result || !result.solar || !result.pricing) return;
     var dc = Math.max(0, num(result.solar.dcCapacityKwp));
@@ -80,36 +78,19 @@
     if (p.salesPrice) p.salesPrice.usd = sales;
     (p.bom || []).some(function (row) {
       if (row.category !== 'GES' || String(row.item || '').indexOf('Inverter') === -1) return false;
-      row.item = selected.opt.power_kw + ' kW Inverter';
-      row.quantity = selected.count;
-      row.unitCost = newUnitCost;
-      row.totalCost = round2(newCost);
-      row.source = selected.opt.source || 'DATABASE';
-      row.costStatus = 'PRICED';
-      return true;
+      row.item = selected.opt.power_kw + ' kW Inverter'; row.quantity = selected.count; row.unitCost = newUnitCost; row.totalCost = round2(newCost); row.source = selected.opt.source || 'DATABASE'; row.costStatus = 'PRICED'; return true;
     });
     result.assumptions = result.assumptions || {};
     result.assumptions.inverterAcDcTargetRatio = 0.80;
     result.assumptions.inverterSelectionRule = 'AC inverter target is 20% below DC; catalog combinations stay at or below DC when possible.';
     result.sizing = result.sizing || {};
-    result.sizing.inverter = {
-      targetAcDcRatio: 0.80,
-      selectedAcKw: selected.totalKw,
-      actualAcDcRatio: round2(selected.totalKw / dc),
-      dcAcRatio: selected.totalKw > 0 ? round2(dc / selected.totalKw) : 0,
-      powerKw: num(selected.opt.power_kw),
-      count: selected.count,
-      fallback: !!selected.fallback,
-      reason: selected.reason
-    };
+    result.sizing.inverter = { targetAcDcRatio: 0.80, selectedAcKw: selected.totalKw, actualAcDcRatio: round2(selected.totalKw / dc), dcAcRatio: selected.totalKw > 0 ? round2(dc / selected.totalKw) : 0, powerKw: num(selected.opt.power_kw), count: selected.count, fallback: !!selected.fallback, reason: selected.reason };
   }
-
   function install() {
-    if (!window.VitaEngine || typeof window.VitaEngine.calculate !== 'function' || window.VitaEngine.__consumptionSizingInstalled) return false;
+    if (!window.VitaEngine || typeof window.VitaEngine.calculate !== 'function' || (window.VitaEngine.__consumptionSizingInstalled && window.VitaEngine.sizingBuild === '2026-09-17-consumption-sizing-v4-inverter-80pct-water-separated')) return false;
     var baseCalculate = window.VitaEngine.calculate;
     window.VitaEngine.calculate = function (input, cfg) {
-      input = Object.assign({}, input || {});
-      cfg = cfg || {};
+      input = Object.assign({}, input || {}); cfg = cfg || {};
       var solar = Object.assign({}, (window.VitaEngine.config && window.VitaEngine.config.solar) || {}, cfg.solar || {});
       var roof = Math.max(0, num(input.roofAreaM2)), land = Math.max(0, num(input.landAreaM2));
       var area = roof + (input.landAvailable === true ? land : 0);
@@ -130,31 +111,17 @@
       var result = baseCalculate(input, cfg);
       applyInverterRule(result);
       result.inputs = result.inputs || {};
-      result.inputs.roofAreaM2 = roof;
-      result.inputs.landAreaM2 = land;
-      result.inputs.annualConsumptionKwh = annual;
-      result.inputs.panelCountOverride = selectedPanels;
+      result.inputs.roofAreaM2 = roof; result.inputs.landAreaM2 = land; result.inputs.annualConsumptionKwh = annual; result.inputs.panelCountOverride = selectedPanels;
       result.sizing = result.sizing || {};
       result.sizing.method = annual > 0 ? 'consumption_driven_with_available_area_cap' : 'area_driven';
       result.sizing.annualConsumptionKwh = annual;
       result.sizing.requiredKwpBeforeAreaCap = round2(sizingKwp);
       result.sizing.maximumAreaKwp = round2((maxPanels * panelWp) / 1000);
-      result.sizing.selectedKwp = result.solar.dcCapacityKwp;
-      result.sizing.selectedPanelCount = result.solar.panelCount;
-      result.sizing.maximumPanelCount = maxPanels;
-      result.sizing.areaLimited = areaLimited;
-      result.sizing.yieldKwhKwp = yieldKwh;
-      result.sizing.systemLossFactor = loss;
-      result.sizing.physicalRoofAreaM2 = roof;
-      result.sizing.usableAreaM2 = area;
+      result.sizing.selectedKwp = result.solar.dcCapacityKwp; result.sizing.selectedPanelCount = result.solar.panelCount; result.sizing.maximumPanelCount = maxPanels; result.sizing.areaLimited = areaLimited;
+      result.sizing.yieldKwhKwp = yieldKwh; result.sizing.systemLossFactor = loss; result.sizing.physicalRoofAreaM2 = roof; result.sizing.usableAreaM2 = area;
       result.sizing.note = areaLimited ? 'Tüketim hedefi mevcut çatı/arazi alanının kapasitesini aştı; sistem fiziksel alan ile sınırlandı.' : (annual > 0 ? 'GES gücü yıllık tüketimden türetildi ve mevcut alan kapasitesi içinde tutuldu.' : 'Tüketim girilmediği için mevcut alan kapasitesi referans alındı.');
       result.assumptions = result.assumptions || {};
-      result.assumptions.sizingMethod = result.sizing.method;
-      result.assumptions.requiredKwpBeforeAreaCap = result.sizing.requiredKwpBeforeAreaCap;
-      result.assumptions.maximumAreaKwp = result.sizing.maximumAreaKwp;
-      result.assumptions.areaLimited = result.sizing.areaLimited;
-      result.assumptions.physicalRoofAreaM2 = roof;
-      result.assumptions.usableAreaM2 = area;
+      result.assumptions.sizingMethod = result.sizing.method; result.assumptions.requiredKwpBeforeAreaCap = result.sizing.requiredKwpBeforeAreaCap; result.assumptions.maximumAreaKwp = result.sizing.maximumAreaKwp; result.assumptions.areaLimited = result.sizing.areaLimited; result.assumptions.physicalRoofAreaM2 = roof; result.assumptions.usableAreaM2 = area;
       result.validation = window.VitaEngine.validate(result);
       return result;
     };
@@ -162,6 +129,5 @@
     window.VitaEngine.sizingBuild = '2026-09-17-consumption-sizing-v4-inverter-80pct-water-separated';
     return true;
   }
-  var tries = 0;
-  var timer = setInterval(function () { tries++; if (install() || tries > 400) clearInterval(timer); }, 25);
+  var tries = 0; var timer = setInterval(function () { tries++; if (install() || tries > 400) clearInterval(timer); }, 25);
 })(typeof window !== 'undefined' ? window : global);
