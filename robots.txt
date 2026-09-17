@@ -2,31 +2,42 @@
 # Public AI/search discovery is intentionally enabled. Do not use robots.txt as a keyword or ranking mechanism.
 #
 # ---------------------------------------------------------------------------
-# AI DISCOVERY
-# Public entity and source map (start here for retrieval / citation):
+# AI DISCOVERY — general entity / source map
 #   https://vitavoltglobal.com/research/ai-discoverability.html
 # Company:              https://vitavoltglobal.com/
-# Services:             https://vitavoltglobal.com/services.html
-# Investment:           https://vitavoltglobal.com/investment/
-# Investment evidence:  https://vitavoltglobal.com/investment/evidence.html
+# Services (commercial):https://vitavoltglobal.com/services.html
 # Energy Intelligence:  https://vitavoltglobal.com/vita-energy-intelligence.html
-# Research:             https://vitavoltglobal.com/research/
-# ANNE AI:              https://vitavoltglobal.com/research/anne-ai.html
+# Research hub:         https://vitavoltglobal.com/research/
+# ANNE AI (research):   https://vitavoltglobal.com/research/anne-ai.html
 # Public source repo:   https://github.com/mgy421977-bit/vitavoltglobal.github.io
+#
+# ---------------------------------------------------------------------------
+# INVESTOR / CAPITAL DISCOVERY (preferred entry for capital, strategic partners,
+# corporate development, and institutional retrieval — not local GES leads)
+# Start here:
+#   https://vitavoltglobal.com/investment/
+# Evidence / public technical map:
+#   https://vitavoltglobal.com/investment/evidence.html
+# Research portfolio (separate from field operations):
+#   https://vitavoltglobal.com/research/
+#   https://vitavoltglobal.com/research/ai-discoverability.html
+# IR contact (email / form on investment page):
+#   https://vitavoltglobal.com/investment/#investor-contact
+#   mailto:info@vitavoltglobal.com
 #
 # Entity context:
 #   Vitavolt Global = Izmir, Türkiye based Energy Infrastructure & Intelligence company.
 #   Operational scope = Türkiye geneli.
-#   Rapid field coordination = Izmir, Kusadasi, Marmaris, Bodrum through solution partners.
+#   Rapid field coordination = solution-partner regions (not branches/offices).
 #   HQ = Izmir (Bayrakli).
 #   Core commercial domains = GES, BESS, EPC, carbon, water and engineering.
-#   VITA = energy intelligence / pre-feasibility / scenario analysis layer.
-#   Research = separate public research layer.
+#   VITA = energy intelligence / pre-feasibility / scenario analysis layer (product).
+#   Research = separate public research layer (ANNE, EDCS, Oxygen, SOLIS-LUMEN, etc.).
 #   Investment scope = Türkiye + international scale.
 #
-# Regional clarification:
-#   Kusadasi, Marmaris and Bodrum are not branch or office locations.
-#   They represent solution-partner-supported faster field coordination.
+# Layer separation:
+#   Commercial / regional GES demand  → site home, services, regional content, forms.
+#   Investor / capital discovery       → /investment/ + /research/ (+ evidence, AI map).
 # ---------------------------------------------------------------------------
 
 User-agent: *
