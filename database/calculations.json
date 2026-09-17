@@ -1,5 +1,5 @@
 {
-  "version": "1.8",
+  "version": "1.9",
   "solar": {
     "default_panel_power": 620,
     "panel_area_m2": 2.6,
@@ -13,6 +13,23 @@
     "depth_of_discharge": 0.90,
     "round_trip_efficiency": 0.95,
     "peak_support_hours": 2
+  },
+  "water": {
+    "rainfallDataset": "database/rainfall-by-province.json",
+    "rainfallSource": "Examining the Probabilistic Characteristics of Maximum Rainfall in Türkiye, Atmosphere 2025, Appendix A",
+    "rainfallSourceUrl": "https://www.mdpi.com/2073-4433/16/10/1177",
+    "rainfallPeriod": "station records through 2020",
+    "rainfallUnit": "mm/year",
+    "rainfallConfidence": "REFERENCE",
+    "runoffCoefficient": {"Metal": 0.90, "Concrete": 0.80, "Tile": 0.75},
+    "defaultRoofType": "Tile",
+    "firstFlushAndOverflowFactor": 0.80,
+    "greywaterRecoverableRatio": 0.35,
+    "greywaterOperatingLossFactor": 0.70,
+    "greywaterNetRecoveryRatio": 0.245,
+    "formula": "rainwater_theoretical_m3 = roofAreaM2 * annualRainfallMm / 1000 * runoffCoefficient; usableRainwaterM3 = theoretical * firstFlushAndOverflowFactor; greywaterUsableM3 = monthlyWaterM3 * 12 * greywaterRecoverableRatio * greywaterOperatingLossFactor",
+    "carbonStatus": "PENDING_SEPARATE_WASTEWATER_CARBON_MODEL",
+    "note": "Rainwater and greywater quantities are engineering pre-feasibility references. Site-specific hydrology, storage, water quality, treatment and wastewater tariff data are required for final design."
   },
   "pricing": {
     "markup_pct": 15,
