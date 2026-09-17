@@ -25,6 +25,12 @@
       ['Şebekeye aktarım', r.solar.gridExportKwh.toLocaleString('tr-TR') + ' kWh'],
       ['Tahmini CO₂ azaltımı', r.solar.co2ReductionKg.toLocaleString('tr-TR') + ' kg/yıl']
     ];
+    if (r.pricing && r.pricing.projectCost && r.pricing.projectCost.usd > 0) {
+      rows.push(['VITA ön maliyet referansı', r.pricing.projectCost.usd.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' USD (KDV hariç)']);
+      if (r.pricing.projectCost.estimatedPriceUsd > 0) {
+        rows.push(['VITA fiyat katmanı sonrası', r.pricing.projectCost.estimatedPriceUsd.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' USD (KDV hariç)']);
+      }
+    }
     if (r.pricing && r.pricing.equipmentSubtotalUsd > 0) {
       rows.push(['Panel + inverter piyasa tahmini', r.pricing.equipmentSubtotalUsd.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' ' + r.pricing.currency + ' (KDV hariç)']);
     }
@@ -42,11 +48,21 @@
     if (r.pricing && r.pricing.panel && r.pricing.inverter) {
       var priceNote = document.createElement('p');
       priceNote.className = 'calc-warning';
-      priceNote.textContent = 'Fiyat katmanı: %' + r.pricing.markupPct + ' · ' +
-        r.pricing.panel.quantity + ' × ' + r.pricing.panel.selectedPowerWp + ' Wp panel · ' +
-        r.pricing.inverter.quantity + ' × ' + r.pricing.inverter.selectedPowerKw + ' kW inverter. ' +
-        'Yalnızca panel + inverter ön tahminidir; diğer EPC kalemleri dahil değildir.';
+      priceNote.textContent = 'VITA Engine fiyat katmanı: %' + r.pricing.markupPct + ' · ' +
+        r.pricing.panel.count + ' × ' + r.pricing.panel.powerWp + ' Wp panel · ' +
+        r.pricing.inverter.count + ' × ' + r.pricing.inverter.powerKw + ' kW inverter. ' +
+        'Paket maliyeti varsa karşılaştırılan GES+BESS teklifinin %10 altı referansından seçilir; nihai teklif değildir.';
       result.appendChild(priceNote);
+    }
+    if (r.pricing && r.pricing.projectCost && r.pricing.projectCost.marketReference) {
+      var ref = document.createElement('p');
+      ref.className = 'calc-warning';
+      ref.textContent = 'Maliyet referansı: ' + r.pricing.projectCost.marketReference.name + ' paket · ' +
+        r.pricing.projectCost.marketReference.dcKwp + ' kWp + ' + r.pricing.projectCost.marketReference.bessKwh + ' kWh · kaynak teklif ' +
+        r.pricing.projectCost.marketReference.quotedCostUsd.toLocaleString('en-US') + ' USD → %' +
+        r.pricing.projectCost.marketReference.discountPct + ' altı maliyet referansı ' +
+        r.pricing.projectCost.marketReference.costUsd.toLocaleString('en-US') + ' USD.';
+      result.appendChild(ref);
     }
     if (r.bess && r.bess.recommended) {
       var b = document.createElement('p');
@@ -124,13 +140,16 @@
         co2_kg: calc.solar.co2ReductionKg,
         piyasa_panel_usd: calc.pricing ? calc.pricing.panel.sellUsd : 0,
         piyasa_inverter_usd: calc.pricing ? calc.pricing.inverter.sellUsd : 0,
-        piyasa_panel_inverter_usd: calc.pricing ? calc.pricing.equipmentSubtotalUsd : 0,
+        piyasa_panel_inverter_usd: calc.pricing && calc.pricing.total ? calc.pricing.total.sellUsd : 0,
+        vita_on_maliyet_usd: calc.pricing && calc.pricing.projectCost ? calc.pricing.projectCost.usd : 0,
+        vita_tahmini_fiyat_usd: calc.pricing && calc.pricing.projectCost ? calc.pricing.projectCost.estimatedPriceUsd : 0,
+        vita_maliyet_bazisi: calc.pricing && calc.pricing.projectCost ? calc.pricing.projectCost.basis : '',
         fiyat_katmani_pct: calc.pricing ? calc.pricing.markupPct : 0
       };
       var note = document.getElementById('calcMailNote');
       if (window.VitavoltForms && typeof window.VitavoltForms.submitPayload === 'function') {
         window.VitavoltForms.submitPayload(lead, {subject: 'Vitavolt — Ön fizibilite lead: ' + (lead.ad_soyad || 'İsimsiz'), formName: 'vitaHizliForm'})
-          .then(function(r) { if (note) note.textContent = r.ok ? 'Talebiniz e-posta ile iletildi. En kısa sürede dönüş yapacağız.' : 'Sonuç hesaplandı. E-posta iletimi başarısız olduysa info@vitavoltglobal.com veya WhatsApp yazın.'; })
+          .then(function(r) { if (note) note.textContent = r.ok ? 'Talebiniz e-posta ile iletildi. En kısa sürede dönüş yapacağız.' : 'Sonuç hesaplandı. E-posta ile iletimi başarısız olduysa info@vitavoltglobal.com veya WhatsApp yazın.'; })
           .finally(function() { if (window.VitavoltForms) window.VitavoltForms.setLoading(btn, false); });
       } else { if (window.VitavoltForms) window.VitavoltForms.setLoading(btn, false); if (note) note.textContent = 'Sonuç hazır. İletişim: info@vitavoltglobal.com'; }
     }).catch(function() {
