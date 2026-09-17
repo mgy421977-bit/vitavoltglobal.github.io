@@ -1,4 +1,4 @@
-/* Homepage hızlı fizibilite — VITA Engine single authority | build 2026-09-17-v3-offline */
+/* Homepage hızlı fizibilite — VITA Engine single authority | build 2026-09-17-v3-water-bom */
 (function () {
   'use strict';
   var form = document.getElementById('vitaHizliForm');
@@ -81,7 +81,9 @@
       'BESS modül adedi: ' + (b.batteryModuleCount != null ? b.batteryModuleCount : b.units),
       'DoD: ' + r.bess.depthOfDischarge,
       'RTE: ' + r.bess.roundTripEfficiency,
-      'Inverter: ' + (p.inverter && p.inverter.powerKw) + ' kW x' + (p.inverter && p.inverter.count) + ' (' + (p.inverter && p.inverter.selectionReason) + ')'
+      'Inverter: ' + (p.inverter && p.inverter.powerKw) + ' kW x' + (p.inverter && p.inverter.count) + ' (' + (p.inverter && p.inverter.selectionReason) + ')',
+      'Yağmur suyu: ' + (r.water && r.water.rainfall && r.water.rainfall.selected ? r.water.rainfall.annualUsableM3 + ' m3/yil' : 'secilmedi'),
+      'Gri su: ' + (r.water && r.water.greywater && r.water.greywater.selected ? r.water.greywater.annualUsableM3 + ' m3/yil' : 'secilmedi')
     ].join('\n');
   }
   form.addEventListener('submit', function (e) {
@@ -151,6 +153,8 @@
           arazi_alani_m2: land,
           aylik_tuketim_kwh: cons,
           aylik_su_tuketim: waterM || '',
+          yagmur_suyu_m3: calc.water && calc.water.rainfall && calc.water.rainfall.selected ? calc.water.rainfall.annualUsableM3 : '',
+          gri_su_m3: calc.water && calc.water.greywater && calc.water.greywater.selected ? calc.water.greywater.annualUsableM3 : '',
           onerilen_kwp: calc.solar.dcCapacityKwp,
           yillik_uretim_kwh: calc.solar.annualProductionKwh,
           co2_kg: calc.solar.co2ReductionKg,
