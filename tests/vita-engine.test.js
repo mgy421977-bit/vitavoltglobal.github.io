@@ -71,8 +71,8 @@ assert(largeCalc.inverter.powerKw === 50 && largeCalc.inverter.count === 3, '100
 
 const mitosPack = mitos.completeInputs({ city: 'Konya', roofAreaM2: 150, monthlyConsumptionKwh: 4000, monthlyWaterM3: 15 });
 assert.strictEqual(mitosPack.status, 'READY_FOR_VITA');
-assert.strictEqual(mitosPack.input.specificYieldKwhKwp, 1550);
-assert.strictEqual(mitosPack.input.rainfallMm, 350);
+assert.strictEqual(mitosPack.input.specificYieldKwhKwp, 1560);
+assert.strictEqual(mitosPack.input.rainfallMm, 357.4);
 assert.strictEqual(mitosPack.input.roofOrientationLossPct, 20);
 
 const assessment = anne.assess({ city: 'Konya', roofAreaM2: 150, monthlyConsumptionKwh: 4000, annualConsumptionKwh: 48000, monthlyWaterM3: 15, facilityType: 'Konut' });

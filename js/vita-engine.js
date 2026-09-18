@@ -62,6 +62,19 @@
         }
       }
     }
+    var targetAcDcRatio = 0.80;
+    var maxOversizeRatio = 1.5;
+    var technicallyValid = null;
+    for (var tv = 0; tv < a.length; tv++) {
+      var tvPower = +a[tv].power_kw;
+      if (!(tvPower > 0)) continue;
+      var tvCount = Math.max(1, Math.ceil(dcKwp * targetAcDcRatio / tvPower));
+      var tvTotal = tvCount * tvPower;
+      if (tvTotal < dcKwp * targetAcDcRatio - 0.05 || tvTotal > (tvCount === 1 ? dcKwp + 0.05 : dcKwp * maxOversizeRatio) || (tvCount === 1 && tvTotal < dcKwp - 0.05) || (dcKwp > 80 && tvTotal < dcKwp - 0.05)) continue;
+      var tvCandidate = { opt: a[tv], count: tvCount, excess: tvTotal - dcKwp, cost: tvCount * (+a[tv].base_usd || 0) };
+      if (!technicallyValid || tvCandidate.count < technicallyValid.count || (tvCandidate.count === technicallyValid.count && tvCandidate.excess < technicallyValid.excess)) technicallyValid = tvCandidate;
+    }
+    if (technicallyValid) return { opt: technicallyValid.opt, count: technicallyValid.count, reason: 'technical_dc_ac_fit' };
     var singleCap = Math.max(dcKwp * 2.0, dcKwp + 20);
     for (var i = 0; i < a.length; i++) {
       var p = +a[i].power_kw;
@@ -75,9 +88,10 @@
       var totalKw = count * pw;
       if (totalKw < dcKwp) continue;
       var excess = totalKw - dcKwp;
+      if (totalKw / dcKwp > maxOversizeRatio) continue;
       var cost = count * (+a[j].base_usd || 0);
       var cand = { opt: a[j], count: count, excess: excess, cost: cost };
-      if (!best || excess < best.excess - 0.05 || (Math.abs(excess - best.excess) <= 0.05 && count < best.count) || (Math.abs(excess - best.excess) <= 0.05 && count === best.count && cost < best.cost)) best = cand;
+      if (!best || count < best.count || (count === best.count && excess < best.excess - 0.05) || (count === best.count && Math.abs(excess - best.excess) <= 0.05 && cost < best.cost)) best = cand;
     }
     if (!best) {
       var largest = a[a.length - 1];
@@ -181,6 +195,7 @@
     var solarCfg = Object.assign({}, CONFIG.solar, cfg.solar || {}), battCfg = Object.assign({}, CONFIG.battery, cfg.battery || {}), pricingCfg = Object.assign({}, CONFIG.pricing, cfg.pricing || {});
     if (cfg.pricing && cfg.pricing.cost_model) pricingCfg.cost_model = Object.assign({}, CONFIG.pricing.cost_model, cfg.pricing.cost_model);
     var roof = nn(input.roofAreaM2), land = nn(input.landAreaM2), area = roof + (input.landAvailable ? land : 0), panelArea = Math.max(0.5, n(solarCfg.panel_area_m2, 2.6));
+    if (area <= 0) throw new Error('En az bir geçerli çatı veya arazi alanı girilmelidir.');
     var pw = Math.max(1, n(input.panelPowerWp != null ? input.panelPowerWp : solarCfg.default_panel_power, 620)), areaPanelCount = Math.max(0, Math.floor(area / panelArea));
     var count = input.panelCountOverride != null && Number.isFinite(Number(input.panelCountOverride)) ? Math.max(0, Math.floor(Number(input.panelCountOverride))) : areaPanelCount;
     var dc = round2((count * pw) / 1000);
