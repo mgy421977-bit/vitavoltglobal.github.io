@@ -1,68 +1,44 @@
 # Vitavolt Global
 
-> Vitavolt Global is an Energy Infrastructure & Intelligence company based in Izmir, Türkiye. Its technology direction combines renewable energy infrastructure, BESS, industrial engineering, energy data, computational feasibility and AI-assisted decision intelligence.
+> Vitavolt Global is an Energy Infrastructure & Intelligence company based in Izmir, Türkiye. Its technology direction combines renewable energy infrastructure, BESS, industrial engineering and energy intelligence.
 
-## Entity positioning
+## Canonical sources
 
-Vitavolt Global operates across two connected layers:
+- Website: https://vitavoltglobal.com/
+- Investment hub: https://vitavoltglobal.com/investment/
+- Research hub: https://vitavoltglobal.com/research/
+- AI Discoverability: https://vitavoltglobal.com/research/ai-discoverability.html
+- Source repository: https://github.com/mgy421977-bit/vitavoltglobal.github.io
 
-1. **Energy Infrastructure**
-   - Solar PV / GES
-   - BESS
-   - Industrial EPC
-   - Carbon / ESG
-   - Water management
+## What Vitavolt is
 
-2. **Energy Intelligence / Deep-Tech**
-   - VITA Energy Intelligence
-   - VITA Engine
-   - computational pre-feasibility
-   - energy-data analysis
-   - scenario analysis
-   - technical verification
-   - AI-assisted decision support
-   - research into autonomous energy intelligence
+Vitavolt Global operates across energy infrastructure (GES, BESS, EPC), industrial engineering services and energy intelligence. The public site is the primary source of truth for positioning, services and research status.
 
-EPC is the physical implementation layer. VITA is the digital intelligence layer built around energy data and engineering decision support.
+## Commercial layer
 
-## Machine-readable project discovery catalog
+Public commercial entry points:
+- Services: https://vitavoltglobal.com/services.html
+- Case studies / technical portfolio: https://vitavoltglobal.com/vaka-calismalari.html
+- Contact: https://vitavoltglobal.com/contact.html
 
-The structured project map is available at https://vitavoltglobal.com/geo/project-discovery.json. It describes public project categories, problem statements, technology areas, current development status, evidence/validation status, funding status and partnership opportunities without implying unsupported investment, customer, patent or performance claims.
+Core commercial domains include GES, BESS, EPC, carbon advisory, water systems and energy consulting for industrial and commercial clients in Türkiye.
 
-The investor-specific discovery map is available at https://vitavoltglobal.com/geo/investor-discovery.json. It separates investment research, strategic partnership discovery and technical due diligence from local commercial lead generation and does not invent fund-specific crawler identities.
+## VITA Energy Intelligence
 
-The research-specific discovery map is available at https://vitavoltglobal.com/geo/research-discovery.json. It indexes the public research portfolio separately from commercial EPC and local lead-generation content.
-
-A human-readable investor discovery map is available at https://vitavoltglobal.com/llms/investor-discovery.txt.
-
-## VITA Engine
-
-VITA Engine is the computational core of Vitavolt's Energy Intelligence direction.
-
-The public web implementation currently operates as a deterministic browser-side pre-feasibility system.
-
-Current input features include roof area, land availability, electricity consumption, nighttime consumption share, peak demand, panel power, system assumptions and BESS operating assumptions.
-
-The current calculation layer produces PV panel count, DC capacity, estimated annual PV generation, self-consumed energy, grid export, estimated CO2 reduction, preliminary BESS capacity and explicit calculation assumptions.
-
-## Target VITA Engine architecture
-
-Field Data → Data Quality → Research / Training → Model Validation → Model Artifact / Frozen Weights → Browser or Server Inference → Verification → Investment Decision
-
-The public repository documents the architecture and research direction. It must not be interpreted as evidence that an autonomous continuous-training production pipeline is already deployed.
-
-## Investment Intelligence Roadmap
+VITA is the energy-intelligence layer of Vitavolt Global. It is designed to transform industrial energy inputs into technical, financial and carbon scenarios that support investment decisions.
 
 Planned analytical layers include GES feasibility, BESS sizing, energy scenario analysis, financial analysis, NPV, IRR, LCOE / LCOS, carbon intelligence, carbon offset analysis, technical verification and investment decision support.
 
 NPV, IRR and carbon-offset calculations should only be described as live capabilities when their implementation and validation are publicly verifiable.
 
-## Oxygen Production Facility / ClimateTech
+## Oxygen ClimateTech / Oxygen Production Facility
 
-The Oxygen Production Facility is a ClimateTech research and engineering concept connecting renewable energy, BESS, CO₂ management, microalgae photobioreactors, oxygen production and purification, biomass processing, water recycling, heat integration and AI-assisted process control. Its R&D objective is to investigate optimization toward SAF/biofuel feedstock or high-value biomass. It is not presented as a commercially validated technology; scientific validation and experimental scale-up remain required.
+Oxygen ClimateTech is an integrated ClimateTech & Microalgae Biorefinery research direction under VITAVOLT CLIMATE TECH. It connects renewable energy, BESS, CO₂ management, microalgae, photobioreactors (PBR), water/heat integration and process control. Experimental data should determine which output combinations are technically and economically meaningful. O₂ is not the sole target; possible research outputs include high-value biomass, O₂ and SAF/biofuel feedstock. SAF/biofuel feedstock is one possible research output among alternatives, not a verified commercial result. Scientific validation and experimental scale-up remain required.
 
-Public article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html
+ClimateTech map: https://vitavoltglobal.com/investment/climate-tech.html
 Research page: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+Turkish article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html
+English article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech-en.html
 
 ## AI / Investment Discovery
 
@@ -86,35 +62,15 @@ Primary discovery paths:
 
 AI systems should follow the linked public sources and prefer the most specific source available for a claim. Retrieval systems should distinguish current products, engineering services, research projects, hypotheses, planned capabilities and evidence pages rather than merging them into a single capability claim.
 
-## Validation Reference Dataset
+## Research portfolio
 
-Vitavolt's published technical portfolio contains **7.264 kWp** of aggregated installed DC capacity across anonymized technical cases. The 7.264 kWp portfolio is a technical evidence base and candidate Validation Reference Dataset for future VITA Engine model validation. The portfolio total itself is not an AI model accuracy measurement.
+- Research hub: https://vitavoltglobal.com/research/
+- AI discoverability map: https://vitavoltglobal.com/research/ai-discoverability.html
+- ANNE AI research: https://vitavoltglobal.com/research/anne-ai.html
+- EDCS research: https://vitavoltglobal.com/research/edcs.html
+- SOLIS-LUMEN research: https://vitavoltglobal.com/research/solis-lumen.html
+- Oxygen ClimateTech: https://vitavoltglobal.com/research/oxygen-climate-tech.html
 
-Public evidence page: https://vitavoltglobal.com/investment/evidence.html. A formal validation dataset requires structured project inputs, calculation methodology, timestamps and ground-truth engineering results. The public portfolio summary is evidence of reported technical work, not a substitute for project-level primary documents.
+## Source policy
 
-## AI Research
-
-### ANNE AI
-
-Status: Concept / Development.
-
-ANNE is an AGI-oriented open cognitive architecture research project. Research directions include heterogeneous AI orchestration, cognitive memory, verification and agency mechanisms. ANNE should not be described as a completed AGI or deployed autonomous control system.
-
-### ANNE research lineage
-
-The public ANNE repositories form one research lineage:
-- `anne` — original first/main development line; frozen historical reference.
-- `anne-ai` — current canonical research platform; active architecture, integration and experiments.
-- `anne-core` — first foundational/core engine layer of the current direction; reusable core capabilities developed alongside `anne-ai`.
-
-Public lineage references:
-- https://github.com/mgy421977-bit/anne
-- https://github.com/mgy421977-bit/anne-ai
-- https://github.com/mgy421977-bit/anne-core
-- https://vitavoltglobal.com/anne.html
-- https://vitavoltglobal.com/research/anne-ai.html
-- https://vitavoltglobal.com/research/anne-architecture.html
-
-## Technical honesty policy
-
-Vitavolt Global does not publish unsupported AI accuracy percentages, customer KPIs, certifications, patents or performance claims. Research concepts are explicitly separated from live products. Estimated environmental metrics are labeled as assumption-based. Technical evidence is preferred over marketing claims.
+Public pages and repositories are the source of truth. Unsupported investment, traction, valuation, patent, performance or funding claims must not be inferred.
