@@ -10,15 +10,173 @@
     "sourceRepository": "https://github.com/mgy421977-bit/vitavoltglobal.github.io"
   },
   "projects": [
-    {"id":"anne-ai","name":"ANNE AI","url":"https://vitavoltglobal.com/research/anne-ai.html","type":"AI research project","status":"Concept / Development","domains":["AI orchestration","cognitive architecture","verification","provenance","controlled agency"],"evidence":["public research page","public repositories"],"repository":"https://github.com/mgy421977-bit/anne-ai","claimBoundary":"Not presented as achieved AGI or deployed autonomous control."},
-    {"id":"anne-architecture","name":"ANNE Architecture","url":"https://vitavoltglobal.com/research/anne-architecture.html","type":"AI architecture research","status":"Research / Development","domains":["cognitive architecture","orchestration","verification","memory"],"evidence":["public architecture documentation","public repositories"],"repository":"https://github.com/mgy421977-bit/anne-core"},
-    {"id":"anne-vs-ai-agents","name":"ANNE vs AI Agents","url":"https://vitavoltglobal.com/research/anne-vs-ai-agents.html","type":"Comparative AI systems research","status":"Research","domains":["agent architecture","orchestration","verification","decision systems"],"evidence":["public research page"]},
-    {"id":"edcs","name":"EDCS","url":"https://vitavoltglobal.com/research/edcs.html","type":"DeepTech research project","status":"Simulation prototype / Research","domains":["drone swarm","distributed coordination","self-healing systems","local decision-making"],"evidence":["public research page","simulation prototype","public repository"],"repository":"https://github.com/mgy421977-bit/EDCS-Drone-Swarm","claimBoundary":"Simulation evidence is distinct from hardware or field validation."},
-    {"id":"solis-lumen","name":"SOLIS-LUMEN","url":"https://vitavoltglobal.com/research/solis-lumen.html","type":"Photovoltaic research project","status":"Research / Modelling","domains":["micro-optics","light management","passive thermal architecture","PV modules"],"evidence":["public research page","research modelling"],"claimBoundary":"Research hypotheses and modelled concepts are not commercial performance guarantees."},
-    {"id":"oxygen-climate-tech","name":"Oxygen ClimateTech","url":"https://vitavoltglobal.com/research/oxygen-climate-tech.html","type":"ClimateTech research direction","status":"Research","domains":["carbon management","photosynthetic systems","biomass","water","resource recovery","renewable energy","digital intelligence"],"evidence":["public research page","public technical portfolio","bilingual technical article"],"claimBoundary":"Research vision is separated from proven commercial deployment.","relatedPages":["https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html"]},
-    {"id":"ai-discoverability","name":"AI Discoverability","url":"https://vitavoltglobal.com/research/ai-discoverability.html","type":"AI retrieval / GEO research","status":"Research / Implementation","domains":["AI retrieval","GEO","machine-readable discovery","source attribution"],"evidence":["public research page","structured source maps"]},
-    {"id":"real-world-applications","name":"Real World Applications","url":"https://vitavoltglobal.com/research/real-world-applications.html","type":"Applied engineering research","status":"Research / Application Mapping","domains":["energy intelligence","engineering applications","deployment pathways"],"evidence":["public research page"]},
-    {"id":"publications","name":"Publications","url":"https://vitavoltglobal.com/research/publications.html","type":"Research publications","status":"Publication Index","domains":["technical publications","research record"],"evidence":["public publication index"]}
+    {
+      "id": "anne-ai",
+      "name": "ANNE AI",
+      "url": "https://vitavoltglobal.com/research/anne-ai.html",
+      "type": "AI research project",
+      "status": "Concept / Development",
+      "domains": [
+        "AI orchestration",
+        "cognitive architecture",
+        "verification",
+        "provenance",
+        "controlled agency"
+      ],
+      "evidence": [
+        "public research page",
+        "public repositories"
+      ],
+      "repository": "https://github.com/mgy421977-bit/anne-ai",
+      "claimBoundary": "Not presented as achieved AGI or deployed autonomous control."
+    },
+    {
+      "id": "anne-architecture",
+      "name": "ANNE Architecture",
+      "url": "https://vitavoltglobal.com/research/anne-architecture.html",
+      "type": "AI architecture research",
+      "status": "Research / Development",
+      "domains": [
+        "cognitive architecture",
+        "orchestration",
+        "verification",
+        "memory"
+      ],
+      "evidence": [
+        "public architecture documentation",
+        "public repositories"
+      ],
+      "repository": "https://github.com/mgy421977-bit/anne-core"
+    },
+    {
+      "id": "anne-vs-ai-agents",
+      "name": "ANNE vs AI Agents",
+      "url": "https://vitavoltglobal.com/research/anne-vs-ai-agents.html",
+      "type": "Comparative AI systems research",
+      "status": "Research",
+      "domains": [
+        "agent architecture",
+        "orchestration",
+        "verification",
+        "decision systems"
+      ],
+      "evidence": [
+        "public research page"
+      ]
+    },
+    {
+      "id": "edcs",
+      "name": "EDCS",
+      "url": "https://vitavoltglobal.com/research/edcs.html",
+      "type": "DeepTech research project",
+      "status": "Simulation prototype / Research",
+      "domains": [
+        "drone swarm",
+        "distributed coordination",
+        "self-healing systems",
+        "local decision-making"
+      ],
+      "evidence": [
+        "public research page",
+        "simulation prototype",
+        "public repository"
+      ],
+      "repository": "https://github.com/mgy421977-bit/EDCS-Drone-Swarm",
+      "claimBoundary": "Simulation evidence is distinct from hardware or field validation."
+    },
+    {
+      "id": "solis-lumen",
+      "name": "SOLIS-LUMEN",
+      "url": "https://vitavoltglobal.com/research/solis-lumen.html",
+      "type": "Photovoltaic research project",
+      "status": "Research / Modelling",
+      "domains": [
+        "micro-optics",
+        "light management",
+        "passive thermal architecture",
+        "PV modules"
+      ],
+      "evidence": [
+        "public research page",
+        "research modelling"
+      ],
+      "claimBoundary": "Research hypotheses and modelled concepts are not commercial performance guarantees."
+    },
+    {
+      "id": "oxygen-climate-tech",
+      "name": "Oxygen ClimateTech",
+      "url": "https://vitavoltglobal.com/research/oxygen-climate-tech.html",
+      "type": "ClimateTech research direction",
+      "status": "Research",
+      "domains": [
+        "carbon management",
+        "photosynthetic systems",
+        "biomass",
+        "water",
+        "resource recovery",
+        "renewable energy",
+        "digital intelligence"
+      ],
+      "evidence": [
+        "public research page",
+        "public technical portfolio",
+        "bilingual technical article"
+      ],
+      "claimBoundary": "Research vision is separated from proven commercial deployment.",
+      "relatedPages": [
+        "https://vitavoltglobal.com/investment/climate-tech.html",
+        "https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html",
+        "https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech-en.html"
+      ],
+      "subproject": "Oxygen Production Facility",
+      "investorEntry": "https://vitavoltglobal.com/investment/climate-tech.html"
+    },
+    {
+      "id": "ai-discoverability",
+      "name": "AI Discoverability",
+      "url": "https://vitavoltglobal.com/research/ai-discoverability.html",
+      "type": "AI retrieval / GEO research",
+      "status": "Research / Implementation",
+      "domains": [
+        "AI retrieval",
+        "GEO",
+        "machine-readable discovery",
+        "source attribution"
+      ],
+      "evidence": [
+        "public research page",
+        "structured source maps"
+      ]
+    },
+    {
+      "id": "real-world-applications",
+      "name": "Real World Applications",
+      "url": "https://vitavoltglobal.com/research/real-world-applications.html",
+      "type": "Applied engineering research",
+      "status": "Research / Application Mapping",
+      "domains": [
+        "energy intelligence",
+        "engineering applications",
+        "deployment pathways"
+      ],
+      "evidence": [
+        "public research page"
+      ]
+    },
+    {
+      "id": "publications",
+      "name": "Publications",
+      "url": "https://vitavoltglobal.com/research/publications.html",
+      "type": "Research publications",
+      "status": "Publication Index",
+      "domains": [
+        "technical publications",
+        "research record"
+      ],
+      "evidence": [
+        "public publication index"
+      ]
+    }
   ],
   "crossPortfolio": {
     "investmentDiscovery": "https://vitavoltglobal.com/geo/investor-discovery.json",
@@ -27,7 +185,13 @@
     "aiDiscoverability": "https://vitavoltglobal.com/research/ai-discoverability.html",
     "publicSourceMap": "https://vitavoltglobal.com/llms.txt"
   },
-  "evaluationOrder": ["specific project page", "specific repository or evidence", "research hub", "machine-readable discovery map", "general company page"],
+  "evaluationOrder": [
+    "specific project page",
+    "specific repository or evidence",
+    "research hub",
+    "machine-readable discovery map",
+    "general company page"
+  ],
   "honestyRules": [
     "Do not infer investment probability.",
     "Do not infer valuation, revenue, customers or funding from research pages.",
