@@ -11,8 +11,18 @@
   },
   "localCommercialDiscovery": {
     "priority": "Residential GES / Mesken GES",
-    "secondaryPriorities": ["Industrial GES", "BESS", "Carbon / Energy Consulting"],
-    "serviceArea": ["Kuşadası", "Çeşme", "Alaçatı", "Marmaris", "Bodrum"],
+    "secondaryPriorities": [
+      "Industrial GES",
+      "BESS",
+      "Carbon / Energy Consulting"
+    ],
+    "serviceArea": [
+      "Kuşadası",
+      "Çeşme",
+      "Alaçatı",
+      "Marmaris",
+      "Bodrum"
+    ],
     "base": "İzmir, Türkiye",
     "positioning": "Residential solar PV pre-feasibility and engineering for homes, villas and detached residences; industrial energy and carbon consulting follow as secondary commercial services.",
     "serviceAreaPages": [
@@ -30,85 +40,195 @@
       "category": "Energy Intelligence",
       "problem": "Energy infrastructure decisions require coordinated technical, financial, carbon and usage-scenario analysis.",
       "solution": "A project-oriented pre-feasibility and scenario analysis layer for energy infrastructure decisions.",
-      "technology": ["energy data", "technical analysis", "financial scenarios", "carbon scenarios", "BESS sizing"],
+      "technology": [
+        "energy data",
+        "technical analysis",
+        "financial scenarios",
+        "carbon scenarios",
+        "BESS sizing"
+      ],
       "technicalApproach": "Inputs and assumptions are evaluated through the VITA workflow; detailed capability and validation depend on the relevant public page.",
       "currentDevelopmentStatus": "Product / analysis layer; scope varies by project.",
-      "applications": ["GES", "BESS", "industrial energy", "energy cost scenarios"],
+      "applications": [
+        "GES",
+        "BESS",
+        "industrial energy",
+        "energy cost scenarios"
+      ],
       "scalability": "TBD / Validation Required",
       "evidenceValidationStatus": "Public technical portfolio and methodology pages; portfolio evidence is summarized at /vaka-calismalari.html and /investment/evidence.html; no unsupported accuracy claim.",
       "researchStatus": "Ongoing product and intelligence development",
       "fundingStatus": "Not publicly specified",
       "partnershipOpportunity": "Strategic technology, energy and industrial partnerships",
-      "relatedTechnologies": ["GES", "BESS", "EPC", "carbon management", "water management"],
-      "relatedVitavoltPages": ["/vita-energy-intelligence.html", "/investment/vita-energy-intelligence.html", "/index.html#hizli-hesapla"]
+      "relatedTechnologies": [
+        "GES",
+        "BESS",
+        "EPC",
+        "carbon management",
+        "water management"
+      ],
+      "relatedVitavoltPages": [
+        "/vita-energy-intelligence.html",
+        "/investment/vita-energy-intelligence.html",
+        "/index.html#hizli-hesapla"
+      ]
     },
     {
       "name": "ANNE AI",
       "category": "AI Research",
       "problem": "Complex research and engineering workflows need orchestration, memory, provenance and verification.",
       "solution": "An open cognitive architecture research direction for AI orchestration and verification.",
-      "technology": ["AI orchestration", "cognitive memory", "verification", "provenance"],
+      "technology": [
+        "AI orchestration",
+        "cognitive memory",
+        "verification",
+        "provenance"
+      ],
       "technicalApproach": "Public architecture, research and repository documentation.",
       "currentDevelopmentStatus": "Concept / Development",
-      "applications": ["research assistance", "technical reasoning", "verification workflows"],
+      "applications": [
+        "research assistance",
+        "technical reasoning",
+        "verification workflows"
+      ],
       "scalability": "TBD / Validation Required",
       "evidenceValidationStatus": "Public repositories and research pages; not a completed AGI or deployed autonomous control system.",
       "researchStatus": "Active research direction",
       "fundingStatus": "Not publicly specified",
       "partnershipOpportunity": "AI infrastructure, research and verification partnerships",
-      "relatedTechnologies": ["VITA Energy Intelligence", "AI agents", "semantic verification"],
-      "relatedVitavoltPages": ["/anne.html", "/research/anne-ai.html", "/research/anne-architecture.html", "/investment/anne-ai.html"]
+      "relatedTechnologies": [
+        "VITA Energy Intelligence",
+        "AI agents",
+        "semantic verification"
+      ],
+      "relatedVitavoltPages": [
+        "/anne.html",
+        "/research/anne-ai.html",
+        "/research/anne-architecture.html",
+        "/investment/anne-ai.html"
+      ]
     },
     {
       "name": "BESS / Energy Storage",
       "category": "Energy Infrastructure",
       "problem": "Industrial sites need better alignment between production, consumption, peak demand and charging windows.",
       "solution": "Battery energy storage assessment and engineering support within project-specific energy architectures.",
-      "technology": ["BESS", "GES + BESS", "load management", "energy storage"],
+      "technology": [
+        "BESS",
+        "GES + BESS",
+        "load management",
+        "energy storage"
+      ],
       "technicalApproach": "Site data, load profile, tariff and operating scenario based preliminary assessment.",
       "currentDevelopmentStatus": "Commercial engineering / project assessment",
-      "applications": ["industrial facilities", "commercial facilities", "EV charging", "hybrid energy systems"],
+      "applications": [
+        "industrial facilities",
+        "commercial facilities",
+        "EV charging",
+        "hybrid energy systems"
+      ],
       "scalability": "Project-specific; TBD / Validation Required",
       "evidenceValidationStatus": "Public service and technical pages; project outcomes must be validated per site.",
       "researchStatus": "Applied engineering and analysis",
       "fundingStatus": "Not publicly specified",
       "partnershipOpportunity": "Storage technology, EPC and industrial pilot partnerships",
-      "relatedTechnologies": ["GES", "EV charging", "VITA Energy Intelligence"],
-      "relatedVitavoltPages": ["/izmir-bess-enerji-depolama.html", "/yenilenebilir-enerji-sistemleri.html#hibrit", "/blog/batarya-enerji-depolama-bess.html"]
+      "relatedTechnologies": [
+        "GES",
+        "EV charging",
+        "VITA Energy Intelligence"
+      ],
+      "relatedVitavoltPages": [
+        "/izmir-bess-enerji-depolama.html",
+        "/yenilenebilir-enerji-sistemleri.html#hibrit",
+        "/blog/batarya-enerji-depolama-bess.html"
+      ]
     },
     {
       "name": "Oxygen ClimateTech",
       "category": "ClimateTech Research",
       "problem": "Carbon, water, biomass, heat and renewable energy systems are often evaluated separately.",
       "solution": "A research direction connecting carbon management, photosynthetic systems, water, resource recovery and renewable energy.",
-      "technology": ["carbon management", "photosynthetic systems", "biomass", "water", "resource recovery"],
+      "technology": [
+        "carbon management",
+        "photosynthetic systems",
+        "biomass",
+        "water",
+        "resource recovery"
+      ],
       "technicalApproach": "Research framing that separates established technologies, development work and hypotheses.",
       "currentDevelopmentStatus": "Research direction",
-      "applications": ["climate technology", "industrial resource recovery", "integrated energy systems"],
+      "applications": [
+        "climate technology",
+        "industrial resource recovery",
+        "integrated energy systems"
+      ],
       "scalability": "TBD / Validation Required",
       "evidenceValidationStatus": "Research page; no commercial performance claim inferred.",
       "researchStatus": "Public research portfolio",
       "fundingStatus": "Not publicly specified",
       "partnershipOpportunity": "ClimateTech, university and research funding partnerships",
-      "relatedTechnologies": ["carbon", "water intelligence", "GES", "BESS"],
-      "relatedVitavoltPages": ["/research/oxygen-climate-tech.html", "/blog/oxygen-production-facility-climatetech.html", "/research/", "/izmir-karbon-danismanligi.html"]
+      "relatedTechnologies": [
+        "carbon",
+        "water intelligence",
+        "GES",
+        "BESS"
+      ],
+      "relatedVitavoltPages": [
+        "/investment/climate-tech.html",
+        "/research/oxygen-climate-tech.html",
+        "/blog/oxygen-production-facility-climatetech.html",
+        "/blog/oxygen-production-facility-climatetech-en.html",
+        "/research/",
+        "/izmir-karbon-danismanligi.html"
+      ],
+      "portfolioHierarchy": {
+        "parent": "VITAVOLT CLIMATE TECH",
+        "subprojects": [
+          {
+            "name": "Oxygen Production Facility",
+            "type": "ClimateTech / Biorefinery research direction",
+            "relatedPages": [
+              "/research/oxygen-climate-tech.html",
+              "/blog/oxygen-production-facility-climatetech.html",
+              "/blog/oxygen-production-facility-climatetech-en.html",
+              "/investment/climate-tech.html"
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "Water Management",
       "category": "Water Intelligence / Engineering",
       "problem": "Industrial water use, rainwater and greywater opportunities require site-specific flow and economic analysis.",
       "solution": "Pre-feasibility and engineering content for rainwater harvesting and greywater recovery.",
-      "technology": ["rainwater harvesting", "greywater recovery", "ROI pre-assessment"],
+      "technology": [
+        "rainwater harvesting",
+        "greywater recovery",
+        "ROI pre-assessment"
+      ],
       "technicalApproach": "Flow, demand, storage, tariff and site constraints are assessed per project.",
       "currentDevelopmentStatus": "Commercial engineering / pre-feasibility",
-      "applications": ["factory", "industrial facility", "commercial property"],
+      "applications": [
+        "factory",
+        "industrial facility",
+        "commercial property"
+      ],
       "scalability": "Project-specific; TBD / Validation Required",
       "evidenceValidationStatus": "Public service pages and calculators; final values require site data and validation.",
       "researchStatus": "Applied engineering content",
       "fundingStatus": "Not publicly specified",
       "partnershipOpportunity": "Water technology and industrial implementation partnerships",
-      "relatedTechnologies": ["GES", "carbon management", "energy intelligence"],
-      "relatedVitavoltPages": ["/izmir-yagmur-suyu-hasat.html", "/izmir-gri-su-yonetimi.html", "/ticari-otel-su-yonetimi.html"]
+      "relatedTechnologies": [
+        "GES",
+        "carbon management",
+        "energy intelligence"
+      ],
+      "relatedVitavoltPages": [
+        "/izmir-yagmur-suyu-hasat.html",
+        "/izmir-gri-su-yonetimi.html",
+        "/ticari-otel-su-yonetimi.html"
+      ]
     }
   ],
   "evidenceHubs": [
