@@ -35,7 +35,7 @@
       "currentDevelopmentStatus": "Product / analysis layer; scope varies by project.",
       "applications": ["GES", "BESS", "industrial energy", "energy cost scenarios"],
       "scalability": "TBD / Validation Required",
-      "evidenceValidationStatus": "Public technical portfolio and methodology pages; no unsupported accuracy claim.",
+      "evidenceValidationStatus": "Public technical portfolio and methodology pages; portfolio evidence is summarized at /vaka-calismalari.html and /investment/evidence.html; no unsupported accuracy claim.",
       "researchStatus": "Ongoing product and intelligence development",
       "fundingStatus": "Not publicly specified",
       "partnershipOpportunity": "Strategic technology, energy and industrial partnerships",
@@ -110,6 +110,10 @@
       "relatedTechnologies": ["GES", "carbon management", "energy intelligence"],
       "relatedVitavoltPages": ["/izmir-yagmur-suyu-hasat.html", "/izmir-gri-su-yonetimi.html", "/ticari-otel-su-yonetimi.html"]
     }
+  ],
+  "evidenceHubs": [
+    "https://vitavoltglobal.com/vaka-calismalari.html",
+    "https://vitavoltglobal.com/investment/evidence.html"
   ],
   "discoveryHubs": [
     "https://vitavoltglobal.com/about.html",
