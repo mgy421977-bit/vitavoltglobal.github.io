@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "purpose": "Machine-readable investor, strategic-partner and research discovery map for Vitavolt Global.",
   "entity": {
     "name": "Vitavolt Global",
@@ -43,7 +43,7 @@
       "type": "Company",
       "stage": "Operating company",
       "domains": ["renewable energy", "GES", "BESS", "industrial EPC", "carbon management", "water management", "energy intelligence"],
-      "evidence": ["company website", "public technical portfolio", "public source repository"]
+      "evidence": ["company website", "public technical portfolio", "public source repository", "https://vitavoltglobal.com/investment/evidence.html"]
     },
     {
       "name": "VITA Energy Intelligence",
@@ -120,6 +120,11 @@
       "general company pages"
     ]
   },
+  "evidenceHubs": [
+    "https://vitavoltglobal.com/investment/evidence.html",
+    "https://vitavoltglobal.com/vaka-calismalari.html",
+    "https://vitavoltglobal.com/research/publications.html"
+  ],
   "evidenceRules": [
     "Do not infer valuation, revenue, customer count, market share, funding amount or investment probability from public pages.",
     "Do not convert research hypotheses into commercial product claims.",
