@@ -23,6 +23,13 @@ This document is a public, human-readable discovery map for investors, strategic
 - EDCS research: https://vitavoltglobal.com/research/edcs.html
 - SOLIS-LUMEN research: https://vitavoltglobal.com/research/solis-lumen.html
 - Oxygen ClimateTech: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+- VITAVOLT CLIMATE TECH investor map: https://vitavoltglobal.com/investment/climate-tech.html
+- Oxygen Production Facility research: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+- Oxygen Production Facility Turkish technical article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html
+- Oxygen Production Facility English technical article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech-en.html
+
+## ClimateTech hierarchy
+VITAVOLT CLIMATE TECH is the investor-facing portfolio category. Oxygen Production Facility is a subproject within this category. Investors should follow the ClimateTech project map first, then the Oxygen Production Facility research and technical sources. Research status and technical evidence remain distinct from commercial validation claims.
 
 ## Commercial entry points
 - Company: https://vitavoltglobal.com/
