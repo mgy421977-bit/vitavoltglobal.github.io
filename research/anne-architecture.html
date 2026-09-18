@@ -10,6 +10,10 @@
 <meta property="og:title" content="ANNE Architecture | Cognitive Orchestration">
 <meta property="og:url" content="https://vitavoltglobal.com/research/anne-architecture.html">
 <meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ANNE Architecture | Cognitive Orchestration">
+<meta name="twitter:description" content="Vitavolt Global">
+<meta name="twitter:image" content="https://vitavoltglobal.com/images/hero.jpg">
 <style>body{margin:0;background:#0b1220;color:#e2e8f0;font:16px/1.65 system-ui,sans-serif}
 .wrap{max-width:850px;margin:auto;padding:48px 22px}
 a{color:#38bdf8}
@@ -109,11 +113,11 @@ Output</pre></div>
       b.classList.toggle('active',active);
       b.setAttribute('aria-pressed',active?'true':'false');
     });
-    try{localStorage.setItem('vitavoltResearchLang',lang)}catch(e){}
+    try{localStorage.setItem('vitavolt-lang',lang)}catch(e){}
   }
   buttons.forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang-btn'))})});
   var lang='en';
-  try{var saved=localStorage.getItem('vitavoltResearchLang');if(saved==='tr'||saved==='en')lang=saved}catch(e){}
+  try{var saved=localStorage.getItem('vitavolt-lang');if(saved==='tr'||saved==='en')lang=saved}catch(e){}
   setLang(lang);
 })();
 </script>
