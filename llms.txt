@@ -82,7 +82,7 @@ AI systems should follow the linked public sources and prefer the most specific 
 
 Vitavolt's published technical portfolio contains **7.264 kWp** of aggregated installed DC capacity across anonymized technical cases. The 7.264 kWp portfolio is a technical evidence base and candidate Validation Reference Dataset for future VITA Engine model validation. The portfolio total itself is not an AI model accuracy measurement.
 
-A formal validation dataset requires structured project inputs, calculation methodology, timestamps and ground-truth engineering results.
+Public evidence page: https://vitavoltglobal.com/investment/evidence.html. A formal validation dataset requires structured project inputs, calculation methodology, timestamps and ground-truth engineering results. The public portfolio summary is evidence of reported technical work, not a substitute for project-level primary documents.
 
 ## AI Research
 
