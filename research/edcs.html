@@ -16,6 +16,10 @@
 <meta property="og:url" content="https://vitavoltglobal.com/research/edcs.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vitavolt Research">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EDCS Research | Vitavolt Research">
+<meta name="twitter:description" content="EDCS — Emergent Drone Coordination System: distributed, self-healing swarm coordination research. Simulation stage; not an operational product claim.">
+<meta name="twitter:image" content="https://vitavoltglobal.com/images/hero.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ResearchProject","name":"EDCS — Emergent Drone Coordination System","alternateName":"EDCS","url":"https://vitavoltglobal.com/research/edcs.html","description":"Research project exploring distributed and self-healing drone swarm coordination. Current implementation is a Python-based 2D simulation prototype; hardware and field trials are planned.","creator":{"@type":"Person","name":"Mustafa Gökhan Yılmaz"},"publisher":{"@type":"Organization","name":"Vitavolt Global","url":"https://vitavoltglobal.com/"},"codeRepository":"https://github.com/mgy421977-bit/EDCS-Drone-Swarm"}
 </script>
@@ -95,9 +99,9 @@
 <script>
 (function(){
  const buttons=document.querySelectorAll('[data-lang-btn]');
- function setLang(lang){document.documentElement.lang=lang;buttons.forEach(b=>{const active=b.dataset.langBtn===lang;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active?'true':'false')});try{localStorage.setItem('vitavoltResearchLang',lang)}catch(e){}}
+ function setLang(lang){document.documentElement.lang=lang;buttons.forEach(b=>{const active=b.dataset.langBtn===lang;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active?'true':'false')});try{localStorage.setItem('vitavolt-lang',lang)}catch(e){}}
  buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.langBtn)));
- let lang='tr';try{const saved=localStorage.getItem('vitavoltResearchLang');if(saved==='tr'||saved==='en')lang=saved}catch(e){}setLang(lang);
+ let lang='tr';try{const saved=localStorage.getItem('vitavolt-lang');if(saved==='tr'||saved==='en')lang=saved}catch(e){}setLang(lang);
 })();
 </script>
 </body></html>
