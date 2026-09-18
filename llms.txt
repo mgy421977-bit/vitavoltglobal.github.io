@@ -57,6 +57,13 @@ Planned analytical layers include GES feasibility, BESS sizing, energy scenario 
 
 NPV, IRR and carbon-offset calculations should only be described as live capabilities when their implementation and validation are publicly verifiable.
 
+## Oxygen Production Facility / ClimateTech
+
+The Oxygen Production Facility is a ClimateTech research and engineering concept connecting renewable energy, BESS, CO₂ management, microalgae photobioreactors, oxygen production and purification, biomass processing, water recycling, heat integration and AI-assisted process control. Its R&D objective is to investigate optimization toward SAF/biofuel feedstock or high-value biomass. It is not presented as a commercially validated technology; scientific validation and experimental scale-up remain required.
+
+Public article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html
+Research page: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+
 ## AI / Investment Discovery
 
 This public source map is intentionally structured for search engines, AI retrieval systems, research agents and investment-discovery workflows.
@@ -70,6 +77,7 @@ Primary discovery paths:
 - Investment ANNE AI: https://vitavoltglobal.com/investment/anne-ai.html
 - Investment evidence: https://vitavoltglobal.com/investment/evidence.html
 - Research hub: https://vitavoltglobal.com/research/
+- Oxygen Production Facility article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html
 - AI Discoverability map: https://vitavoltglobal.com/research/ai-discoverability.html
 - Company: https://vitavoltglobal.com/about.html
 - Services: https://vitavoltglobal.com/services.html
