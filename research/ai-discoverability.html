@@ -12,6 +12,10 @@
 <meta property="og:url" content="https://vitavoltglobal.com/research/ai-discoverability.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vitavolt Global">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Discoverability | Vitavolt Research">
+<meta name="twitter:description" content="A human-readable and machine-readable source map connecting Vitavolt Global, VITA and its public research projects to technical pages and source repositories.">
+<meta name="twitter:image" content="https://vitavoltglobal.com/images/hero.jpg">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -233,6 +237,6 @@ html[lang="tr"] p[data-lang="en"],html[lang="tr"] h1[data-lang="en"],html[lang="
 <p><a href="index.html">Vitavolt Research</a> · <a href="publications.html">Publication Map</a> · <a href="../">Vitavolt Global</a></p>
 </footer>
 </main>
-<script>(function(){const b=document.querySelectorAll("[data-lang-btn]");function s(l){document.documentElement.lang=l;b.forEach(x=>x.classList.toggle("active",x.dataset.langBtn===l));try{localStorage.setItem("vrLang",l)}catch(e){}}b.forEach(x=>x.addEventListener("click",()=>s(x.dataset.langBtn)));let l="en";try{const v=localStorage.getItem("vrLang");if(v==="tr"||v==="en")l=v}catch(e){}s(l)})();</script>
+<script>(function(){const b=document.querySelectorAll("[data-lang-btn]");function s(l){document.documentElement.lang=l;b.forEach(x=>{var active=x.dataset.langBtn===l;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active?'true':'false')});try{localStorage.setItem("vitavolt-lang",l)}catch(e){}}b.forEach(x=>x.addEventListener("click",()=>s(x.dataset.langBtn)));let l="en";try{const v=localStorage.getItem("vitavolt-lang");if(v==="tr"||v==="en")l=v}catch(e){}s(l)})();</script>
 </body>
 </html>
