@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2",
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "entity": {
     "name": "Vitavolt Global",
     "type": "Energy Infrastructure & Intelligence company",
@@ -91,7 +91,7 @@
       "fundingStatus": "Not publicly specified",
       "partnershipOpportunity": "ClimateTech, university and research funding partnerships",
       "relatedTechnologies": ["carbon", "water intelligence", "GES", "BESS"],
-      "relatedVitavoltPages": ["/research/oxygen-climate-tech.html", "/research/", "/izmir-karbon-danismanligi.html"]
+      "relatedVitavoltPages": ["/research/oxygen-climate-tech.html", "/blog/oxygen-production-facility-climatetech.html", "/research/", "/izmir-karbon-danismanligi.html"]
     },
     {
       "name": "Water Management",
