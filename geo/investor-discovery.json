@@ -88,7 +88,7 @@
       "evidenceStatus": "Public research repositories and architecture pages; not presented as achieved AGI."
     },
     {
-      "name": "Oxygen ClimateTech",
+      "name": "Microalgae Biorefinery ClimateTech",
       "type": "ClimateTech research direction",
       "stage": "Research",
       "domains": [
@@ -105,7 +105,7 @@
       "entryPage": "https://vitavoltglobal.com/investment/climate-tech.html",
       "subprojects": [
         {
-          "name": "Oxygen Production Facility",
+          "name": "Microalgae Biorefinery Platform",
           "type": "ClimateTech / Biorefinery research direction",
           "researchPage": "https://vitavoltglobal.com/research/oxygen-climate-tech.html",
           "technicalArticleTR": "https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html",
@@ -226,7 +226,7 @@
     "investorHierarchy": [
       "Investment Hub",
       "VITAVOLT CLIMATE TECH",
-      "Oxygen Production Facility",
+      "Microalgae Biorefinery Platform",
       "Technical / Research / Evidence sources"
     ],
     "note": "ClimateTech is the portfolio category; Oxygen Production Facility is a subproject. Research and technical pages remain the source of technical detail."
