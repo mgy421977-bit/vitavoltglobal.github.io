@@ -244,5 +244,12 @@
     "https://vitavoltglobal.com/research/ai-discoverability.html",
     "https://vitavoltglobal.com/geo/investor-discovery.json",
     "https://vitavoltglobal.com/llms.txt"
+  ],
+  "technologyPortfolioArchitecture": [
+    {"layer":"Energy Infrastructure","entities":["GES","BESS","Industrial EPC"],"status":"Operating / commercial engineering"},
+    {"layer":"Energy Intelligence","entities":["VITA Energy Intelligence"],"status":"Product / development"},
+    {"layer":"Climate Technology","entities":["Oxygen ClimateTech","Oxygen Production Facility"],"status":"Research / development"},
+    {"layer":"Energy Technology","entities":["SOLIS-LUMEN","PV module research"],"status":"Research / modelling"},
+    {"layer":"AI & Advanced Systems","entities":["ANNE AI","EDCS"],"status":"Research / development"}
   ]
 }
