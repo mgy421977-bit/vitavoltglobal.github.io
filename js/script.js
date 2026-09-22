@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <a class="vv-mega-category" href="/yenilenebilir-enerji-sistemleri.html"><span class="vv-mega-category-icon">◒</span><span><strong>Yenilenebilir Enerji Sistemleri</strong><small>Daha temiz, daha güvenli bir gelecek için.</small></span><span class="vv-arrow">›</span></a>
                         <button class="vv-mega-category vv-secondary vv-advisory-trigger" type="button" aria-expanded="false"><span class="vv-mega-category-icon">◆</span><span><strong>Danışmanlık</strong><small>Sürdürülebilirlik, karbon, uyum ve yatırım.</small></span><span class="vv-arrow vv-advisory-chevron">›</span></button>
 <div class="vv-advisory-submenu" hidden>
+  <a class="vv-mega-item" href="/mesken-ges.html"><span class="vv-mega-icon">⌂</span><span>VITA HOME — Bireysel Enerji Özgürlüğü</span></a>
   <a class="vv-mega-item" href="/sustainability-carbon-advisory.html"><span class="vv-mega-icon">◉</span><span>Sürdürülebilirlik & Karbon</span></a>
   <a class="vv-mega-item" href="/izmir-karbon-danismanligi.html"><span class="vv-mega-icon">◉</span><span>Karbon Yönetimi</span></a>
   <a class="vv-mega-item" href="/izmir-enerji-karbon-donusumu.html"><span class="vv-mega-icon">ϟ</span><span>Enerji & Karbon Dönüşümü</span></a>
