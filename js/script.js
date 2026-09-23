@@ -1,22 +1,21 @@
 // ================================================================
-// VITAVOLT GLOBAL - Master Script (+ i18n + layered navigation)
+// VITAVOLT GLOBAL - Master Script v20260923nav2 (+ i18n + layered navigation)
 // ================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header');
     if (header) window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
-    // Navigation aligned to dual commercial entry: İşletmeler | VITA HOME
+    // Dual entry: İşletmeler | VITA HOME — Çözümler = endüstriyel/ticari teknik liste
     const navMenu = document.querySelector('.nav-menu');
     if (navMenu) {
-        // Tech solutions only — no GES/Çatı GES/Endüstriyel overlap; no RES/Hibrit bloat
         const solutionItems = [
             ['☀', 'GES — Güneş Enerji Sistemleri', '/izmir-ges.html'],
             ['▣', 'BESS — Enerji Depolama', '/izmir-bess-enerji-depolama.html'],
             ['▦', 'EPC — Endüstriyel Uygulama', '/izmir-endustriyel-epc.html'],
+            ['⚡', 'Filo & Şarj Altyapısı', '/isletmeler.html#elektrikli-filo-sarj'],
             ['◉', 'Karbon & Sürdürülebilirlik', '/sustainability-carbon-advisory.html'],
-            ['◌', 'Su Yönetimi', '/izmir-yagmur-suyu-hasat.html'],
-            ['⚡', 'Filo & Şarj Altyapısı', '/isletmeler.html#elektrikli-filo-sarj']
+            ['◌', 'Su Yönetimi', '/izmir-yagmur-suyu-hasat.html']
         ];
         const vitaItems = [
             ['⚡', 'VITA Energy Intelligence', '/vita-energy-intelligence.html'],
@@ -35,11 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="nav-link vv-nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">ÇÖZÜMLER <span class="vv-chevron" aria-hidden="true">⌄</span></button>
                 <div class="vv-mega-menu vv-mega-menu--compact" role="menu">
                     <div class="vv-mega-lead">
-                        <a class="vv-mega-category" href="/isletmeler.html"><span class="vv-mega-category-icon">🏭</span><span><strong>İşletmeler</strong><small>Fabrika, otel, depo, filo — GES, BESS, EPC.</small></span><span class="vv-arrow">›</span></a>
+                        <a class="vv-mega-category" href="/isletmeler.html"><span class="vv-mega-category-icon">🏭</span><span><strong>İşletmeler</strong><small>Fabrika, otel, depo, filo — endüstriyel & ticari.</small></span><span class="vv-arrow">›</span></a>
                         <a class="vv-mega-category vv-secondary" href="/mesken-ges.html"><span class="vv-mega-category-icon">⌂</span><span><strong>VITA HOME</strong><small>Konut ve villa enerji yatırımı.</small></span><span class="vv-arrow">›</span></a>
                     </div>
                     <div class="vv-mega-content">
-                        <div class="vv-mega-heading">TEKNİK ÇÖZÜMLER</div>
+                        <div class="vv-mega-heading">ENDÜSTRİYEL & TİCARİ ÇÖZÜMLER</div>
                         <div class="vv-mega-grid">${makeItems(solutionItems)}</div>
                     </div>
                 </div>
@@ -80,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }`;
         document.head.appendChild(style);
 
-        // Dropdown open/close
         navMenu.querySelectorAll('.vv-nav-dropdown').forEach(drop => {
             const btn = drop.querySelector('.vv-nav-trigger');
             if (!btn) return;
@@ -100,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Active parent highlighting
         const pathNow = window.location.pathname;
         navMenu.querySelectorAll('.vv-nav-dropdown').forEach(drop => {
             const menu = drop.dataset.menu;
@@ -111,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Active nav link
     const navLinks = document.querySelectorAll('.nav-link');
     const path = window.location.pathname;
     const currentPage = path.split('/').pop() || 'index.html';
@@ -133,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         link.classList.toggle('active', isActive);
     });
 
-    // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const menuOverlay = document.querySelector('.menu-overlay');
     function closeMenu() {
@@ -160,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
     }
 
-    // Language toggle
     const langBtns = document.querySelectorAll('[data-set-lang]');
     function setLang(lang) {
         document.documentElement.lang = lang === 'en' ? 'en' : 'tr';
@@ -178,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (saved === 'en' || saved === 'tr') setLang(saved);
     } catch (e) {}
 
-    // Smooth scroll for hash links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             const id = a.getAttribute('href');
