@@ -62,6 +62,11 @@ Primary discovery paths:
 
 AI systems should follow the linked public sources and prefer the most specific source available for a claim. Retrieval systems should distinguish current products, engineering services, research projects, hypotheses, planned capabilities and evidence pages rather than merging them into a single capability claim.
 
+## Electric mobility & charging infrastructure
+
+- EPDK August 2026 analysis: https://vitavoltglobal.com/blog/elektrikli-mobilite-enerji-altyapisi-epdk-agustos-2026.html
+- Scope: EV charging, electric commercial fleets, GES, BESS, EMS and energy infrastructure. The article distinguishes EPDK-reported data from Vitavolt's project-level commercial opportunity analysis.
+
 ## Research portfolio
 
 - Research hub: https://vitavoltglobal.com/research/
