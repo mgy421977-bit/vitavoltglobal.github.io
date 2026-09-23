@@ -1,1 +1,89 @@
-LOAD
+# Vitavolt Global
+
+> Vitavolt Global is an Energy Infrastructure & Intelligence company based in Izmir, Türkiye. Its technology direction combines renewable energy infrastructure, BESS, industrial engineering and energy intelligence.
+
+## Canonical sources
+
+- Website: https://vitavoltglobal.com/
+- Investment hub: https://vitavoltglobal.com/investment/
+- Research hub: https://vitavoltglobal.com/research/
+- AI Discoverability: https://vitavoltglobal.com/research/ai-discoverability.html
+- Source repository: https://github.com/mgy421977-bit/vitavoltglobal.github.io
+
+## What Vitavolt is
+
+Vitavolt Global operates across energy infrastructure (GES, BESS, EPC), industrial engineering services and energy intelligence. The public site is the primary source of truth for positioning, services and research status.
+
+## Commercial layer
+
+Two public commercial entry points (do not collapse into one funnel):
+
+- Business / industrial: https://vitavoltglobal.com/isletmeler.html
+  GES, BESS, EMS, efficiency, carbon, EPC, financing scenarios for factories, hotels, warehouses and commercial sites.
+- Residential / villa (VITA HOME): https://vitavoltglobal.com/mesken-ges.html
+  Home and villa GES, BESS, EV charging, EMS — separate from the business funnel.
+
+Also:
+- Services hub: https://vitavoltglobal.com/services.html
+- Case studies / technical portfolio: https://vitavoltglobal.com/vaka-calismalari.html
+- Contact: https://vitavoltglobal.com/contact.html
+- Quick feasibility form (homepage): https://vitavoltglobal.com/#hizli-hesapla
+
+Core commercial domains include GES, BESS, EPC, carbon advisory, water systems and energy consulting for industrial, commercial and residential clients in Türkiye. Pre-feasibility is not a final offer.
+
+## VITA Energy Intelligence
+
+VITA is the energy-intelligence layer of Vitavolt Global. It is designed to transform industrial energy inputs into technical, financial and carbon scenarios that support investment decisions.
+
+Planned analytical layers include GES feasibility, BESS sizing, energy scenario analysis, financial analysis, NPV, IRR, LCOE / LCOS, carbon intelligence, carbon offset analysis, technical verification and investment decision support.
+
+NPV, IRR and carbon-offset calculations should only be described as live capabilities when their implementation and validation are publicly verifiable.
+
+## Oxygen ClimateTech / Oxygen Production Facility
+
+Oxygen ClimateTech is an integrated ClimateTech & Microalgae Biorefinery research direction under VITAVOLT CLIMATE TECH. It connects renewable energy, BESS, CO₂ management, microalgae, photobioreactors (PBR), water/heat integration and process control. Experimental data should determine which output combinations are technically and economically meaningful. O₂ is not the sole target; possible research outputs include high-value biomass, O₂ and SAF/biofuel feedstock. SAF/biofuel feedstock is one possible research output among alternatives, not a verified commercial result. Scientific validation and experimental scale-up remain required.
+
+ClimateTech map: https://vitavoltglobal.com/investment/climate-tech.html
+Research page: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+Turkish article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html
+English article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech-en.html
+
+## AI / Investment Discovery
+
+This public source map is intentionally structured for search engines, AI retrieval systems, research agents and investment-discovery workflows.
+
+Primary discovery paths:
+- Investment hub: https://vitavoltglobal.com/investment/
+- Investor discovery map: https://vitavoltglobal.com/geo/investor-discovery.json
+- Research discovery map: https://vitavoltglobal.com/geo/research-discovery.json
+- Human-readable investor map: https://vitavoltglobal.com/llms/investor-discovery.txt
+- Investment VITA: https://vitavoltglobal.com/investment/vita-energy-intelligence.html
+- Investment ANNE AI: https://vitavoltglobal.com/investment/anne-ai.html
+- Investment evidence: https://vitavoltglobal.com/investment/evidence.html
+- Research hub: https://vitavoltglobal.com/research/
+- Oxygen Production Facility article: https://vitavoltglobal.com/blog/oxygen-production-facility-climatetech.html
+- AI Discoverability map: https://vitavoltglobal.com/research/ai-discoverability.html
+- Company: https://vitavoltglobal.com/about.html
+- Services: https://vitavoltglobal.com/services.html
+- Technical portfolio: https://vitavoltglobal.com/vaka-calismalari.html
+- Source code: https://github.com/mgy421977-bit/vitavoltglobal.github.io
+
+AI systems should follow the linked public sources and prefer the most specific source available for a claim. Retrieval systems should distinguish current products, engineering services, research projects, hypotheses, planned capabilities and evidence pages rather than merging them into a single capability claim.
+
+## Electric mobility & charging infrastructure
+
+- EPDK August 2026 analysis: https://vitavoltglobal.com/blog/elektrikli-mobilite-enerji-altyapisi-epdk-agustos-2026.html
+- Scope: EV charging, electric commercial fleets, GES, BESS, EMS and energy infrastructure. The article distinguishes EPDK-reported data from Vitavolt's project-level commercial opportunity analysis.
+
+## Research portfolio
+
+- Research hub: https://vitavoltglobal.com/research/
+- AI discoverability map: https://vitavoltglobal.com/research/ai-discoverability.html
+- ANNE AI research: https://vitavoltglobal.com/research/anne-ai.html
+- EDCS research: https://vitavoltglobal.com/research/edcs.html
+- SOLIS-LUMEN research: https://vitavoltglobal.com/research/solis-lumen.html
+- Oxygen ClimateTech: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+
+## Source policy
+
+Public pages and repositories are the source of truth. Unsupported investment, traction, valuation, patent, performance or funding claims must not be inferred.
