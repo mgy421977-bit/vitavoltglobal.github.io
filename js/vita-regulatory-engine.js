@@ -22,6 +22,8 @@
     return { category: 'C', status: 'CALCULATED' };
   }
 
+  function mapAnnex1Candidate(input) { input=input||{}; var s=normalize(input.sector), t=normalize((input.facilityActivityDescription||'')+' '+(input.facility||'')); var m=[['elektrik','electricity_generation','Elektrik üretimi'],['çimento','cement','Çimento üretimi / klinker'],['demir-çelik','iron_steel','Demir-çelik'],['alüminyum','aluminium','Alüminyum'],['gübre','fertilizer','Gübre']]; for(var i=0;i<m.length;i++){if(s.indexOf(m[i][0])!==-1||t.indexOf(m[i][0])!==-1||t.indexOf(m[i][1])!==-1)return {status:'CANDIDATE',activityCode:m[i][1],activityName:m[i][2],confidence:'HIGH',requiresDocumentConfirmation:true};} return {status:'REQUIRES_ACTIVITY_MAPPING',activityCode:null,activityName:null,confidence:'NONE',requiresDocumentConfirmation:true}; }
+
   function assessETS(input, rules) {
     input = input || {};
     rules = rules || {};
@@ -36,8 +38,10 @@
     var institutionExclusion = ['school', 'university', 'hospital', 'defence', 'defense', 'savunma']
       .indexOf(normalize(input.facilityType)) !== -1;
 
+    var mapping = mapAnnex1Candidate(input);
     var annexKnown = typeof input.annex1Activity === 'boolean';
     var annex1 = input.annex1Activity === true;
+    if (!annexKnown && mapping.status === 'CANDIDATE') annex1 = true;
 
     var result = {
       engine: 'VITA_REGULATORY',
@@ -45,8 +49,9 @@
       build: BUILD,
       regulation: 'TR_ETS_REG_2026',
       systemYear: year,
-      annex1Activity: annexKnown ? annex1 : null,
-      annex1Status: annexKnown ? 'USER_OR_DOCUMENT_CONFIRMED' : 'REQUIRES_ACTIVITY_MAPPING',
+      annex1Activity: annexKnown ? annex1 : (mapping.status === 'CANDIDATE' ? true : null),
+      annex1Status: annexKnown ? 'USER_OR_DOCUMENT_CONFIRMED' : mapping.status,
+      annex1Mapping: mapping,
       category: category.category,
       categoryStatus: category.status,
       explicitExclusion: explicitExclusion,
@@ -59,7 +64,7 @@
       nextActions: []
     };
 
-    if (!annexKnown) {
+    if (!annexKnown && mapping.status !== 'CANDIDATE') {
       result.warnings.push('EK-1 faaliyet eşleştirmesi doğrulanmadan ETS kapsamı kesinleştirilemez.');
       result.nextActions.push('EK-1 faaliyet kodunu ve tesis faaliyet tanımını belge ile doğrula.');
       return result;
@@ -72,6 +77,7 @@
     }
 
     result.mrvRequired = true;
+    if (!annexKnown && mapping.status === 'CANDIDATE') { result.warnings.push('Otomatik EK-1 aday eşleştirmesi yapıldı; tesis belgesiyle doğrulanmalıdır.'); }
 
     if (explicitExclusion || institutionExclusion) {
       result.etsScope = 'OUT_OF_ETS_SCOPE_MRV_CONTINUES';
@@ -230,6 +236,7 @@
     build: BUILD,
     classifyCategory: classifyCategory,
     assessETS: assessETS,
+    mapAnnex1Candidate: mapAnnex1Candidate,
     assessTaxonomy: assessTaxonomy,
     assess: assess,
     loadRegulatoryData: loadRegulatoryData,
