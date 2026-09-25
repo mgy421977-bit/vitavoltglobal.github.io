@@ -229,11 +229,11 @@ async function researchPrices(options){
      var body={
        model:model,
        messages:[
-         {role:'system',content:'You are Vitavolt Global BOM market-price research agent. Use the supplied web search results as evidence. Never invent a price. Return only the requested JSON.'},
+         {role:'system',content:'You are Vitavolt Global BOM market-price research agent. Use the supplied web search results as evidence. Never invent a price. Return only the requested JSON. Keep the JSON extremely compact.'},
          {role:'user',content:prompt}
        ],
        plugins:[{id:'web',engine:'exa',max_results:5,search_prompt:'Find current Turkish supplier or product prices for this exact BOM item.'}],
-       max_tokens:1200,
+       max_tokens:120,
        temperature:0
      };
      try{
