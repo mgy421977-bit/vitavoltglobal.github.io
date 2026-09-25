@@ -1,4 +1,4 @@
-/* Vitavolt Global — VITA Engine sizing extension | 2026-09-17-v5 */
+/* Vitavolt Global — VITA Engine sizing extension | 2026-09-25-v6 */
 (function (window) {
   'use strict';
   function num(v, fb) { var x = Number(v); return Number.isFinite(x) ? x : (fb || 0); }
@@ -17,7 +17,8 @@
     if (!list.length || dcKwp <= 0) return { opt: null, count: 0, totalKw: 0, fallback: false, reason: 'no_catalog_or_zero_dc' };
 
     var target = dcKwp * 0.80;
-    var maxUnits = Math.min(12, Math.floor(dcKwp / Math.min.apply(null, list.map(function (o) { return num(o.power_kw); }))));
+    /* Prefer exact/closest feasible AC capacity to 80% of DC; catalog combinations may mix inverter sizes. */
+    var maxUnits = Math.min(32, Math.floor(dcKwp / Math.min.apply(null, list.map(function (o) { return num(o.power_kw); }))));
     var candidates = [];
 
     function walk(index, remainingKw, counts, totalKw, totalCost, units) {
@@ -147,7 +148,7 @@
   }
 
   function install() {
-    if (!window.VitaEngine || typeof window.VitaEngine.calculate !== 'function' || (window.VitaEngine.__consumptionSizingInstalled && window.VitaEngine.sizingBuild === '2026-09-17-consumption-sizing-v5-inverter-80pct-cost-fix')) return false;
+    if (!window.VitaEngine || typeof window.VitaEngine.calculate !== 'function' || (window.VitaEngine.__consumptionSizingInstalled && window.VitaEngine.sizingBuild === '2026-09-25-consumption-sizing-v6-inverter-80pct')) return false;
     var baseCalculate = window.VitaEngine.calculate;
     window.VitaEngine.calculate = function (input, cfg) {
       input = Object.assign({}, input || {}); cfg = cfg || {};
