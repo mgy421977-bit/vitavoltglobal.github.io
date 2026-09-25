@@ -212,12 +212,27 @@
     };
   }
 
+  function loadRegulatoryData() {
+    return Promise.all([
+      fetch('/database/regulatory/ets-2026.json?v=' + encodeURIComponent(BUILD), { credentials: 'same-origin', cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('ETS regulatory data fetch failed'); return r.json(); }),
+      fetch('/database/regulatory/turkiye-green-taxonomy-2026.json?v=' + encodeURIComponent(BUILD), { credentials: 'same-origin', cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('Green Taxonomy regulatory data fetch failed'); return r.json(); })
+    ]).then(function (parts) {
+      return { ets: parts[0], taxonomy: parts[1] };
+    });
+  }
+
+  function assessAsync(input) {
+    return loadRegulatoryData().then(function (data) { return assess(input, data); });
+  }
+
   window.VitaRegulatoryEngine = {
     version: VERSION,
     build: BUILD,
     classifyCategory: classifyCategory,
     assessETS: assessETS,
     assessTaxonomy: assessTaxonomy,
-    assess: assess
+    assess: assess,
+    loadRegulatoryData: loadRegulatoryData,
+    assessAsync: assessAsync
   };
 })(typeof window !== 'undefined' ? window : global);
