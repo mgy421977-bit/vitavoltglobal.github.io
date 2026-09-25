@@ -20,7 +20,7 @@ function renderMetrics(r,reg){
  }
  var s=r&&r.solar||{},b=r&&r.bess||{},w=r&&r.water||{},m=[
  ['GES',fmt(s.dcCapacityKwp)+' kWp'],['Üretim',fmt(s.annualProductionKwh)+' kWh/yıl'],['CO₂ azaltımı',fmt(s.co2ReductionKg)+' kg/yıl'],
- ['BESS',(window.__vitaStudio&&window.__vitaStudio.modules&&window.__vitaStudio.modules.indexOf('bess')!==-1)?'Aktif · Hesaplandı':(b.recommended?'Öneriliyor':'Tetiklenmedi')],['Yağmur suyu',w.rainfall&&w.rainfall.selected?fmt(w.rainfall.annualUsableM3)+' m³/yıl':'Seçilmedi'],['ETS',reg&&reg.outputs&&reg.outputs.ets?reg.outputs.ets.etsScope:'Ön değerlendirme']
+ ['BESS',(b.installedCapacityKwh&&Number(b.installedCapacityKwh)>0)?(fmt(b.installedCapacityKwh)+' kWh · '+fmt(b.batteryModuleCount||0)+' modül'):(b.recommended?'Öneriliyor':'Tetiklenmedi')],['Yağmur suyu',w.rainfall&&w.rainfall.selected?fmt(w.rainfall.annualUsableM3)+' m³/yıl':'Seçilmedi'],['ETS',reg&&reg.outputs&&reg.outputs.ets?reg.outputs.ets.etsScope:'Ön değerlendirme']
  ];
  $('metrics').innerHTML=m.map(function(x){return '<div class="vi-metric"><small>'+x[0]+'</small><strong>'+x[1]+'</strong></div>';}).join('');
  var p=r.pricing||{},inv=p.inverter||{},d=r.validation||{};
