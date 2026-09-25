@@ -79,7 +79,7 @@ function renderBom(r){
    var cost=x.unitCost==null?'':x.unitCost;
    var qty=Number(x.quantity||0);
    var cur=x.priceCurrency||defaultCurrency;
-   var totalCell=x.totalCost==null?'<span class="bom-pending">Fiyat bekliyor</span>':fmt(x.totalCost)+' '+cur;
+   var totalCell=x.source==='DERIVED'?'<span class="bom-derived">Hesaplanan</span>':(x.totalCost==null?'<span class="bom-pending">Fiyat bekliyor</span>':fmt(x.totalCost)+' '+cur);
    return '<div class="vi-bom-row">'+
      '<div class="vi-bom-item"><span class="vi-bom-category">'+x.category+'</span><strong>'+x.item+'</strong><small>Kaynak: '+x.source+'</small></div>'+
      '<label class="vi-bom-cell"><span>Miktar</span><input class="bom-qty" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+qty+'"><em>'+x.unit+'</em></label>'+
@@ -159,8 +159,22 @@ function applyEquipmentSelection(){
  run();
  setStatus(inv==='auto'?'Panel seçimi uygulandı. İnverter VITA tarafından DC’nin %80 hedefiyle yeniden seçildi.':'Panel ve inverter seçimi uygulandı. İnverter adedi seçilen güç üzerinden yeniden hesaplandı.');
 }
-function getAiSettings(){
- try{return JSON.parse(sessionStorage.getItem('vitavolt_ai_settings')||'{}');}catch(e){return {};}
+ function getAiSettings(){
+  var saved={};
+  try{saved=JSON.parse(sessionStorage.getItem('vitavolt_ai_settings')||'{}')||{};}catch(e){}
+  // Do not require a separate save click: use the visible form values first.
+  var form={
+   geminiApiKey:val('geminiApiKey'),
+   openrouterApiKey:val('openrouterApiKey'),
+   geminiModel:val('geminiModel'),
+   openrouterModel:val('openrouterModel')
+  };
+  return {
+   geminiApiKey:form.geminiApiKey||saved.geminiApiKey||'',
+   openrouterApiKey:form.openrouterApiKey||saved.openrouterApiKey||'',
+   geminiModel:form.geminiModel||saved.geminiModel||'gemini-2.5-flash',
+   openrouterModel:form.openrouterModel||saved.openrouterModel||'openai/gpt-4o'
+  };
 }
 function extractJson(text){
  if(text&&typeof text==='object'&&!Array.isArray(text))return text;
@@ -213,7 +227,8 @@ async function researchPrices(){
          {role:'user',content:prompt}
        ],
        plugins:[{id:'web',max_results:5}],
-       response_format:{type:'json_object'},
+       // Some web-enabled provider routes reject response_format=json_object.
+       // The prompt plus extractJson() below provides a compatible fallback.
        max_tokens:1600,
        temperature:0
      };
