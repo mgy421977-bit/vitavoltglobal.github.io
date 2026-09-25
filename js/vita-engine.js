@@ -1,4 +1,4 @@
-/* Vitavolt Global — VITA Engine Offline Pre-Feasibility Core | build 2026-09-17-v4-unified */
+/* Vitavolt Global — VITA Engine Offline Pre-Feasibility Core | build 2026-09-25-v4.1-price-bom-inverter */
 (function (window) {
   'use strict';
   var ENGINE_VERSION = '4.0.0', BUILD = '2026-09-17-v4-unified', DB_VERSION = '1.9';
@@ -26,7 +26,8 @@
         { power_kw: 8, type: 'mppt', base_usd: 374.19, source: 'DATABASE' },
         { power_kw: 11, type: 'inverter', base_usd: 650, source: 'DATABASE' },
         { power_kw: 50, type: 'inverter', base_usd: 3000, source: 'DATABASE' },
-        { power_kw: 100, type: 'inverter', base_usd: 3600, source: 'DATABASE' }
+        { power_kw: 100, type: 'inverter', base_usd: 3600, source: 'DATABASE' },
+        { power_kw: 125, type: 'inverter', base_usd: null, source: 'CAPACITY_OPTION_PENDING_PRICE' }
       ],
       battery_options: [{ capacity_kwh: 2.4, base_usd: 800, source: 'DATABASE' }],
       cost_model: {
@@ -113,7 +114,7 @@
     var po = panelOpt(pp, pricing);
     var panelUnit = +po.base_usd_per_w * pp;
     var inv = invSel.opt;
-    var invUnit = inv ? +inv.base_usd : null;
+    var invUnit = inv && inv.base_usd != null ? +inv.base_usd : null;
     var invQty = inv && dc > 0 ? invSel.count : 0;
     function row(category, item, quantity, unit, unitCost, source, costStatus) {
       var q = nn(quantity), uc = unitCost == null ? null : +unitCost;
@@ -143,7 +144,7 @@
     var po = panelOpt(pp, c), pr = Math.max(0, n(po.base_usd_per_w));
     var panelCost = round2(cnt * pp * pr);
     var invSel = autoInverter(dc, c, input.inverterPowerKw), inv = invSel.opt;
-    var invCost = inv ? round2(invSel.count * n(inv.base_usd)) : 0;
+    var invCost = inv && inv.base_usd != null ? round2(invSel.count * n(inv.base_usd)) : 0;
     var bessReq = Math.max(0, n(input.bessCapacityKwh)), bu = batteryUnit(c);
     var bUnits = bessReq > 0 ? Math.ceil(bessReq / +bu.capacity_kwh) : 0, installed = round2(bUnits * +bu.capacity_kwh), battCost = round2(bUnits * n(bu.base_usd, 800));
     var laborRate = Math.max(0, n(cm.labor_usd_per_panel, 20)), labor = round2(cnt * laborRate);
@@ -153,7 +154,7 @@
     return {
       currency: c.currency || 'USD', markupPct: markup,
       panel: { powerWp: pp, count: cnt, baseUsdPerW: pr, baseUsd: panelCost, source: po.source || 'DATABASE', provenance: provenance(pr, 'USD/W', po.source || 'DATABASE') },
-      inverter: { selection: input.inverterPowerKw > 0 ? 'user_or_auto' : 'auto', powerKw: inv ? +inv.power_kw : 0, type: inv ? inv.type : null, count: invSel.count, unitCost: inv ? +inv.base_usd : 0, baseUsd: invCost, source: inv ? inv.source : 'DATABASE', selectionReason: invSel.reason },
+      inverter: { selection: input.inverterPowerKw > 0 ? 'user_or_auto' : 'auto', powerKw: inv ? +inv.power_kw : 0, type: inv ? inv.type : null, count: invSel.count, unitCost: inv && inv.base_usd != null ? +inv.base_usd : null, baseUsd: invCost, source: inv ? inv.source : 'DATABASE', selectionReason: invSel.reason },
       battery: { requestedCapacityKwh: round2(bessReq), installedCapacityKwh: installed, batteryModuleCount: bUnits, batteryCost: battCost, requestedKwh: round2(bessReq), installedKwh: installed, units: bUnits, baseUsd: battCost, baseUsdPerKwh: installed > 0 ? round2(battCost / installed) : round2(+bu.base_usd / +bu.capacity_kwh), referenceUnitKwh: +bu.capacity_kwh, referenceUnitUsd: +bu.base_usd, basis: 'discrete_2.4kWh_modules_ceiling', provenance: provenance(+bu.base_usd, 'USD/module', 'DATABASE') },
       labor: { rateUsdPerPanel: laborRate, panelCount: cnt, baseUsd: labor, provenance: provenance(laborRate, 'USD/panel', 'DATABASE') },
       bos: { baseUsd: bos, source: 'ASSUMPTION/MODEL', basis: pm.basis || 'proportional BOS/EPC allowance' },
