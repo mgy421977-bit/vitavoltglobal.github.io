@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryDate": "2026-09-25",
+  "purpose": "VITAVOLT regulatory provenance registry for ETS and Türkiye Yeşil Taksonomisi pre-assessment.",
+  "rules": {
+    "primaryLawMustBeSeparatedFromSecondarySources": true,
+    "unknownCriteriaMustNotBeInvented": true,
+    "provisionalResultsRequireHumanReview": true,
+    "calculationMustCarryRegulatoryVersion": true
+  },
+  "sources": [
+    {
+      "id": "TR_GREEN_TAXONOMY_REG_2026",
+      "name": "Türkiye Yeşil Taksonomisi Yönetmeliği",
+      "gazette": "24.09.2026/33380",
+      "status": "IN_FORCE",
+      "sourceType": "PRIMARY_TEXT_MIRROR",
+      "sourceUrl": "https://www.lexpera.com.tr/resmi-gazete/metin/turkiye-yesil-taksonomisi-yonetmeligi-33380",
+      "verifiedOn": "2026-09-25"
+    },
+    {
+      "id": "TR_ETS_REG_2026",
+      "name": "Türkiye Emisyon Ticaret Sistemi Yönetmeliği",
+      "gazette": "27.08.2026/33353",
+      "status": "IN_FORCE",
+      "sourceType": "PRIMARY_TEXT_MIRROR",
+      "sourceUrl": "https://www.lexpera.com.tr/resmi-gazete/metin/turkiye-emisyon-ticaret-sistemi-33353",
+      "verifiedOn": "2026-09-25"
+    },
+    {
+      "id": "TR_ETS_PILOT_KPK_2026_1",
+      "name": "KPK/2026/1 TR ETS pilot dönem kararları",
+      "status": "CURRENT_PILOT_FRAMEWORK",
+      "sourceType": "SECONDARY_VERIFIED_REFERENCE",
+      "sourceUrl": "https://www.emisyonticaretsistemi.com/makaleler/kpk-2026-1-pilot-donem-kararlari",
+      "verifiedOn": "2026-09-25",
+      "note": "Pilot usul ve esaslarının ayrıca yayımlanması beklenir; bilinmeyen fiyatlama/kıyas değerleri hesaplanmaz."
+    }
+  ]
+}
