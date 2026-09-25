@@ -44,6 +44,7 @@
 </div><div id="bomSummary" class="vi-bom-summary"><div><small>BOM durumu</small><strong>Bekliyor</strong></div><div><small>Fiyatlandırılan</small><strong>0</strong></div><div><small>Eksik fiyat</small><strong>0</strong></div></div><div id="bomEditor" style="margin-top:1rem"><p class="vi-print-note">Henüz BOM oluşmadı. Önce hesaplamayı çalıştır.</p></div><div class="vi-bom-actions no-print"><button class="btn btn-outline" id="webPriceSearch" type="button">İNTERNETTEN ORTALAMA FİYAT ARA</button><button class="btn btn-primary" id="applyBomPrices" type="button">BOM FİYATLARINI HESAPLAMAYA UYGULA</button></div><p class="vi-print-note">İnternet araması ilk sürümde kaynak araştırması için açılır; bulunan değeri ilgili satıra sen girersin. AI fiyat araştırma API katmanı ayrıca bağlanabilir.</p></div><div class="vi-card"><h2>06 · Müşteri Sunumu İçin Fotoğraflar</h2><div class="vi-upload"><input id="photos" type="file" accept="image/*" multiple><p class="vi-print-note">Fotoğraflar bu tarayıcı oturumunda sunum önizlemesine alınır. Üretim aşamasında dosya depolama/API katmanına bağlanabilir.</p><div id="photoPreview" class="vi-photos"></div></div></div>
 </div>
 <aside>
+<div class="vi-card"><h2>00 · API Ayarları</h2><p class="vi-print-note">Gemini / OpenRouter araştırma katmanı için anahtarlarını burada tanımlayabilirsin. Anahtarlar bu sürümde tarayıcı oturumunda tutulur; üretim sürümünde backend/API gateway'e taşınmalıdır.</p><div class="vi-field"><label>AI sağlayıcı</label><select id="aiProvider"><option value="gemini">Google Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="vi-field" style="margin-top:.6rem"><label>API Key</label><input id="aiApiKey" type="password" autocomplete="off" placeholder="API anahtarını gir"></div><div class="vi-field" style="margin-top:.6rem"><label>Model</label><input id="aiModel" placeholder="Örn. gemini-2.5-flash / openai/gpt-5.6"></div><div class="vi-actions no-print"><button class="btn btn-outline" id="saveAiSettings" type="button">API AYARINI OTURUMA KAYDET</button><button class="btn btn-outline" id="clearAiSettings" type="button">TEMİZLE</button></div><div id="aiStatus" class="vi-print-note">API ayarı henüz girilmedi.</div></div>
 <div class="vi-card"><h2>07 · Ticari Teklif — Manuel Fiyat</h2><p class="vi-print-note">Teknik hesap fiyatı belirlemez. Müşteriye gidecek nihai ticari bedeli burada sen girersin.</p><div id="priceRows">
 <div class="vi-price"><span>GES</span><input data-price="GES" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
 <div class="vi-price"><span>BESS</span><input data-price="BESS" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
@@ -57,9 +58,9 @@
 </aside>
 </div></div></section>
 </main>
-<script src="js/vita-engine.js?v=2026-09-17-v4-unified"></script>
+<script src="js/vita-engine.js?v=2026-09-25-v4.2-bess-water-bom"></script>
 <script src="js/vita-regulatory-engine.js?v=2026-09-25-regulatory-v1"></script>
 <script src="js/vita-engine-sizing.js?v=2026-09-25-inverter-80pct-v6"></script>
-<script src="js/vita-intelligence-studio.js?v=2026-09-25-v3"></script>
+<script src="js/vita-intelligence-studio.js?v=2026-09-25-v4"></script>
 <script src="js/script.js"></script>
 </body></html>
