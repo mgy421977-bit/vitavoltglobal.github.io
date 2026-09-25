@@ -192,14 +192,19 @@ function extractJson(text){
  if(a>=0&&b>a){try{return JSON.parse(t.slice(a,b+1));}catch(e){}}
  return null;
 }
-async function researchPrices(){
+async function researchPrices(options){
+ var autoMode=options&&options.auto===true;
  var p=window.__vitaStudio||{}, bom=p.bom||((p.result&&p.result.pricing&&p.result.pricing.bom)||[]);
  var candidates=bom.map(function(x,i){
    return {bomIndex:i,item:String(x.item||''),quantity:Number(x.quantity||0),unit:String(x.unit||''),category:String(x.category||'')};
  }).filter(function(x){
    return x.quantity>0&&bom[x.bomIndex]&&bom[x.bomIndex].unitCost==null&&bom[x.bomIndex].source!=='DERIVED';
  });
- if(!candidates.length){setStatus('Araştırılacak eksik BOM fiyatı kalmadı.');return;}
+ if(!candidates.length){
+  if(autoMode&&p.result)renderBom(p.result);
+  setStatus('Araştırılacak eksik BOM fiyatı kalmadı. BOM mevcut fiyatlarıyla ekrana getirildi.');
+  return;
+}
  var ai=getAiSettings(), key=ai.openrouterApiKey, model=ai.openrouterModel||'openai/gpt-4o';
  if(!key){setStatus('Önce API Ayarları bölümüne OpenRouter API Key gir.','vi-warning');return;}
  var btn=$('webPriceSearch');if(btn){btn.disabled=true;btn.textContent='FİYATLAR ARAŞTIRILIYOR…';}
@@ -283,7 +288,7 @@ async function researchPrices(){
        p.bom=bom;
        if(p.result&&p.result.pricing)p.result.pricing.bom=bom;
        window.__vitaStudio=p;
-       renderBom(p.result);
+       if(!autoMode)renderBom(p.result);
        setStatus('Araştırıldı: '+(b+1)+'/'+batches.length+' kalem. Bulunan fiyatlar BOM listesine işlendi; sıradaki kalem araştırılıyor…');
      } finally {
        clearTimeout(timer);
@@ -304,10 +309,14 @@ async function researchPrices(){
    };
    window.__vitaStudio=p;
    renderBom(p.result);
-   setStatus(applied+' BOM kaleminin piyasa fiyatı web araştırmasıyla bulundu. '+(candidates.length-applied)+' kalem hâlâ fiyat bekliyor. Fiyatları kontrol edip “BOM FİYATLARINI HESAPLAMAYA UYGULA” ile onaylayabilirsin.');
+   setStatus(autoMode
+     ? 'Hesaplama + OpenRouter web fiyat araştırması tamamlandı. '+applied+' BOM kaleminin piyasa fiyatı bulundu ve doğrudan BOM listesine işlendi. '+(candidates.length-applied)+' kalem hâlâ fiyat bekliyor.'
+     : applied+' BOM kaleminin piyasa fiyatı web araştırmasıyla bulundu. '+(candidates.length-applied)+' kalem hâlâ fiyat bekliyor. Fiyatları kontrol edip “BOM FİYATLARINI HESAPLAMAYA UYGULA” ile onaylayabilirsin.'
+   );
  }catch(e){
    var msg=(e&&e.name==='AbortError')?'Web fiyat araştırması zaman aşımına uğradı (90 sn).':(e&&e.message?e.message:e);
-   setStatus('Fiyat araştırması başarısız: '+msg,'vi-warning');
+   if(autoMode&&p.result)renderBom(p.result);
+   setStatus('Fiyat araştırması başarısız: '+msg+'. BOM hesaplama sonucu ekrana getirildi.','vi-warning');
  }finally{
    if(btn){btn.disabled=false;btn.textContent='İNTERNETTEN ORTALAMA FİYAT ARA';}
  }
@@ -316,7 +325,7 @@ function buildInput(){
  var selectedPanel=Number(val('bomPanelSelect'))||620, selectedInv=val('bomInverterSelect')||'auto';
  return {panelPowerWp:selectedPanel,inverterPowerKw:selectedInv==='auto'?0:Number(selectedInv),city:val('city'),roofAreaM2:num('roofArea'),landAreaM2:num('landArea'),landAvailable:num('landArea')>0,annualConsumptionKwh:num('annualConsumption'),monthlyConsumptionKwh:num('annualConsumption')/12,peakDemandKw:num('peakDemand'),monthlyWaterM3:num('monthlyWater'),annualTco2e:num('annualTco2e'),facilityType:val('facilityType'),annex1Activity:val('annex1')===''?undefined:val('annex1')==='true',sector:val('sector'),company:val('company'),facility:val('facility'),facilityActivityDescription:val('facilityActivityDescription'),annualCapacity:num('annualCapacity'),capacityUnit:val('capacityUnit')};
 }
-function run(){
+async function run(autoResearch){
  if(!window.VitaEngine||typeof window.VitaEngine.calculate!=='function'){setStatus('VITA Engine yüklenemedi. Sayfayı yenileyin.','vi-warning');return;}
  var input=buildInput(), modules=selectedModules();
  input.forceBessSelected=modules.indexOf('bess')!==-1;
@@ -350,10 +359,16 @@ function run(){
   var regInput={systemYear:new Date().getFullYear(),annualTco2e:input.annualTco2e,annex1Activity:input.annex1Activity,facilityType:input.facilityType,sector:input.sector,facilityActivityDescription:input.facilityActivityDescription,annualCapacity:input.annualCapacity,capacityUnit:input.capacityUnit};
   var reg=window.VitaRegulatoryEngine&&typeof window.VitaRegulatoryEngine.assess==='function'?window.VitaRegulatoryEngine.assess({ets:regInput,taxonomy:{sector:input.sector,facilityType:input.facilityType}},{}):null;
   window.__vitaStudio={input:input,modules:modules,result:r,regulatory:reg,prices:prices(),currency:val('currency')||'TRY',locked:false,bom:r.pricing&&r.pricing.bom||[]};
-  renderMetrics(r,reg); renderBom(r);
+  renderMetrics(r,reg);
   var msg='Hesaplama tamamlandı.\nVITA: '+(r.engine&&r.engine.version||'-')+' · Validator: '+(r.validation&&r.validation.ok?'OK':'KONTROL GEREKLİ');
   if(reg)msg+='\nETS: '+reg.outputs.ets.etsScope+' · Taksonomi: '+reg.outputs.taxonomy.alignment;
-  setStatus(msg);
+  if(autoResearch&&getAiSettings().openrouterApiKey){
+    setStatus(msg+'\nOpenRouter web search devrede: BOM fiyatları araştırılıyor…');
+    await researchPrices({auto:true});
+  }else{
+    renderBom(r);
+    setStatus(msg+(autoResearch?'\nOpenRouter API Key yok; BOM fiyat araştırması atlandı.':''));
+  }
  }catch(e){setStatus('Hesaplama hatası: '+(e&&e.message?e.message:e),'vi-warning');}
 }
 function save(){
@@ -471,7 +486,7 @@ function clearAiSettings(){
 
 function init(){
  var c=$('city');cities.forEach(function(x){var o=document.createElement('option');o.value=x;o.textContent=x;c.appendChild(o);});
- if($('runAnalysis'))$('runAnalysis').addEventListener('click',run);
+ if($('runAnalysis'))$('runAnalysis').addEventListener('click',function(){run(true);});
  if($('webPriceSearch'))$('webPriceSearch').addEventListener('click',researchPrices);
  if($('bomPanelSelect'))$('bomPanelSelect').addEventListener('change',applyEquipmentSelection);
  if($('bomInverterSelect'))$('bomInverterSelect').addEventListener('change',applyEquipmentSelection);
