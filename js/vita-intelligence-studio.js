@@ -205,17 +205,17 @@ async function researchPrices(){
  var btn=$('webPriceSearch');if(btn){btn.disabled=true;btn.textContent='FİYATLAR ARAŞTIRILIYOR…';}
  try{
    var applied=0, requestCount=0, batches=[];
-   for(var bi=0;bi<candidates.length;bi+=3)batches.push(candidates.slice(bi,bi+3));
+   for(var bi=0;bi<candidates.length;bi++)batches.push(candidates.slice(bi,bi+1));
 
    for(var b=0;b<batches.length;b++){
      var batch=batches[b];
      setStatus('Web fiyat araştırması sürüyor: '+(b+1)+'/'+batches.length+' grup…');
      var prompt='VITAVOLT GLOBAL BOM PRICE INTELLIGENCE\\n'+
-       'Türkiye piyasasında 2026 yılı için aşağıdaki satın alınabilir BOM kalemlerinin güncel piyasa birim fiyatlarını ARAŞTIR.\\n'+
+       'Türkiye piyasasında 2026 yılı için aşağıdaki satın alınabilir BOM kaleminin güncel piyasa birim fiyatını ARAŞTIR.\\n'+
        'ZORUNLU: Web search kullan. Gerçek ürün/tedarikçi sayfaları veya güvenilir piyasa kaynakları bulmadan fiyat uydurma.\\n'+
        'Her kalem için gerçek ürün/tedarikçi fiyatlarından makul birim fiyat seç. Kaynak yalnız TL ise güncel web bilgisini kullanarak yaklaşık USD karşılığını hesapla ve notes alanında kaynak para birimini belirt.\\n'+
        'DERIVED/hacim/hesaplama satırları bu isteğe dahil edilmez ve fiyatlandırılmaz.\\n'+
-       'ÇIKTIYI SADECE aşağıdaki şemaya uygun JSON olarak döndür. Her bomIndex değerini GİRDİDEKİYLE AYNI bırak; yeniden numaralandırma yapma.\\n'+
+       'ÇIKTIYI SADECE aşağıdaki şemaya uygun JSON olarak döndür. bomIndex değerini GİRDİDEKİYLE AYNI bırak.\\n'+
        '{"prices":[{"bomIndex":0,"item":"...","unitPrice":0,"currency":"USD","priceBasis":"...","source":"https://...","confidence":"HIGH|MEDIUM|LOW","notes":"..."}]}\\n'+
        'Fiyat bulunamazsa unitPrice null ver. JSON dışında açıklama yazma.\\nBOM: '+JSON.stringify(batch);
 
@@ -227,10 +227,9 @@ async function researchPrices(){
          {role:'system',content:'You are Vitavolt Global BOM market-price research agent. Use the supplied web search results as evidence. Never invent a price. Return only the requested JSON.'},
          {role:'user',content:prompt}
        ],
-       plugins:[{id:'web',engine:'exa',max_results:5,search_prompt:'Find current Turkish supplier or product prices relevant to each BOM item.'}],
-       // Some web-enabled provider routes reject response_format=json_object.
-       // The prompt plus extractJson() below provides a compatible fallback.
-       max_tokens:3000,
+       plugins:[{id:'web',engine:'exa',max_results:5,search_prompt:'Find current Turkish supplier or product prices for this exact BOM item.'}],
+       response_format:{type:'json_object'},
+       max_tokens:1200,
        temperature:0
      };
      try{
@@ -281,6 +280,11 @@ async function researchPrices(){
            applied++;
          }
        });
+       p.bom=bom;
+       if(p.result&&p.result.pricing)p.result.pricing.bom=bom;
+       window.__vitaStudio=p;
+       renderBom(p.result);
+       setStatus('Araştırıldı: '+(b+1)+'/'+batches.length+' kalem. Bulunan fiyatlar BOM listesine işlendi; sıradaki kalem araştırılıyor…');
      } finally {
        clearTimeout(timer);
      }
