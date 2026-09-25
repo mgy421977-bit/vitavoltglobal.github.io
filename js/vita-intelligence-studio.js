@@ -1,4 +1,4 @@
-/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v10-bom-mobile-cards */
+/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v11-price-persistence-dc-pano */
 (function(){
 'use strict';
 var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
@@ -205,7 +205,7 @@ async function researchPrices(){
    window.__vitaStudio=p;renderBom(p.result);
    setStatus(applied+' BOM kaleminin piyasa fiyatı web araştırmasıyla bulundu. Fiyatları kontrol edip “BOM FİYATLARINI HESAPLAMAYA UYGULA” ile onaylayabilirsin.');
  }catch(e){setStatus('Fiyat araştırması başarısız: '+(e&&e.message?e.message:e),'vi-warning');}
- finally{if(btn){btn.disabled=false;btn.textContent='İNTERNETTEN FİYATLARI ARA';}}
+ finally{if(btn){btn.disabled=false;btn.textContent='İNTERNETTEN ORTALAMA FİYAT ARA';}}
 }
 function buildInput(){
  var selectedPanel=Number(val('bomPanelSelect'))||620, selectedInv=val('bomInverterSelect')||'auto';
@@ -220,7 +220,26 @@ function run(){
  input.greywaterSelected=modules.indexOf('greywater')!==-1;
  if(!input.roofAreaM2&&!input.landAreaM2){setStatus('GES hesabı için çatı veya arazi alanı girin. Diğer raporlar yine veri toplama aşamasında hazırlanabilir.','vi-warning');return;}
  try{
+  var previousBom=(window.__vitaStudio&&window.__vitaStudio.bom)||[];
+  var previousBomMap={};
+  previousBom.forEach(function(x){previousBomMap[String(x.category)+'|'+String(x.item)]=x;});
   var r=window.VitaEngine.calculate(input,{});
+  var freshBom=(r.pricing&&r.pricing.bom)||[];
+  freshBom.forEach(function(row){
+    var oldRow=previousBomMap[String(row.category)+'|'+String(row.item)];
+    if(oldRow && oldRow.unitCost!=null){
+      row.unitCost=oldRow.unitCost;
+      row.totalCost=Number((Number(row.quantity||0)*Number(oldRow.unitCost||0)).toFixed(2));
+      row.costStatus='PRICED';
+      if(oldRow.priceCurrency)row.priceCurrency=oldRow.priceCurrency;
+      if(oldRow.priceBasis)row.priceBasis=oldRow.priceBasis;
+      if(oldRow.priceSource)row.priceSource=oldRow.priceSource;
+      if(oldRow.priceConfidence)row.priceConfidence=oldRow.priceConfidence;
+      if(oldRow.priceNotes)row.priceNotes=oldRow.priceNotes;
+      if(oldRow.source)row.source=oldRow.source;
+    }
+  });
+  r.pricing.bom=freshBom;
  if(input.forceBessSelected && r.bess && !(Number(r.bess.suggestedCapacityKwh)>0)) { var dailyForce=(Number(input.annualConsumptionKwh)||0)/365; var forcedKwh=Number((dailyForce*0.35*0.75/(0.9*0.95)).toFixed(1)); r.bess.recommended=true; r.bess.suggestedCapacityKwh=forcedKwh; r.bess.requestedCapacityKwh=forcedKwh; var recalc=window.VitaEngine.calculate(Object.assign({},input,{bessCapacityKwh:forcedKwh}),{}); r=recalc; }
   r.bess=r.bess||{}; r.bess.selectedByUser=input.forceBessSelected===true;
   var regInput={systemYear:new Date().getFullYear(),annualTco2e:input.annualTco2e,annex1Activity:input.annex1Activity,facilityType:input.facilityType,sector:input.sector,facilityActivityDescription:input.facilityActivityDescription,annualCapacity:input.annualCapacity,capacityUnit:input.capacityUnit};
