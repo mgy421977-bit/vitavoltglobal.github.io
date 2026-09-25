@@ -213,7 +213,8 @@ async function researchPrices(options){
    request.items=request.items.map(function(x){
      return Object.assign({},x,{sourceUrls:(bom[x.bomIndex]&&bom[x.bomIndex].priceSourceUrls)||[]});
    });
-   var res=await fetch(gateway.replace(/\\/$/,'')+'/price-intelligence',{
+   var endpoint=gateway.replace(/\\/$/,''); if(!/\\/price-intelligence$/.test(endpoint))endpoint+='/price-intelligence';
+   var res=await fetch(endpoint,{
      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(request)
    });
    var data=await res.json();
