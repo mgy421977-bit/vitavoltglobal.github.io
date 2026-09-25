@@ -1,4 +1,4 @@
-/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25 */
+/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v6-bom-totals */
 (function(){
 'use strict';
 var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
@@ -66,31 +66,61 @@ function renderBom(r){
  var box=$('bomEditor'); if(!box) return;
  var bom=(r&&r.pricing&&r.pricing.bom)||[];
  populateEquipmentSelectors(r);
- if(!bom.length){box.innerHTML='<p class="vi-print-note">Henüz BOM oluşmadı.</p>';if($('bomSummary'))$('bomSummary').innerHTML='<div><small>BOM durumu</small><strong>Bekliyor</strong></div><div><small>Fiyatlandırılan</small><strong>0</strong></div><div><small>Eksik fiyat</small><strong>0</strong></div>';return;}
- box.innerHTML='<div style="overflow:auto"><table class="vi-table"><thead><tr><th>Kategori</th><th>Kalem</th><th>Miktar</th><th>Birim</th><th>Birim fiyat</th><th>Toplam</th><th>Kaynak</th></tr></thead><tbody>'+
+ if(!bom.length){
+   box.innerHTML='<p class="vi-print-note">Henüz BOM oluşmadı.</p>';
+   if($('bomSummary'))$('bomSummary').innerHTML='<div><small>BOM durumu</small><strong>Bekliyor</strong></div><div><small>Fiyatlandırılan</small><strong>0</strong></div><div><small>Eksik fiyat</small><strong>0</strong></div><div><small>Bilinen toplam</small><strong>—</strong></div>';
+   return;
+ }
+ var defaultCurrency=(r.pricing&&r.pricing.currency)||'USD';
+ var knownTotal=0;
+ bom.forEach(function(x){if(x.source!=='DERIVED'&&Number.isFinite(Number(x.totalCost)))knownTotal+=Number(x.totalCost);});
+ box.innerHTML='<div class="vi-bom-total"><span><small>BOM bilinen toplam</small><strong>'+fmt(knownTotal)+' '+defaultCurrency+'</strong></span><em>Fiyatı olmayan kalemler toplamın dışında tutulur.</em></div><div style="overflow:auto"><table class="vi-table"><thead><tr><th>Kategori</th><th>Kalem</th><th>Miktar</th><th>Birim</th><th>Birim fiyat</th><th>Toplam</th><th>Kaynak</th></tr></thead><tbody>'+
  bom.map(function(x,i){
    var cost=x.unitCost==null?'':x.unitCost;
    var qty=Number(x.quantity||0);
-   return '<tr><td>'+x.category+'</td><td>'+x.item+'</td><td><input class="bom-qty" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+qty+'"></td><td>'+x.unit+'</td><td><input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Gir"></td><td class="bom-total" data-bom-total="'+i+'">'+(x.totalCost==null?'—':fmt(x.totalCost))+'</td><td>'+x.source+'</td></tr>';
+   var cur=x.priceCurrency||defaultCurrency;
+   var totalCell=x.totalCost==null?'<span class="bom-pending">Fiyat bekliyor</span>':fmt(x.totalCost)+' '+cur;
+   return '<tr><td>'+x.category+'</td><td>'+x.item+'</td><td><input class="bom-qty" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+qty+'"></td><td>'+x.unit+'</td><td><input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Fiyat gir / ara"></td><td class="bom-total" data-bom-total="'+i+'">'+totalCell+'</td><td>'+x.source+'</td></tr>';
  }).join('')+'</tbody></table></div>';
  function updateRow(i){
    var row=bom[i], qi=box.querySelector('.bom-qty[data-bom-index="'+i+'"]'), pi=box.querySelector('.bom-price[data-bom-index="'+i+'"]');
    var q=Number(qi&&qi.value), v=Number(pi&&pi.value);
    row.quantity=Number.isFinite(q)&&q>=0?q:0;
-   if(Number.isFinite(v)&&v>=0){row.unitCost=v;row.totalCost=Number((row.quantity*v).toFixed(2));row.costStatus='PRICED';}
-   else {row.unitCost=null;row.totalCost=null;row.costStatus='NOT_PRICED';}
-   var t=box.querySelector('[data-bom-total="'+i+'"]');if(t)t.textContent=row.totalCost==null?'—':fmt(row.totalCost);
+   if(Number.isFinite(v)&&v>=0){
+     row.unitCost=v;
+     row.totalCost=Number((row.quantity*v).toFixed(2));
+     row.costStatus='PRICED';
+   } else {
+     row.unitCost=null;
+     row.totalCost=null;
+     row.costStatus='NOT_PRICED';
+   }
+   var t=box.querySelector('[data-bom-total="'+i+'"]');
+   if(t)t.innerHTML=row.totalCost==null?'<span class="bom-pending">Fiyat bekliyor</span>':fmt(row.totalCost)+' '+(row.priceCurrency||defaultCurrency);
    window.__vitaStudio.bom=bom;
    updateBomSummary(bom);
+   renderBomTotal(bom,defaultCurrency);
  }
  box.querySelectorAll('.bom-qty').forEach(function(inp){inp.addEventListener('input',function(){updateRow(Number(inp.dataset.bomIndex));});});
  box.querySelectorAll('.bom-price').forEach(function(inp){inp.addEventListener('input',function(){updateRow(Number(inp.dataset.bomIndex));});});
  updateBomSummary(bom);
 }
+function renderBomTotal(bom,currency){
+ var el=document.querySelector('.vi-bom-total strong');
+ if(!el)return;
+ var total=0;
+ (bom||[]).forEach(function(x){if(x.source!=='DERIVED'&&Number.isFinite(Number(x.totalCost)))total+=Number(x.totalCost);});
+ el.textContent=fmt(total)+' '+(currency||'USD');
+}
 function updateBomSummary(bom){
- var priced=0,missing=0;
- (bom||[]).forEach(function(x){if(x.source==='DERIVED')return;if(x.costStatus==='PRICED'&&x.unitCost!=null)priced++;else if(x.costStatus!=='NOT_APPLICABLE'&&x.costStatus!=='SUPERSEDED')missing++;});
- if($('bomSummary'))$('bomSummary').innerHTML='<div><small>BOM durumu</small><strong>'+(bom||[]).length+' kalem</strong></div><div><small>Fiyatlandırılan</small><strong class="bom-priced">'+priced+'</strong></div><div><small>Eksik fiyat</small><strong class="bom-missing">'+missing+'</strong></div>';
+ var priced=0,missing=0,knownTotal=0,currency='USD';
+ (bom||[]).forEach(function(x){
+   if(x.priceCurrency)currency=x.priceCurrency;
+   if(x.source==='DERIVED')return;
+   if(x.costStatus==='PRICED'&&x.unitCost!=null){priced++;if(Number.isFinite(Number(x.totalCost)))knownTotal+=Number(x.totalCost);}
+   else if(x.costStatus!=='NOT_APPLICABLE'&&x.costStatus!=='SUPERSEDED')missing++;
+ });
+ if($('bomSummary'))$('bomSummary').innerHTML='<div><small>BOM durumu</small><strong>'+(bom||[]).length+' kalem</strong></div><div><small>Fiyatlandırılan</small><strong class="bom-priced">'+priced+'</strong></div><div><small>Eksik fiyat</small><strong class="bom-missing">'+missing+'</strong></div><div><small>Bilinen toplam</small><strong>'+fmt(knownTotal)+' '+currency+'</strong></div>';
 }
 function applyBomPrices(){
  var p=window.__vitaStudio;
@@ -142,7 +172,7 @@ async function researchPrices(){
  var btn=$('webPriceSearch');if(btn){btn.disabled=true;btn.textContent='FİYATLAR ARAŞTIRILIYOR…';}
  try{
    var prompt='VITAVOLT GLOBAL BOM Price Intelligence. Türkiye piyasasında 2026 için aşağıdaki BOM kalemlerinin güncel birim fiyatlarını web araştırmasıyla bul. Her kalem için gerçek ürün/tedarikçi sayfaları veya güvenilir piyasa kaynakları ara. Uydurma fiyat üretme. KDV dahil/hariç durumunu mümkünse belirt. Para birimi USD tercih et; TL fiyat bulursan tarih ve kur belirsizliğini belirt. Sonucu SADECE JSON array olarak döndür: [{"index":0,"item":"...","unitPrice":0,"currency":"USD","priceBasis":"...","source":"https://...","confidence":"HIGH|MEDIUM|LOW","notes":"..."}]. Fiyat bulunamazsa unitPrice null ver. BOM:\n'+JSON.stringify(candidates);
-   var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','HTTP-Referer':'https://vitavoltglobal.com/','X-OpenRouter-Title':'Vitavolt Global VITA Price Intelligence'},body:JSON.stringify({model:model,messages:[{role:'user',content:prompt}],plugins:[{id:'web',max_results:5}],temperature:0.1})});
+   var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','HTTP-Referer':'https://vitavoltglobal.com/','X-OpenRouter-Title':'Vitavolt Global VITA Price Intelligence'},body:JSON.stringify({model:model,messages:[{role:'user',content:prompt}],tools:[{type:'openrouter:web_search',parameters:{engine:'parallel',max_results:5,max_total_results:15}}],temperature:0.1})});
    var data=await res.json();
    if(!res.ok)throw new Error((data&&data.error&&data.error.message)||'OpenRouter API hatası');
    var content=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
@@ -239,7 +269,7 @@ function loadAiSettings(){
   if($('geminiApiKey'))$('geminiApiKey').value=x.geminiApiKey||'';
   if($('openrouterApiKey'))$('openrouterApiKey').value=x.openrouterApiKey||'';
   if($('geminiModel'))$('geminiModel').value=x.geminiModel||'gemini-2.5-flash';
-  if($('openrouterModel'))$('openrouterModel').value=x.openrouterModel||'openai/gpt-5.6';
+  if($('openrouterModel'))$('openrouterModel').value=x.openrouterModel||'openai/gpt-4o';
   if($('aiStatus'))$('aiStatus').textContent='AI API ayarları bu tarayıcı oturumunda mevcut.';
  }catch(e){}
 }
