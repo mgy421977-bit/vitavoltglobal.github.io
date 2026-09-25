@@ -1,4 +1,4 @@
-/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v7-commercial-pricing */
+/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v10-bom-mobile-cards */
 (function(){
 'use strict';
 var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
@@ -74,19 +74,25 @@ function renderBom(r){
  var defaultCurrency=(r.pricing&&r.pricing.currency)||'USD';
  var knownTotal=0;
  bom.forEach(function(x){if(x.source!=='DERIVED'&&Number.isFinite(Number(x.totalCost)))knownTotal+=Number(x.totalCost);});
- box.innerHTML='<div class="vi-table-wrap"><table class="vi-table"><thead><tr><th>Kategori</th><th>Kalem</th><th>Miktar</th><th>Birim</th><th>Birim fiyat</th><th>Toplam</th><th>Kaynak</th></tr></thead><tbody>'+
- bom.map(function(x,i){
+
+ box.innerHTML='<div class="vi-bom-list">'+bom.map(function(x,i){
    var cost=x.unitCost==null?'':x.unitCost;
    var qty=Number(x.quantity||0);
    var cur=x.priceCurrency||defaultCurrency;
    var totalCell=x.totalCost==null?'<span class="bom-pending">Fiyat bekliyor</span>':fmt(x.totalCost)+' '+cur;
-   return '<tr><td>'+x.category+'</td><td>'+x.item+'</td><td><input class="bom-qty" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+qty+'"></td><td>'+x.unit+'</td><td><input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Fiyat gir / ara"></td><td class="bom-total" data-bom-total="'+i+'">'+totalCell+'</td><td>'+x.source+'</td></tr>';
- }).join('')+'</tbody></table></div><div class="vi-bom-total"><span><small>BOM BİLİNEN TOPLAM</small><strong>'+fmt(knownTotal)+' '+defaultCurrency+'</strong></span><em>Fiyatı olmayan kalemler toplamın dışında tutulur.</em></div>';
+   return '<div class="vi-bom-row">'+
+     '<div class="vi-bom-item"><span class="vi-bom-category">'+x.category+'</span><strong>'+x.item+'</strong><small>Kaynak: '+x.source+'</small></div>'+
+     '<label class="vi-bom-cell"><span>Miktar</span><input class="bom-qty" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+qty+'"><em>'+x.unit+'</em></label>'+
+     '<label class="vi-bom-cell"><span>Birim fiyat</span><input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Fiyat gir / ara"><em>'+(x.priceCurrency||defaultCurrency)+'</em></label>'+
+     '<div class="vi-bom-cell vi-bom-total-cell"><span>Toplam</span><strong class="bom-total" data-bom-total="'+i+'">'+totalCell+'</strong></div>'+
+   '</div>';
+ }).join('')+'</div><div class="vi-bom-total"><span><small>BOM BİLİNEN TOPLAM</small><strong>'+fmt(knownTotal)+' '+defaultCurrency+'</strong></span><em>Fiyatı olmayan kalemler toplamın dışında tutulur.</em></div>';
+
  function updateRow(i){
    var row=bom[i], qi=box.querySelector('.bom-qty[data-bom-index="'+i+'"]'), pi=box.querySelector('.bom-price[data-bom-index="'+i+'"]');
    var q=Number(qi&&qi.value), v=Number(pi&&pi.value);
    row.quantity=Number.isFinite(q)&&q>=0?q:0;
-   if(Number.isFinite(v)&&v>=0){
+   if(Number.isFinite(v)&&v>=0&&String(pi.value).trim()!==''){
      row.unitCost=v;
      row.totalCost=Number((row.quantity*v).toFixed(2));
      row.costStatus='PRICED';
