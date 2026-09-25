@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "regulationId": "TR_ETS_REG_2026",
+  "effectiveDate": "2026-08-27",
+  "gazette": "33353",
+  "scope": {
+    "etsAppliesToAnnex1Activities": true,
+    "coveredCategories": ["B", "C"],
+    "categoryThresholds": {
+      "A": { "minInclusive": 0, "maxInclusive": 50000, "unit": "tCO2e_per_year" },
+      "B": { "minExclusive": 50000, "maxInclusive": 500000, "unit": "tCO2e_per_year" },
+      "C": { "minExclusive": 500000, "maxInclusive": null, "unit": "tCO2e_per_year" }
+    },
+    "explicitExclusions": [
+      "R&D / new product or process development or testing facilities or facility sections",
+      "Facilities or facility sections using exclusively biomass",
+      "Military elements"
+    ],
+    "etsSpecificExclusions": [
+      "Schools, universities, hospitals and defence-industry facilities are outside ETS scope for the activities they perform"
+    ],
+    "continuedMrvForExcludedFacilities": true
+  },
+  "permit": {
+    "requiredForEtsCoveredOperators": true,
+    "authority": "İklim Değişikliği Başkanlığı",
+    "separatePermitPerFacility": true
+  },
+  "pilot": {
+    "decisionId": "TR_ETS_PILOT_KPK_2026_1",
+    "emissionYears": [2026, 2027],
+    "sectors": [
+      "electricity_generation",
+      "cement",
+      "iron_steel",
+      "aluminium",
+      "fertilizer"
+    ],
+    "categories": ["B", "C"],
+    "year2026": {
+      "obligationMode": "REPORTING_ONLY",
+      "priceMechanism": false,
+      "allowanceDeliveryFor2026Emissions": false
+    },
+    "year2027": {
+      "obligationMode": "PRICE_MECHANISM_STARTS",
+      "detailedPilotRules": "PENDING_OFFICIAL_DETAILED_RULES"
+    }
+  },
+  "requiredDataForPreAssessment": [
+    "facilityName",
+    "facilityType",
+    "location",
+    "annex1Activity",
+    "annualCapacity",
+    "capacityUnit",
+    "installedProcessCapacity",
+    "fuelTypes",
+    "annualFuelConsumption",
+    "annualElectricityConsumption",
+    "processEmissions",
+    "reportedOrEstimatedAnnualTco2e",
+    "systemYear"
+  ],
+  "annex1Status": "PARTIAL_DATA_MODEL",
+  "annex1Note": "Full Annex-1 activity list is intentionally not reproduced here until the current official annex is machine-verified. The engine must not infer Annex-1 membership from sector name alone.",
+  "provenance": {
+    "source": "TR_ETS_REG_2026",
+    "secondaryPilotSource": "TR_ETS_PILOT_KPK_2026_1"
+  }
+}
