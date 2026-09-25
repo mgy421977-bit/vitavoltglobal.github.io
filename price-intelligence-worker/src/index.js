@@ -47,18 +47,18 @@ function normalizeCurrency(v) {
 
 function stripHtml(html) {
   return String(html || "")
-    .replace(/<script[\\s\\S]*?<\\/script>/gi, " ")
-    .replace(/<style[\\s\\S]*?<\\/style>/gi, " ")
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
     .replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;/gi, " ")
     .replace(/&amp;/gi, "&")
-    .replace(/\\s+/g, " ")
+    .replace(/\s+/g, " ")
     .trim();
 }
 
 function jsonLdProducts(html) {
   const out = [];
-  const re = /<script[^>]*type=["']application\\/ld\\+json["'][^>]*>([\\s\\S]*?)<\\/script>/gi;
+  const re = /<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
   let m;
   while ((m = re.exec(html))) {
     try {
@@ -91,7 +91,7 @@ function jsonLdProducts(html) {
 
 function visiblePriceHints(text) {
   const out = [];
-  const re = /(?:₺|TL|TRY|USD|EUR|€|\\$)\\s*[0-9]{1,3}(?:[.\\s][0-9]{3})*(?:,[0-9]{1,2})?|[0-9]{1,3}(?:[.\\s][0-9]{3})*(?:,[0-9]{1,2})?\\s*(?:₺|TL|TRY|USD|EUR|€|\\$)/gi;
+  const re = /(?:₺|TL|TRY|USD|EUR|€|\$)\s*[0-9]{1,3}(?:[.\s][0-9]{3})*(?:,[0-9]{1,2})?|[0-9]{1,3}(?:[.\s][0-9]{3})*(?:,[0-9]{1,2})?\s*(?:₺|TL|TRY|USD|EUR|€|\$)/gi;
   let m;
   while ((m = re.exec(text)) && out.length < 12) out.push(m[0]);
   return out;
