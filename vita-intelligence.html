@@ -48,6 +48,7 @@
 .vi-bom-summary div{padding:.7rem;border:1px solid var(--line);border-radius:9px;background:#091827}.vi-bom-summary small{display:block;color:#94a3b8}.vi-bom-summary strong{display:block;margin-top:.2rem}
 .vi-bom-total{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:.9rem 0 0;padding:1rem;border:1px solid rgba(56,189,248,.28);border-radius:10px;background:rgba(56,189,248,.07)}
 .vi-bom-total small{display:block;color:#94a3b8}.vi-bom-total strong{display:block;margin-top:.2rem;font-size:1.15rem}.vi-bom-total em{font-style:normal;color:#94a3b8;font-size:.72rem;text-align:right}
+.vi-bom-list{display:flex;flex-direction:column;gap:.55rem;margin-top:1rem}.vi-bom-row{display:grid;grid-template-columns:minmax(240px,1.7fr) minmax(120px,.8fr) minmax(150px,.9fr) minmax(150px,.9fr);gap:.6rem;align-items:stretch;padding:.75rem;border:1px solid var(--line);border-radius:10px;background:#091827}.vi-bom-item{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-width:0}.vi-bom-item strong{font-size:.9rem;line-height:1.35}.vi-bom-item small{color:#64748b;font-size:.68rem}.vi-bom-category{color:#38bdf8;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.vi-bom-cell{display:flex;flex-direction:column;justify-content:center;gap:.25rem;min-width:0}.vi-bom-cell>span{font-size:.68rem;color:#94a3b8;font-weight:700;text-transform:uppercase}.vi-bom-cell input{width:100%;min-width:0;box-sizing:border-box;background:#071522!important;border:1px solid rgba(148,163,184,.28)!important;color:#fff!important;border-radius:8px!important;padding:.62rem!important;font:inherit}.vi-bom-cell input:focus{border-color:var(--p)!important;outline:none}.vi-bom-cell em{font-style:normal;color:#64748b;font-size:.65rem}.vi-bom-total-cell strong{font-size:.9rem}.vi-bom-total-cell .bom-pending{display:block;margin-top:.25rem}
 .vi-bom-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0;padding:.8rem;border:1px solid var(--line);border-radius:10px;background:#091827}
 .vi-bom-controls label{font-size:.75rem;color:#cbd5e1;font-weight:700;display:flex;flex-direction:column;gap:.35rem}
 .vi-bom-controls select{background:#071522;border:1px solid var(--line);color:#fff;border-radius:8px;padding:.65rem;font:inherit}
@@ -56,10 +57,10 @@
  .vi-grid{grid-template-columns:1fr}.vi-form{grid-template-columns:1fr}
  .vi-modules,.vi-metrics{grid-template-columns:1fr 1fr}.vi-photos{grid-template-columns:1fr 1fr}
 }
-@media(max-width:520px){
+@media(max-width:800px){.vi-bom-row{grid-template-columns:1.4fr .8fr .9fr .9fr}.vi-bom-item strong{font-size:.85rem}}@media(max-width:520px){
  .vi-bom-summary{grid-template-columns:1fr 1fr}.vi-bom-total{align-items:flex-start;flex-direction:column}.vi-bom-total em{text-align:left}
  .vi-modules,.vi-metrics,.vi-photos{grid-template-columns:1fr}
- .vi-price{grid-template-columns:1fr;gap:.35rem;padding:.55rem .65rem;border:1px solid var(--line);border-radius:10px;background:#091827}
+ .vi-price{grid-template-columns:1fr;gap:.35rem;padding:.55rem .65rem;border:1px solid var(--line);border-radius:10px;background:#091827} .vi-bom-row{grid-template-columns:1fr;gap:.55rem;padding:.8rem}.vi-bom-cell{display:grid;grid-template-columns:90px minmax(0,1fr) auto;align-items:center}.vi-bom-cell>span{grid-column:1}.vi-bom-cell input{grid-column:2;grid-row:1}.vi-bom-cell em{grid-column:3;grid-row:1;margin-left:.35rem}.vi-bom-total-cell{display:grid}.vi-bom-total-cell strong{grid-column:2}.vi-bom-item{padding-bottom:.25rem;border-bottom:1px solid var(--line)}
  .vi-price span{font-size:.95rem;font-weight:700}
  .vi-price input,.vi-price input[type=number]{grid-column:1;width:100%!important;min-width:0!important;max-width:none!important}
 }
@@ -116,6 +117,6 @@
 <script src="js/vita-engine.js?v=2026-09-25-v4.2-bess-water-bom"></script>
 <script src="js/vita-regulatory-engine.js?v=2026-09-25-regulatory-v1"></script>
 <script src="js/vita-engine-sizing.js?v=2026-09-25-inverter-80pct-v6"></script>
-<script src="js/vita-intelligence-studio.js?v=2026-09-25-v9"></script>
+<script src="js/vita-intelligence-studio.js?v=2026-09-25-v10"></script>
 <script src="js/script.js"></script>
 </body></html>
