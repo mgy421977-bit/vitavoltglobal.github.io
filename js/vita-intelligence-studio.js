@@ -1,4 +1,4 @@
-/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v14-openrouter-verify */
+/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v15-openrouter-key-model-diagnostics */
 (function(){
 'use strict';
 var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
@@ -398,16 +398,20 @@ function loadAiSettings(){
 async function verifyOpenRouter(){
  var ai=getAiSettings(), key=ai.openrouterApiKey, model=ai.openrouterModel||'openai/gpt-4o';
  var el=$('openrouterStatus'), btn=$('verifyOpenRouter');
- function status(textValue,ok){
-   if(el){
-     el.innerHTML='<span class="vi-ai-dot '+(ok?'ok':'bad')+'"></span><span>'+textValue+'</span>';
-     el.className='vi-ai-status '+(ok?'ok':'bad');
-   }
+ function status(htmlValue,cls){
+   if(el){el.innerHTML=htmlValue;el.className='vi-ai-status '+(cls||'');}
  }
- if(!key){status('OpenRouter API Key girilmedi.',false);setStatus('OpenRouter doğrulaması için API Key gerekli.','vi-warning');return false;}
+ if(!key){status('<span class="vi-ai-dot bad"></span><span>OpenRouter API Key girilmedi.</span>','bad');setStatus('OpenRouter doğrulaması için API Key gerekli.','vi-warning');return false;}
  if(btn){btn.disabled=true;btn.textContent='DOĞRULANIYOR…';}
- status('OpenRouter sorgusu test ediliyor…',false);
+ status('<span class="vi-ai-dot"></span><span>1/2 · API anahtarı doğrulanıyor…</span>','');
  try{
+   var keyRes=await fetch('https://openrouter.ai/api/v1/key',{method:'GET',headers:{'Authorization':'Bearer '+key}});
+   var keyData=await keyRes.json();
+   if(!keyRes.ok)throw new Error((keyData&&keyData.error&&keyData.error.message)||('API Key HTTP '+keyRes.status));
+   var kd=keyData&&keyData.data||{};
+   var remaining=kd.limit_remaining;
+   var remainingText=Number.isFinite(Number(remaining))?(' · Kalan limit: '+Number(remaining).toFixed(2)+' USD'):'';
+   status('<span class="vi-ai-dot ok"></span><span>1/2 · API Key geçerli'+remainingText+'</span><br><span class="vi-ai-dot"></span><span>2/2 · '+model+' sorgulanıyor…</span>','ok');
    var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{
      method:'POST',
      headers:{
@@ -418,26 +422,33 @@ async function verifyOpenRouter(){
      },
      body:JSON.stringify({
        model:model,
-       messages:[{role:'user',content:'Return ONLY JSON: {"ok":true,"service":"OpenRouter","webSearchReady":true}'}],
+       messages:[{role:'user',content:'Reply only with OK.'}],
+       max_tokens:8,
        temperature:0
      })
    });
    var data=await res.json();
-   if(!res.ok)throw new Error((data&&data.error&&data.error.message)||('HTTP '+res.status));
-   var content=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
-   var parsed=extractJson(content);
-   if(!parsed||parsed.ok!==true)throw new Error('Model yanıtı doğrulanamadı.');
-   status('OpenRouter API bağlantısı doğrulandı · Model: '+model,true);
-   setStatus('✓ OpenRouter API sorgusu başarılı. Fiyat araştırmasına geçilebilir.');
+   if(!res.ok){
+     var err=(data&&data.error&&data.error.message)||('HTTP '+res.status);
+     if(res.status===402){
+       status('<span class="vi-ai-dot ok"></span><span>1/2 · API Key geçerli'+remainingText+'</span><br><span class="vi-ai-dot bad"></span><span>2/2 · Model çalışmadı: OpenRouter kredi/limit yetersiz.</span>','bad');
+       setStatus('OpenRouter API Key geçerli; ancak '+model+' sorgusu kredi/limit nedeniyle çalışmadı. Bu nedenle internet fiyat araştırması da çalışmaz.','vi-warning');
+       return false;
+     }
+     throw new Error(err);
+   }
+   status('<span class="vi-ai-dot ok"></span><span>1/2 · API Key geçerli'+remainingText+'</span><br><span class="vi-ai-dot ok"></span><span>2/2 · '+model+' sorgusu başarılı</span>','ok');
+   setStatus('✓ OpenRouter bağlantısı ve seçili model doğrulandı. Fiyat araştırmasına geçilebilir.');
    return true;
  }catch(e){
-   status('OpenRouter doğrulaması başarısız: '+(e&&e.message?e.message:e),false);
+   status('<span class="vi-ai-dot bad"></span><span>OpenRouter doğrulaması başarısız: '+(e&&e.message?e.message:e)+'</span>','bad');
    setStatus('OpenRouter doğrulaması başarısız: '+(e&&e.message?e.message:e),'vi-warning');
    return false;
  }finally{
    if(btn){btn.disabled=false;btn.textContent='OPENROUTER TEST ET';}
  }
 }
+
 
 function saveAiSettings(){
  var x={geminiApiKey:val('geminiApiKey'),openrouterApiKey:val('openrouterApiKey'),geminiModel:val('geminiModel'),openrouterModel:val('openrouterModel')};
