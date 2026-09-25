@@ -1,4 +1,4 @@
-/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v15-openrouter-key-model-diagnostics */
+/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v16-price-research-response-fix */
 (function(){
 'use strict';
 var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
@@ -163,9 +163,18 @@ function getAiSettings(){
  try{return JSON.parse(sessionStorage.getItem('vitavolt_ai_settings')||'{}');}catch(e){return {};}
 }
 function extractJson(text){
- var t=String(text||'').trim().replace(/^\`\`\`(?:json)?/i,'').replace(/\`\`\`$/,'').trim();
+ if(text&&typeof text==='object'&&!Array.isArray(text))return text;
+ if(Array.isArray(text)){
+   text=text.map(function(x){return typeof x==='string'?x:(x&&typeof x.text==='string'?x.text:'');}).join('\n');
+ }
+ var t=String(text||'').trim();
+ var fence=String.fromCharCode(96).repeat(3);
+ if(t.indexOf(fence)===0)t=t.slice(3).replace(/^json/i,'').trim();
+ if(t.slice(-3)===fence)t=t.slice(0,-3).trim();
  try{return JSON.parse(t);}catch(e){}
- var a=t.indexOf('['),b=t.lastIndexOf(']');
+ var a=t.indexOf('{'),b=t.lastIndexOf('}');
+ if(a>=0&&b>a){try{return JSON.parse(t.slice(a,b+1));}catch(e){}}
+ a=t.indexOf('[');b=t.lastIndexOf(']');
  if(a>=0&&b>a){try{return JSON.parse(t.slice(a,b+1));}catch(e){}}
  return null;
 }
@@ -199,41 +208,16 @@ async function researchPrices(){
      var timer=setTimeout(function(){controller.abort();},45000);
      var body={
        model:model,
-       messages:[{role:'user',content:prompt}],
-       tools:[{type:'openrouter:web_search',parameters:{engine:'exa',max_results:5}}],
-       response_format:{
-         type:'json_schema',
-         json_schema:{
-           name:'bom_prices',
-           strict:true,
-           schema:{
-             type:'object',
-             properties:{
-               prices:{
-                 type:'array',
-                 items:{
-                   type:'object',
-                   properties:{
-                     bomIndex:{type:'integer'},
-                     item:{type:'string'},
-                     unitPrice:{type:['number','null']},
-                     currency:{type:'string'},
-                     priceBasis:{type:'string'},
-                     source:{type:'string'},
-                     confidence:{type:'string'},
-                     notes:{type:'string'}
-                   },
-                   required:['bomIndex','item','unitPrice','currency','priceBasis','source','confidence','notes'],
-                   additionalProperties:false
-                 }
-               }
-             },
-             required:['prices'],
-             additionalProperties:false
-           }
-         }
-       },
-       temperature:0.1
+       messages:[
+         {role:'system',content:'You are Vitavolt Global market-price research agent. You MUST use the OpenRouter web search tool before returning prices. Never invent a price. Return only JSON.'},
+         {role:'user',content:prompt}
+       ],
+       tools:[{type:'openrouter:web_search',parameters:{engine:'exa',max_results:5,max_total_results:10}}],
+       tool_choice:'auto',
+       max_tool_calls:3,
+       response_format:{type:'json_object'},
+       max_tokens:1400,
+       temperature:0
      };
      try{
        var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{
@@ -250,10 +234,15 @@ async function researchPrices(){
        var data=await res.json();
        requestCount++;
        if(!res.ok)throw new Error((data&&data.error&&data.error.message)||('OpenRouter API hatası HTTP '+res.status));
-       var content=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
+       var message=data&&data.choices&&data.choices[0]&&data.choices[0].message||{};
+       var content=message.content;
+       if(Array.isArray(content))content=content.map(function(part){return typeof part==='string'?part:(part&&typeof part.text==='string'?part.text:'');}).join('\n');
        var rows=extractJson(content);
        if(rows&&Array.isArray(rows.prices))rows=rows.prices;
-       if(!Array.isArray(rows))throw new Error('AI sonucu JSON olarak çözülemedi.');
+       if(!Array.isArray(rows)){
+         var finish=(data&&data.choices&&data.choices[0]&&data.choices[0].finish_reason)||'unknown';
+         throw new Error('AI web araştırması JSON fiyat listesi döndürmedi. finish_reason='+finish+'. Model yanıtı: '+String(content||'').slice(0,240));
+       }
        rows.forEach(function(x){
          var idx=Number(x.bomIndex);
          var row=Number.isInteger(idx)?bom[idx]:null;
@@ -263,7 +252,8 @@ async function researchPrices(){
          }
          if(!row||row.unitCost!=null||row.source==='DERIVED')return;
          var raw=x.unitPrice;
-         var v=typeof raw==='number'?raw:Number(String(raw==null?'':raw).replace(/\\s/g,'').replace(/\\.(?=\\d{3}(?:,|$))/g,'').replace(',','.'));
+         var rawText=String(raw==null?'':raw).trim();
+         var v=typeof raw==='number'?raw:Number(rawText.replace(/[^0-9,.-]/g,'').replace(/\\.(?=\\d{3}(?:,|$))/g,'').replace(',','.'));
          if(Number.isFinite(v)&&v>0){
            row.unitCost=v;
            row.totalCost=Number((Number(row.quantity||0)*v).toFixed(2));
