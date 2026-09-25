@@ -1,4 +1,4 @@
-/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v12-price-search-fix */
+/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v13-price-search-server-tool */
 (function(){
 'use strict';
 var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
@@ -171,42 +171,138 @@ function extractJson(text){
 }
 async function researchPrices(){
  var p=window.__vitaStudio||{}, bom=p.bom||((p.result&&p.result.pricing&&p.result.pricing.bom)||[]);
- var candidates=bom.map(function(x,i){return {i:i,item:x.item,quantity:x.quantity,unit:x.unit,category:x.category,unitCost:x.unitCost};}).filter(function(x){return x.unitCost==null&&x.quantity>0&&x.source!=='DERIVED';});
+ var candidates=bom.map(function(x,i){
+   return {bomIndex:i,item:String(x.item||''),quantity:Number(x.quantity||0),unit:String(x.unit||''),category:String(x.category||'')};
+ }).filter(function(x){
+   return x.quantity>0&&bom[x.bomIndex]&&bom[x.bomIndex].unitCost==null&&bom[x.bomIndex].source!=='DERIVED';
+ });
  if(!candidates.length){setStatus('Araştırılacak eksik BOM fiyatı kalmadı.');return;}
  var ai=getAiSettings(), key=ai.openrouterApiKey, model=ai.openrouterModel||'openai/gpt-4o';
  if(!key){setStatus('Önce API Ayarları bölümüne OpenRouter API Key gir.','vi-warning');return;}
  var btn=$('webPriceSearch');if(btn){btn.disabled=true;btn.textContent='FİYATLAR ARAŞTIRILIYOR…';}
  try{
-   var prompt='VITAVOLT GLOBAL BOM Price Intelligence. Türkiye piyasasında 2026 için aşağıdaki BOM kalemlerinin güncel birim fiyatlarını web araştırmasıyla bul. Her kalem için gerçek ürün/tedarikçi sayfaları veya güvenilir piyasa kaynakları ara. Uydurma fiyat üretme. KDV dahil/hariç durumunu mümkünse belirt. Para birimi USD tercih et; TL fiyat bulursan tarih ve kur belirsizliğini belirt. Sonucu SADECE JSON array olarak döndür: [{"index":0,"item":"...","unitPrice":0,"currency":"USD","priceBasis":"...","source":"https://...","confidence":"HIGH|MEDIUM|LOW","notes":"..."}]. Fiyat bulunamazsa unitPrice null ver. BOM:\n'+JSON.stringify(candidates);
-   var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','HTTP-Referer':'https://vitavoltglobal.com/','X-OpenRouter-Title':'Vitavolt Global VITA Price Intelligence'},body:JSON.stringify({model:model,messages:[{role:'user',content:prompt}],plugins:[{id:'web',max_results:5}],temperature:0.1})});
-   var data=await res.json();
-   if(!res.ok)throw new Error((data&&data.error&&data.error.message)||'OpenRouter API hatası');
-   var content=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
-   var rows=extractJson(content);
-   if(rows&&Array.isArray(rows.prices))rows=rows.prices;
-    if(!Array.isArray(rows))throw new Error('AI sonucu JSON olarak çözülemedi.');
-   var applied=0;
-   rows.forEach(function(x){
-     var idx=Number(x.index); if(!Number.isInteger(idx)||!bom[idx])return;
-     var v=Number(x.unitPrice);
-     if(Number.isFinite(v)&&v>0){
-       bom[idx].unitCost=v;
-       bom[idx].totalCost=Number((Number(bom[idx].quantity||0)*v).toFixed(2));
-       bom[idx].costStatus='PRICED';
-       bom[idx].priceCurrency=x.currency||'USD';
-       bom[idx].priceBasis=x.priceBasis||'WEB_RESEARCH';
-       bom[idx].priceSource=x.source||'OPENROUTER_WEB';
-       bom[idx].priceConfidence=x.confidence||'MEDIUM';
-       bom[idx].priceNotes=x.notes||'';
-       bom[idx].source='OPENROUTER_WEB';
-       applied++;
+   var applied=0, requestCount=0, batches=[];
+   for(var bi=0;bi<candidates.length;bi+=5)batches.push(candidates.slice(bi,bi+5));
+
+   for(var b=0;b<batches.length;b++){
+     var batch=batches[b];
+     var prompt='VITAVOLT GLOBAL BOM PRICE INTELLIGENCE\\n'+
+       'Türkiye piyasasında 2026 yılı için aşağıdaki satın alınabilir BOM kalemlerinin güncel piyasa birim fiyatlarını ARAŞTIR.\\n'+
+       'ZORUNLU: Web search kullan. Gerçek ürün/tedarikçi sayfaları veya güvenilir piyasa kaynakları bulmadan fiyat uydurma.\\n'+
+       'Her kalem için mümkünse en az bir gerçek kaynak URL ver. Fiyatı USD cinsinden döndür; kaynak yalnız TL ise güncel web bilgisini kullanarak yaklaşık USD karşılığını hesapla ve notes alanında kaynak para birimini belirt.\\n'+
+       'DERIVED/hacim/hesaplama satırları bu isteğe dahil edilmez ve fiyatlandırılmaz.\\n'+
+       'ÇIKTIYI SADECE aşağıdaki şemaya uygun JSON olarak döndür. Her bomIndex değerini GİRDİDEKİYLE AYNI bırak; yeniden numaralandırma yapma.\\n'+
+       '{"prices":[{"bomIndex":0,"item":"...","unitPrice":0,"currency":"USD","priceBasis":"...","source":"https://...","confidence":"HIGH|MEDIUM|LOW","notes":"..."}]}\\n'+
+       'Fiyat bulunamazsa unitPrice null ver.\\nBOM: '+JSON.stringify(batch);
+
+     var controller=new AbortController();
+     var timer=setTimeout(function(){controller.abort();},45000);
+     var body={
+       model:model,
+       messages:[{role:'user',content:prompt}],
+       tools:[{type:'openrouter:web_search',parameters:{engine:'exa',max_results:5}}],
+       response_format:{
+         type:'json_schema',
+         json_schema:{
+           name:'bom_prices',
+           strict:true,
+           schema:{
+             type:'object',
+             properties:{
+               prices:{
+                 type:'array',
+                 items:{
+                   type:'object',
+                   properties:{
+                     bomIndex:{type:'integer'},
+                     item:{type:'string'},
+                     unitPrice:{type:['number','null']},
+                     currency:{type:'string'},
+                     priceBasis:{type:'string'},
+                     source:{type:'string'},
+                     confidence:{type:'string'},
+                     notes:{type:'string'}
+                   },
+                   required:['bomIndex','item','unitPrice','currency','priceBasis','source','confidence','notes'],
+                   additionalProperties:false
+                 }
+               }
+             },
+             required:['prices'],
+             additionalProperties:false
+           }
+         }
+       },
+       temperature:0.1
+     };
+     try{
+       var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{
+         method:'POST',
+         headers:{
+           'Authorization':'Bearer '+key,
+           'Content-Type':'application/json',
+           'HTTP-Referer':'https://vitavoltglobal.com/',
+           'X-OpenRouter-Title':'Vitavolt Global VITA Price Intelligence'
+         },
+         body:JSON.stringify(body),
+         signal:controller.signal
+       });
+       var data=await res.json();
+       requestCount++;
+       if(!res.ok)throw new Error((data&&data.error&&data.error.message)||('OpenRouter API hatası HTTP '+res.status));
+       var content=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
+       var rows=extractJson(content);
+       if(rows&&Array.isArray(rows.prices))rows=rows.prices;
+       if(!Array.isArray(rows))throw new Error('AI sonucu JSON olarak çözülemedi.');
+       rows.forEach(function(x){
+         var idx=Number(x.bomIndex);
+         var row=Number.isInteger(idx)?bom[idx]:null;
+         if(!row){
+           row=bom.find(function(z){return z&&String(z.item||'').trim().toLowerCase()===String(x.item||'').trim().toLowerCase()&&z.unitCost==null&&z.source!=='DERIVED';});
+           if(row)idx=bom.indexOf(row);
+         }
+         if(!row||row.unitCost!=null||row.source==='DERIVED')return;
+         var raw=x.unitPrice;
+         var v=typeof raw==='number'?raw:Number(String(raw==null?'':raw).replace(/\\s/g,'').replace(/\\.(?=\\d{3}(?:,|$))/g,'').replace(',','.'));
+         if(Number.isFinite(v)&&v>0){
+           row.unitCost=v;
+           row.totalCost=Number((Number(row.quantity||0)*v).toFixed(2));
+           row.costStatus='PRICED';
+           row.priceCurrency=x.currency||'USD';
+           row.priceBasis=x.priceBasis||'WEB_RESEARCH';
+           row.priceSource=x.source||'OPENROUTER_WEB';
+           row.priceConfidence=x.confidence||'MEDIUM';
+           row.priceNotes=x.notes||'';
+           row.source='OPENROUTER_WEB';
+           applied++;
+         }
+       });
+     } finally {
+       clearTimeout(timer);
      }
-   });
-   p.bom=bom;p.result.pricing.bom=bom;p.result.pricing.marketPriceResearch={provider:'OpenRouter',model:model,webSearch:true,researchedAt:new Date().toISOString(),appliedCount:applied,rawResultCount:rows.length};
-   window.__vitaStudio=p;renderBom(p.result);
-   setStatus(applied+' BOM kaleminin piyasa fiyatı web araştırmasıyla bulundu. Fiyatları kontrol edip “BOM FİYATLARINI HESAPLAMAYA UYGULA” ile onaylayabilirsin.');
- }catch(e){setStatus('Fiyat araştırması başarısız: '+(e&&e.message?e.message:e),'vi-warning');}
- finally{if(btn){btn.disabled=false;btn.textContent='İNTERNETTEN ORTALAMA FİYAT ARA';}}
+   }
+
+   p.bom=bom;
+   p.result.pricing.bom=bom;
+   p.result.pricing.marketPriceResearch={
+     provider:'OpenRouter',
+     model:model,
+     webSearch:true,
+     webSearchEngine:'exa',
+     researchedAt:new Date().toISOString(),
+     requestCount:requestCount,
+     candidateCount:candidates.length,
+     appliedCount:applied
+   };
+   window.__vitaStudio=p;
+   renderBom(p.result);
+   setStatus(applied+' BOM kaleminin piyasa fiyatı web araştırmasıyla bulundu. '+(candidates.length-applied)+' kalem hâlâ fiyat bekliyor. Fiyatları kontrol edip “BOM FİYATLARINI HESAPLAMAYA UYGULA” ile onaylayabilirsin.');
+ }catch(e){
+   var msg=(e&&e.name==='AbortError')?'Web fiyat araştırması zaman aşımına uğradı (45 sn).':(e&&e.message?e.message:e);
+   setStatus('Fiyat araştırması başarısız: '+msg,'vi-warning');
+ }finally{
+   if(btn){btn.disabled=false;btn.textContent='İNTERNETTEN ORTALAMA FİYAT ARA';}
+ }
 }
 function buildInput(){
  var selectedPanel=Number(val('bomPanelSelect'))||620, selectedInv=val('bomInverterSelect')||'auto';
