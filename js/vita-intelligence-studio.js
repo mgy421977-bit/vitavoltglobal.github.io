@@ -139,9 +139,14 @@ function buildInput(){
 function run(){
  if(!window.VitaEngine||typeof window.VitaEngine.calculate!=='function'){setStatus('VITA Engine yüklenemedi. Sayfayı yenileyin.','vi-warning');return;}
  var input=buildInput(), modules=selectedModules();
+ input.forceBessSelected=modules.indexOf('bess')!==-1;
+ input.rainwaterSelected=modules.indexOf('rainwater')!==-1;
+ input.rainwaterSelected=modules.indexOf('rainwater')!==-1;
+ input.greywaterSelected=modules.indexOf('greywater')!==-1;
  if(!input.roofAreaM2&&!input.landAreaM2){setStatus('GES hesabı için çatı veya arazi alanı girin. Diğer raporlar yine veri toplama aşamasında hazırlanabilir.','vi-warning');return;}
  try{
   var r=window.VitaEngine.calculate(input,{});
+ if(input.forceBessSelected && r.bess && !(Number(r.bess.suggestedCapacityKwh)>0)) { var dailyForce=(Number(input.annualConsumptionKwh)||0)/365; var forcedKwh=Number((dailyForce*0.35*0.75/(0.9*0.95)).toFixed(1)); r.bess.recommended=true; r.bess.suggestedCapacityKwh=forcedKwh; r.bess.requestedCapacityKwh=forcedKwh; var recalc=window.VitaEngine.calculate(Object.assign({},input,{bessCapacityKwh:forcedKwh}),{}); r=recalc; }
   var regInput={systemYear:new Date().getFullYear(),annualTco2e:input.annualTco2e,annex1Activity:input.annex1Activity,facilityType:input.facilityType,sector:input.sector,facilityActivityDescription:input.facilityActivityDescription,annualCapacity:input.annualCapacity,capacityUnit:input.capacityUnit};
   var reg=window.VitaRegulatoryEngine&&typeof window.VitaRegulatoryEngine.assess==='function'?window.VitaRegulatoryEngine.assess({ets:regInput,taxonomy:{sector:input.sector,facilityType:input.facilityType}},{}):null;
   window.__vitaStudio={input:input,modules:modules,result:r,regulatory:reg,prices:prices(),currency:val('currency')||'TRY',locked:false,bom:r.pricing&&r.pricing.bom||[]};
@@ -187,6 +192,22 @@ function payload(){
  p.prices=prices();p.currency=val('currency')||'TRY';p.quoteTotal=total();
  navigator.clipboard&&navigator.clipboard.writeText(JSON.stringify(p,null,2)).then(function(){setStatus('Proje verisi panoya kopyalandı.');}).catch(function(){setStatus('Pano erişimi engellendi.');});
 }
+function loadAiSettings(){
+ try{
+  var p=sessionStorage.getItem('vitavolt_ai_settings');
+  if(!p)return;
+  var x=JSON.parse(p); if($('aiProvider')&&x.provider)$('aiProvider').value=x.provider; if($('aiModel')&&x.model)$('aiModel').value=x.model;
+  if($('aiApiKey')&&x.apiKey)$('aiApiKey').value=x.apiKey;
+  if($('aiStatus'))$('aiStatus').textContent='API ayarı bu tarayıcı oturumunda mevcut.';
+ }catch(e){}
+}
+function saveAiSettings(){
+ var x={provider:val('aiProvider')||'gemini',apiKey:val('aiApiKey'),model:val('aiModel')};
+ sessionStorage.setItem('vitavolt_ai_settings',JSON.stringify(x));
+ if($('aiStatus'))$('aiStatus').textContent=x.apiKey?'API ayarı oturuma kaydedildi.':'API anahtarı boş.';
+}
+function clearAiSettings(){sessionStorage.removeItem('vitavolt_ai_settings');if($('aiApiKey'))$('aiApiKey').value='';if($('aiModel'))$('aiModel').value='';if($('aiStatus'))$('aiStatus').textContent='API ayarı temizlendi.';}
+
 function init(){
  var c=$('city');cities.forEach(function(x){var o=document.createElement('option');o.value=x;o.textContent=x;c.appendChild(o);});
  if($('runAnalysis'))$('runAnalysis').addEventListener('click',run);
@@ -194,6 +215,9 @@ function init(){
  if($('bomPanelSelect'))$('bomPanelSelect').addEventListener('change',applyEquipmentSelection);
  if($('bomInverterSelect'))$('bomInverterSelect').addEventListener('change',applyEquipmentSelection);
  if($('applyBomPrices'))$('applyBomPrices').addEventListener('click',applyBomPrices);
+ if($('saveAiSettings'))$('saveAiSettings').addEventListener('click',saveAiSettings);
+ if($('clearAiSettings'))$('clearAiSettings').addEventListener('click',clearAiSettings);
+ loadAiSettings();
  $('saveProject').addEventListener('click',save);$('photos').addEventListener('change',photos);
  document.querySelectorAll('[data-price]').forEach(function(i){i.addEventListener('input',quote);});$('currency').addEventListener('change',quote);
  $('lockQuote').addEventListener('click',lock);$('copyPayload').addEventListener('click',payload);$('printPackage').addEventListener('click',function(){if(!window.__vitaStudio)run();window.print();});
