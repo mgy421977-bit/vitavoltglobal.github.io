@@ -1,4 +1,4 @@
-/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v11-price-persistence-dc-pano */
+/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v12-price-search-fix */
 (function(){
 'use strict';
 var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
@@ -83,7 +83,7 @@ function renderBom(r){
    return '<div class="vi-bom-row">'+
      '<div class="vi-bom-item"><span class="vi-bom-category">'+x.category+'</span><strong>'+x.item+'</strong><small>Kaynak: '+x.source+'</small></div>'+
      '<label class="vi-bom-cell"><span>Miktar</span><input class="bom-qty" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+qty+'"><em>'+x.unit+'</em></label>'+
-     '<label class="vi-bom-cell"><span>Birim fiyat</span><input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Fiyat gir / ara"><em>'+(x.priceCurrency||defaultCurrency)+'</em></label>'+
+     '<div class="vi-bom-cell"><span>Birim fiyat</span>'+(x.source==='DERIVED'?'<strong class="bom-derived">Hesaplanan</strong>':'<input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Fiyat gir / ara"><em>'+(x.priceCurrency||defaultCurrency)+'</em>')+'</div>'+
      '<div class="vi-bom-cell vi-bom-total-cell"><span>Toplam</span><strong class="bom-total" data-bom-total="'+i+'">'+totalCell+'</strong></div>'+
    '</div>';
  }).join('')+'</div><div class="vi-bom-total"><span><small>BOM BİLİNEN TOPLAM</small><strong>'+fmt(knownTotal)+' '+defaultCurrency+'</strong></span><em>Fiyatı olmayan kalemler toplamın dışında tutulur.</em></div>';
@@ -171,19 +171,20 @@ function extractJson(text){
 }
 async function researchPrices(){
  var p=window.__vitaStudio||{}, bom=p.bom||((p.result&&p.result.pricing&&p.result.pricing.bom)||[]);
- var candidates=bom.map(function(x,i){return {i:i,item:x.item,quantity:x.quantity,unit:x.unit,category:x.category,unitCost:x.unitCost};}).filter(function(x){return x.unitCost==null&&x.quantity>0;});
+ var candidates=bom.map(function(x,i){return {i:i,item:x.item,quantity:x.quantity,unit:x.unit,category:x.category,unitCost:x.unitCost};}).filter(function(x){return x.unitCost==null&&x.quantity>0&&x.source!=='DERIVED';});
  if(!candidates.length){setStatus('Araştırılacak eksik BOM fiyatı kalmadı.');return;}
  var ai=getAiSettings(), key=ai.openrouterApiKey, model=ai.openrouterModel||'openai/gpt-4o';
  if(!key){setStatus('Önce API Ayarları bölümüne OpenRouter API Key gir.','vi-warning');return;}
  var btn=$('webPriceSearch');if(btn){btn.disabled=true;btn.textContent='FİYATLAR ARAŞTIRILIYOR…';}
  try{
    var prompt='VITAVOLT GLOBAL BOM Price Intelligence. Türkiye piyasasında 2026 için aşağıdaki BOM kalemlerinin güncel birim fiyatlarını web araştırmasıyla bul. Her kalem için gerçek ürün/tedarikçi sayfaları veya güvenilir piyasa kaynakları ara. Uydurma fiyat üretme. KDV dahil/hariç durumunu mümkünse belirt. Para birimi USD tercih et; TL fiyat bulursan tarih ve kur belirsizliğini belirt. Sonucu SADECE JSON array olarak döndür: [{"index":0,"item":"...","unitPrice":0,"currency":"USD","priceBasis":"...","source":"https://...","confidence":"HIGH|MEDIUM|LOW","notes":"..."}]. Fiyat bulunamazsa unitPrice null ver. BOM:\n'+JSON.stringify(candidates);
-   var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','HTTP-Referer':'https://vitavoltglobal.com/','X-OpenRouter-Title':'Vitavolt Global VITA Price Intelligence'},body:JSON.stringify({model:model,messages:[{role:'user',content:prompt}],tools:[{type:'openrouter:web_search',parameters:{engine:'parallel',max_results:5,max_total_results:15}}],temperature:0.1})});
+   var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','HTTP-Referer':'https://vitavoltglobal.com/','X-OpenRouter-Title':'Vitavolt Global VITA Price Intelligence'},body:JSON.stringify({model:model,messages:[{role:'user',content:prompt}],plugins:[{id:'web',max_results:5}],temperature:0.1})});
    var data=await res.json();
    if(!res.ok)throw new Error((data&&data.error&&data.error.message)||'OpenRouter API hatası');
    var content=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
    var rows=extractJson(content);
-   if(!Array.isArray(rows))throw new Error('AI sonucu JSON olarak çözülemedi.');
+   if(rows&&Array.isArray(rows.prices))rows=rows.prices;
+    if(!Array.isArray(rows))throw new Error('AI sonucu JSON olarak çözülemedi.');
    var applied=0;
    rows.forEach(function(x){
      var idx=Number(x.index); if(!Number.isInteger(idx)||!bom[idx])return;
