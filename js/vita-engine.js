@@ -1,4 +1,4 @@
-/* Vitavolt Global — VITA Engine Offline Pre-Feasibility Core | build 2026-09-25-v4.1-price-bom-inverter */
+/* Vitavolt Global — VITA Engine Offline Pre-Feasibility Core | build 2026-09-25-v4.2-bess-water-bom */
 (function (window) {
   'use strict';
   var ENGINE_VERSION = '4.0.0', BUILD = '2026-09-17-v4-unified', DB_VERSION = '1.9';
@@ -209,8 +209,27 @@
     if (input.bessCapacityKwh != null && nn(input.bessCapacityKwh) > 0) { bess = nn(input.bessCapacityKwh); rec = true; }
     var price = pricing(Object.assign({}, input, { panelPowerWp: pw, panelCount: count, dcCapacityKwp: dc, bessCapacityKwh: bess }), pricingCfg), water = calculateWater({ city: input.city, roofAreaM2: roof, monthlyWaterM3: nn(input.monthlyWaterM3), rainfallMm: input.rainfallMm, roofType: input.roofType }, { rainwater: input.rainwaterSelected === true || (nn(input.monthlyWaterM3) >= 0 && roof > 0), greywater: input.greywaterSelected === true || nn(input.monthlyWaterM3) > 0 });
     if (price.bom && water) {
-      if (water.rainfall && water.rainfall.selected) { price.bom.push({ category: 'WATER', item: 'Yağmur suyu hasat sistemi (ön değerlendirme)', quantity: 1, unit: 'sistem', unitCost: null, totalCost: null, source: 'ASSUMPTION', costStatus: 'NOT_PRICED' }); price.bom.push({ category: 'WATER', item: 'Yağmur suyu yıllık kullanılabilir', quantity: water.rainfall.annualUsableM3 || 0, unit: 'm3', unitCost: null, totalCost: null, source: 'DERIVED', costStatus: 'NOT_PRICED' }); }
-      if (water.greywater && water.greywater.selected) { price.bom.push({ category: 'WATER', item: 'Gri su dönüşüm sistemi (ön değerlendirme)', quantity: 1, unit: 'sistem', unitCost: null, totalCost: null, source: 'ASSUMPTION', costStatus: 'NOT_PRICED' }); price.bom.push({ category: 'WATER', item: 'Gri su yıllık kullanılabilir', quantity: water.greywater.annualUsableM3 || 0, unit: 'm3', unitCost: null, totalCost: null, source: 'DERIVED', costStatus: 'NOT_PRICED' }); }
+      if (water.rainfall && water.rainfall.selected) {
+ var rainAnnual=water.rainfall.annualUsableM3||0;
+ var rainTank=Math.max(1, Math.ceil(rainAnnual/12));
+ price.bom.push({category:'WATER',item:'Yağmur suyu depolama tankı',quantity:rainTank,unit:'m3',unitCost:null,totalCost:null,source:'DERIVED',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Yağmur suyu ön filtre / yaprak tutucu',quantity:1,unit:'sistem',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'İlk yıkama (first flush) ünitesi',quantity:1,unit:'adet',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Yağmur suyu transfer pompası',quantity:1,unit:'adet',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Yağmur suyu borulama / bağlantı seti',quantity:1,unit:'lot',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Yağmur suyu yıllık kullanılabilir',quantity:rainAnnual,unit:'m3',unitCost:null,totalCost:null,source:'DERIVED',costStatus:'NOT_PRICED'});
+}
+      if (water.greywater && water.greywater.selected) {
+ var greyAnnual=water.greywater.annualUsableM3||0;
+ var greyTank=Math.max(1, Math.ceil(greyAnnual/12));
+ price.bom.push({category:'WATER',item:'Gri su dengeleme / depolama tankı',quantity:greyTank,unit:'m3',unitCost:null,totalCost:null,source:'DERIVED',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Gri su ön filtre',quantity:1,unit:'adet',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Gri su arıtma modülü',quantity:1,unit:'sistem',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Gri su transfer pompası',quantity:1,unit:'adet',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Gri su dezenfeksiyon / son filtrasyon',quantity:1,unit:'sistem',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Gri su borulama / bağlantı seti',quantity:1,unit:'lot',unitCost:null,totalCost:null,source:'ASSUMPTION',costStatus:'NOT_PRICED'});
+ price.bom.push({category:'WATER',item:'Gri su yıllık kullanılabilir',quantity:greyAnnual,unit:'m3',unitCost:null,totalCost:null,source:'DERIVED',costStatus:'NOT_PRICED'});
+}
     }
     var result = {
       engine: { name: 'VITA Engine Offline Pre-Feasibility Core', version: ENGINE_VERSION, build: BUILD, databaseVersion: DB_VERSION, status: 'active', timestamp: new Date().toISOString() },
