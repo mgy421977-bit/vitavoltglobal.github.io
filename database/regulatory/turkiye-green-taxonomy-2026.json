@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0.0",
+  "regulationId": "TR_GREEN_TAXONOMY_REG_2026",
+  "effectiveDate": "2026-09-24",
+  "gazette": "33380",
+  "environmentalObjectives": [
+    { "id": "GHG_MITIGATION", "name": "Sera gazı emisyonlarının azaltımı" },
+    { "id": "CLIMATE_ADAPTATION", "name": "İklim değişikliğine uyum" },
+    { "id": "WATER_MARINE", "name": "Su ve deniz kaynaklarının sürdürülebilir kullanımı ve korunması" },
+    { "id": "CIRCULAR_ECONOMY", "name": "Döngüsel ekonomiye geçiş" },
+    { "id": "POLLUTION_PREVENTION", "name": "Kirliliğin önlenmesi ve kontrolü" },
+    { "id": "BIODIVERSITY", "name": "Biyoçeşitliliğin ve ekosistemlerin korunması ile restorasyonu" }
+  ],
+  "alignmentRequirements": {
+    "mustAllBeTrue": [
+      "substantialContributionToAtLeastOneEnvironmentalObjective",
+      "doNoSignificantHarmToOtherEnvironmentalObjectives",
+      "minimumSocialSafeguards"
+    ],
+    "technicalScreeningCriteriaRequired": true
+  },
+  "kpi": {
+    "realEconomy": ["eligible_or_aligned_revenue", "capex", "opex"],
+    "reportingUnit": "ratio"
+  },
+  "transitionPlan": {
+    "definedByRegulation": true,
+    "detailedProcedures": "PRESIDENTIAL_CLIMATE_CHANGE_AUTHORITY_RULES_REQUIRED"
+  },
+  "reporting": {
+    "financialInstitutionsTransitionUntil": "2029-01-01",
+    "realEconomyMandatoryReporting": "DO_NOT_ASSUME_UNIVERSAL_MANDATORY_REPORTING",
+    "verificationRules": "PRESIDENTIAL_CLIMATE_CHANGE_AUTHORITY_RULES_REQUIRED"
+  },
+  "confirmedEnergyActivitiesFromCurrentPublishedReferences": [
+    {
+      "id": "4.1",
+      "name": "Güneş Fotovoltaik Teknolojisi Kullanılarak Elektrik Üretimi",
+      "classification": "ECONOMIC_ACTIVITY",
+      "confirmedBy": "CURRENT_SECONDARY_SECTOR_REFERENCE"
+    },
+    {
+      "id": "4.9",
+      "name": "Elektrik İletimi ve Dağıtımı",
+      "classification": "ENABLING_ACTIVITY",
+      "confirmedBy": "CURRENT_SECONDARY_SECTOR_REFERENCE"
+    },
+    {
+      "id": "4.10",
+      "name": "Elektriğin Depolanması",
+      "classification": "ENABLING_ACTIVITY",
+      "confirmedBy": "CURRENT_SECONDARY_SECTOR_REFERENCE"
+    }
+  ],
+  "technicalCriteria": {
+    "status": "NOT_YET_MACHINE_VERIFIED_IN_THIS_REPOSITORY",
+    "rule": "No SC, DNSH or social-safeguard threshold may be invented or inferred from the regulation framework alone."
+  },
+  "activityAnnexStatus": "PARTIAL_DATA_MODEL",
+  "annexNote": "The engine may identify only activities explicitly loaded into this dataset. Absence from this partial dataset is NOT evidence that an activity is outside the Taxonomy."
+}
