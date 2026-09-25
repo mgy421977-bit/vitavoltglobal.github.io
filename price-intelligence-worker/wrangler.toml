@@ -1,0 +1,8 @@
+name = "vitavolt-price-intelligence"
+main = "src/index.js"
+compatibility_date = "2026-09-25"
+
+[vars]
+ALLOWED_ORIGIN = "https://vitavoltglobal.com"
+# SEARCH_API_URL and SEARCH_API_KEY are optional secrets/vars.
+# Add them in Cloudflare when a search provider is connected.
