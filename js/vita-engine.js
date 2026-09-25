@@ -34,7 +34,7 @@
         labor_usd_per_panel: 20,
         market_quote_discount_pct: 10,
         proportional_model: { bos_usd_per_kwp: 241.07855208, fixed_bos_usd: 604.19354839, basis: 'ASSUMPTION/MODEL BOS/EPC allowance' },
-        bom_ratios: { dc_cable_m_per_panel: 6.19, ac_cable_m_per_panel: 1.67, mc4_pairs_per_panel: 1, dc_spd_sets_per_reference: 2, fuse_sets_per_reference: 4 }
+        bom_ratios: { dc_cable_m_per_panel: 6.19, ac_cable_m_per_panel: 1.67, mc4_connectors_per_panel: 2, dc_spd_sets_per_reference: 2, fuse_sets_per_reference: 4 }
       }
     }
   };
@@ -125,9 +125,10 @@
       row('GES', (inv ? inv.power_kw : 0) + ' kW Inverter', invQty, 'adet', invUnit, inv ? inv.source : 'DATABASE', invUnit == null ? 'NOT_PRICED' : 'PRICED'),
       row('GES', 'DC Cable', Math.round(count * n(r.dc_cable_m_per_panel, 6.19)), 'm', null, 'REFERENCE', 'NOT_PRICED'),
       row('GES', 'AC Cable', Math.round(count * n(r.ac_cable_m_per_panel, 1.67)), 'm', null, 'REFERENCE', 'NOT_PRICED'),
-      row('GES', 'MC4 pairs', Math.round(count * n(r.mc4_pairs_per_panel, 4)), 'adet', null, 'REFERENCE', 'NOT_PRICED'),
+      row('GES', 'MC4 connectors (2 parça/panel)', Math.round(count * n(r.mc4_connectors_per_panel, 2)), 'adet', null, 'REFERENCE', 'NOT_PRICED'),
       row('GES', 'DC SPD sets', Math.round(ref * n(r.dc_spd_sets_per_reference, 2)), 'set', null, 'REFERENCE', 'NOT_PRICED'),
       row('GES', 'Fuse sets', Math.round(ref * n(r.fuse_sets_per_reference, 4)), 'set', null, 'REFERENCE', 'NOT_PRICED'),
+      row('GES', 'DC Pano', 1, 'set', null, 'ASSUMPTION', 'NOT_PRICED'),
       row('GES', 'Mounting Structure', count, 'adet', null, 'ASSUMPTION', 'NOT_PRICED'),
       row('BESS', '2.4 kWh Battery Module', bUnits, 'adet', +bu.base_usd, bu.source || 'DATABASE', bUnits ? 'PRICED' : 'NOT_APPLICABLE'),
       row('BESS', 'BESS connection components', bUnits ? 1 : 0, 'lot', null, 'ASSUMPTION', 'NOT_PRICED'),
