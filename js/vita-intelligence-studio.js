@@ -20,7 +20,7 @@ function renderMetrics(r,reg){
  }
  var s=r&&r.solar||{},b=r&&r.bess||{},w=r&&r.water||{},m=[
  ['GES',fmt(s.dcCapacityKwp)+' kWp'],['Üretim',fmt(s.annualProductionKwh)+' kWh/yıl'],['CO₂ azaltımı',fmt(s.co2ReductionKg)+' kg/yıl'],
- ['BESS',b.recommended?'Öneriliyor':'Tetiklenmedi'],['Yağmur suyu',w.rainfall&&w.rainfall.selected?fmt(w.rainfall.annualUsableM3)+' m³/yıl':'Seçilmedi'],['ETS',reg&&reg.outputs&&reg.outputs.ets?reg.outputs.ets.etsScope:'Ön değerlendirme']
+ ['BESS',(window.__vitaStudio&&window.__vitaStudio.modules&&window.__vitaStudio.modules.indexOf('bess')!==-1)?'Aktif · Hesaplandı':(b.recommended?'Öneriliyor':'Tetiklenmedi')],['Yağmur suyu',w.rainfall&&w.rainfall.selected?fmt(w.rainfall.annualUsableM3)+' m³/yıl':'Seçilmedi'],['ETS',reg&&reg.outputs&&reg.outputs.ets?reg.outputs.ets.etsScope:'Ön değerlendirme']
  ];
  $('metrics').innerHTML=m.map(function(x){return '<div class="vi-metric"><small>'+x[0]+'</small><strong>'+x[1]+'</strong></div>';}).join('');
  var p=r.pricing||{},inv=p.inverter||{},d=r.validation||{};
@@ -123,14 +123,53 @@ function applyEquipmentSelection(){
  run();
  setStatus(inv==='auto'?'Panel seçimi uygulandı. İnverter VITA tarafından DC’nin %80 hedefiyle yeniden seçildi.':'Panel ve inverter seçimi uygulandı. İnverter adedi seçilen güç üzerinden yeniden hesaplandı.');
 }
-function openWebPriceSearch(){
+function getAiSettings(){
+ try{return JSON.parse(sessionStorage.getItem('vitavolt_ai_settings')||'{}');}catch(e){return {};}
+}
+function extractJson(text){
+ var t=String(text||'').trim().replace(/^\`\`\`(?:json)?/i,'').replace(/\`\`\`$/,'').trim();
+ try{return JSON.parse(t);}catch(e){}
+ var a=t.indexOf('['),b=t.lastIndexOf(']');
+ if(a>=0&&b>a){try{return JSON.parse(t.slice(a,b+1));}catch(e){}}
+ return null;
+}
+async function researchPrices(){
  var p=window.__vitaStudio||{}, bom=p.bom||((p.result&&p.result.pricing&&p.result.pricing.bom)||[]);
- if(!bom.length){setStatus('Önce hesaplamayı çalıştır; ardından BOM kalemleri için internet araması açılır.','vi-warning');return;}
- var q=bom.filter(function(x){return x.costStatus==='NOT_PRICED';}).slice(0,1)[0];
- if(!q){setStatus('BOM içindeki tüm kalemlerin birim fiyatı girilmiş.');return;}
- var query='Türkiye '+q.item+' birim fiyat 2026 '+q.unit;
- window.open('https://www.google.com/search?q='+encodeURIComponent(query),'_blank','noopener');
- setStatus('İnternet araması açıldı: '+q.item+'. Bulduğun ortalama değeri BOM tablosundaki Birim fiyat alanına gir.');
+ var candidates=bom.map(function(x,i){return {i:i,item:x.item,quantity:x.quantity,unit:x.unit,category:x.category,unitCost:x.unitCost};}).filter(function(x){return x.unitCost==null&&x.quantity>0;});
+ if(!candidates.length){setStatus('Araştırılacak eksik BOM fiyatı kalmadı.');return;}
+ var ai=getAiSettings(), key=ai.openrouterApiKey, model=ai.openrouterModel||'openai/gpt-4o';
+ if(!key){setStatus('Önce API Ayarları bölümüne OpenRouter API Key gir.','vi-warning');return;}
+ var btn=$('webPriceSearch');if(btn){btn.disabled=true;btn.textContent='FİYATLAR ARAŞTIRILIYOR…';}
+ try{
+   var prompt='VITAVOLT GLOBAL BOM Price Intelligence. Türkiye piyasasında 2026 için aşağıdaki BOM kalemlerinin güncel birim fiyatlarını web araştırmasıyla bul. Her kalem için gerçek ürün/tedarikçi sayfaları veya güvenilir piyasa kaynakları ara. Uydurma fiyat üretme. KDV dahil/hariç durumunu mümkünse belirt. Para birimi USD tercih et; TL fiyat bulursan tarih ve kur belirsizliğini belirt. Sonucu SADECE JSON array olarak döndür: [{"index":0,"item":"...","unitPrice":0,"currency":"USD","priceBasis":"...","source":"https://...","confidence":"HIGH|MEDIUM|LOW","notes":"..."}]. Fiyat bulunamazsa unitPrice null ver. BOM:\n'+JSON.stringify(candidates);
+   var res=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','HTTP-Referer':'https://vitavoltglobal.com/','X-OpenRouter-Title':'Vitavolt Global VITA Price Intelligence'},body:JSON.stringify({model:model,messages:[{role:'user',content:prompt}],plugins:[{id:'web',max_results:5}],temperature:0.1})});
+   var data=await res.json();
+   if(!res.ok)throw new Error((data&&data.error&&data.error.message)||'OpenRouter API hatası');
+   var content=data&&data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
+   var rows=extractJson(content);
+   if(!Array.isArray(rows))throw new Error('AI sonucu JSON olarak çözülemedi.');
+   var applied=0;
+   rows.forEach(function(x){
+     var idx=Number(x.index); if(!Number.isInteger(idx)||!bom[idx])return;
+     var v=Number(x.unitPrice);
+     if(Number.isFinite(v)&&v>0){
+       bom[idx].unitCost=v;
+       bom[idx].totalCost=Number((Number(bom[idx].quantity||0)*v).toFixed(2));
+       bom[idx].costStatus='PRICED';
+       bom[idx].priceCurrency=x.currency||'USD';
+       bom[idx].priceBasis=x.priceBasis||'WEB_RESEARCH';
+       bom[idx].priceSource=x.source||'OPENROUTER_WEB';
+       bom[idx].priceConfidence=x.confidence||'MEDIUM';
+       bom[idx].priceNotes=x.notes||'';
+       bom[idx].source='OPENROUTER_WEB';
+       applied++;
+     }
+   });
+   p.bom=bom;p.result.pricing.bom=bom;p.result.pricing.marketPriceResearch={provider:'OpenRouter',model:model,webSearch:true,researchedAt:new Date().toISOString(),appliedCount:applied,rawResultCount:rows.length};
+   window.__vitaStudio=p;renderBom(p.result);
+   setStatus(applied+' BOM kaleminin piyasa fiyatı web araştırmasıyla bulundu. Fiyatları kontrol edip “BOM FİYATLARINI HESAPLAMAYA UYGULA” ile onaylayabilirsin.');
+ }catch(e){setStatus('Fiyat araştırması başarısız: '+(e&&e.message?e.message:e),'vi-warning');}
+ finally{if(btn){btn.disabled=false;btn.textContent='İNTERNETTEN FİYATLARI ARA';}}
 }
 function buildInput(){
  var selectedPanel=Number(val('bomPanelSelect'))||620, selectedInv=val('bomInverterSelect')||'auto';
@@ -147,6 +186,7 @@ function run(){
  try{
   var r=window.VitaEngine.calculate(input,{});
  if(input.forceBessSelected && r.bess && !(Number(r.bess.suggestedCapacityKwh)>0)) { var dailyForce=(Number(input.annualConsumptionKwh)||0)/365; var forcedKwh=Number((dailyForce*0.35*0.75/(0.9*0.95)).toFixed(1)); r.bess.recommended=true; r.bess.suggestedCapacityKwh=forcedKwh; r.bess.requestedCapacityKwh=forcedKwh; var recalc=window.VitaEngine.calculate(Object.assign({},input,{bessCapacityKwh:forcedKwh}),{}); r=recalc; }
+  r.bess=r.bess||{}; r.bess.selectedByUser=input.forceBessSelected===true;
   var regInput={systemYear:new Date().getFullYear(),annualTco2e:input.annualTco2e,annex1Activity:input.annex1Activity,facilityType:input.facilityType,sector:input.sector,facilityActivityDescription:input.facilityActivityDescription,annualCapacity:input.annualCapacity,capacityUnit:input.capacityUnit};
   var reg=window.VitaRegulatoryEngine&&typeof window.VitaRegulatoryEngine.assess==='function'?window.VitaRegulatoryEngine.assess({ets:regInput,taxonomy:{sector:input.sector,facilityType:input.facilityType}},{}):null;
   window.__vitaStudio={input:input,modules:modules,result:r,regulatory:reg,prices:prices(),currency:val('currency')||'TRY',locked:false,bom:r.pricing&&r.pricing.bom||[]};
@@ -206,7 +246,7 @@ function loadAiSettings(){
 function saveAiSettings(){
  var x={geminiApiKey:val('geminiApiKey'),openrouterApiKey:val('openrouterApiKey'),geminiModel:val('geminiModel'),openrouterModel:val('openrouterModel')};
  sessionStorage.setItem('vitavolt_ai_settings',JSON.stringify(x));
- if($('aiStatus'))$('aiStatus').textContent=(x.geminiApiKey||x.openrouterApiKey)?'AI API ayarları oturuma kaydedildi.':'API anahtarları boş.';
+ if($('aiStatus'))$('aiStatus').textContent=(x.geminiApiKey||x.openrouterApiKey)?'AI API ayarları oturuma kaydedildi. OpenRouter modeli: '+(x.openrouterModel||'openai/gpt-4o'):'API anahtarları boş.';
 }
 function clearAiSettings(){
  sessionStorage.removeItem('vitavolt_ai_settings');
@@ -217,7 +257,7 @@ function clearAiSettings(){
 function init(){
  var c=$('city');cities.forEach(function(x){var o=document.createElement('option');o.value=x;o.textContent=x;c.appendChild(o);});
  if($('runAnalysis'))$('runAnalysis').addEventListener('click',run);
- if($('webPriceSearch'))$('webPriceSearch').addEventListener('click',openWebPriceSearch);
+ if($('webPriceSearch'))$('webPriceSearch').addEventListener('click',researchPrices);
  if($('bomPanelSelect'))$('bomPanelSelect').addEventListener('change',applyEquipmentSelection);
  if($('bomInverterSelect'))$('bomInverterSelect').addEventListener('change',applyEquipmentSelection);
  if($('applyBomPrices'))$('applyBomPrices').addEventListener('click',applyBomPrices);
