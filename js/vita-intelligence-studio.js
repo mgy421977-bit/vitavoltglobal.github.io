@@ -233,6 +233,9 @@ async function researchPrices(options){
    if(window.VitaPriceIntelligence&&window.VitaPriceIntelligence.acceptRecords){
      p.priceResearchAccepted=window.VitaPriceIntelligence.acceptRecords(bom,records);
    }else p.priceResearchAccepted=records;
+   p.anneReview=(window.VitaAnneReview&&typeof window.VitaAnneReview.review==='function')
+     ?window.VitaAnneReview.review(records,bom)
+     :{status:'REVIEW_REQUIRED',autoVerified:false,records:records};
    window.__vitaStudio=p;
    renderBom(p.result);
    var withPrice=records.filter(function(x){return Number(x.unitPrice)>0;}).length;
