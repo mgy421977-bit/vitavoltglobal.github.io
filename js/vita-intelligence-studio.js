@@ -205,7 +205,7 @@ async function researchPrices(options){
   setStatus('Araştırılacak eksik BOM fiyatı kalmadı. BOM mevcut fiyatlarıyla ekrana getirildi.');
   return;
 }
- var ai=getAiSettings(), geminiKey=ai.geminiApiKey, geminiModel=ai.geminiModel||'gemini-2.5-flash-lite', key=ai.openrouterApiKey, model=ai.openrouterModel||'openai/gpt-4o';
+ var ai=getAiSettings(), geminiKey=ai.geminiApiKey, geminiModel=ai.geminiModel||'gemini-3.5-flash-lite', key=ai.openrouterApiKey, model=ai.openrouterModel||'openai/gpt-4o';
  var provider=geminiKey?'Gemini':(key?'OpenRouter':'');
  if(!provider){setStatus('Önce API Ayarları bölümüne Gemini API Key gir. OpenRouter yedek olarak kullanılabilir.','vi-warning');return;}
  var btn=$('webPriceSearch');if(btn){btn.disabled=true;btn.textContent='FİYATLAR ARAŞTIRILIYOR…';}
@@ -231,7 +231,7 @@ async function researchPrices(options){
        contents:[{role:'user',parts:[{text:prompt}]}],
        systemInstruction:{parts:[{text:'You are Vitavolt Global BOM market-price research agent. Use Google Search grounding. Never invent a price. Return only the requested compact JSON.'}]},
        tools:[{google_search:{}}],
-       generationConfig:{temperature:0,maxOutputTokens:300,responseMimeType:'application/json'}
+       generationConfig:{maxOutputTokens:300,responseMimeType:'application/json'}
      }:{
        model:model,
        messages:[{role:'system',content:'You are Vitavolt Global BOM market-price research agent. Use the supplied web search results as evidence. Never invent a price. Return only the requested JSON. Keep the JSON extremely compact.'},{role:'user',content:prompt}],
@@ -407,7 +407,7 @@ function loadAiSettings(){
   var x=JSON.parse(p);
   if($('geminiApiKey'))$('geminiApiKey').value=x.geminiApiKey||'';
   if($('openrouterApiKey'))$('openrouterApiKey').value=x.openrouterApiKey||'';
-  if($('geminiModel'))$('geminiModel').value=x.geminiModel||'gemini-2.5-flash-lite';
+  if($('geminiModel'))$('geminiModel').value=x.geminiModel||'gemini-3.5-flash-lite';
   if($('openrouterModel'))$('openrouterModel').value=x.openrouterModel||'openai/gpt-4o';
   if($('aiStatus'))$('aiStatus').textContent='AI API ayarları bu tarayıcı oturumunda mevcut.';
  }catch(e){}
@@ -468,15 +468,15 @@ async function verifyOpenRouter(){
 
 
 async function verifyGemini(){
- var ai=getAiSettings(),key=ai.geminiApiKey,model=ai.geminiModel||'gemini-2.5-flash-lite',el=$('geminiStatus'),btn=$('verifyGemini');
+ var ai=getAiSettings(),key=ai.geminiApiKey,model=ai.geminiModel||'gemini-3.5-flash-lite',el=$('geminiStatus'),btn=$('verifyGemini');
  function status(t,cls){if(el){el.innerHTML=t;el.className='vi-ai-status '+(cls||'');}}
  if(!key){status('<span class="vi-ai-dot bad"></span><span>Gemini API Key girilmedi.</span>','bad');setStatus('Gemini API Key gerekli.','vi-warning');return false;}
  if(btn){btn.disabled=true;btn.textContent='DOĞRULANIYOR…';}
- try{var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent',{method:'POST',headers:{'x-goog-api-key':key,'Content-Type':'application/json'},body:JSON.stringify({contents:[{role:'user',parts:[{text:'Reply only with OK.'}]}],generationConfig:{maxOutputTokens:8,temperature:0}})});var data=await res.json();if(!res.ok)throw new Error((data&&data.error&&data.error.message)||('Gemini API HTTP '+res.status));status('<span class="vi-ai-dot ok"></span><span>Gemini · '+model+' sorgusu başarılı</span>','ok');setStatus('✓ Gemini bağlantısı ve seçili model doğrulandı. Google Search fiyat araştırmasına geçilebilir.');return true;}catch(e){status('<span class="vi-ai-dot bad"></span><span>Gemini doğrulaması başarısız: '+(e&&e.message?e.message:e)+'</span>','bad');setStatus('Gemini doğrulaması başarısız: '+(e&&e.message?e.message:e),'vi-warning');return false;}finally{if(btn){btn.disabled=false;btn.textContent='GEMINI TEST ET';}}
+ try{var res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent',{method:'POST',headers:{'x-goog-api-key':key,'Content-Type':'application/json'},body:JSON.stringify({contents:[{role:'user',parts:[{text:'Reply only with OK.'}]}],generationConfig:{maxOutputTokens:8}})});var data=await res.json();if(!res.ok)throw new Error((data&&data.error&&data.error.message)||('Gemini API HTTP '+res.status));status('<span class="vi-ai-dot ok"></span><span>Gemini · '+model+' sorgusu başarılı</span>','ok');setStatus('✓ Gemini bağlantısı ve seçili model doğrulandı. Google Search fiyat araştırmasına geçilebilir.');return true;}catch(e){status('<span class="vi-ai-dot bad"></span><span>Gemini doğrulaması başarısız: '+(e&&e.message?e.message:e)+'</span>','bad');setStatus('Gemini doğrulaması başarısız: '+(e&&e.message?e.message:e),'vi-warning');return false;}finally{if(btn){btn.disabled=false;btn.textContent='GEMINI TEST ET';}}
 }
 
 function saveAiSettings(){
- var x={geminiApiKey:val('geminiApiKey'),openrouterApiKey:val('openrouterApiKey'),geminiModel:val('geminiModel')||'gemini-2.5-flash-lite',openrouterModel:val('openrouterModel')};
+ var x={geminiApiKey:val('geminiApiKey'),openrouterApiKey:val('openrouterApiKey'),geminiModel:val('geminiModel')||'gemini-3.5-flash-lite',openrouterModel:val('openrouterModel')};
  sessionStorage.setItem('vitavolt_ai_settings',JSON.stringify(x));
  if($('aiStatus'))$('aiStatus').textContent=(x.geminiApiKey||x.openrouterApiKey)?'AI API ayarları oturuma kaydedildi. Öncelik: '+(x.geminiApiKey?'Gemini Google Search':'OpenRouter Web Search'):'API anahtarları boş.';
 }
