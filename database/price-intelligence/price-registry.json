@@ -1,0 +1,28 @@
+{
+  "schema": "VITA_PRICE_REGISTRY",
+  "schemaVersion": "1.0",
+  "updatedAt": "2026-09-25T00:00:00+03:00",
+  "market": "Türkiye",
+  "currencyPolicy": "Source currency is preserved; normalization to project currency is a separate operation.",
+  "records": [],
+  "statuses": [
+    "UNVERIFIED",
+    "REVIEW",
+    "VERIFIED",
+    "REJECTED",
+    "EXPIRED"
+  ],
+  "confidence": [
+    "HIGH",
+    "MEDIUM",
+    "LOW"
+  ],
+  "rules": [
+    "No source URL, no verified price.",
+    "No source date, no verified price.",
+    "DERIVED rows are never price research candidates.",
+    "A price record does not alter VITA engineering calculations.",
+    "ANNE/human review is required before a researched price becomes a VERIFIED BOM price.",
+    "Quantity × unit price is calculated by VITA, not by the research agent."
+  ]
+}
