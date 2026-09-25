@@ -10,8 +10,63 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 <style>
-.vi{--p:#38bdf8;--bg:#07111c;--card:#0c1b2a;--line:rgba(148,163,184,.18);color:#e2e8f0}.vi-hero{padding:5.5rem 0 2rem;background:linear-gradient(180deg,#07111c,#0b1a2a)}.vi-kicker{color:var(--p);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.vi-hero h1{font-size:clamp(2rem,4vw,3.2rem);margin:.5rem 0 1rem}.vi-lead{max-width:850px;color:#94a3b8;line-height:1.65}.vi-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,.8fr);gap:1.2rem}.vi-card{background:rgba(12,27,42,.88);border:1px solid var(--line);border-radius:16px;padding:1.25rem;margin-bottom:1.2rem}.vi-card h2{font-size:1.15rem;margin:0 0 .8rem}.vi-card h3{font-size:.95rem;margin:1rem 0 .55rem}.vi-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.vi-field{display:flex;flex-direction:column;gap:.35rem}.vi-field.full{grid-column:1/-1}.vi-field label{font-size:.78rem;color:#cbd5e1;font-weight:700}.vi-field input,.vi-field select,.vi-field textarea{width:100%;box-sizing:border-box;background:#071522;border:1px solid var(--line);color:#f8fafc;border-radius:9px;padding:.72rem;font:inherit}.vi-field textarea{min-height:95px}.vi-modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}.vi-module{display:flex;align-items:center;gap:.55rem;padding:.7rem;border:1px solid var(--line);border-radius:10px;background:#091827}.vi-module input{accent-color:var(--p)}.vi-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.vi-status{padding:.8rem;border-radius:10px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.16);color:#cbd5e1;font-size:.85rem;white-space:pre-line}.vi-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem}.vi-metric{padding:.8rem;border:1px solid var(--line);border-radius:10px;background:#091827}.vi-metric small{display:block;color:#94a3b8}.vi-metric strong{display:block;margin-top:.25rem;font-size:1.05rem}.vi-price{display:grid;grid-template-columns:1fr 140px;gap:.5rem;align-items:center}.vi-price input{background:#071522;border:1px solid var(--line);color:#fff;border-radius:8px;padding:.65rem;width:100%;box-sizing:border-box}.vi-upload{border:1px dashed rgba(56,189,248,.3);border-radius:10px;padding:1rem}.vi-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.7rem}.vi-photo{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:9px;background:#071522;border:1px solid var(--line)}.vi-photo img{width:100%;height:100%;object-fit:cover}.vi-photo span{position:absolute;left:0;bottom:0;right:0;padding:.35rem .5rem;background:rgba(0,0,0,.65);font-size:.7rem}.vi-table{width:100%;border-collapse:collapse;font-size:.82rem}.vi-table th,.vi-table td{padding:.55rem;border-bottom:1px solid var(--line);text-align:left}.vi-table th{color:#94a3b8}.vi-bom-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}.bom-price{min-width:105px;background:#071522;border:1px solid var(--line);color:#fff;border-radius:8px;padding:.55rem;box-sizing:border-box}.bom-price:focus{border-color:var(--p);outline:none}.bom-missing{color:#fbbf24}.bom-priced{color:#4ade80}.vi-bom-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem;margin-top:.8rem}.vi-bom-total{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:.8rem 0;padding:.85rem 1rem;border:1px solid rgba(56,189,248,.22);border-radius:10px;background:rgba(56,189,248,.05)}.vi-bom-total small{display:block;color:#94a3b8}.vi-bom-total strong{display:block;margin-top:.2rem;font-size:1.1rem}.vi-bom-total em{font-style:normal;color:#94a3b8;font-size:.72rem;text-align:right}.bom-pending{color:#fbbf24;font-size:.76rem}.vi-bom-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0;padding:.8rem;border:1px solid var(--line);border-radius:10px;background:#091827}.vi-bom-controls label{font-size:.75rem;color:#cbd5e1;font-weight:700;display:flex;flex-direction:column;gap:.35rem}.vi-bom-controls select{background:#071522;border:1px solid var(--line);color:#fff;border-radius:8px;padding:.65rem;font:inherit}.vi-bom-summary div{padding:.7rem;border:1px solid var(--line);border-radius:9px;background:#091827}.vi-bom-summary small{display:block;color:#94a3b8}.vi-bom-summary strong{display:block;margin-top:.2rem}@media(max-width:520px){.vi-bom-summary{grid-template-columns:1fr 1fr}.vi-bom-total{align-items:flex-start;flex-direction:column}.vi-bom-total em{text-align:left}.vi-check{color:#4ade80}.vi-warning{color:#fbbf24}.vi-print-note{color:#64748b;font-size:.72rem;margin-top:.7rem}@media(max-width:800px){.vi-grid{grid-template-columns:1fr}.vi-form{grid-template-columns:1fr}.vi-modules,.vi-metrics{grid-template-columns:1fr 1fr}.vi-photos{grid-template-columns:1fr 1fr}}@media(max-width:520px){.vi-modules,.vi-metrics,.vi-photos{grid-template-columns:1fr}}
-@media print{.header,.vi-actions,.vi-upload,.no-print{display:none!important}.vi-hero{padding:1rem 0;background:none}.vi{color:#111}.vi-card{background:#fff;border:1px solid #ddd;break-inside:avoid}.vi-field input,.vi-field select,.vi-field textarea{border:0;padding:0;color:#111}.vi-price input{border:0;color:#111}.vi-lead,.vi-field label,.vi-metric small{color:#444}}
+.vi{--p:#38bdf8;--bg:#07111c;--card:#0c1b2a;--line:rgba(148,163,184,.18);color:#e2e8f0}
+.vi-hero{padding:5.5rem 0 2rem;background:linear-gradient(180deg,#07111c,#0b1a2a)}
+.vi-kicker{color:var(--p);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.vi-hero h1{font-size:clamp(2rem,4vw,3.2rem);margin:.5rem 0 1rem}
+.vi-lead{max-width:850px;color:#94a3b8;line-height:1.65}
+.vi-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,.8fr);gap:1.2rem}
+.vi-card{background:rgba(12,27,42,.88);border:1px solid var(--line);border-radius:16px;padding:1.25rem;margin-bottom:1.2rem}
+.vi-card h2{font-size:1.15rem;margin:0 0 .8rem}.vi-card h3{font-size:.95rem;margin:1rem 0 .55rem}
+.vi-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.vi-field{display:flex;flex-direction:column;gap:.35rem}.vi-field.full{grid-column:1/-1}
+.vi-field label{font-size:.78rem;color:#cbd5e1;font-weight:700}
+.vi-field input,.vi-field select,.vi-field textarea{width:100%;box-sizing:border-box;background:#071522;border:1px solid var(--line);color:#f8fafc;border-radius:9px;padding:.72rem;font:inherit}
+.vi-field textarea{min-height:95px}
+.vi-modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}
+.vi-module{display:flex;align-items:center;gap:.55rem;padding:.7rem;border:1px solid var(--line);border-radius:10px;background:#091827}
+.vi-module input{accent-color:var(--p)}
+.vi-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.vi-status{padding:.8rem;border-radius:10px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.16);color:#cbd5e1;font-size:.85rem;white-space:pre-line}
+.vi-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem}
+.vi-metric{padding:.8rem;border:1px solid var(--line);border-radius:10px;background:#091827}
+.vi-metric small{display:block;color:#94a3b8}.vi-metric strong{display:block;margin-top:.25rem;font-size:1.05rem}
+.vi-price{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,160px);gap:.8rem;align-items:center;margin:.45rem 0}
+.vi-price span{min-width:0}.vi-price input,.vi-price input[type=number]{display:block!important;visibility:visible!important;opacity:1!important;width:100%;min-width:0;min-height:46px;background:#071522!important;border:1px solid rgba(148,163,184,.28)!important;color:#fff!important;border-radius:9px!important;padding:.65rem .75rem!important;box-sizing:border-box!important;font:inherit}
+.vi-price input:focus{border-color:var(--p)!important;outline:none;box-shadow:0 0 0 2px rgba(56,189,248,.12)}
+.vi-upload{border:1px dashed rgba(56,189,248,.3);border-radius:10px;padding:1rem}
+.vi-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.7rem}
+.vi-photo{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:9px;background:#071522;border:1px solid var(--line)}
+.vi-photo img{width:100%;height:100%;object-fit:cover}.vi-photo span{position:absolute;left:0;bottom:0;right:0;padding:.35rem .5rem;background:rgba(0,0,0,.65);font-size:.7rem}
+.vi-table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.vi-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:760px}
+.vi-table th,.vi-table td{padding:.55rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}.vi-table th{color:#94a3b8}
+.vi-bom-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.bom-price{min-width:105px;background:#071522;border:1px solid var(--line);color:#fff;border-radius:8px;padding:.55rem;box-sizing:border-box}
+.bom-price:focus{border-color:var(--p);outline:none}.bom-missing{color:#fbbf24}.bom-priced{color:#4ade80}.bom-pending{color:#fbbf24;font-size:.76rem}
+.vi-bom-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem;margin-top:.8rem}
+.vi-bom-summary div{padding:.7rem;border:1px solid var(--line);border-radius:9px;background:#091827}.vi-bom-summary small{display:block;color:#94a3b8}.vi-bom-summary strong{display:block;margin-top:.2rem}
+.vi-bom-total{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:.9rem 0 0;padding:1rem;border:1px solid rgba(56,189,248,.28);border-radius:10px;background:rgba(56,189,248,.07)}
+.vi-bom-total small{display:block;color:#94a3b8}.vi-bom-total strong{display:block;margin-top:.2rem;font-size:1.15rem}.vi-bom-total em{font-style:normal;color:#94a3b8;font-size:.72rem;text-align:right}
+.vi-bom-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0;padding:.8rem;border:1px solid var(--line);border-radius:10px;background:#091827}
+.vi-bom-controls label{font-size:.75rem;color:#cbd5e1;font-weight:700;display:flex;flex-direction:column;gap:.35rem}
+.vi-bom-controls select{background:#071522;border:1px solid var(--line);color:#fff;border-radius:8px;padding:.65rem;font:inherit}
+.vi-check{color:#4ade80}.vi-warning{color:#fbbf24}.vi-print-note{color:#64748b;font-size:.72rem;margin-top:.7rem}
+@media(max-width:800px){
+ .vi-grid{grid-template-columns:1fr}.vi-form{grid-template-columns:1fr}
+ .vi-modules,.vi-metrics{grid-template-columns:1fr 1fr}.vi-photos{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+ .vi-bom-summary{grid-template-columns:1fr 1fr}.vi-bom-total{align-items:flex-start;flex-direction:column}.vi-bom-total em{text-align:left}
+ .vi-modules,.vi-metrics,.vi-photos{grid-template-columns:1fr}
+ .vi-price{grid-template-columns:minmax(0,1fr) 135px;gap:.65rem}
+ .vi-price span{font-size:.95rem}
+}
+@media print{
+ .header,.vi-actions,.vi-upload,.no-print{display:none!important}.vi-hero{padding:1rem 0;background:none}.vi{color:#111}
+ .vi-card{background:#fff;border:1px solid #ddd;break-inside:avoid}.vi-field input,.vi-field select,.vi-field textarea{border:0;padding:0;color:#111}
+ .vi-price input{border:0!important;color:#111!important}.vi-lead,.vi-field label,.vi-metric small{color:#444}
+}
 </style>
 </head>
 <body>
@@ -45,12 +100,12 @@
 </div>
 <aside>
 <div class="vi-card"><h2>00 · API Ayarları</h2><p class="vi-print-note">Gemini ve OpenRouter anahtarlarını burada tanımlayabilirsin. Bu sürümde tarayıcı oturumunda tutulur; üretim sürümünde güvenli backend/API gateway kullanılmalıdır.</p><div class="vi-field"><label>Google Gemini API Key</label><input id="geminiApiKey" type="password" autocomplete="off" placeholder="Gemini API anahtarı"></div><div class="vi-field" style="margin-top:.6rem"><label>OpenRouter API Key</label><input id="openrouterApiKey" type="password" autocomplete="off" placeholder="OpenRouter API anahtarı"></div><div class="vi-field" style="margin-top:.6rem"><label>Gemini Model</label><input id="geminiModel" placeholder="Örn. gemini-2.5-flash"></div><div class="vi-field" style="margin-top:.6rem"><label>OpenRouter Model</label><input id="openrouterModel" placeholder="openai/gpt-4o" value="openai/gpt-4o"></div><div class="vi-actions no-print"><button class="btn btn-outline" id="saveAiSettings" type="button">API AYARLARINI OTURUMA KAYDET</button><button class="btn btn-outline" id="clearAiSettings" type="button">TEMİZLE</button></div><div id="aiStatus" class="vi-print-note">API ayarları henüz girilmedi.</div></div><div class="vi-card"><h2>07 · Ticari Teklif — Manuel Fiyat</h2><p class="vi-print-note">Teknik hesap fiyatı belirlemez. Müşteriye gidecek nihai ticari bedeli burada sen girersin.</p><div id="priceRows">
-<div class="vi-price"><span>GES</span><input data-price="GES" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
-<div class="vi-price"><span>BESS</span><input data-price="BESS" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
-<div class="vi-price"><span>EPC / Montaj</span><input data-price="EPC / Montaj" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
-<div class="vi-price"><span>Danışmanlık</span><input data-price="Danışmanlık" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
-<div class="vi-price"><span>Su Sistemleri</span><input data-price="Su Sistemleri" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
-<div class="vi-price"><span>Diğer</span><input data-price="Diğer" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
+<div class="vi-price"><span>GES</span><input class="vi-price-input" data-price="GES" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
+<div class="vi-price"><span>BESS</span><input class="vi-price-input" data-price="BESS" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
+<div class="vi-price"><span>EPC / Montaj</span><input class="vi-price-input" data-price="EPC / Montaj" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
+<div class="vi-price"><span>Danışmanlık</span><input class="vi-price-input" data-price="Danışmanlık" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
+<div class="vi-price"><span>Su Sistemleri</span><input class="vi-price-input" data-price="Su Sistemleri" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
+<div class="vi-price"><span>Diğer</span><input class="vi-price-input" data-price="Diğer" type="number" min="0" step="0.01" placeholder="₺ / USD"></div>
 </div><div class="vi-field" style="margin-top:.8rem"><label>Para birimi</label><select id="currency"><option>TRY</option><option>USD</option><option>EUR</option></select></div><div class="vi-status" style="margin-top:.8rem"><strong>Teklif toplamı: <span id="quoteTotal">0</span></strong></div><button class="btn btn-primary no-print" id="lockQuote" style="margin-top:.8rem">TEKLİFİ KİLİTLE</button></div>
 <div class="vi-card"><h2>08 · Müşteri Dosyası</h2><div class="vi-modules"><label class="vi-module"><input type="checkbox" id="outTechnical" checked> Teknik Rapor</label><label class="vi-module"><input type="checkbox" id="outPresentation" checked> Müşteri Sunumu</label><label class="vi-module"><input type="checkbox" id="outQuote" checked> Ticari Teklif</label><label class="vi-module"><input type="checkbox" id="outExcel" checked> Excel Hesap Özeti</label></div><div class="vi-actions no-print"><button class="btn btn-primary" id="printPackage">SUNUMU / TEKLİFİ YAZDIR</button><button class="btn btn-outline" id="copyPayload">PROJE VERİSİNİ KOPYALA</button></div><p class="vi-print-note">İlk sürüm tarayıcı yazdırma/PDF akışını kullanır. Excel ve otomatik DOCX/PDF paketleme sonraki üretim katmanına bağlanabilir.</p></div>
 <div class="vi-card"><h2>09 · Doğrulama Zinciri</h2><table class="vi-table"><tr><th>Katman</th><th>Rol</th></tr><tr><td>VITA</td><td>Deterministik hesaplama</td></tr><tr><td>MITOS</td><td>Senaryo / girdi önerisi</td></tr><tr><td>Validator</td><td>Tutarlılık kontrolü</td></tr><tr><td>ANNE</td><td>İnceleme / orkestrasyon</td></tr><tr><td>İnsan</td><td>Teknik & ticari onay</td></tr></table></div>
