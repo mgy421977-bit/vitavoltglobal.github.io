@@ -31,27 +31,66 @@ function renderMetrics(r,reg){
  '<tr><td>VITA doğrulama</td><td class="'+(d.ok?'vi-check':'vi-warning')+'">'+(d.ok?'OK':'KONTROL GEREKLİ')+'</td></tr>'+
  '<tr><td>Teknik uyarı</td><td>'+((r.warning)||'Ön fizibilite çıktısı')+'</td></tr></table>';
 }
+function inverterOptionsFor(dc){
+ var pricing=(window.VitaEngine&&window.VitaEngine.config&&window.VitaEngine.config.pricing)||{};
+ var list=(pricing.inverter_options||[]).filter(function(x){return Number(x.power_kw)>0;});
+ var target=Number(dc||0)*0.8, out=[{value:'auto',label:'Otomatik — DC’nin %80’i'}];
+ list.forEach(function(x){
+   var p=Number(x.power_kw); if(!p)return;
+   var count=Math.max(1,Math.ceil(target/p));
+   var total=count*p;
+   if(total<=Number(dc||0)+0.01 || Math.abs(total-target)<=Math.max(p,5)){
+     out.push({value:String(p),label:count+' × '+p+' kW '+(x.type||'inverter')+' — '+total.toFixed(1)+' kW'});
+   }
+ });
+ var seen={}; return out.filter(function(x){if(seen[x.value])return false;seen[x.value]=true;return true;});
+}
+function populateEquipmentSelectors(r){
+ var s=r&&r.solar||{}, dc=Number(s.dcCapacityKwp||0);
+ var ps=$('bomPanelSelect'), is=$('bomInverterSelect');
+ if(ps){
+   var current=String((r.assumptions&&r.assumptions.panelPowerWp)||620);
+   ps.value=current;
+ }
+ if(is){
+   var opts=inverterOptionsFor(dc);
+   is.innerHTML=opts.map(function(o){return '<option value="'+o.value+'">'+o.label+'</option>';}).join('');
+   var selected=r&&r.sizing&&r.sizing.inverter&&r.sizing.inverter.configuration;
+   if(selected){
+     var found=opts.find(function(o){return o.value!=='auto'&&selected.indexOf(o.value+' kW')!==-1;});
+     if(found)is.value=found.value;
+   }
+ }
+}
 function renderBom(r){
  var box=$('bomEditor'); if(!box) return;
  var bom=(r&&r.pricing&&r.pricing.bom)||[];
+ populateEquipmentSelectors(r);
  if(!bom.length){box.innerHTML='<p class="vi-print-note">Henüz BOM oluşmadı.</p>';if($('bomSummary'))$('bomSummary').innerHTML='<div><small>BOM durumu</small><strong>Bekliyor</strong></div><div><small>Fiyatlandırılan</small><strong>0</strong></div><div><small>Eksik fiyat</small><strong>0</strong></div>';return;}
  box.innerHTML='<div style="overflow:auto"><table class="vi-table"><thead><tr><th>Kategori</th><th>Kalem</th><th>Miktar</th><th>Birim</th><th>Birim fiyat</th><th>Toplam</th><th>Kaynak</th></tr></thead><tbody>'+
  bom.map(function(x,i){
    var cost=x.unitCost==null?'':x.unitCost;
-   return '<tr><td>'+x.category+'</td><td>'+x.item+'</td><td>'+fmt(x.quantity)+'</td><td>'+x.unit+'</td><td><input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Gir"></td><td class="bom-total" data-bom-total="'+i+'">'+(x.totalCost==null?'—':fmt(x.totalCost))+'</td><td>'+x.source+'</td></tr>';
+   var qty=Number(x.quantity||0);
+   return '<tr><td>'+x.category+'</td><td>'+x.item+'</td><td><input class="bom-qty" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+qty+'"></td><td>'+x.unit+'</td><td><input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Gir"></td><td class="bom-total" data-bom-total="'+i+'">'+(x.totalCost==null?'—':fmt(x.totalCost))+'</td><td>'+x.source+'</td></tr>';
  }).join('')+'</tbody></table></div>';
+ function updateRow(i){
+   var row=bom[i], qi=box.querySelector('.bom-qty[data-bom-index="'+i+'"]'), pi=box.querySelector('.bom-price[data-bom-index="'+i+'"]');
+   var q=Number(qi&&qi.value), v=Number(pi&&pi.value);
+   row.quantity=Number.isFinite(q)&&q>=0?q:0;
+   if(Number.isFinite(v)&&v>=0){row.unitCost=v;row.totalCost=Number((row.quantity*v).toFixed(2));row.costStatus='PRICED';}
+   else {row.unitCost=null;row.totalCost=null;row.costStatus='NOT_PRICED';}
+   var t=box.querySelector('[data-bom-total="'+i+'"]');if(t)t.textContent=row.totalCost==null?'—':fmt(row.totalCost);
+   window.__vitaStudio.bom=bom;
+   updateBomSummary(bom);
+ }
+ box.querySelectorAll('.bom-qty').forEach(function(inp){inp.addEventListener('input',function(){updateRow(Number(inp.dataset.bomIndex));});});
+ box.querySelectorAll('.bom-price').forEach(function(inp){inp.addEventListener('input',function(){updateRow(Number(inp.dataset.bomIndex));});});
+ updateBomSummary(bom);
+}
+function updateBomSummary(bom){
  var priced=0,missing=0;
- bom.forEach(function(x){if(x.source==='DERIVED')return;if(x.costStatus==='PRICED'&&x.unitCost!=null)priced++;else if(x.costStatus!=='NOT_APPLICABLE'&&x.costStatus!=='SUPERSEDED')missing++;});
- if($('bomSummary'))$('bomSummary').innerHTML='<div><small>BOM durumu</small><strong>'+bom.length+' kalem</strong></div><div><small>Fiyatlandırılan</small><strong class="bom-priced">'+priced+'</strong></div><div><small>Eksik fiyat</small><strong class="bom-missing">'+missing+'</strong></div>';
- box.querySelectorAll('.bom-price').forEach(function(inp){
-   inp.addEventListener('input',function(){
-     var i=Number(inp.dataset.bomIndex),row=bom[i],v=Number(inp.value);
-     if(Number.isFinite(v)&&v>=0){row.unitCost=v;row.totalCost=Number(row.quantity||0)*v;row.costStatus='PRICED';}
-     else {row.unitCost=null;row.totalCost=null;row.costStatus='NOT_PRICED';}
-     var t=box.querySelector('[data-bom-total="'+i+'"]'); if(t)t.textContent=row.totalCost==null?'—':fmt(row.totalCost);
-     window.__vitaStudio.bom=bom;
-   });
- });
+ (bom||[]).forEach(function(x){if(x.source==='DERIVED')return;if(x.costStatus==='PRICED'&&x.unitCost!=null)priced++;else if(x.costStatus!=='NOT_APPLICABLE'&&x.costStatus!=='SUPERSEDED')missing++;});
+ if($('bomSummary'))$('bomSummary').innerHTML='<div><small>BOM durumu</small><strong>'+(bom||[]).length+' kalem</strong></div><div><small>Fiyatlandırılan</small><strong class="bom-priced">'+priced+'</strong></div><div><small>Eksik fiyat</small><strong class="bom-missing">'+missing+'</strong></div>';
 }
 function applyBomPrices(){
  var p=window.__vitaStudio;
@@ -75,6 +114,15 @@ function applyBomPrices(){
  renderBom(p.result);
  setStatus(missing?'BOM fiyatları uygulandı. '+missing+' kalem hâlâ fiyat bekliyor.':'BOM fiyatları hesaplamaya uygulandı. Tüm fiyatlandırılabilir kalemler dolu.','');
 }
+function applyEquipmentSelection(){
+ var p=window.__vitaStudio;
+ if(!p||!p.input){setStatus('Önce hesaplamayı çalıştır.','vi-warning');return;}
+ var panel=Number(val('bomPanelSelect'))||620, inv=val('bomInverterSelect')||'auto';
+ p.input.panelPowerWp=panel;
+ p.input.inverterPowerKw=inv==='auto'?0:Number(inv);
+ run();
+ setStatus(inv==='auto'?'Panel seçimi uygulandı. İnverter VITA tarafından DC’nin %80 hedefiyle yeniden seçildi.':'Panel ve inverter seçimi uygulandı. İnverter adedi seçilen güç üzerinden yeniden hesaplandı.');
+}
 function openWebPriceSearch(){
  var p=window.__vitaStudio||{}, bom=p.bom||((p.result&&p.result.pricing&&p.result.pricing.bom)||[]);
  if(!bom.length){setStatus('Önce hesaplamayı çalıştır; ardından BOM kalemleri için internet araması açılır.','vi-warning');return;}
@@ -85,7 +133,8 @@ function openWebPriceSearch(){
  setStatus('İnternet araması açıldı: '+q.item+'. Bulduğun ortalama değeri BOM tablosundaki Birim fiyat alanına gir.');
 }
 function buildInput(){
- return {city:val('city'),roofAreaM2:num('roofArea'),landAreaM2:num('landArea'),landAvailable:num('landArea')>0,annualConsumptionKwh:num('annualConsumption'),monthlyConsumptionKwh:num('annualConsumption')/12,peakDemandKw:num('peakDemand'),monthlyWaterM3:num('monthlyWater'),annualTco2e:num('annualTco2e'),facilityType:val('facilityType'),annex1Activity:val('annex1')===''?undefined:val('annex1')==='true',sector:val('sector'),company:val('company'),facility:val('facility'),facilityActivityDescription:val('facilityActivityDescription'),annualCapacity:num('annualCapacity'),capacityUnit:val('capacityUnit')};
+ var selectedPanel=Number(val('bomPanelSelect'))||620, selectedInv=val('bomInverterSelect')||'auto';
+ return {panelPowerWp:selectedPanel,inverterPowerKw:selectedInv==='auto'?0:Number(selectedInv),city:val('city'),roofAreaM2:num('roofArea'),landAreaM2:num('landArea'),landAvailable:num('landArea')>0,annualConsumptionKwh:num('annualConsumption'),monthlyConsumptionKwh:num('annualConsumption')/12,peakDemandKw:num('peakDemand'),monthlyWaterM3:num('monthlyWater'),annualTco2e:num('annualTco2e'),facilityType:val('facilityType'),annex1Activity:val('annex1')===''?undefined:val('annex1')==='true',sector:val('sector'),company:val('company'),facility:val('facility'),facilityActivityDescription:val('facilityActivityDescription'),annualCapacity:num('annualCapacity'),capacityUnit:val('capacityUnit')};
 }
 function run(){
  if(!window.VitaEngine||typeof window.VitaEngine.calculate!=='function'){setStatus('VITA Engine yüklenemedi. Sayfayı yenileyin.','vi-warning');return;}
@@ -113,6 +162,8 @@ function load(){
  try{var p=JSON.parse(raw),i=p.input||{};var map={company:'company',facility:'facility',sector:'sector',city:'city',annualConsumption:'annualConsumptionKwh',peakDemand:'peakDemandKw',roofArea:'roofAreaM2',landArea:'landAreaM2',monthlyWater:'monthlyWaterM3',annualTco2e:'annualTco2e',facilityType:'facilityType',facilityActivityDescription:'facilityActivityDescription',annualCapacity:'annualCapacity',capacityUnit:'capacityUnit'};
  Object.keys(map).forEach(function(k){if($(k)&&i[map[k]]!=null)$(k).value=i[map[k]];});
  if(i.annex1Activity!==undefined)$('annex1').value=String(i.annex1Activity);
+ if($('bomPanelSelect')&&i.panelPowerWp)$('bomPanelSelect').value=i.panelPowerWp;
+ if($('bomInverterSelect')&&i.inverterPowerKw)$('bomInverterSelect').value=i.inverterPowerKw;
  if(p.currency)$('currency').value=p.currency;
  document.querySelectorAll('[data-price]').forEach(function(el){var q=(p.prices||[]).find(function(x){return x.item===el.dataset.price;});if(q)el.value=q.amount;});
  if(p.result){window.__vitaStudio=p;window.__vitaStudio.bom=p.bom||((p.result.pricing||{}).bom||[]);renderMetrics(p.result,p.regulatory); renderBom(p.result);setStatus('Kayıtlı proje taslağı yüklendi.');}
@@ -138,8 +189,10 @@ function payload(){
 }
 function init(){
  var c=$('city');cities.forEach(function(x){var o=document.createElement('option');o.value=x;o.textContent=x;c.appendChild(o);});
- $('runAnalysis').addEventListener('click',run);
+ if($('runAnalysis'))$('runAnalysis').addEventListener('click',run);
  if($('webPriceSearch'))$('webPriceSearch').addEventListener('click',openWebPriceSearch);
+ if($('bomPanelSelect'))$('bomPanelSelect').addEventListener('change',applyEquipmentSelection);
+ if($('bomInverterSelect'))$('bomInverterSelect').addEventListener('change',applyEquipmentSelection);
  if($('applyBomPrices'))$('applyBomPrices').addEventListener('click',applyBomPrices);
  $('saveProject').addEventListener('click',save);$('photos').addEventListener('change',photos);
  document.querySelectorAll('[data-price]').forEach(function(i){i.addEventListener('input',quote);});$('currency').addEventListener('change',quote);
