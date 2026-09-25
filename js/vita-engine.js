@@ -34,7 +34,7 @@
         labor_usd_per_panel: 20,
         market_quote_discount_pct: 10,
         proportional_model: { bos_usd_per_kwp: 241.07855208, fixed_bos_usd: 604.19354839, basis: 'ASSUMPTION/MODEL BOS/EPC allowance' },
-        bom_ratios: { dc_cable_m_per_panel: 6.19, ac_cable_m_per_panel: 1.67, mc4_pairs_per_panel: 4, dc_spd_sets_per_reference: 2, fuse_sets_per_reference: 4 }
+        bom_ratios: { dc_cable_m_per_panel: 6.19, ac_cable_m_per_panel: 1.67, mc4_pairs_per_panel: 1, dc_spd_sets_per_reference: 2, fuse_sets_per_reference: 4 }
       }
     }
   };
