@@ -1,4 +1,4 @@
-/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v16-price-research-response-fix */
+/* Vitavolt Global — Vita Intelligence Report & Proposal Studio v1 | 2026-09-25-v17-price-research-legacy-web-plugin */
 (function(){
 'use strict';
 var cities=['Adana','Adıyaman','Afyonkarahisar','Ağrı','Aksaray','Amasya','Ankara','Antalya','Ardahan','Artvin','Aydın','Balıkesir','Bartın','Batman','Bayburt','Bilecik','Bingöl','Bitlis','Bolu','Burdur','Bursa','Çanakkale','Çankırı','Çorum','Denizli','Diyarbakır','Düzce','Edirne','Elazığ','Erzincan','Erzurum','Eskişehir','Gaziantep','Giresun','Gümüşhane','Hakkari','Hatay','Iğdır','Isparta','İstanbul','İzmir','Kahramanmaraş','Karabük','Karaman','Kars','Kastamonu','Kayseri','Kilis','Kırıkkale','Kırklareli','Kırşehir','Kocaeli','Konya','Kütahya','Malatya','Manisa','Mardin','Mersin','Muğla','Muş','Nevşehir','Niğde','Ordu','Osmaniye','Rize','Sakarya','Samsun','Siirt','Sinop','Sivas','Şanlıurfa','Şırnak','Tekirdağ','Tokat','Trabzon','Tunceli','Uşak','Van','Yalova','Yozgat','Zonguldak'];
@@ -209,14 +209,12 @@ async function researchPrices(){
      var body={
        model:model,
        messages:[
-         {role:'system',content:'You are Vitavolt Global market-price research agent. You MUST use the OpenRouter web search tool before returning prices. Never invent a price. Return only JSON.'},
+         {role:'system',content:'You are Vitavolt Global BOM market-price research agent. Use the supplied web search results as evidence. Never invent a price. Return only the requested JSON.'},
          {role:'user',content:prompt}
        ],
-       tools:[{type:'openrouter:web_search',parameters:{engine:'exa',max_results:5,max_total_results:10}}],
-       tool_choice:'auto',
-       max_tool_calls:3,
+       plugins:[{id:'web',max_results:5}],
        response_format:{type:'json_object'},
-       max_tokens:1400,
+       max_tokens:1600,
        temperature:0
      };
      try{
