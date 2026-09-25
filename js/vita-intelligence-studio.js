@@ -81,7 +81,7 @@ function renderBom(r){
    var cur=x.priceCurrency||defaultCurrency;
    var totalCell=x.source==='DERIVED'?'<span class="bom-derived">Hesaplanan</span>':(x.totalCost==null?'<span class="bom-pending">Fiyat bekliyor</span>':fmt(x.totalCost)+' '+cur);
    return '<div class="vi-bom-row">'+
-     '<div class="vi-bom-item"><span class="vi-bom-category">'+x.category+'</span><strong>'+x.item+'</strong><small>Kaynak: '+x.source+'</small></div>'+
+     '<div class="vi-bom-item"><span class="vi-bom-category">'+x.category+'</span><strong>'+x.item+'</strong>'+(x.researchedProduct?'<small>Ürün: '+x.researchedProduct+'</small>':'')+'<small>Kaynak: '+x.source+'</small></div>'+
      '<label class="vi-bom-cell"><span>Miktar</span><input class="bom-qty" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+qty+'"><em>'+x.unit+'</em></label>'+
      '<div class="vi-bom-cell"><span>Birim fiyat</span>'+(x.source==='DERIVED'?'<strong class="bom-derived">Hesaplanan</strong>':'<input class="bom-price" data-bom-index="'+i+'" type="number" min="0" step="0.01" value="'+cost+'" placeholder="Fiyat gir / ara"><em>'+(x.priceCurrency||defaultCurrency)+'</em>')+'</div>'+
      '<div class="vi-bom-cell vi-bom-total-cell"><span>Toplam</span><strong class="bom-total" data-bom-total="'+i+'">'+totalCell+'</strong></div>'+
@@ -212,12 +212,12 @@ async function researchPrices(){
      setStatus('Web fiyat araştırması sürüyor: '+(b+1)+'/'+batches.length+' grup…');
      var prompt='VITAVOLT GLOBAL BOM PRICE INTELLIGENCE\\n'+
        'Türkiye piyasasında 2026 yılı için aşağıdaki satın alınabilir BOM kaleminin güncel piyasa birim fiyatını ARAŞTIR.\\n'+
-       'ZORUNLU: Web search kullan. Gerçek ürün/tedarikçi sayfaları veya güvenilir piyasa kaynakları bulmadan fiyat uydurma.\\n'+
-       'Her kalem için gerçek ürün/tedarikçi fiyatlarından makul birim fiyat seç. Kaynak yalnız TL ise güncel web bilgisini kullanarak yaklaşık USD karşılığını hesapla ve notes alanında kaynak para birimini belirt.\\n'+
+       'ZORUNLU: Web search kullan. En az bir gerçek ürün/tedarikçi fiyatı bulduysan unitPrice alanına mutlaka kullanılabilir birim fiyat yaz; farklı fiyatların makul ortalamasını al, null döndürme. Fiyatı uydurma.\\n'+
+       'Gerçek ürün adı/modeli ve mümkünse kaynak URL ver. Kaynak yalnız TL ise güncel web bilgisini kullanarak yaklaşık USD karşılığını hesapla ve notes alanında kaynak para birimini belirt.\\n'+
        'DERIVED/hacim/hesaplama satırları bu isteğe dahil edilmez ve fiyatlandırılmaz.\\n'+
        'ÇIKTIYI SADECE aşağıdaki şemaya uygun JSON olarak döndür. bomIndex değerini GİRDİDEKİYLE AYNI bırak.\\n'+
        '{"prices":[{"bomIndex":0,"item":"...","unitPrice":0,"currency":"USD","priceBasis":"...","source":"https://...","confidence":"HIGH|MEDIUM|LOW","notes":"..."}]}\\n'+
-       'Fiyat bulunamazsa unitPrice null ver. JSON dışında açıklama yazma.\\nBOM: '+JSON.stringify(batch);
+       'Hiçbir gerçek fiyat bulunamazsa ancak o zaman unitPrice null ver. JSON dışında açıklama yazma.\\nBOM: '+JSON.stringify(batch);
 
      var controller=new AbortController();
      var timer=setTimeout(function(){controller.abort();},90000);
@@ -228,7 +228,6 @@ async function researchPrices(){
          {role:'user',content:prompt}
        ],
        plugins:[{id:'web',engine:'exa',max_results:5,search_prompt:'Find current Turkish supplier or product prices for this exact BOM item.'}],
-       response_format:{type:'json_object'},
        max_tokens:1200,
        temperature:0
      };
@@ -276,6 +275,7 @@ async function researchPrices(){
            row.priceSource=x.source||'OPENROUTER_WEB';
            row.priceConfidence=x.confidence||'MEDIUM';
            row.priceNotes=x.notes||'';
+           row.researchedProduct=x.product||x.productName||x.model||x.brand||'';
            row.source='OPENROUTER_WEB';
            applied++;
          }
