@@ -194,19 +194,25 @@ function payload(){
 }
 function loadAiSettings(){
  try{
-  var p=sessionStorage.getItem('vitavolt_ai_settings');
-  if(!p)return;
-  var x=JSON.parse(p); if($('aiProvider')&&x.provider)$('aiProvider').value=x.provider; if($('aiModel')&&x.model)$('aiModel').value=x.model;
-  if($('aiApiKey')&&x.apiKey)$('aiApiKey').value=x.apiKey;
-  if($('aiStatus'))$('aiStatus').textContent='API ayarı bu tarayıcı oturumunda mevcut.';
+  var p=sessionStorage.getItem('vitavolt_ai_settings');if(!p)return;
+  var x=JSON.parse(p);
+  if($('geminiApiKey'))$('geminiApiKey').value=x.geminiApiKey||'';
+  if($('openrouterApiKey'))$('openrouterApiKey').value=x.openrouterApiKey||'';
+  if($('geminiModel'))$('geminiModel').value=x.geminiModel||'gemini-2.5-flash';
+  if($('openrouterModel'))$('openrouterModel').value=x.openrouterModel||'openai/gpt-5.6';
+  if($('aiStatus'))$('aiStatus').textContent='AI API ayarları bu tarayıcı oturumunda mevcut.';
  }catch(e){}
 }
 function saveAiSettings(){
- var x={provider:val('aiProvider')||'gemini',apiKey:val('aiApiKey'),model:val('aiModel')};
+ var x={geminiApiKey:val('geminiApiKey'),openrouterApiKey:val('openrouterApiKey'),geminiModel:val('geminiModel'),openrouterModel:val('openrouterModel')};
  sessionStorage.setItem('vitavolt_ai_settings',JSON.stringify(x));
- if($('aiStatus'))$('aiStatus').textContent=x.apiKey?'API ayarı oturuma kaydedildi.':'API anahtarı boş.';
+ if($('aiStatus'))$('aiStatus').textContent=(x.geminiApiKey||x.openrouterApiKey)?'AI API ayarları oturuma kaydedildi.':'API anahtarları boş.';
 }
-function clearAiSettings(){sessionStorage.removeItem('vitavolt_ai_settings');if($('aiApiKey'))$('aiApiKey').value='';if($('aiModel'))$('aiModel').value='';if($('aiStatus'))$('aiStatus').textContent='API ayarı temizlendi.';}
+function clearAiSettings(){
+ sessionStorage.removeItem('vitavolt_ai_settings');
+ ['geminiApiKey','openrouterApiKey','geminiModel','openrouterModel'].forEach(function(id){if($(id))$(id).value='';});
+ if($('aiStatus'))$('aiStatus').textContent='AI API ayarları temizlendi.';
+}
 
 function init(){
  var c=$('city');cities.forEach(function(x){var o=document.createElement('option');o.value=x;o.textContent=x;c.appendChild(o);});
