@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.1",
-  "updated": "2026-09-18",
+  "updated": "2026-09-27",
   "purpose": "Machine-readable research portfolio discovery map for Vitavolt Global.",
   "sourcePolicy": "Use linked public research pages and repositories as the source of truth. Do not infer commercial performance, patents, funding, valuation, deployment or scientific validation beyond published evidence.",
   "company": {
@@ -101,6 +101,28 @@
         "research modelling"
       ],
       "claimBoundary": "Research hypotheses and modelled concepts are not commercial performance guarantees."
+    },
+    {
+      "id": "acs-active-coating-system",
+      "name": "ACS – Active Coating System",
+      "url": "https://vitavoltglobal.com/research/acs-active-coating-system.html",
+      "type": "Photovoltaic / EnergyTech research project",
+      "status": "Research / Prototyping / Field Validation pathway",
+      "domains": [
+        "photonic optics",
+        "photovoltaic interfaces",
+        "active building envelope",
+        "UV harvesting",
+        "diffuse-light harvesting",
+        "EnergyTech",
+        "BIPV"
+      ],
+      "evidence": [
+        "public research page",
+        "technical project documentation",
+        "pilot / validation framework"
+      ],
+      "claimBoundary": "Photonic performance, durability and multi-energy harvesting claims remain hypotheses or targets until laboratory and field validation."
     },
     {
       "id": "oxygen-climate-tech",
