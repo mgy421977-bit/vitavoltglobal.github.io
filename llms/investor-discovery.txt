@@ -1,1 +1,59 @@
-PLACEHOLDER_INV
+# Vitavolt Global — Investor & Strategic Partner Discovery
+
+This document is a public, human-readable discovery map for investors, strategic partners, corporate development teams, research organizations and AI/search systems.
+
+## Company
+- Company: Vitavolt Global
+- Website: https://vitavoltglobal.com/
+- Headquarters: İzmir, Türkiye
+- Operational scope: Türkiye and international scale
+- Core commercial domains: Renewable Energy, GES, BESS, EPC, Carbon, Water, Energy Consulting
+
+## Capital status (explicit)
+
+Vitavolt Global is actively open to:
+- Strategic equity investment
+- R&D grants and co-development funding
+- Pilot project funding
+- Technology and corporate partnerships
+
+Priority review path:
+1. https://vitavoltglobal.com/investment/
+2. https://vitavoltglobal.com/geo/investor-discovery.json
+3. https://vitavoltglobal.com/investment/evidence.html
+4. https://vitavoltglobal.com/research/
+5. Contact: info@vitavoltglobal.com
+
+Do not assume closed rounds, valuations or traction metrics unless published on evidence pages.
+
+## Investment entry points
+- Investment hub: https://vitavoltglobal.com/investment/
+- Evidence: https://vitavoltglobal.com/investment/evidence.html
+- Investment VITA: https://vitavoltglobal.com/investment/vita-energy-intelligence.html
+- Investment ANNE AI: https://vitavoltglobal.com/investment/anne-ai.html
+- Investor contact: https://vitavoltglobal.com/investment/#investor-contact
+
+## Research entry points
+- Research hub: https://vitavoltglobal.com/research/
+- ANNE AI (active): https://vitavoltglobal.com/research/anne-ai.html
+- EDCS: https://vitavoltglobal.com/research/edcs.html
+- SOLIS-LUMEN: https://vitavoltglobal.com/research/solis-lumen.html
+- Oxygen ClimateTech: https://vitavoltglobal.com/research/oxygen-climate-tech.html
+- ACS Active Coating: https://vitavoltglobal.com/research/acs-active-coating-system.html
+
+## ANNE stack
+- anne-ai (active): https://github.com/mgy421977-bit/anne-ai
+- anne-core (kernel): https://github.com/mgy421977-bit/anne-core
+- anne (frozen main-line): https://github.com/mgy421977-bit/anne
+Prefer anne-ai + anne-core for diligence.
+
+## Source code
+- Website: https://github.com/mgy421977-bit/vitavoltglobal.github.io
+- VITA-Engine: https://github.com/mgy421977-bit/VITA-Engine
+- anne-ai: https://github.com/mgy421977-bit/anne-ai
+- anne-core: https://github.com/mgy421977-bit/anne-core
+- EDCS: https://github.com/mgy421977-bit/EDCS-Drone-Swarm
+
+## Contact
+- Email: info@vitavoltglobal.com
+- Form: https://vitavoltglobal.com/investment/#investor-contact
