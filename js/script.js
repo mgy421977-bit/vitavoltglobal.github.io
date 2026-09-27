@@ -1,5 +1,5 @@
 // ================================================================
-// VITAVOLT GLOBAL - Master Script v20260923nav2 (+ i18n + layered navigation)
+// VITAVOLT GLOBAL - Master Script v20260927research (+ i18n + layered navigation)
 // ================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,8 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         const vitaItems = [
             ['⚡', 'VITA Energy Intelligence', '/vita-energy-intelligence.html'],
-            ['◉', 'Hızlı Ön Fizibilite', '/index.html#hizli-hesapla'],
-            ['✦', 'Research / ANNE', '/research/']
+            ['◉', 'Hızlı Ön Fizibilite', '/index.html#hizli-hesapla']
+        ];
+        const researchItems = [
+            ['◈', 'Research Hub', '/research/'],
+            ['▣', 'ACS — Active Coating', '/research/acs-active-coating-system.html'],
+            ['◎', 'Oxygen ClimateTech', '/research/oxygen-climate-tech.html'],
+            ['✦', 'ANNE AI', '/research/anne-ai.html'],
+            ['◇', 'EDCS', '/research/edcs.html'],
+            ['☀', 'SOLIS-LUMEN', '/research/solis-lumen.html'],
+            ['◌', 'Publications', '/research/publications.html']
         ];
         const makeItems = items => items.map(([icon, label, href]) =>
             `<a class="vv-mega-item" href="${href}"><span class="vv-mega-icon" aria-hidden="true">${icon}</span><span>${label}</span></a>`
@@ -46,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="vv-nav-dropdown vv-simple-dropdown" data-menu="vita">
                 <button class="nav-link vv-nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">VITA <span class="vv-chevron" aria-hidden="true">⌄</span></button>
                 <div class="vv-mini-menu" role="menu">${makeItems(vitaItems)}</div>
+            </div>
+            <div class="vv-nav-dropdown vv-simple-dropdown" data-menu="research">
+                <button class="nav-link vv-nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">RESEARCH <span class="vv-chevron" aria-hidden="true">⌄</span></button>
+                <div class="vv-mini-menu" role="menu">${makeItems(researchItems)}</div>
             </div>
             <a href="/investment/" class="nav-link">YATIRIMCILAR</a>
             <a href="/about.html" class="nav-link">HAKKIMIZDA</a>
@@ -103,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const menu = drop.dataset.menu;
             let active = false;
             if (menu === 'solutions') active = /izmir-ges|izmir-bess|izmir-endustriyel|izmir-karbon|izmir-yagmur|services\.html|yenilenebilir-enerji|sustainability-carbon|isletmeler|mesken-ges/.test(pathNow);
-            if (menu === 'vita') active = /vita-energy-intelligence|anne|research/.test(pathNow);
+            if (menu === 'vita') active = /vita-energy-intelligence/.test(pathNow);
+            if (menu === 'research') active = /\/research|anne-ai|edcs|oxygen-climate|acs-active|solis-lumen|publications|ai-discoverability/.test(pathNow);
             drop.classList.toggle('active-parent', active);
         });
     }
@@ -111,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const path = window.location.pathname;
     const currentPage = path.split('/').pop() || 'index.html';
-    const isResearchPath = path.indexOf('/research') !== -1 || ['anne.html', 'edcs.html', 'anne-ai.html'].includes(currentPage);
+    const isResearchPath = path.indexOf('/research') !== -1 || ['anne.html', 'edcs.html', 'anne-ai.html', 'acs-active-coating-system.html', 'oxygen-climate-tech.html', 'solis-lumen.html', 'publications.html'].includes(currentPage);
     navLinks.forEach(link => {
         const href = link.getAttribute('href') || '';
         if (link.classList.contains('vv-nav-trigger')) return;
