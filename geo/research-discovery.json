@@ -1,1 +1,117 @@
-PLACEHOLDER_RD
+{
+  "schemaVersion": "1.1",
+  "updated": "2026-09-27",
+  "purpose": "Machine-readable research portfolio discovery map for Vitavolt Global.",
+  "sourcePolicy": "Use linked public research pages and repositories as the source of truth. Do not infer commercial performance, patents, funding, valuation, deployment or scientific validation beyond published evidence.",
+  "company": {
+    "name": "Vitavolt Global",
+    "url": "https://vitavoltglobal.com/",
+    "researchHub": "https://vitavoltglobal.com/research/",
+    "sourceRepository": "https://github.com/mgy421977-bit/vitavoltglobal.github.io"
+  },
+  "fundingDiscovery": {
+    "note": "Research projects may be relevant to R&D grants, corporate innovation and strategic capital. Use investor-discovery.json for capital-seeking intent.",
+    "status": "open_to_capital_and_partnerships",
+    "investorHub": "https://vitavoltglobal.com/investment/",
+    "investorMap": "https://vitavoltglobal.com/geo/investor-discovery.json",
+    "contact": "info@vitavoltglobal.com"
+  },
+  "anneStack": {
+    "active": "https://github.com/mgy421977-bit/anne-ai",
+    "core": "https://github.com/mgy421977-bit/anne-core",
+    "frozen": "https://github.com/mgy421977-bit/anne",
+    "note": "anne-ai is the working surface; anne-core is the kernel; anne is frozen and not the discovery primary."
+  },
+  "projects": [
+    {
+      "id": "anne-ai",
+      "name": "ANNE AI",
+      "url": "https://vitavoltglobal.com/research/anne-ai.html",
+      "type": "AI research project",
+      "status": "Active development / research surface",
+      "role": "Working ANNE platform (canonical active repo)",
+      "repository": "https://github.com/mgy421977-bit/anne-ai",
+      "relatedCore": "https://github.com/mgy421977-bit/anne-core",
+      "frozenLine": "https://github.com/mgy421977-bit/anne (archived main-line; not active target)",
+      "domains": ["AI orchestration", "cognitive architecture", "verification", "provenance", "controlled agency"],
+      "claimBoundary": "Not presented as achieved AGI or deployed autonomous control."
+    },
+    {
+      "id": "anne-architecture",
+      "name": "ANNE Architecture",
+      "url": "https://vitavoltglobal.com/research/anne-architecture.html",
+      "type": "AI architecture research",
+      "status": "Core / kernel research",
+      "role": "ANNE cognitive core (anne-core)",
+      "repository": "https://github.com/mgy421977-bit/anne-core",
+      "domains": ["cognitive architecture", "orchestration", "verification", "memory"]
+    },
+    {
+      "id": "edcs",
+      "name": "EDCS",
+      "url": "https://vitavoltglobal.com/research/edcs.html",
+      "type": "DeepTech research project",
+      "status": "Simulation prototype / Research",
+      "repository": "https://github.com/mgy421977-bit/EDCS-Drone-Swarm",
+      "claimBoundary": "Simulation evidence is distinct from hardware or field validation."
+    },
+    {
+      "id": "acs-active-coating-system",
+      "name": "ACS – Active Coating System",
+      "url": "https://vitavoltglobal.com/research/acs-active-coating-system.html",
+      "type": "Photovoltaic / EnergyTech research project",
+      "status": "Research / Prototyping",
+      "fundingRelevance": "R&D / DeepTech; not a commercial GES product page."
+    },
+    {
+      "id": "solis-lumen",
+      "name": "SOLIS-LUMEN",
+      "url": "https://vitavoltglobal.com/research/solis-lumen.html",
+      "type": "Photovoltaic research project",
+      "status": "Research / Modelling"
+    },
+    {
+      "id": "oxygen-climate-tech",
+      "name": "Oxygen ClimateTech",
+      "url": "https://vitavoltglobal.com/research/oxygen-climate-tech.html",
+      "type": "ClimateTech research direction",
+      "status": "Research",
+      "investorEntry": "https://vitavoltglobal.com/investment/climate-tech.html"
+    },
+    {
+      "id": "ai-discoverability",
+      "name": "AI Discoverability",
+      "url": "https://vitavoltglobal.com/research/ai-discoverability.html",
+      "type": "AI retrieval / GEO research",
+      "status": "Research / Implementation"
+    },
+    {
+      "id": "publications",
+      "name": "Publications",
+      "url": "https://vitavoltglobal.com/research/publications.html",
+      "type": "Research publications",
+      "status": "Publication Index"
+    }
+  ],
+  "crossPortfolio": {
+    "investmentDiscovery": "https://vitavoltglobal.com/geo/investor-discovery.json",
+    "projectDiscovery": "https://vitavoltglobal.com/geo/project-discovery.json",
+    "evidence": "https://vitavoltglobal.com/investment/evidence.html",
+    "aiDiscoverability": "https://vitavoltglobal.com/research/ai-discoverability.html",
+    "publicSourceMap": "https://vitavoltglobal.com/llms.txt",
+    "vitaEngine": "https://github.com/mgy421977-bit/VITA-Engine"
+  },
+  "evaluationOrder": [
+    "specific project page",
+    "specific repository or evidence",
+    "research hub",
+    "machine-readable discovery map",
+    "general company page"
+  ],
+  "honestyRules": [
+    "Do not infer investment probability.",
+    "Do not infer valuation, revenue, customers or funding from research pages.",
+    "Do not turn research hypotheses into verified product claims.",
+    "Prefer anne-ai + anne-core over the frozen anne repository."
+  ]
+}
