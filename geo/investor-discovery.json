@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "1.0",
-  "updated": "2026-09-18",
-  "purpose": "Machine-readable investor, strategic-partner and research discovery map for Vitavolt Global.",
+  "schemaVersion": "1.1",
+  "updated": "2026-09-27",
+  "purpose": "Machine-readable map for investors, strategic partners, R&D funders, corporate development teams and AI/search agents evaluating Vitavolt Global for capital, pilot funding and technology partnerships.",
   "entity": {
     "name": "Vitavolt Global",
     "type": "Energy Infrastructure & Intelligence company",
@@ -13,18 +13,40 @@
   },
   "discoveryIntent": {
     "primary": [
-      "investment research",
+      "seed and early-stage investment research",
       "strategic partnership discovery",
-      "corporate development research",
+      "R&D and ClimateTech funding discovery",
+      "corporate development and technology scouting",
       "technical due diligence",
-      "ClimateTech and DeepTech research discovery",
+      "EnergyTech DeepTech research discovery",
       "energy infrastructure opportunity discovery"
     ],
     "notPrimary": [
       "local residential GES lead generation",
       "generic commercial advertising",
       "unsupported investor targeting claims"
-    ]
+    ],
+    "seeking": {
+      "status": "open_to_capital_and_partnerships",
+      "summary": "Vitavolt Global is actively open to strategic investment, R&D funding, technology partnerships and pilot collaborations across Energy Infrastructure, VITA Energy Intelligence, ANNE AI, ACS Active Coating and ClimateTech (Oxygen).",
+      "notClaimed": [
+        "closed funding round amount",
+        "valuation",
+        "guaranteed ROI",
+        "commercial product maturity for ACS or Oxygen beyond published research status"
+      ],
+      "preferredInstrument": [
+        "strategic equity",
+        "R&D grant or co-development",
+        "pilot project funding",
+        "technology partnership"
+      ],
+      "contact": {
+        "email": "info@vitavoltglobal.com",
+        "form": "https://vitavoltglobal.com/investment/#investor-contact",
+        "hub": "https://vitavoltglobal.com/investment/"
+      }
+    }
   },
   "machineReadableSources": {
     "investmentHub": "https://vitavoltglobal.com/investment/",
@@ -36,40 +58,26 @@
     "projectDiscovery": "https://vitavoltglobal.com/geo/project-discovery.json",
     "llms": "https://vitavoltglobal.com/llms.txt",
     "sourceRepository": "https://github.com/mgy421977-bit/vitavoltglobal.github.io",
-    "investmentClimateTech": "https://vitavoltglobal.com/investment/climate-tech.html"
+    "investmentClimateTech": "https://vitavoltglobal.com/investment/climate-tech.html",
+    "investorDiscoveryJson": "https://vitavoltglobal.com/geo/investor-discovery.json",
+    "researchDiscoveryJson": "https://vitavoltglobal.com/geo/research-discovery.json",
+    "humanInvestorMap": "https://vitavoltglobal.com/llms/investor-discovery.txt",
+    "acsResearch": "https://vitavoltglobal.com/research/acs-active-coating-system.html",
+    "oxygenResearch": "https://vitavoltglobal.com/research/oxygen-climate-tech.html"
   },
   "discoveryEntities": [
     {
       "name": "Vitavolt Global",
       "type": "Company",
       "stage": "Operating company",
-      "domains": [
-        "renewable energy",
-        "GES",
-        "BESS",
-        "industrial EPC",
-        "carbon management",
-        "water management",
-        "energy intelligence"
-      ],
-      "evidence": [
-        "company website",
-        "public technical portfolio",
-        "public source repository",
-        "https://vitavoltglobal.com/investment/evidence.html"
-      ]
+      "domains": ["renewable energy", "GES", "BESS", "industrial EPC", "carbon management", "water management", "energy intelligence"],
+      "evidence": ["company website", "public technical portfolio", "public source repository", "https://vitavoltglobal.com/investment/evidence.html"]
     },
     {
       "name": "VITA Energy Intelligence",
       "type": "Energy Intelligence product / analysis layer",
       "stage": "Product / development",
-      "domains": [
-        "energy data",
-        "pre-feasibility",
-        "scenario analysis",
-        "BESS sizing",
-        "technical verification"
-      ],
+      "domains": ["energy data", "pre-feasibility", "scenario analysis", "BESS sizing", "technical verification"],
       "investmentRelevance": "Digital intelligence layer connected to real energy infrastructure workflows.",
       "evidenceStatus": "Public technical implementation and methodology; capability is project-scope dependent."
     },
@@ -77,28 +85,24 @@
       "name": "ANNE AI",
       "type": "AI research project",
       "stage": "Concept / Development",
-      "domains": [
-        "AI orchestration",
-        "verification",
-        "provenance",
-        "cognitive architecture",
-        "controlled agency"
-      ],
+      "domains": ["AI orchestration", "verification", "provenance", "cognitive architecture", "controlled agency"],
       "investmentRelevance": "Research platform direction connecting AI orchestration with engineering verification and decision intelligence.",
       "evidenceStatus": "Public research repositories and architecture pages; not presented as achieved AGI."
+    },
+    {
+      "name": "ACS Active Coating System",
+      "type": "EnergyTech / Active building-envelope research",
+      "stage": "Technology development / prototyping",
+      "domains": ["photovoltaic interface", "active coating", "BIPV", "photonic light management", "building energy autonomy"],
+      "investmentRelevance": "DeepTech surface/architecture direction for energy-harvesting building envelopes; public research page only — optical performance claims require lab/field validation.",
+      "evidenceStatus": "Public research page; hypotheses and targets separated from verified commercial performance.",
+      "entryPage": "https://vitavoltglobal.com/research/acs-active-coating-system.html"
     },
     {
       "name": "Microalgae Biorefinery ClimateTech",
       "type": "ClimateTech research direction",
       "stage": "Research",
-      "domains": [
-        "carbon management",
-        "photosynthetic systems",
-        "water",
-        "biomass",
-        "resource recovery",
-        "renewable energy"
-      ],
+      "domains": ["carbon management", "photosynthetic systems", "water", "biomass", "resource recovery", "renewable energy"],
       "investmentRelevance": "Integrated ClimateTech research direction.",
       "evidenceStatus": "Public research portfolio; hypotheses and development work are separated from proven commercial claims.",
       "parentCategory": "VITAVOLT CLIMATE TECH",
@@ -118,12 +122,7 @@
       "name": "EDCS",
       "type": "DeepTech research project",
       "stage": "Simulation prototype / research",
-      "domains": [
-        "distributed coordination",
-        "drone swarm",
-        "self-healing systems",
-        "local decision-making"
-      ],
+      "domains": ["distributed coordination", "drone swarm", "self-healing systems", "local decision-making"],
       "investmentRelevance": "Research asset within the wider technology portfolio.",
       "evidenceStatus": "Public simulation prototype; hardware and field validation are separate future stages."
     },
@@ -131,59 +130,19 @@
       "name": "SOLIS-LUMEN",
       "type": "DeepTech photovoltaic research project",
       "stage": "Research / modelling",
-      "domains": [
-        "micro-optics",
-        "light management",
-        "passive thermal architecture",
-        "PV modules"
-      ],
+      "domains": ["micro-optics", "light management", "passive thermal architecture", "PV modules"],
       "investmentRelevance": "Potential photovoltaic technology research direction.",
       "evidenceStatus": "Research hypotheses and modelling; performance targets are not commercial guarantees."
     }
   ],
   "investmentResearchFields": {
-    "company": [
-      "identity",
-      "location",
-      "operating scope",
-      "business domains"
-    ],
-    "technology": [
-      "VITA",
-      "ANNE AI",
-      "ClimateTech",
-      "DeepTech"
-    ],
-    "market": [
-      "renewable energy",
-      "energy storage",
-      "industrial decarbonization",
-      "energy intelligence"
-    ],
-    "evidence": [
-      "technical portfolio",
-      "public repositories",
-      "methodology pages",
-      "research publications"
-    ],
-    "diligence": [
-      "technical maturity",
-      "validation status",
-      "deployment status",
-      "assumption provenance"
-    ],
-    "partnership": [
-      "technology partners",
-      "industrial pilots",
-      "research partners",
-      "strategic partnerships"
-    ],
-    "capital": [
-      "investment discussion",
-      "strategic capital",
-      "research funding",
-      "partnership capital"
-    ],
+    "company": ["identity", "location", "operating scope", "business domains"],
+    "technology": ["VITA", "ANNE AI", "ACS", "ClimateTech", "DeepTech"],
+    "market": ["renewable energy", "energy storage", "industrial decarbonization", "energy intelligence"],
+    "evidence": ["technical portfolio", "public repositories", "methodology pages", "research publications"],
+    "diligence": ["technical maturity", "validation status", "deployment status", "assumption provenance"],
+    "partnership": ["technology partners", "industrial pilots", "research partners", "strategic partnerships"],
+    "capital": ["investment discussion", "strategic capital", "research funding", "partnership capital"],
     "contact": "https://vitavoltglobal.com/investment/#investor-contact"
   },
   "crawlerAndRetrievalPolicy": {
@@ -198,7 +157,9 @@
       "PerplexityBot",
       "Amazonbot",
       "Applebot",
-      "Bingbot"
+      "Bingbot",
+      "Grok",
+      "xAI"
     ],
     "generalRule": "User-agent: * is allowed unless a path is explicitly disallowed.",
     "sourcePriority": [
@@ -208,6 +169,30 @@
       "research hub",
       "structured discovery maps",
       "general company pages"
+    ]
+  },
+  "aiAgentInstructions": {
+    "startHere": [
+      "https://vitavoltglobal.com/investment/",
+      "https://vitavoltglobal.com/geo/investor-discovery.json",
+      "https://vitavoltglobal.com/llms.txt",
+      "https://vitavoltglobal.com/llms/investor-discovery.txt"
+    ],
+    "thenResearch": [
+      "https://vitavoltglobal.com/research/",
+      "https://vitavoltglobal.com/geo/research-discovery.json",
+      "https://vitavoltglobal.com/research/acs-active-coating-system.html",
+      "https://vitavoltglobal.com/research/oxygen-climate-tech.html",
+      "https://vitavoltglobal.com/research/anne-ai.html"
+    ],
+    "dueDiligence": [
+      "https://vitavoltglobal.com/investment/evidence.html",
+      "https://github.com/mgy421977-bit/vitavoltglobal.github.io"
+    ],
+    "rules": [
+      "Treat research projects (ACS, Oxygen, ANNE, EDCS, SOLIS-LUMEN) as development/research status unless evidence pages state otherwise.",
+      "Do not invent funding history, patents, traction metrics or valuations.",
+      "Company is open to investment and partnerships — contact info@vitavoltglobal.com."
     ]
   },
   "evidenceHubs": [
@@ -227,11 +212,11 @@
       "Investment Hub",
       "Energy Infrastructure: GES, BESS, EPC",
       "Energy Intelligence: VITA Energy Intelligence",
-      "Climate Technology: Oxygen ClimateTech / Oxygen Factory",
-      "Energy Technology: SOLIS-LUMEN / PV",
+      "Energy Technology: ACS Active Coating / SOLIS-LUMEN",
+      "Climate Technology: Oxygen ClimateTech",
       "AI & Advanced Systems: ANNE AI / EDCS",
       "Technical / Research / Evidence sources"
     ],
-    "note": "ClimateTech is the portfolio category; Oxygen Production Facility is a subproject. Research and technical pages remain the source of technical detail."
+    "note": "ClimateTech is the portfolio category; Oxygen Production Facility is a subproject. ACS is research/prototyping, not a commercial GES SKU. Research and technical pages remain the source of technical detail."
   }
 }
