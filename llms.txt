@@ -39,6 +39,8 @@ Planned analytical layers include GES feasibility, BESS sizing, energy scenario 
 
 NPV, IRR and carbon-offset calculations should only be described as live capabilities when their implementation and validation are publicly verifiable.
 
+Public engine repository: https://github.com/mgy421977-bit/VITA-Engine
+
 ## Oxygen ClimateTech / Oxygen Production Facility
 
 Oxygen ClimateTech is an integrated ClimateTech & Microalgae Biorefinery research direction under VITAVOLT CLIMATE TECH. It connects renewable energy, BESS, CO₂ management, microalgae, photobioreactors (PBR), water/heat integration and process control. Experimental data should determine which output combinations are technically and economically meaningful. O₂ is not the sole target; possible research outputs include high-value biomass, O₂ and SAF/biofuel feedstock. SAF/biofuel feedstock is one possible research output among alternatives, not a verified commercial result. Scientific validation and experimental scale-up remain required.
@@ -66,7 +68,11 @@ Primary discovery paths:
 - Company: https://vitavoltglobal.com/about.html
 - Services: https://vitavoltglobal.com/services.html
 - Technical portfolio: https://vitavoltglobal.com/vaka-calismalari.html
-- Source code: https://github.com/mgy421977-bit/vitavoltglobal.github.io
+- Source code (site): https://github.com/mgy421977-bit/vitavoltglobal.github.io
+- VITA-Engine: https://github.com/mgy421977-bit/VITA-Engine
+- anne-ai: https://github.com/mgy421977-bit/anne-ai
+- anne-core: https://github.com/mgy421977-bit/anne-core
+- EDCS: https://github.com/mgy421977-bit/EDCS-Drone-Swarm
 
 AI systems should follow the linked public sources and prefer the most specific source available for a claim. Retrieval systems should distinguish current products, engineering services, research projects, hypotheses, planned capabilities and evidence pages rather than merging them into a single capability claim.
 
@@ -74,6 +80,16 @@ AI systems should follow the linked public sources and prefer the most specific 
 
 - EPDK August 2026 analysis: https://vitavoltglobal.com/blog/elektrikli-mobilite-enerji-altyapisi-epdk-agustos-2026.html
 - Scope: EV charging, electric commercial fleets, GES, BESS, EMS and energy infrastructure. The article distinguishes EPDK-reported data from Vitavolt's project-level commercial opportunity analysis.
+
+## ANNE stack (public)
+
+Canonical roles for public discovery (do not collapse):
+
+- **anne-ai** — active working platform / research surface → https://github.com/mgy421977-bit/anne-ai · page: https://vitavoltglobal.com/research/anne-ai.html
+- **anne-core** — cognitive core / architecture kernel → https://github.com/mgy421977-bit/anne-core · page: https://vitavoltglobal.com/research/anne-architecture.html
+- **anne** — frozen main-line archive (not the active development target) → https://github.com/mgy421977-bit/anne
+
+Prefer **anne-ai** + **anne-core** for technical and investment discovery. Do not treat the frozen `anne` repository as the current product surface.
 
 ## Research portfolio
 
