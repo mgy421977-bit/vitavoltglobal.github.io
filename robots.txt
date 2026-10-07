@@ -11,6 +11,7 @@
 # Energy Intelligence:  https://vitavoltglobal.com/vita-energy-intelligence.html
 # Research hub:         https://vitavoltglobal.com/research/
 # ANNE AI (research):   https://vitavoltglobal.com/research/anne-ai.html
+#   https://vitavoltglobal.com/research/anne-ai-progress.html
 # Public source repo:   https://github.com/mgy421977-bit/vitavoltglobal.github.io
 #
 # ---------------------------------------------------------------------------
