@@ -19,7 +19,7 @@ for(let i=0;i<rows.length;i++){
   if(i) assert.strictEqual(ts-Date.parse(get(rows[i-1],'timestamp_local')),15*60*1000,'timestamps must be strictly 15-minute contiguous');
   for(const k of header.slice(1)) assert(Number.isFinite(get(r,k)),'all numeric fields finite: '+k);
   for(const k of header.slice(2,10)) assert(get(r,k)>=-1e-9,'power values cannot be negative: '+k);
-  const residual=Math.abs(get(r,'load_kw')+get(r,'bess_discharge_kw')+get(r,'grid_import_with_bess_kw')-get(r,'pv_generation_kw')-get(r,'bess_charge_kw')-get(r,'grid_export_with_bess_kw'));
+  const residual=Math.abs(get(r,'load_kw')+get(r,'bess_charge_kw')+get(r,'grid_export_with_bess_kw')-get(r,'pv_generation_kw')-get(r,'bess_discharge_kw')-get(r,'grid_import_with_bess_kw'));
   maxResidual=Math.max(maxResidual,residual);
   maxPower=Math.max(maxPower,get(r,'bess_charge_kw'),get(r,'bess_discharge_kw'));
   minSoc=Math.min(minSoc,get(r,'bess_soc_pct')); maxSoc=Math.max(maxSoc,get(r,'bess_soc_pct'));
