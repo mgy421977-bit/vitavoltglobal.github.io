@@ -1,0 +1,36 @@
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const assert = require('assert');
+const file = path.join(__dirname, '../data/simulated/vita-anne-izmir-7d-15min.csv');
+const raw = fs.readFileSync(file, 'utf8').trim().split(/\\r?\\n/);
+const header = raw.shift().split(',');
+const ix = Object.fromEntries(header.map((x,i)=>[x,i]));
+const rows = raw.map(line => line.split(',').map((v,i)=>i===0?v:Number(v)));
+const get = (r,k)=>r[ix[k]];
+assert.strictEqual(rows.length,672,'exactly 7 days × 96 intervals expected');
+const seen = new Set();
+let maxResidual=0, maxPower=0, minSoc=100, maxSoc=0, simultaneous=0;
+for(let i=0;i<rows.length;i++){
+  const r=rows[i], ts=Date.parse(get(r,'timestamp_local'));
+  assert(Number.isFinite(ts),'timestamp must parse');
+  assert(!seen.has(get(r,'timestamp_local')),'timestamps must be unique');
+  seen.add(get(r,'timestamp_local'));
+  if(i) assert.strictEqual(ts-Date.parse(get(rows[i-1],'timestamp_local')),15*60*1000,'timestamps must be strictly 15-minute contiguous');
+  for(const k of header.slice(1)) assert(Number.isFinite(get(r,k)),'all numeric fields finite: '+k);
+  for(const k of header.slice(2,10)) assert(get(r,k)>=-1e-9,'power values cannot be negative: '+k);
+  const residual=Math.abs(get(r,'load_kw')+get(r,'bess_discharge_kw')+get(r,'grid_import_with_bess_kw')-get(r,'pv_generation_kw')-get(r,'bess_charge_kw')-get(r,'grid_export_with_bess_kw'));
+  maxResidual=Math.max(maxResidual,residual);
+  maxPower=Math.max(maxPower,get(r,'bess_charge_kw'),get(r,'bess_discharge_kw'));
+  minSoc=Math.min(minSoc,get(r,'bess_soc_pct')); maxSoc=Math.max(maxSoc,get(r,'bess_soc_pct'));
+  if(get(r,'bess_charge_kw')>0.001 && get(r,'bess_discharge_kw')>0.001) simultaneous++;
+  assert(get(r,'bess_soc_pct')>=10-1e-6 && get(r,'bess_soc_pct')<=90+1e-6,'SOC within 10–90%');
+}
+assert(maxResidual<=0.02,'energy balance residual <= 0.02 kW; actual '+maxResidual);
+assert(maxPower<=250+1e-6,'BESS power <= 250 kW');
+assert.strictEqual(simultaneous,0,'battery must not charge and discharge simultaneously');
+assert(rows.some(r=>get(r,'pv_generation_kw')>0),'PV generation should be present');
+assert(rows.some(r=>get(r,'bess_charge_kw')>0),'battery charging should occur');
+assert(rows.some(r=>get(r,'bess_discharge_kw')>0),'battery discharging should occur');
+console.log('PASS: 672 intervals; unique 15-min timestamps; energy balance; SOC/power bounds; no simultaneous charge/discharge.');
+console.log(JSON.stringify({maxResidualKw:maxResidual,minSocPct:minSoc,maxSocPct:maxSoc,maxBessPowerKw:maxPower},null,2));
