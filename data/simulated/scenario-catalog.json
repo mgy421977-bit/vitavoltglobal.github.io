@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "VITA-ANNE-SIM-IZMIR-001",
+  "scenarios": [
+    {
+      "id": "S0_BASELINE",
+      "label": "Grid only / no PV / no BESS",
+      "definition": "Reference demand supplied entirely by grid; used as a load-only reference.",
+      "required_columns": [
+        "load_kw"
+      ]
+    },
+    {
+      "id": "S1_PV_ONLY",
+      "label": "PV + grid, no BESS",
+      "definition": "PV generation offsets load; surplus is exported; deficit is imported.",
+      "required_columns": [
+        "load_kw",
+        "pv_generation_kw",
+        "baseline_grid_import_kw",
+        "baseline_grid_export_kw"
+      ]
+    },
+    {
+      "id": "S2_PV_BESS",
+      "label": "PV + BESS + grid",
+      "definition": "Same PV and load profiles with 500 kWh / 250 kW battery, 10–90% SOC limits and PV-surplus/180 kW import-threshold dispatch.",
+      "required_columns": [
+        "bess_charge_kw",
+        "bess_discharge_kw",
+        "grid_import_with_bess_kw",
+        "grid_export_with_bess_kw",
+        "bess_soc_pct"
+      ]
+    },
+    {
+      "id": "S3_DATA_GAP",
+      "label": "Missing interval injection",
+      "definition": "Mutation test: remove one interval; validator must flag a timestamp gap and fail completeness."
+    },
+    {
+      "id": "S4_BALANCE_ERROR",
+      "label": "Energy balance corruption",
+      "definition": "Mutation test: add 10 kW to one interval grid import; validator must fail energy balance tolerance."
+    },
+    {
+      "id": "S5_SOC_BOUNDS",
+      "label": "SOC limit violation",
+      "definition": "Mutation test: set one SOC value to 95%; validator must flag SOC outside 10–90%."
+    },
+    {
+      "id": "S6_DUPLICATE_TS",
+      "label": "Duplicate timestamp",
+      "definition": "Mutation test: duplicate one timestamp; validator must fail uniqueness/monotonicity."
+    }
+  ],
+  "acceptance_criteria": {
+    "interval_count": 672,
+    "interval_minutes": 15,
+    "required_unique_monotonic_timestamps": true,
+    "max_energy_balance_residual_kw": 0.02,
+    "soc_bounds_pct": [
+      10,
+      90
+    ],
+    "max_charge_or_discharge_kw": 250,
+    "no_simultaneous_charge_and_discharge": true,
+    "all_values_finite_nonnegative": true,
+    "scenario_comparison_must_not_claim_financial_savings_without_tariff": true,
+    "synthetic_data_must_be_labelled": true
+  }
+}
