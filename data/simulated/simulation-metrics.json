@@ -20,5 +20,9 @@
   "soc_min_pct": 48.739,
   "soc_max_pct": 90,
   "simultaneous_charge_discharge_intervals": 0,
-  "status": "INTERNAL DATA VALIDATION PASS; Node.js test file not executed in a Node runtime."
+  "status": "INTERNAL DATA VALIDATION PASS; Node.js test file not executed in a Node runtime.",
+  "round_trip_efficiency_assumed_pct": 90.25,
+  "baseline_peak_grid_import_kw": 226.503,
+  "with_bess_peak_grid_import_kw": 180,
+  "note": "Computed from the synthetic fixture using 15-minute interval integration. Not measured site performance."
 }
