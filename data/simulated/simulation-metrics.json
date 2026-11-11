@@ -1,0 +1,24 @@
+{
+  "dataset_id": "VITA-ANNE-SIM-IZMIR-001",
+  "intervals": 672,
+  "period_hours": 168,
+  "energy_kwh": {
+    "load_kw": 31056.696,
+    "pv_generation_kw": 15604.251,
+    "baseline_grid_import_kw": 19589.221,
+    "baseline_grid_export_kw": 4136.774,
+    "bess_charge_kw": 767.476,
+    "bess_discharge_kw": 570.218,
+    "grid_import_with_bess_kw": 19019.003,
+    "grid_export_with_bess_kw": 3369.298
+  },
+  "peak_grid_import_baseline_kw": 226.503,
+  "peak_grid_import_with_bess_kw": 180,
+  "peak_reduction_kw": 46.503,
+  "max_interval_energy_balance_residual_kw": 0.001,
+  "bess_power_max_kw": 138.14,
+  "soc_min_pct": 48.739,
+  "soc_max_pct": 90,
+  "simultaneous_charge_discharge_intervals": 0,
+  "status": "INTERNAL DATA VALIDATION PASS; Node.js test file not executed in a Node runtime."
+}
