@@ -29,7 +29,7 @@ Also:
 - Contact: https://vitavoltglobal.com/contact.html
 - Quick feasibility form (homepage): https://vitavoltglobal.com/#hizli-hesapla
 
-Core commercial domains include GES, BESS, EPC, carbon advisory, water systems and energy consulting for industrial, commercial and residential clients in Türkiye. Pre-feasibility is not a final offer.
+Core commercial domains include GES, BESS, EPC, carbon advisory, water systems and energy consulting for industrial, commercial and residential clients in Türkiye. Pre-feasibility is not a final offer. Customer entry line: Tüketim ve saha verisiyle GES / BESS için ücretsiz ön değerlendirme.
 
 ## VITA Energy Intelligence
 
@@ -131,3 +131,10 @@ Use these pages first for capital and partnership discovery (search engines, AI 
 ## Source policy
 
 Public pages and repositories are the source of truth. Unsupported investment, traction, valuation, patent, performance or funding claims must not be inferred.
+
+## Commercial vs research (boundary)
+- Commercial: GES, BESS, EPC and related energy-infrastructure services (İzmir-based, Türkiye).
+- Customer entry: Tüketim ve saha verisiyle GES / BESS için ücretsiz ön değerlendirme.
+- Research (not finished products): ANNE AI, Oxygen ClimateTech, ACS, SOLIS-LUMEN, EDCS — presented with maturity labels; no completed AGI or commercial ClimateTech production claim.
+- Roadmap (goal, not a performance claim): Real Energy Infrastructure → Energy Data → Intelligence → Verified Investment Decision.
+- Do not invent revenue, valuation, headcount, or return rates.
