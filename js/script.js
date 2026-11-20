@@ -17,19 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ['◉', 'Karbon & Sürdürülebilirlik', '/sustainability-carbon-advisory.html'],
             ['◌', 'Su Yönetimi', '/izmir-yagmur-suyu-hasat.html']
         ];
-        const vitaItems = [
-            ['⚡', 'VITA Energy Intelligence', '/vita-energy-intelligence.html'],
-            ['◉', 'Hızlı Ön Fizibilite', '/index.html#hizli-hesapla']
-        ];
-        const researchItems = [
-            ['◈', 'Research Hub', '/research/'],
-            ['▣', 'ACS — Active Coating', '/research/acs-active-coating-system.html'],
-            ['◎', 'Oxygen ClimateTech', '/research/oxygen-climate-tech.html'],
-            ['✦', 'ANNE AI', '/research/anne-ai.html'],
-            ['◇', 'EDCS', '/research/edcs.html'],
-            ['☀', 'SOLIS-LUMEN', '/research/solis-lumen.html'],
-            ['◌', 'Publications', '/research/publications.html']
-        ];
         const makeItems = items => items.map(([icon, label, href]) =>
             `<a class="vv-mega-item" href="${href}"><span class="vv-mega-icon" aria-hidden="true">${icon}</span><span>${label}</span></a>`
         ).join('');
