@@ -17,51 +17,30 @@ document.addEventListener('DOMContentLoaded', () => {
             ['◉', 'Karbon & Sürdürülebilirlik', '/sustainability-carbon-advisory.html'],
             ['◌', 'Su Yönetimi', '/izmir-yagmur-suyu-hasat.html']
         ];
-        const vitaItems = [
-            ['⚡', 'VITA Energy Intelligence', '/vita-energy-intelligence.html'],
-            ['◉', 'Hızlı Ön Fizibilite', '/index.html#hizli-hesapla']
-        ];
-        const researchItems = [
-            ['◈', 'Research Hub', '/research/'],
-            ['▣', 'ACS — Active Coating', '/research/acs-active-coating-system.html'],
-            ['◎', 'Oxygen ClimateTech', '/research/oxygen-climate-tech.html'],
-            ['✦', 'ANNE AI', '/research/anne-ai.html'],
-            ['◇', 'EDCS', '/research/edcs.html'],
-            ['☀', 'SOLIS-LUMEN', '/research/solis-lumen.html'],
-            ['◌', 'Publications', '/research/publications.html']
-        ];
         const makeItems = items => items.map(([icon, label, href]) =>
             `<a class="vv-mega-item" href="${href}"><span class="vv-mega-icon" aria-hidden="true">${icon}</span><span>${label}</span></a>`
         ).join('');
 
         navMenu.innerHTML = `
             <a href="/index.html" class="nav-link">ANA SAYFA</a>
+            <a href="/services.html#danismanlik" class="nav-link">DANIŞMANLIK</a>
             <a href="/isletmeler.html" class="nav-link">İŞLETMELER</a>
-            <a href="/mesken-ges.html" class="nav-link">VITA HOME</a>
             <div class="vv-nav-dropdown" data-menu="solutions">
                 <button class="nav-link vv-nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">ÇÖZÜMLER <span class="vv-chevron" aria-hidden="true">⌄</span></button>
                 <div class="vv-mega-menu vv-mega-menu--compact" role="menu">
                     <div class="vv-mega-lead">
-                        <a class="vv-mega-category" href="/isletmeler.html"><span class="vv-mega-category-icon">🏭</span><span><strong>İşletmeler</strong><small>Fabrika, otel, depo, filo — endüstriyel & ticari.</small></span><span class="vv-arrow">›</span></a>
-                        <a class="vv-mega-category vv-secondary" href="/mesken-ges.html"><span class="vv-mega-category-icon">⌂</span><span><strong>VITA HOME</strong><small>Konut ve villa enerji yatırımı.</small></span><span class="vv-arrow">›</span></a>
+                        <a class="vv-mega-category" href="/isletmeler.html"><span class="vv-mega-category-icon">🏭</span><span><strong>İşletmeler</strong><small>Fabrika, otel, depo ve üretim tesisleri.</small></span><span class="vv-arrow">›</span></a>
+                        <a class="vv-mega-category vv-secondary" href="/mesken-ges.html"><span class="vv-mega-category-icon">⌂</span><span><strong>Konut & Villa</strong><small>Konut ve villa enerji altyapısı.</small></span><span class="vv-arrow">›</span></a>
                     </div>
                     <div class="vv-mega-content">
-                        <div class="vv-mega-heading">ENDÜSTRİYEL & TİCARİ ÇÖZÜMLER</div>
+                        <div class="vv-mega-heading">ENERJİ & SÜRDÜRÜLEBİLİRLİK ÇÖZÜMLERİ</div>
                         <div class="vv-mega-grid">${makeItems(solutionItems)}</div>
                     </div>
                 </div>
             </div>
-            <div class="vv-nav-dropdown vv-simple-dropdown" data-menu="vita">
-                <button class="nav-link vv-nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">VITA <span class="vv-chevron" aria-hidden="true">⌄</span></button>
-                <div class="vv-mini-menu" role="menu">${makeItems(vitaItems)}</div>
-            </div>
-            <div class="vv-nav-dropdown vv-simple-dropdown" data-menu="research">
-                <button class="nav-link vv-nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">RESEARCH <span class="vv-chevron" aria-hidden="true">⌄</span></button>
-                <div class="vv-mini-menu" role="menu">${makeItems(researchItems)}</div>
-            </div>
-            <a href="/investment/" class="nav-link">YATIRIMCILAR</a>
-            <a href="/about.html" class="nav-link">HAKKIMIZDA</a>
-            <a href="/blog/" class="nav-link">BLOG</a>
+            <a href="/mesken-ges.html" class="nav-link">KONUT & VİLLA</a>
+            <a href="/about.html" class="nav-link">KURUMSAL</a>
+            <a href="/blog/" class="nav-link">BİLGİ MERKEZİ</a>
             <a href="/contact.html" class="nav-link">İLETİŞİM</a>`;
 
         const style = document.createElement('style');
@@ -132,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             href === currentPage ||
             (href === 'index.html' && (currentPage === '' || currentPage === '/')) ||
             (href === '/index.html' && (currentPage === 'index.html' || currentPage === '' || path === '/')) ||
+            (href.indexOf('/services.html') === 0 && currentPage === 'services.html') ||
             (href === '/isletmeler.html' && path.indexOf('isletmeler') !== -1) ||
             (href === '/mesken-ges.html' && path.indexOf('mesken-ges') !== -1) ||
             (href === '/blog/' && path.indexOf('/blog') !== -1) ||
