@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             href === currentPage ||
             (href === 'index.html' && (currentPage === '' || currentPage === '/')) ||
             (href === '/index.html' && (currentPage === 'index.html' || currentPage === '' || path === '/')) ||
+            (href.indexOf('/services.html') === 0 && currentPage === 'services.html') ||
             (href === '/isletmeler.html' && path.indexOf('isletmeler') !== -1) ||
             (href === '/mesken-ges.html' && path.indexOf('mesken-ges') !== -1) ||
             (href === '/blog/' && path.indexOf('/blog') !== -1) ||
