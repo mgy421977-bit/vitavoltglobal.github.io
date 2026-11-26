@@ -104,3 +104,44 @@ test.describe('Services page responsive browser QA', () => {
     await expect(overlay).toBeHidden();
   });
 });
+
+test.describe('Homepage and Research launch QA', () => {
+  test('homepage renders industrial positioning and Research navigation', async ({ page }) => {
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/', { waitUntil: 'networkidle' });
+    await expect(page.locator('h1')).toContainText('Enerjiden Veriye');
+    await expect(page.locator('#sektorler')).toBeVisible();
+    await expect(page.locator('#navMenu a[href="/research/"]')).toHaveCount(1);
+    await expect(page.locator('#navMenu a[href="/research/"]')).toContainText('RESEARCH');
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    expect(overflow, 'homepage should not overflow horizontally on mobile').toBe(false);
+    expect(errors, 'homepage should not emit uncaught JavaScript errors').toEqual([]);
+    await page.screenshot({ path: 'test-results/homepage-390x844.png', fullPage: true, animations: 'disabled' });
+  });
+
+  test('Research hub loads, language switch works, and commercial boundary is explicit', async ({ page }) => {
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/research/', { waitUntil: 'networkidle' });
+    await expect(page.locator('h1')).toContainText('Vitavolt Research');
+    await expect(page.locator('#research-to-products')).toBeVisible();
+    await expect(page.locator('#research-to-products')).toContainText('ANNE AI');
+    await page.locator('[data-lang-btn="tr"]').click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
+    await expect(page.locator('#bridge-title')).toBeVisible();
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    expect(overflow, 'Research page should not overflow horizontally on mobile').toBe(false);
+    expect(errors, 'Research page should not emit uncaught JavaScript errors').toEqual([]);
+    await page.screenshot({ path: 'test-results/research-390x844.png', fullPage: true, animations: 'disabled' });
+  });
+
+  test('Research and homepage key routes respond successfully', async ({ request }) => {
+    for (const path of ['/', '/research/', '/services.html', '/research/anne-ai.html', '/research/acs-active-coating-system.html']) {
+      const response = await request.get(path);
+      expect(response.status(), path + ' should return a successful response').toBeLessThan(400);
+    }
+  });
+});
