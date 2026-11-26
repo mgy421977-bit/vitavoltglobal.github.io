@@ -1,0 +1,12 @@
+{
+  "name": "vitavoltglobal-static-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Browser QA for the Vitavolt Global static website",
+  "scripts": {
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}

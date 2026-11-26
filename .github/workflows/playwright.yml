@@ -1,0 +1,67 @@
+name: Playwright Browser QA
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: playwright-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser-qa:
+    name: Chromium responsive QA
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Playwright test runner
+        run: npm install --no-audit --no-fund
+
+      - name: Install Chromium and system dependencies
+        run: npx playwright install chromium
+
+      - name: Run browser tests
+        run: npm run test:e2e
+
+      - name: Upload screenshots and HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-browser-qa
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Publish test result summary
+        if: always()
+        run: |
+          {
+            echo "## Playwright Browser QA"
+            if [ -f test-results/results.json ]; then
+              node -e "const r=require('./test-results/results.json'); const s=r.stats || {}; console.log('- Passed: ' + (s.expected ?? 0)); console.log('- Failed: ' + (s.unexpected ?? 0)); console.log('- Skipped: ' + (s.skipped ?? 0));"
+            else
+              echo "- Test result file was not generated; inspect the job log."
+            fi
+            echo '- Screenshots and HTML report are available in the Playwright artifact when generated.'
+          } >> "$GITHUB_STEP_SUMMARY"

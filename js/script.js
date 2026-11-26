@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <a href="/mesken-ges.html" class="nav-link">KONUT & VİLLA</a>
             <a href="/about.html" class="nav-link">KURUMSAL</a>
+            <a href="/research/" class="nav-link">RESEARCH</a>
             <a href="/blog/" class="nav-link">BİLGİ MERKEZİ</a>
             <a href="/contact.html" class="nav-link">İLETİŞİM</a>`;
 
