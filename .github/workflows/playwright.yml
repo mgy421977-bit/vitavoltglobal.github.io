@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -59,8 +58,8 @@ jobs:
         run: |
           {
             echo "## Playwright Browser QA"
-            if [ -f test-results/.last-run.json ]; then
-              node -e "const r=require('./test-results/.last-run.json'); console.log('- Status: ' + r.status); console.log('- Failed tests: ' + (r.failedTests ?? 'see HTML report'));"
+            if [ -f test-results/results.json ]; then
+              node -e "const r=require('./test-results/results.json'); const s=r.stats || {}; console.log('- Passed: ' + (s.expected ?? 0)); console.log('- Failed: ' + (s.unexpected ?? 0)); console.log('- Skipped: ' + (s.skipped ?? 0));"
             else
               echo "- Test result file was not generated; inspect the job log."
             fi
