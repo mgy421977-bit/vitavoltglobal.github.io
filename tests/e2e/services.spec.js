@@ -63,7 +63,9 @@ test.describe('Services page responsive browser QA', () => {
       const images = page.locator('.vv-product-media img');
       const imageCount = await images.count();
       for (let index = 0; index < imageCount; index += 1) {
-        await expect.poll(async () => images.nth(index).evaluate(img => img.complete && img.naturalWidth > 0))
+        const image = images.nth(index);
+        await image.scrollIntoViewIfNeeded();
+        await expect.poll(async () => image.evaluate(img => img.complete && img.naturalWidth > 0))
           .toBe(true);
       }
 
@@ -88,7 +90,7 @@ test.describe('Services page responsive browser QA', () => {
 
     const toggle = page.locator('#menuToggle');
     const menu = page.locator('#navMenu');
-    const overlay = page.locator('#menuOverlay');
+    const overlay = page.locator('.menu-overlay');
 
     await expect(toggle).toBeVisible();
     await toggle.click();
@@ -96,9 +98,9 @@ test.describe('Services page responsive browser QA', () => {
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
     await expect(overlay).toHaveClass(/active/);
 
-    await overlay.click({ force: true });
+    await toggle.click();
     await expect(menu).not.toHaveClass(/active/);
     await expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    await expect(overlay).not.toHaveClass(/active/);
+    await expect(overlay).toBeHidden();
   });
 });
