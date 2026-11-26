@@ -16,7 +16,7 @@ concurrency:
 jobs:
   browser-qa:
     name: Chromium responsive QA
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:
@@ -63,5 +63,5 @@ jobs:
             else
               echo "- Test result file was not generated; inspect the job log."
             fi
-            echo "- Screenshots and HTML report are available in the `playwright-browser-qa` artifact when generated."
+            echo '- Screenshots and HTML report are available in the Playwright artifact when generated.'
           } >> "$GITHUB_STEP_SUMMARY"
