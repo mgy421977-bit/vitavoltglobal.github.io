@@ -42,6 +42,9 @@ test.describe('Services page responsive browser QA', () => {
 
       await page.goto('/services.html', { waitUntil: 'networkidle' });
 
+      const screenshotPath = testInfo.outputPath(`services-${viewport.width}x${viewport.height}.png`);
+      await page.screenshot({ path: screenshotPath, fullPage: true, animations: 'disabled' });
+
       await expect(page.locator('#product-architecture-title')).toBeVisible();
       for (const id of productIds) {
         await expect(page.locator(`#${id}`)).toHaveCount(1);
@@ -72,9 +75,6 @@ test.describe('Services page responsive browser QA', () => {
         const response = await page.request.get(new URL(href, 'http://127.0.0.1:4173').toString());
         expect(response.status(), `product link ${href} should return a successful response`).toBeLessThan(400);
       }
-
-      const screenshotPath = testInfo.outputPath(`services-${viewport.width}x${viewport.height}.png`);
-      await page.screenshot({ path: screenshotPath, fullPage: true, animations: 'disabled' });
 
       expect(pageErrors, 'page should not emit uncaught JavaScript errors').toEqual([]);
       expect(failedLocalRequests, 'local asset requests should not fail').toEqual([]);
