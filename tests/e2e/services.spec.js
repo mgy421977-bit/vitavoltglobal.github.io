@@ -67,7 +67,7 @@ test.describe('Services page responsive browser QA', () => {
           .toBe(true);
       }
 
-      const productLinks = page.locator('.vv-product-row .vv-product-copy > a[class*='btn']');
+      const productLinks = page.locator(".vv-product-row .vv-product-copy > a[class*='btn']");
       await expect(productLinks).toHaveCount(6);
       for (let index = 0; index < await productLinks.count(); index += 1) {
         const href = await productLinks.nth(index).getAttribute('href');
